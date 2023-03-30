@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest package="com.phngsapplication.app" xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <application android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name" android:largeHeap="true"
+        android:name="com.phngsapplication.app.appcomponents.di.MyApp"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true" android:theme="@style/Theme.MyApp" android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.phngsapplication.app.modules.onboarding2learnmanyplantsspecies.ui.Onboarding2LearnManyPlantsSpeciesActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.onboarding3readmanyarticlesaboutplants.ui.Onboarding3ReadManyArticlesAboutPlantsActivity" android:screenOrientation="portrait"/>
+        <activity android:exported="true"
+            android:name="com.phngsapplication.app.modules.articles.ui.ArticlesActivity" android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.phngsapplication.app.modules.detailarticles.ui.DetailArticlesActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.homepage.ui.HomepageActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.species.ui.SpeciesActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.detailplantnolike.ui.DetailPlantNoLikeActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.loginscreen.ui.LoginScreenActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.listplant.ui.ListPlantActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.signupscreen.ui.SignupScreenActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.profile.ui.ProfileActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.addingnewplant.ui.AddingNewPlantActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.detailplant.ui.DetailPlantActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.onboarding1identifyplants.ui.Onboarding1IdentifyPlantsActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.forgetpassscreenzero.ui.ForgetPassScreenZeroActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.forgetpassscreenone.ui.ForgetPassScreenOneActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name="com.phngsapplication.app.modules.camera.ui.CameraActivity" android:screenOrientation="portrait"/>
+    </application>
+</manifest>

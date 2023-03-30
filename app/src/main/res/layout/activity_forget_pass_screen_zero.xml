@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="forgetPassScreenZeroVM" type="com.phngsapplication.app.modules.forgetpassscreenzero.data.viewmodel.ForgetPassScreenZeroVM"/>
+    </data>
+    <LinearLayout android:gravity="start"
+        android:id="@+id/linearForgetPassScr"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical" style="@style/groupStylewhite_A700">
+        <TextView android:ellipsize="end"
+            android:id="@+id/txtForgetpassword"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_23pxh"
+            android:layout_marginStart="@dimen/_23pxh"
+            android:layout_marginTop="@dimen/_80pxv"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:text="@{forgetPassScreenZeroVM.forgetPassScreenZeroModel.txtForgetpassword}"
+            style="@style/txtAndadaProromanbold30_1" tools:text="@string/lbl_forget_password"/>
+        <TextView android:ellipsize="end"
+            android:id="@+id/txtPasswordhasbe"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_23pxh"
+            android:layout_marginStart="@dimen/_23pxh"
+            android:layout_marginTop="@dimen/_7pxv"
+            android:layout_width="match_parent"
+            android:singleLine="true"
+            android:text="@{forgetPassScreenZeroVM.forgetPassScreenZeroModel.txtPasswordhasbe}"
+            style="@style/txtAndadaProromanmedium16" tools:text="@string/msg_password_has_be"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:ellipsize="end" android:gravity="center"
+            android:id="@+id/btnNext"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_23pxh"
+            android:layout_marginStart="@dimen/_23pxh"
+            android:layout_marginTop="@dimen/_235pxv"
+            android:layout_width="match_parent"
+            android:paddingBottom="@dimen/_14pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingStart="@dimen/_30pxh"
+            android:paddingTop="@dimen/_14pxv" android:singleLine="true"
+            android:text="@string/lbl_next" android:textAllCaps="false"
+            style="@style/btnSolidRounded" tools:text="@string/lbl_next"/>
+        <TextView android:ellipsize="end"
+            android:id="@+id/txt2019Planthink"
+            android:layout_gravity="end"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_8pxv"
+            android:layout_marginEnd="@dimen/_33pxh"
+            android:layout_marginStart="@dimen/_33pxh"
+            android:layout_marginTop="@dimen/_332pxv"
+            android:layout_width="wrap_content"
+            android:singleLine="true"
+            android:text="@{forgetPassScreenZeroVM.forgetPassScreenZeroModel.txt2019Planthink}"
+            style="@style/txtSFProTextregular9" tools:text="@string/msg_2019_planthink"/>
+    </LinearLayout>
+</layout>

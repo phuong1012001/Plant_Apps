@@ -1,0 +1,91 @@
+package com.phngsapplication.app.modules.homepage.ui
+
+import android.view.View
+import androidx.activity.viewModels
+import androidx.appcompat.widget.SearchView
+import com.phngsapplication.app.R
+import com.phngsapplication.app.appcomponents.base.BaseActivity
+import com.phngsapplication.app.appcomponents.views.ImagePickerFragmentDialog
+import com.phngsapplication.app.databinding.ActivityHomepageBinding
+import com.phngsapplication.app.modules.articles.ui.ArticlesActivity
+import com.phngsapplication.app.modules.camera.ui.CameraActivity
+import com.phngsapplication.app.modules.homepage.`data`.model.HomepageRowModel
+import com.phngsapplication.app.modules.homepage.`data`.viewmodel.HomepageVM
+import com.phngsapplication.app.modules.species.ui.SpeciesActivity
+import kotlin.Boolean
+import kotlin.Int
+import kotlin.String
+import kotlin.Unit
+
+class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity_homepage) {
+  private val viewModel: HomepageVM by viewModels<HomepageVM>()
+
+  override fun onInitialized(): Unit {
+    viewModel.navArguments = intent.extras?.getBundle("bundle")
+    val homepageAdapter = HomepageAdapter(viewModel.homepageList.value?:mutableListOf())
+    binding.recyclerHomepage.adapter = homepageAdapter
+    homepageAdapter.setOnItemClickListener(
+    object : HomepageAdapter.OnItemClickListener {
+      override fun onItemClick(view:View, position:Int, item : HomepageRowModel) {
+        onClickRecyclerHomepage(view, position, item)
+      }
+    }
+    )
+    viewModel.homepageList.observe(this) {
+      homepageAdapter.updateData(it)
+    }
+    binding.homepageVM = viewModel
+    setUpSearchViewGroupTwentyOneListener()
+  }
+
+  override fun setUpClicks(): Unit {
+    binding.imageCamera.setOnClickListener {
+      ImagePickerFragmentDialog().show(supportFragmentManager)
+      { path ->//TODO HANDLE DATA
+      }
+
+          }
+      binding.linearColumncut.setOnClickListener {
+        val destIntent = SpeciesActivity.getIntent(this, null)
+        startActivity(destIntent)
+      }
+      binding.linearColumngroup.setOnClickListener {
+        val destIntent = ArticlesActivity.getIntent(this, null)
+        startActivity(destIntent)
+      }
+      binding.linearColumncamera.setOnClickListener {
+        val destIntent = CameraActivity.getIntent(this, null)
+        startActivity(destIntent)
+      }
+    }
+
+    fun onClickRecyclerHomepage(
+      view: View,
+      position: Int,
+      item: HomepageRowModel
+    ): Unit {
+      when(view.id) {
+      }
+    }
+
+    private fun setUpSearchViewGroupTwentyOneListener(): Unit {
+      binding.searchViewGroupTwentyOne.setOnQueryTextListener(object :
+      SearchView.OnQueryTextListener {
+        override fun onQueryTextSubmit(p0 : String) : Boolean {
+          // Performs search when user hit
+          // the search button on the keyboard
+          return false
+        }
+        override fun onQueryTextChange(p0 : String) : Boolean {
+          // Start filtering the list as user
+          // start entering the characters
+          return false
+        }
+        })
+      }
+
+      companion object {
+        const val TAG: String = "HOMEPAGE_ACTIVITY"
+
+      }
+    }

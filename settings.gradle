@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "phng_s_application3"

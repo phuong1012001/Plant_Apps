@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="txtAndadaProromanregular14">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/gray_600_a2</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="txtAndadaProromanregular15">
+        <item name="android:textSize">@dimen/_15pxh</item>
+        <item name="android:textColor">@color/gray_600_a2</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="txtAndadaProromanmedium12_1">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:textColor">@color/bluegray_300</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtAndadaProromanregular12">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:textColor">@color/bluegray_700</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="groupStylecornerRadius">
+        <item name="android:background">@drawable/rectangle_radius_3</item>
+    </style>
+    <style name="txtAndadaProromanregular10">
+        <item name="android:textSize">@dimen/_10pxh</item>
+        <item name="android:textColor">@color/teal_A402</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="etAndadaProromanregular27">
+        <item name="android:textSize">@dimen/_27pxh</item>
+        <item name="android:textColor">@color/black_900</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="txtAndadaProromanbold30_1">
+        <item name="android:textSize">@dimen/_30pxh</item>
+        <item name="android:textColor">@color/bluegray_800</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanmedium12_2">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:textColor">@color/bluegray_700</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="groupStylegray_800_38cornerRadius">
+        <item name="android:background">@drawable/rectangle_bg_gray_800_38_radius_3</item>
+    </style>
+    <style name="groupStylewhite_A700">
+        <item name="android:background">@drawable/rectangle_bg_white_a700</item>
+    </style>
+    <style name="txtAndadaProromanregular27">
+        <item name="android:textSize">@dimen/_27pxh</item>
+        <item name="android:textColor">@color/black_900</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="txtAndadaProromanbold15_1">
+        <item name="android:textSize">@dimen/_15pxh</item>
+        <item name="android:textColor">@color/white_A700_e5</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold15_2">
+        <item name="android:textSize">@dimen/_15pxh</item>
+        <item name="android:textColor">@color/gray_600_90</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold14">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/gray_600_90</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanmedium9">
+        <item name="android:textSize">@dimen/_9pxh</item>
+        <item name="android:textColor">@color/bluegray_300</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtAndadaProromanbold13">
+        <item name="android:textSize">@dimen/_13pxh</item>
+        <item name="android:textColor">@color/white_A702</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanregular14_1">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/gray_600</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="txtAndadaProromanbold12">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:textColor">@color/bluegray_300</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold10">
+        <item name="android:textSize">@dimen/_10pxh</item>
+        <item name="android:textColor">@color/gray_300</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold18">
+        <item name="android:textSize">@dimen/_18pxh</item>
+        <item name="android:textColor">@color/white_A702</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold17">
+        <item name="android:textSize">@dimen/_17pxh</item>
+        <item name="android:textColor">@color/bluegray_800</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold16">
+        <item name="android:textSize">@dimen/_16pxh</item>
+        <item name="android:textColor">@color/white_A702</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold15">
+        <item name="android:textSize">@dimen/_15pxh</item>
+        <item name="android:textColor">@color/bluegray_800</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtSFProTextbold17">
+        <item name="android:textSize">@dimen/_17pxh</item>
+        <item name="android:textColor">@color/gray_801</item>
+        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtSFProTextmedium11">
+        <item name="android:textSize">@dimen/_11pxh</item>
+        <item name="android:textColor">@color/gray_800</item>
+        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtSFProTextmedium12">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:textColor">@color/bluegray_300</item>
+        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="etAndadaProromanmedium17_1">
+        <item name="android:textSize">@dimen/_17pxh</item>
+        <item name="android:textColor">@color/gray_600_90</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtSFProTextmedium10">
+        <item name="android:textSize">@dimen/_10pxh</item>
+        <item name="android:textColor">@color/teal_A402</item>
+        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="groupStyleteal_A400_7fcornerRadius">
+        <item name="android:background">@drawable/rectangle_bg_teal_a400_7f_radius_4</item>
+    </style>
+    <style name="txtAndadaProromanbold25">
+        <item name="android:textSize">@dimen/_25pxh</item>
+        <item name="android:textColor">@color/white_A702</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtSFProTextmedium12_1">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:textColor">@color/gray_400</item>
+        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="etAndadaProromanmedium17">
+        <item name="android:textSize">@dimen/_17pxh</item>
+        <item name="android:textColor">@color/bluegray_800</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtAndadaProromanmedium17">
+        <item name="android:textSize">@dimen/_17pxh</item>
+        <item name="android:textColor">@color/bluegray_800</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtAndadaProromanbold21">
+        <item name="android:textSize">@dimen/_21pxh</item>
+        <item name="android:textColor">@color/white_A702</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold20">
+        <item name="android:textSize">@dimen/_20pxh</item>
+        <item name="android:textColor">@color/bluegray_800</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanmedium15">
+        <item name="android:textSize">@dimen/_15pxh</item>
+        <item name="android:textColor">@color/gray_600_90</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtAndadaProromanmedium16">
+        <item name="android:textSize">@dimen/_16pxh</item>
+        <item name="android:textColor">@color/bluegray_700_a2</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtAndadaProromanbold27">
+        <item name="android:textSize">@dimen/_27pxh</item>
+        <item name="android:textColor">@color/bluegray_800</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="groupStyleblue_1">
+        <item name="android:background">@drawable/rectangle_bg_blue_400_radius_19</item>
+    </style>
+    <style name="txtAndadaProromanmedium13_1">
+        <item name="android:textSize">@dimen/_13pxh</item>
+        <item name="android:textColor">@color/bluegray_700</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="groupStylewhite_A700_99cornerRadius">
+        <item name="android:background">@drawable/rectangle_bg_white_a700_99_radius_tr_3_br_3</item>
+    </style>
+    <style name="txtAndadaProromanmedium17_1">
+        <item name="android:textSize">@dimen/_17pxh</item>
+        <item name="android:textColor">@color/gray_600_90</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtAndadaProromanbold12_1">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:textColor">@color/bluegray_301</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold16_1">
+        <item name="android:textSize">@dimen/_16pxh</item>
+        <item name="android:textColor">@color/gray_402</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtRoundedOutline">
+        <item name="android:textSize">@dimen/_13pxh</item>
+        <item name="android:textColor">@color/gray_600</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+        <item name="android:background">@drawable/rectangle_border_gray_600_radius_1</item>
+    </style>
+    <style name="txtAndadaProromanbold30">
+        <item name="android:textSize">@dimen/_30pxh</item>
+        <item name="android:textColor">@color/white_A702</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanmedium13">
+        <item name="android:textSize">@dimen/_13pxh</item>
+        <item name="android:textColor">@color/gray_600</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtAndadaProromanmedium14">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/bluegray_100</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtSFProTextsemibold14_1">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/bluegray_700</item>
+        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:textFontWeight" tools:targetApi="p">600</item>
+    </style>
+    <style name="txtAndadaProromanmedium11">
+        <item name="android:textSize">@dimen/_11pxh</item>
+        <item name="android:textColor">@color/bluegray_800</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="etAndadaProromanmedium15">
+        <item name="android:textSize">@dimen/_15pxh</item>
+        <item name="android:textColor">@color/gray_600_90</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="groupStylewhite_A702cornerRadius">
+        <item name="android:background">@drawable/rectangle_bg_white_a702_radius_10</item>
+    </style>
+    <style name="txtAndadaProromanregular9">
+        <item name="android:textSize">@dimen/_9pxh</item>
+        <item name="android:textColor">@color/white_A702</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="txtAndadaProromanmedium12">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:textColor">@color/white_A700_a7</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtAndadaProromanmedium10">
+        <item name="android:textSize">@dimen/_10pxh</item>
+        <item name="android:textColor">@color/bluegray_900_cc</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="groupStyleblue_400cornerRadius">
+        <item name="android:background">@drawable/rectangle_bg_blue_400_radius_29</item>
+    </style>
+    <style name="groupStylegray_400_3fcornerRadius">
+        <item name="android:background">@drawable/rectangle_bg_gray_400_3f_radius_3</item>
+    </style>
+    <style name="txtSFProTextregular9">
+        <item name="android:textSize">@dimen/_9pxh</item>
+        <item name="android:textColor">@color/white_A702</item>
+        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="btnSolidRounded_3">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:textColor">@color/blue_500</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+        <item name="android:background">@drawable/rectangle_bg_blue_500_19_radius_3</item>
+    </style>
+    <style name="btnSolidRounded_2">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:textColor">@color/blue_500</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">800</item>
+        <item name="android:background">@drawable/rectangle_bg_blue_500_19_radius_3</item>
+    </style>
+    <style name="btnSolidRounded_1">
+        <item name="android:textSize">@dimen/_15pxh</item>
+        <item name="android:textColor">@color/white_A702</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+        <item name="android:background">@drawable/rectangle_bg_teal_a402_radius_3</item>
+    </style>
+    <style name="groupStylebluegray_101">
+        <item name="android:background">@drawable/rectangle_bg_bluegray_101</item>
+    </style>
+    <style name="txtAndadaProromanmedium14_2">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/gray_600</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtAndadaProromanmedium14_1">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/white_A700_a2</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtAndadaProromanbold13_1">
+        <item name="android:textSize">@dimen/_13pxh</item>
+        <item name="android:textColor">@color/teal_A402</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold13_2">
+        <item name="android:textSize">@dimen/_13pxh</item>
+        <item name="android:textColor">@color/bluegray_700</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="btnSolidRounded">
+        <item name="android:textSize">@dimen/_18pxh</item>
+        <item name="android:textColor">@color/white_A702</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+        <item name="android:background">@drawable/rectangle_bg_teal_a402_radius_3</item>
+    </style>
+    <style name="groupStylecornerRadius_1">
+        <item name="android:background">@drawable/rectangle_radius_2</item>
+    </style>
+    <style name="groupStylewhite_1">
+        <item name="android:background">@drawable/rectangle_bg_white_a702_radius_3</item>
+    </style>
+    <style name="txtSFProTextheavy67">
+        <item name="android:textSize">@dimen/_67pxh</item>
+        <item name="android:textColor">@color/white_A700_26</item>
+        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="txtAndadaProromanregular12_2">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:textColor">@color/bluegray_300</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="groupStylewhite_3">
+        <item name="android:background">@drawable/rectangle_bg_white_a702_radius_4</item>
+    </style>
+    <style name="groupStyleblack_900_0c">
+        <item name="android:background">@drawable/rectangle_bg_black_900_0c</item>
+    </style>
+    <style name="txtAndadaProromanregular12_1">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:textColor">@color/bluegray_701</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="groupStylewhite_2">
+        <item name="android:background">@drawable/rectangle_bg_white_a702_radius_3</item>
+    </style>
+    <style name="groupStylewhite_4">
+        <item name="android:background">@drawable/rectangle_bg_white_a702_radius_4</item>
+    </style>
+    <style name="groupStylegray_400_4ccornerRadius">
+        <item name="android:background">@drawable/rectangle_bg_gray_400_4c_radius_3</item>
+    </style>
+    <style name="txtSFProTextregular12">
+        <item name="android:textSize">@dimen/_12pxh</item>
+        <item name="android:textColor">@color/gray_600_ab</item>
+        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+    </style>
+    <style name="groupStyle">
+        <item name="android:background">@drawable/rectangle_gradient_s_teal_200_e_teal_a400</item>
+    </style>
+    <style name="groupStyleteal_A402cornerRadius">
+        <item name="android:background">@drawable/rectangle_bg_teal_a402_radius_15</item>
+    </style>
+    <style name="groupStyle_1">
+        <item name="android:background">@drawable/rectangle_dhi_0</item>
+    </style>
+    <style name="txtSFProTextmedium10_1">
+        <item name="android:textSize">@dimen/_10pxh</item>
+        <item name="android:textColor">@color/bluegray_100</item>
+        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtSFProTextmedium10_2">
+        <item name="android:textSize">@dimen/_10pxh</item>
+        <item name="android:textColor">@color/bluegray_900_cc</item>
+        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="txtAndadaProromanextrabold10">
+        <item name="android:textSize">@dimen/_10pxh</item>
+        <item name="android:textColor">@color/white_A702</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">800</item>
+    </style>
+    <style name="txtAndadaProromanbold10_1">
+        <item name="android:textSize">@dimen/_10pxh</item>
+        <item name="android:textColor">@color/teal_A402</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold10_2">
+        <item name="android:textSize">@dimen/_10pxh</item>
+        <item name="android:textColor">@color/bluegray_100</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="groupStylegray_400_27cornerRadius">
+        <item name="android:background">@drawable/rectangle_bg_gray_400_27_radius_3</item>
+    </style>
+    <style name="txtAndadaProromanbold10_3">
+        <item name="android:textSize">@dimen/_10pxh</item>
+        <item name="android:textColor">@color/white_A702</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold10_4">
+        <item name="android:textSize">@dimen/_10pxh</item>
+        <item name="android:textColor">@color/gray_600</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold14_1">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/teal_A402</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold14_2">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/bluegray_300</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold14_3">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/gray_403</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold14_4">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/gray_800</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAndadaProromanbold14_5">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/bluegray_700</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="groupStylegray_400_11">
+        <item name="android:background">@drawable/rectangle_bg_gray_400_11</item>
+    </style>
+    <style name="txtSFProTextsemibold14">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/bluegray_800</item>
+        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:textFontWeight" tools:targetApi="p">600</item>
+    </style>
+    <style name="txtSFProTextmedium9">
+        <item name="android:textSize">@dimen/_9pxh</item>
+        <item name="android:textColor">@color/gray_400</item>
+        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+    </style>
+    <style name="groupStyleteal_A400_0c">
+        <item name="android:background">@drawable/rectangle_bg_teal_a400_0c</item>
+    </style>
+    <style name="searchViewGroupTwentyOne" parent="Widget.AppCompat.SearchView">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColorPrimary">@color/bluegray_100</item>
+        <item name="android:textColorHint">@color/bluegray_100</item>
+    </style>
+</resources>

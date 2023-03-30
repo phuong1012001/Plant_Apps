@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="homepageRowModel" type="com.phngsapplication.app.modules.homepage.data.model.HomepageRowModel"/>
+    </data>
+    <FrameLayout android:id="@+id/frameStackrectanglefortyfour"
+        android:layout_height="wrap_content" android:layout_width="@dimen/_299pxh">
+        <ImageView android:id="@+id/imageRectangleFortyFour"
+            android:layout_gravity="start"
+            android:layout_height="@dimen/_160pxh"
+            android:layout_width="@dimen/_299pxh"
+            android:scaleType="fitXY" cornerRadius="@{@dimen/_3pxh}"
+            imageRes="@{@drawable/img_rectangle44}"
+            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle44"/>
+        <LinearLayout android:id="@+id/linearColumnhomeplants"
+            android:layout_gravity="start"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical" style="@style/groupStylegray_800_38cornerRadius">
+            <TextView android:ellipsize="end"
+                android:id="@+id/txtHomePlants"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_13pxh"
+                android:layout_marginStart="@dimen/_13pxh"
+                android:layout_marginTop="@dimen/_103pxv"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:text="@{homepageRowModel.txtHomePlants}"
+                style="@style/txtAndadaProromanbold18" tools:text="@string/lbl_home_plants"/>
+            <TextView android:ellipsize="end"
+                android:id="@+id/txt68TypesofPla"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_15pxv"
+                android:layout_marginEnd="@dimen/_13pxh"
+                android:layout_marginStart="@dimen/_13pxh"
+                android:layout_marginTop="@dimen/_4pxv"
+                android:layout_width="wrap_content"
+                android:singleLine="true"
+                android:text="@{homepageRowModel.txt68TypesofPla}"
+                style="@style/txtAndadaProromanmedium12" tools:text="@string/msg_68_types_of_pla"/>
+        </LinearLayout>
+    </FrameLayout>
+</layout>
