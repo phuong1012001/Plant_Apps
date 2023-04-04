@@ -3,7 +3,10 @@ package com.phngsapplication.app.modules.onboarding1identifyplants.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.databinding.ActivityOnboarding1IdentifyPlantsBinding
@@ -11,6 +14,20 @@ import com.phngsapplication.app.modules.onboarding1identifyplants.`data`.viewmod
 import com.phngsapplication.app.modules.onboarding2learnmanyplantsspecies.ui.Onboarding2LearnManyPlantsSpeciesActivity
 import kotlin.String
 import kotlin.Unit
+
+//class Onboarding1IdentifyPlantsActivity : AppCompatActivity(){
+//  private lateinit var binding: ActivityOnboarding1IdentifyPlantsBinding
+//  override fun onCreate(savedInstanceState: Bundle?) {
+//    super.onCreate(savedInstanceState)
+//    binding = DataBindingUtil.setContentView(this, R.layout.activity_onboarding_1_identify_plants)
+//
+//    binding.btnNext.setOnClickListener(){
+//      startActivity(Intent(this@Onboarding1IdentifyPlantsActivity, Onboarding2LearnManyPlantsSpeciesActivity::class.java))
+//    }
+//  }
+//
+//
+//}
 
 class Onboarding1IdentifyPlantsActivity :
     BaseActivity<ActivityOnboarding1IdentifyPlantsBinding>(R.layout.activity_onboarding_1_identify_plants)

@@ -1,5 +1,8 @@
 package com.phngsapplication.app.modules.homepage.ui
 
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
@@ -8,6 +11,7 @@ import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.appcomponents.views.ImagePickerFragmentDialog
 import com.phngsapplication.app.databinding.ActivityHomepageBinding
 import com.phngsapplication.app.modules.articles.ui.ArticlesActivity
+//import com.phngsapplication.app.modules.articles.ui.ArticlesActivity
 import com.phngsapplication.app.modules.camera.ui.CameraActivity
 import com.phngsapplication.app.modules.homepage.`data`.model.HomepageRowModel
 import com.phngsapplication.app.modules.homepage.`data`.viewmodel.HomepageVM
@@ -86,6 +90,12 @@ class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity
 
       companion object {
         const val TAG: String = "HOMEPAGE_ACTIVITY"
+
+          fun getIntent(context: Context, bundle: Bundle?): Intent {
+              val destIntent = Intent(context, HomepageActivity::class.java)
+              destIntent.putExtra("bundle", bundle)
+              return destIntent
+          }
 
       }
     }

@@ -91,28 +91,28 @@
             android:paddingTop="@dimen/_16pxv" android:singleLine="true"
             android:text="@string/lbl_sign_up2"
             android:textAllCaps="false" style="@style/btnSolidRounded_1" tools:text="@string/lbl_sign_up2"/>
-        <FrameLayout android:id="@+id/frameStack2019planthink"
-            android:layout_height="@dimen/_291pxv"
-            android:layout_marginTop="@dimen/_10pxv" android:layout_width="match_parent">
-            <TextView android:ellipsize="end"
-                android:id="@+id/txt2019Planthink"
-                android:layout_gravity="bottom|center"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_8pxv"
-                android:layout_marginEnd="@dimen/_109pxh"
-                android:layout_marginStart="@dimen/_109pxh"
-                android:layout_marginTop="@dimen/_10pxv"
-                android:layout_width="wrap_content"
-                android:singleLine="true"
-                android:text="@{signupScreenVM.signupScreenModel.txt2019Planthink}"
-                style="@style/txtSFProTextregular9" tools:text="@string/msg_2019_planthink"/>
-            <ImageView android:id="@+id/imageKeyboards"
-                android:layout_gravity="start"
-                android:layout_height="@dimen/_291pxh"
-                android:layout_width="match_parent"
-                android:scaleType="fitXY"
-                imageRes="@{@drawable/img_keyboards}"
-                tools:ignore="ContentDescription" tools:src="@drawable/img_keyboards"/>
-        </FrameLayout>
+<!--        <FrameLayout android:id="@+id/frameStack2019planthink"-->
+<!--            android:layout_height="@dimen/_291pxv"-->
+<!--            android:layout_marginTop="@dimen/_10pxv" android:layout_width="match_parent">-->
+<!--            <TextView android:ellipsize="end"-->
+<!--                android:id="@+id/txt2019Planthink"-->
+<!--                android:layout_gravity="bottom|center"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="@dimen/_8pxv"-->
+<!--                android:layout_marginEnd="@dimen/_109pxh"-->
+<!--                android:layout_marginStart="@dimen/_109pxh"-->
+<!--                android:layout_marginTop="@dimen/_10pxv"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:singleLine="true"-->
+<!--                android:text="@{signupScreenVM.signupScreenModel.txt2019Planthink}"-->
+<!--                style="@style/txtSFProTextregular9" tools:text="@string/msg_2019_planthink"/>-->
+<!--            <ImageView android:id="@+id/imageKeyboards"-->
+<!--                android:layout_gravity="start"-->
+<!--                android:layout_height="@dimen/_291pxh"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:scaleType="fitXY"-->
+<!--                imageRes="@{@drawable/img_keyboards}"-->
+<!--                tools:ignore="ContentDescription" tools:src="@drawable/img_keyboards"/>-->
+<!--        </FrameLayout>-->
     </LinearLayout>
 </layout>

@@ -166,10 +166,10 @@
                 android:id="@+id/linearRowellipsetwentythree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="@dimen/_140pxh"
                 android:layout_marginTop="@dimen/_51pxv"
                 android:layout_marginEnd="@dimen/_140pxh"
-                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <View

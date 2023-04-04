@@ -27,15 +27,19 @@
             android:singleLine="true"
             android:text="@{loginScreenVM.loginScreenModel.txtLetsLearnMor}"
             style="@style/txtAndadaProromanmedium16" tools:text="@string/msg_let_s_learn_mor2"/>
-        <TextView android:ellipsize="end" android:id="@+id/txtEmail"
+
+        <TextView
+            android:id="@+id/txtEmail"
+            style="@style/txtAndadaProromanbold14"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_23pxh"
             android:layout_marginStart="@dimen/_23pxh"
             android:layout_marginTop="@dimen/_25pxv"
-            android:layout_width="wrap_content"
+            android:layout_marginEnd="@dimen/_23pxh"
+            android:ellipsize="end"
             android:singleLine="true"
             android:text="@{loginScreenVM.loginScreenModel.txtEmail}"
-            style="@style/txtAndadaProromanbold14" tools:text="@string/lbl_email"/>
+            tools:text="@string/lbl_email" />
         <EditText android:ellipsize="end"
             android:hint="@string/msg_taylorswift_gma"
             android:id="@+id/etEmailOne"
@@ -135,28 +139,28 @@
                 android:text="@{loginScreenVM.loginScreenModel.txtSignUp}"
                 style="@style/txtAndadaProromanbold13_1" tools:text="@string/lbl_sign_up"/>
         </LinearLayout>
-        <FrameLayout android:id="@+id/frameStack2019planthink"
-            android:layout_height="@dimen/_291pxv"
-            android:layout_marginTop="@dimen/_24pxv" android:layout_width="match_parent">
-            <TextView android:ellipsize="end"
-                android:id="@+id/txt2019Planthink"
-                android:layout_gravity="bottom|center"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_8pxv"
-                android:layout_marginEnd="@dimen/_109pxh"
-                android:layout_marginStart="@dimen/_109pxh"
-                android:layout_marginTop="@dimen/_10pxv"
-                android:layout_width="wrap_content"
-                android:singleLine="true"
-                android:text="@{loginScreenVM.loginScreenModel.txt2019Planthink}"
-                style="@style/txtSFProTextregular9" tools:text="@string/msg_2019_planthink"/>
-            <ImageView android:id="@+id/imageKeyboards"
-                android:layout_gravity="start"
-                android:layout_height="@dimen/_291pxh"
-                android:layout_width="match_parent"
-                android:scaleType="fitXY"
-                imageRes="@{@drawable/img_keyboards}"
-                tools:ignore="ContentDescription" tools:src="@drawable/img_keyboards"/>
-        </FrameLayout>
+<!--        <FrameLayout android:id="@+id/frameStack2019planthink"-->
+<!--            android:layout_height="@dimen/_291pxv"-->
+<!--            android:layout_marginTop="@dimen/_24pxv" android:layout_width="match_parent">-->
+<!--            <TextView android:ellipsize="end"-->
+<!--                android:id="@+id/txt2019Planthink"-->
+<!--                android:layout_gravity="bottom|center"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginBottom="@dimen/_8pxv"-->
+<!--                android:layout_marginEnd="@dimen/_109pxh"-->
+<!--                android:layout_marginStart="@dimen/_109pxh"-->
+<!--                android:layout_marginTop="@dimen/_10pxv"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:singleLine="true"-->
+<!--                android:text="@{loginScreenVM.loginScreenModel.txt2019Planthink}"-->
+<!--                style="@style/txtSFProTextregular9" tools:text="@string/msg_2019_planthink"/>-->
+<!--            <ImageView android:id="@+id/imageKeyboards"-->
+<!--                android:layout_gravity="start"-->
+<!--                android:layout_height="@dimen/_291pxh"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:scaleType="fitXY"-->
+<!--                imageRes="@{@drawable/img_keyboards}"-->
+<!--                tools:ignore="ContentDescription" tools:src="@drawable/img_keyboards"/>-->
+<!--        </FrameLayout>-->
     </LinearLayout>
 </layout>

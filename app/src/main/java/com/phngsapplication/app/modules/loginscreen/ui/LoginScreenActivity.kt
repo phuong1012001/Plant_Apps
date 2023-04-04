@@ -8,6 +8,7 @@ import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.databinding.ActivityLoginScreenBinding
 import com.phngsapplication.app.modules.forgetpassscreenone.ui.ForgetPassScreenOneActivity
+import com.phngsapplication.app.modules.homepage.ui.HomepageActivity
 import com.phngsapplication.app.modules.loginscreen.`data`.viewmodel.LoginScreenVM
 import com.phngsapplication.app.modules.signupscreen.ui.SignupScreenActivity
 import kotlin.String
@@ -29,6 +30,10 @@ class LoginScreenActivity : BaseActivity<ActivityLoginScreenBinding>(R.layout.ac
     }
     binding.txtForgotPassword.setOnClickListener {
       val destIntent = ForgetPassScreenOneActivity.getIntent(this, null)
+      startActivity(destIntent)
+    }
+    binding.btnLogin.setOnClickListener{
+      val destIntent = HomepageActivity.getIntent(this, null)
       startActivity(destIntent)
     }
   }
