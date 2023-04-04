@@ -41,12 +41,6 @@ data class LoginScreenModel(
   /**
    * TODO Replace with dynamic value
    */
-  var txt2019Planthink: String? =
-      MyApp.getInstance().resources.getString(R.string.msg_2019_planthink)
-  ,
-  /**
-   * TODO Replace with dynamic value
-   */
   var etEmailOneValue: String? = null,
   /**
    * TODO Replace with dynamic value

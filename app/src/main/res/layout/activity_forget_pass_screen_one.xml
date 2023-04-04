@@ -28,64 +28,58 @@
             android:singleLine="true"
             android:text="@{forgetPassScreenOneVM.forgetPassScreenOneModel.txtResetlinkwill}"
             style="@style/txtAndadaProromanmedium16" tools:text="@string/msg_reset_link_will"/>
-        <TextView android:ellipsize="end" android:id="@+id/txtEmail"
+
+        <TextView
+            android:id="@+id/txtEmail"
+            style="@style/txtAndadaProromanbold15_2"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_23pxh"
             android:layout_marginStart="@dimen/_23pxh"
             android:layout_marginTop="@dimen/_24pxv"
-            android:layout_width="wrap_content"
+            android:layout_marginEnd="@dimen/_23pxh"
+            android:ellipsize="end"
             android:singleLine="true"
             android:text="@{forgetPassScreenOneVM.forgetPassScreenOneModel.txtEmail}"
-            style="@style/txtAndadaProromanbold15_2" tools:text="@string/lbl_email2"/>
-        <EditText android:ellipsize="end"
-            android:hint="@string/msg_taylorswift_gma2"
-            android:id="@+id/etEmailOne" android:inputType="text"
+            tools:ignore="TextSizeCheck"
+            tools:text="@string/lbl_email2" />
+
+        <EditText
+            android:id="@+id/etEmailOne"
+            style="@style/etAndadaProromanmedium17"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_23pxh"
             android:layout_marginStart="@dimen/_23pxh"
             android:layout_marginTop="@dimen/_12pxv"
-            android:layout_width="match_parent"
+            android:layout_marginEnd="@dimen/_23pxh"
+            android:ellipsize="end"
+            android:hint="@string/msg_taylorswift_gma2"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:paddingEnd="@dimen/_30pxh"
             android:paddingBottom="@dimen/_10pxv"
-            android:paddingEnd="@dimen/_30pxh" android:singleLine="true"
+            android:singleLine="true"
             android:text="@={forgetPassScreenOneVM.forgetPassScreenOneModel.etEmailOneValue}"
             android:textColorHint="@color/bluegray_800"
-            style="@style/etAndadaProromanmedium17" tools:ignore="Autofill"/>
+            tools:ignore="Autofill" />
+
         <androidx.appcompat.widget.AppCompatButton
-            android:ellipsize="end" android:gravity="center"
             android:id="@+id/btnSendEmail"
+            style="@style/btnSolidRounded_1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_23pxh"
             android:layout_marginStart="@dimen/_23pxh"
             android:layout_marginTop="@dimen/_147pxv"
-            android:layout_width="match_parent"
-            android:paddingBottom="@dimen/_16pxv"
-            android:paddingEnd="@dimen/_30pxh"
+            android:layout_marginEnd="@dimen/_23pxh"
+            android:ellipsize="end"
+            android:gravity="center"
             android:paddingStart="@dimen/_30pxh"
-            android:paddingTop="@dimen/_16pxv" android:singleLine="true"
+            android:paddingTop="@dimen/_16pxv"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingBottom="@dimen/_16pxv"
+            android:singleLine="true"
             android:text="@string/lbl_send_email"
-            android:textAllCaps="false" style="@style/btnSolidRounded_1" tools:text="@string/lbl_send_email"/>
-        <FrameLayout android:id="@+id/frameStack2019planthink"
-            android:layout_height="@dimen/_291pxv"
-            android:layout_marginTop="@dimen/_61pxv" android:layout_width="match_parent">
-            <TextView android:ellipsize="end"
-                android:id="@+id/txt2019Planthink"
-                android:layout_gravity="bottom|center"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_8pxv"
-                android:layout_marginEnd="@dimen/_109pxh"
-                android:layout_marginStart="@dimen/_109pxh"
-                android:layout_marginTop="@dimen/_10pxv"
-                android:layout_width="wrap_content"
-                android:singleLine="true"
-                android:text="@{forgetPassScreenOneVM.forgetPassScreenOneModel.txt2019Planthink}"
-                style="@style/txtSFProTextregular9" tools:text="@string/msg_2019_planthink"/>
-            <ImageView android:id="@+id/imageKeyboards"
-                android:layout_gravity="start"
-                android:layout_height="@dimen/_291pxh"
-                android:layout_width="match_parent"
-                android:scaleType="fitXY"
-                imageRes="@{@drawable/img_keyboards}"
-                tools:ignore="ContentDescription" tools:src="@drawable/img_keyboards"/>
-        </FrameLayout>
+            android:textAllCaps="false"
+            tools:ignore="TextSizeCheck"
+            tools:text="@string/lbl_send_email" />
     </LinearLayout>
 </layout>

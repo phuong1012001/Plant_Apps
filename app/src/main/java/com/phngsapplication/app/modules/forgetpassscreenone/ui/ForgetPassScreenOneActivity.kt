@@ -8,6 +8,9 @@ import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.databinding.ActivityForgetPassScreenOneBinding
 import com.phngsapplication.app.modules.forgetpassscreenone.`data`.viewmodel.ForgetPassScreenOneVM
+import com.phngsapplication.app.modules.forgetpassscreenzero.ui.ForgetPassScreenZeroActivity
+import com.phngsapplication.app.modules.loginscreen.ui.LoginScreenActivity
+import com.phngsapplication.app.modules.onboarding2learnmanyplantsspecies.ui.Onboarding2LearnManyPlantsSpeciesActivity
 import kotlin.String
 import kotlin.Unit
 
@@ -21,6 +24,10 @@ class ForgetPassScreenOneActivity :
   }
 
   override fun setUpClicks(): Unit {
+    binding.btnSendEmail.setOnClickListener {
+      val destIntent = ForgetPassScreenZeroActivity.getIntent(this, null)
+      startActivity(destIntent)
+    }
   }
 
   companion object {

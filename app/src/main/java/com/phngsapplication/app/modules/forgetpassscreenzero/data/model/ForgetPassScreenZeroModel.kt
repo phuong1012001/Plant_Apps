@@ -16,11 +16,5 @@ data class ForgetPassScreenZeroModel(
    */
   var txtPasswordhasbe: String? =
       MyApp.getInstance().resources.getString(R.string.msg_password_has_be)
-  ,
-  /**
-   * TODO Replace with dynamic value
-   */
-  var txt2019Planthink: String? =
-      MyApp.getInstance().resources.getString(R.string.msg_2019_planthink)
 
 )

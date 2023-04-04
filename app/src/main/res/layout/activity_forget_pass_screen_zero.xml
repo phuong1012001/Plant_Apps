@@ -42,17 +42,5 @@
             android:paddingTop="@dimen/_14pxv" android:singleLine="true"
             android:text="@string/lbl_next" android:textAllCaps="false"
             style="@style/btnSolidRounded" tools:text="@string/lbl_next"/>
-        <TextView android:ellipsize="end"
-            android:id="@+id/txt2019Planthink"
-            android:layout_gravity="end"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_8pxv"
-            android:layout_marginEnd="@dimen/_33pxh"
-            android:layout_marginStart="@dimen/_33pxh"
-            android:layout_marginTop="@dimen/_332pxv"
-            android:layout_width="wrap_content"
-            android:singleLine="true"
-            android:text="@{forgetPassScreenZeroVM.forgetPassScreenZeroModel.txt2019Planthink}"
-            style="@style/txtSFProTextregular9" tools:text="@string/msg_2019_planthink"/>
     </LinearLayout>
 </layout>
