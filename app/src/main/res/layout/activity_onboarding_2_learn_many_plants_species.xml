@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable name="onboarding2LearnManyPlantsSpeciesVM" type="com.phngsapplication.app.modules.onboarding2learnmanyplantsspecies.data.viewmodel.Onboarding2LearnManyPlantsSpeciesVM"/>
     </data>
@@ -14,128 +16,20 @@
             android:layout_marginStart="@dimen/_23pxh"
             android:layout_marginTop="@dimen/_40pxv"
             android:layout_width="match_parent" android:orientation="vertical">
-            <FrameLayout android:id="@+id/frameStackgroup"
-                android:layout_gravity="start"
-                android:layout_height="@dimen/_277pxv"
-                android:layout_marginEnd="@dimen/_10pxh"
-                android:layout_marginStart="@dimen/_6pxh" android:layout_width="@dimen/_286pxh">
+
+            <FrameLayout
+                android:id="@+id/frameStackgroup"
+                android:layout_width="@dimen/_300pxh"
+                android:layout_height="@dimen/_300pxv"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_6pxh"
+                android:layout_marginEnd="@dimen/_10pxh">
 
                 <ImageView
-                    android:id="@+id/imageGroup"
-                    android:layout_width="@dimen/_255pxh"
-                    android:layout_height="@dimen/_255pxh"
-                    android:layout_gravity="bottom|end"
-                    android:layout_marginStart="@dimen/_10pxh"
-                    android:layout_marginTop="@dimen/_10pxv"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/img_group_255x255"
-                    tools:ignore="ContentDescription"
-                    tools:src="@drawable/img_group_255x255" />
-
-                <LinearLayout android:id="@+id/linearRowgroupOne"
-                    android:layout_gravity="top|start"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_10pxv"
-                    android:layout_marginEnd="@dimen/_10pxh"
-                    android:layout_width="wrap_content"
-                    android:orientation="horizontal" style="@style/groupStyleteal_A400_7fcornerRadius">
-                    <ImageView android:id="@+id/imageGroupOne"
-                        android:layout_height="@dimen/_38pxh"
-                        android:layout_marginBottom="@dimen/_13pxv"
-                        android:layout_marginStart="@dimen/_8pxh"
-                        android:layout_marginTop="@dimen/_31pxv"
-                        android:layout_width="@dimen/_33pxh"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/img_group"
-                        tools:ignore="ContentDescription" tools:src="@drawable/img_group"/>
-                    <LinearLayout android:id="@+id/linearRowwelok"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_13pxv"
-                        android:layout_marginEnd="@dimen/_9pxh"
-                        android:layout_marginStart="@dimen/_12pxh"
-                        android:layout_marginTop="@dimen/_16pxv"
-                        android:layout_weight="0.62"
-                        android:layout_width="0dp" android:orientation="horizontal">
-                        <LinearLayout android:gravity="start"
-                            android:id="@+id/linearColumnwelok"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0.85"
-                            android:layout_width="0dp" android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/txtWELOK"
-                                style="@style/txtAndadaProromanbold10_3"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:ellipsize="end"
-                                android:singleLine="true"
-                                android:text="@{onboarding2LearnManyPlantsSpeciesVM.onboarding2LearnManyPlantsSpeciesModel.txtWELOK}"
-                                android:textSize="10sp"
-                                tools:text="@string/lbl_welok" />
-                            <View
-                                android:background="@drawable/rectangle_bg_white_a702"
-                                android:id="@+id/viewRectangleTwo"
-                                android:layout_height="@dimen/_1pxv"
-                                android:layout_marginEnd="@dimen/_9pxh"
-                                android:layout_marginTop="@dimen/_10pxv" android:layout_width="@dimen/_30pxh"/>
-                            <View
-                                android:background="@drawable/rectangle_bg_white_a702"
-                                android:id="@+id/viewRectangleTwentyOne"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_height="@dimen/_1pxv"
-                                android:layout_marginEnd="@dimen/_1pxh"
-                                android:layout_marginTop="@dimen/_5pxv" android:layout_width="@dimen/_38pxh"/>
-                            <View
-                                android:background="@drawable/rectangle_bg_white_a702"
-                                android:id="@+id/viewRectangle217"
-                                android:layout_height="@dimen/_1pxv"
-                                android:layout_marginEnd="@dimen/_9pxh"
-                                android:layout_marginTop="@dimen/_5pxv" android:layout_width="@dimen/_30pxh"/>
-                            <View
-                                android:background="@drawable/rectangle_bg_white_a702"
-                                android:id="@+id/viewRectangle218"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_height="@dimen/_1pxv"
-                                android:layout_marginEnd="@dimen/_1pxh"
-                                android:layout_marginTop="@dimen/_5pxv" android:layout_width="@dimen/_38pxh"/>
-                            <View
-                                android:background="@drawable/rectangle_bg_white_a702"
-                                android:id="@+id/viewRectangle219"
-                                android:layout_height="@dimen/_1pxv"
-                                android:layout_marginEnd="@dimen/_9pxh"
-                                android:layout_marginTop="@dimen/_5pxv" android:layout_width="@dimen/_30pxh"/>
-                            <View
-                                android:background="@drawable/rectangle_bg_white_a702"
-                                android:id="@+id/viewRectangle220"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_height="@dimen/_1pxv"
-                                android:layout_marginEnd="@dimen/_1pxh"
-                                android:layout_marginTop="@dimen/_5pxv" android:layout_width="@dimen/_38pxh"/>
-                        </LinearLayout>
-                        <LinearLayout android:gravity="start"
-                            android:id="@+id/linearColumnrectanglethree"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_8pxh"
-                            android:layout_marginTop="@dimen/_22pxv"
-                            android:layout_weight="0.15"
-                            android:layout_width="0dp" android:orientation="vertical">
-                            <View
-                                android:background="@drawable/rectangle_border_white_a702_radius_1"
-                                android:id="@+id/viewRectangleThree"
-                                android:layout_height="@dimen/_7pxh" android:layout_width="@dimen/_7pxh"/>
-                            <View
-                                android:background="@drawable/rectangle_border_white_a702_radius_1"
-                                android:id="@+id/viewRectangleThirtyOne"
-                                android:layout_height="@dimen/_7pxh"
-                                android:layout_marginTop="@dimen/_5pxv" android:layout_width="@dimen/_7pxh"/>
-                            <View
-                                android:background="@drawable/rectangle_border_white_a702_radius_1"
-                                android:id="@+id/viewRectangleThirtyTwo"
-                                android:layout_height="@dimen/_7pxh"
-                                android:layout_marginTop="@dimen/_5pxv" android:layout_width="@dimen/_7pxh"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/s3" />
             </FrameLayout>
             <TextView android:ellipsize="end"
                 android:gravity="center_horizontal"
@@ -192,20 +86,25 @@
                     android:layout_marginStart="@dimen/_9pxh"
                     android:background="@drawable/rectangle_bg_gray_301_radius_3_5" />
             </LinearLayout>
+
             <androidx.appcompat.widget.AppCompatButton
-                android:ellipsize="end" android:gravity="center"
                 android:id="@+id/btnNext"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_54pxv"
+                style="@style/btnSolidRounded_1"
                 android:layout_width="match_parent"
-                android:paddingBottom="@dimen/_16pxv"
-                android:paddingEnd="@dimen/_30pxh"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_1pxh"
+                android:layout_marginTop="@dimen/_54pxv"
+                android:ellipsize="end"
+                android:gravity="center"
                 android:paddingStart="@dimen/_30pxh"
                 android:paddingTop="@dimen/_16pxv"
+                android:paddingEnd="@dimen/_30pxh"
+                android:paddingBottom="@dimen/_16pxv"
                 android:singleLine="true"
                 android:text="@string/lbl_next"
                 android:textAllCaps="false"
-                style="@style/btnSolidRounded_1" tools:text="@string/lbl_next"/>
+                tools:ignore="TextSizeCheck"
+                tools:text="@string/lbl_next" />
         </LinearLayout>
     </FrameLayout>
 </layout>

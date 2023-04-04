@@ -40,8 +40,7 @@
     <string name="msg_let_s_learn_mor2">Let\u2019s Learn More About Plants</string>
     <string name="lbl_cactus2">Cactus</string>
     <string name="msg_password_has_be">Password has been sent to email.</string>
-    <string name="msg_david_austin_w">David Austin, Who Breathed Life Into 
-the Rose, Is Dead at 92</string>
+    <string name="msg_david_austin_w">David Austin, Who Breathed Life Into the Rose, Is Dead at 92</string>
     <string name="msg_forgot_password">Forgot Password?</string>
     <string name="lbl_hello">Hello</string>
     <string name="lbl_homely">#Homely</string>
@@ -58,15 +57,7 @@ the Rose, Is Dead at 92</string>
     <string name="lbl_f">F</string>
     <string name="lbl_g">G</string>
     <string name="lbl_h">H</string>
-    <string name="msg_public_parks_as">Public parks aside, getting a dose of nature can 
-be a tricky task during an urban escape. But nat
-ure should and can fit into that city getaway, acc
-ording to Kally Ellis, the founder of the London florist company McQueens and the in-house florist 
-for the Maybourne Hotel Group. \u201cConnecting with 
-the natural world wherever you are is a great antid
-ote to jet lag and travel tiredness,\u201d she said. \u201cPlan
-ts and flowers can refresh us, boost our energy 
-and help us recalibrate.\u201d</string>
+    <string name="msg_public_parks_as">Public parks aside, getting a dose of nature can be a tricky task during an urban escape. But nature should and can fit into that city getaway, according to Kally Ellis, the founder of the London florist company McQueens and the in-house florist for the Maybourne Hotel Group. \u201cConnecting with the natural world wherever you are is a great antidote to jet lag and travel tiredness,\u201d she said. \u201cPlants and flowers can refresh us, boost our energy and help us recalibrate.\u201d</string>
     <string name="lbl_huge_plants">Huge Plants</string>
     <string name="lbl_fullname">FullName</string>
     <string name="lbl_cistus">CISTUS</string>
@@ -81,19 +72,14 @@ and help us recalibrate.\u201d</string>
     <string name="lbl_shylla_monic">Shylla Monic</string>
     <string name="lbl_2019_01_01">2019 . 01 . 01</string>
     <string name="lbl_2018_12_25">2018 . 12 . 25</string>
-    <string name="msg_the_word_cactu">The word "cactus" derives, through Latin, from 
-the Ancient Greek ??????, kaktos, a name originally used by Theophrastus for a spiny plant 
-whose identity is not certain. Cacti occur in a 
-wide range of shapes and sizes. Most cacti live 
-in habitats subject to at least some drought. </string>
+    <string name="msg_the_word_cactu">The word "cactus" derives, through Latin, from the Ancient Greek ??????, kaktos, a name originally used by Theophrastus for a spiny plant whose identity is not certain. Cacti occur in a wide range of shapes and sizes. Most cacti live in habitats subject to at least some drought. </string>
     <string name="lbl_password">Password</string>
     <string name="lbl_kingdom">KINGDOM</string>
     <string name="msg_102_type_of_pla">102 Type Of Plants</string>
     <string name="msg_read_many_artic">Read Many Articles About Plant</string>
     <string name="lbl_circle_cactus">Circle Cactus</string>
     <string name="msg_search_for_cact">Search For Cactus</string>
-    <string name="msg_let_s_learn_mor">"Let's learn more about beautiful plants and read 
-many articles about plants and gardening"</string>
+    <string name="msg_let_s_learn_mor">"Let's learn more about beautiful plants and read many articles about plants and gardening"</string>
     <string name="lbl_forget_password">Forget password</string>
     <string name="msg_reset_link_will">Reset link will be sent your email</string>
     <string name="lbl_digitalis">DIGITALIS</string>
@@ -116,13 +102,11 @@ many articles about plants and gardening"</string>
     <string name="lbl_echinacea">ECHINACEA</string>
     <string name="msg_los_angeles_ca">Los Angeles, California</string>
     <string name="lbl_profile">PROFILE</string>
-    <string name="msg_cactus_spines_a">Cactus spines are produced 
-from specialized structures...</string>
+    <string name="msg_cactus_spines_a">Cactus spines are produced from specialized structures...</string>
     <string name="lbl">#</string>
     <string name="msg_taylorswift_gma">TaylorSwift@gmail.com</string>
     <string name="lbl_gandul">GANDUL</string>
-    <string name="msg_even_on_urban_e">"Even on Urban Excursions, Finding 
-Mother Nature's Charms"</string>
+    <string name="msg_even_on_urban_e">"Even on Urban Excursions, Finding Mother Nature's Charms"</string>
     <string name="lbl_echinops">ECHINOPS</string>
     <string name="msg_taylorswift_gma2">TaylorSwift@gmail.com </string>
     <string name="lbl_email">Email</string>
@@ -132,11 +116,9 @@ Mother Nature's Charms"</string>
     <string name="lbl_plantae">Plantae</string>
     <string name="lbl_vegetables">VEGETABLES</string>
     <string name="lbl_login">LOGIN</string>
-    <string name="msg_let_s_learn_abo">"Let's learn about the many plant species that 
-exist in this world"</string>
+    <string name="msg_let_s_learn_abo">"Let's learn about the many plant species that exist in this world"</string>
     <string name="lbl_photography">Photography</string>
-    <string name="msg_even_on_urban_e2">"Even on Urban Excursions, 
-Finding Mother Nature's Charms"</string>
+    <string name="msg_even_on_urban_e2">"Even on Urban Excursions, Finding Mother Nature's Charms"</string>
     <string name="lbl_red_cactus">Red Cactus</string>
     <string name="msg_68_types_of_pla">68 Types of Plants</string>
     <string name="lbl_cactaceae">Cactaceae</string>
@@ -157,4 +139,12 @@ Finding Mother Nature's Charms"</string>
     <string name="msg_camera_storage_permission">This Application need permission\n1.Camera permission to capture the image.\n2.Storage Access permission to save the captured image.</string>
     <string name="lbl_camera">Camera</string>
     <string name="lbl_gallery">Gallery</string>
+    <string name="title_activity_a">a</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
