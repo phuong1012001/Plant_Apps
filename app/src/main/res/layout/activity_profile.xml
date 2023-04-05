@@ -234,7 +234,7 @@
                         cornerRadius="@{@dimen/_3pxh}"
                         imageRes="@{@drawable/img_rectangle21}"
                         tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle21"/>
-                    <ImageView android:id="@+id/imageRectangleTwentyTwo"
+                    <ImageView android:id="@+id/imageArticle"
                         android:layout_height="@dimen/_145pxh"
                         android:layout_marginTop="@dimen/_10pxv"
                         android:layout_width="match_parent"

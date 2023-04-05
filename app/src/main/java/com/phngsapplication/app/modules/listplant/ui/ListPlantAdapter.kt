@@ -3,6 +3,8 @@ package com.phngsapplication.app.modules.listplant.ui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.RowListPlantBinding
@@ -31,10 +33,10 @@ class ListPlantAdapter(
   // TODO uncomment following line after integration with data source
   // return list.size
 
-  public fun updateData(newData: List<ListPlantRowModel>) {
-    list = newData
-    notifyDataSetChanged()
-  }
+//  public fun updateData(newData: List<ListPlantRowModel>) {
+//    list = newData
+//    notifyDataSetChanged()
+//  }
 
   fun setOnItemClickListener(clickListener: OnItemClickListener) {
     this.clickListener = clickListener
@@ -49,9 +51,9 @@ class ListPlantAdapter(
     }
   }
 
-  inner class RowListPlantVH(
-    view: View
-  ) : RecyclerView.ViewHolder(view) {
+  inner class RowListPlantVH(view: View) : RecyclerView.ViewHolder(view) {
+
+
     val binding: RowListPlantBinding = RowListPlantBinding.bind(itemView)
     init {
       binding.linearRowrectangleOne.setOnClickListener {

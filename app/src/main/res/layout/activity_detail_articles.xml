@@ -127,7 +127,7 @@
                         android:text="@{detailArticlesVM.detailArticlesModel.txtShyllaMonic}"
                         style="@style/txtAndadaProromanbold14_4" tools:text="@string/lbl_shylla_monic"/>
                     <TextView android:ellipsize="end"
-                        android:id="@+id/txt20190101"
+                        android:id="@+id/txtDate"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_10pxh"
                         android:layout_marginTop="@dimen/_4pxv"

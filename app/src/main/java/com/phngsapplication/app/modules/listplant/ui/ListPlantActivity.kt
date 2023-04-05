@@ -26,9 +26,9 @@ class ListPlantActivity : BaseActivity<ActivityListPlantBinding>(R.layout.activi
       }
     }
     )
-    viewModel.listPlantList.observe(this) {
-      listPlantAdapter.updateData(it)
-    }
+//    viewModel.listPlantList.observe(this) {
+//      listPlantAdapter.updateData(it)
+//    }
     binding.listPlantVM = viewModel
   }
 

@@ -4,7 +4,7 @@ import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.di.MyApp
 import kotlin.String
 
-data class HomepageRowModel(
+data class PlantRowModel(
   /**
    * TODO Replace with dynamic value
    */
