@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="homepageRowModel" type="com.phngsapplication.app.modules.homepage.data.model.HomepageRowModel"/>
+        <variable name="homepageRowModel" type="com.phngsapplication.app.modules.homepage.data.model.PlantRowModel"/>
     </data>
     <FrameLayout android:id="@+id/frameStackrectanglefortyfour"
         android:layout_height="wrap_content" android:layout_width="@dimen/_299pxh">
@@ -27,17 +27,21 @@
                 android:singleLine="true"
                 android:text="@{homepageRowModel.txtHomePlants}"
                 style="@style/txtAndadaProromanbold18" tools:text="@string/lbl_home_plants"/>
-            <TextView android:ellipsize="end"
+
+            <TextView
                 android:id="@+id/txt68TypesofPla"
+                style="@style/txtAndadaProromanmedium12"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_15pxv"
-                android:layout_marginEnd="@dimen/_13pxh"
                 android:layout_marginStart="@dimen/_13pxh"
                 android:layout_marginTop="@dimen/_4pxv"
-                android:layout_width="wrap_content"
+                android:layout_marginEnd="@dimen/_13pxh"
+                android:layout_marginBottom="@dimen/_15pxv"
+                android:ellipsize="end"
                 android:singleLine="true"
                 android:text="@{homepageRowModel.txt68TypesofPla}"
-                style="@style/txtAndadaProromanmedium12" tools:text="@string/msg_68_types_of_pla"/>
+                tools:ignore="TextSizeCheck"
+                tools:text="@string/msg_68_types_of_pla" />
         </LinearLayout>
     </FrameLayout>
 </layout>

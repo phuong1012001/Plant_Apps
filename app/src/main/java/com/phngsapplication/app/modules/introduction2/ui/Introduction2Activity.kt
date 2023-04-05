@@ -8,7 +8,7 @@ import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.databinding.ActivityIntroduction2Binding
 import com.phngsapplication.app.modules.introduction2.`data`.viewmodel.Introduction2VM
-import com.phngsapplication.app.modules.onboarding3readmanyarticlesaboutplants.ui.Onboarding3ReadManyArticlesAboutPlantsActivity
+import com.phngsapplication.app.modules.introduction3.ui.Introduction3Activity
 import kotlin.String
 import kotlin.Unit
 
@@ -25,7 +25,7 @@ class Introduction2Activity :
 
   override fun setUpClicks(): Unit {
     binding.btnNext.setOnClickListener {
-      val destIntent = Onboarding3ReadManyArticlesAboutPlantsActivity.getIntent(this, null)
+      val destIntent = Introduction3Activity.getIntent(this, null)
       startActivity(destIntent)
     }
   }

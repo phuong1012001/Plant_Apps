@@ -8,11 +8,6 @@ data class Introduction1Model(
   /**
    * TODO Replace with dynamic value
    */
-  var txtGANDUL: String? = MyApp.getInstance().resources.getString(R.string.lbl_gandul)
-  ,
-  /**
-   * TODO Replace with dynamic value
-   */
   var txtIdentifyPlants: String? =
       MyApp.getInstance().resources.getString(R.string.lbl_identify_plants)
   ,

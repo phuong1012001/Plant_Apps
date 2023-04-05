@@ -530,9 +530,9 @@
     <style name="groupStyleteal_A400_0c">
         <item name="android:background">@drawable/rectangle_bg_teal_a400_0c</item>
     </style>
-    <style name="searchViewGroupTwentyOne" parent="Widget.AppCompat.SearchView">
+    <style name="searchViewGroupTwentyOne">
         <item name="android:textSize">@dimen/_14pxh</item>
-        <item name="android:textColorPrimary">@color/bluegray_100</item>
+<!--        <item name="android:textColorPrimary">@color/bluegray_100</item>-->
         <item name="android:textColorHint">@color/bluegray_100</item>
     </style>
 </resources>

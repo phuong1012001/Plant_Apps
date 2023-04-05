@@ -19,30 +19,33 @@ import kotlin.String
 import kotlin.Unit
 
 class SignupScreenActivity :
-  AppCompatActivity() {
-  private lateinit var binding: ActivitySignupScreenBinding
+  BaseActivity<ActivitySignupScreenBinding>(R.layout.activity_signup_screen) {
   private val viewModel: SignupScreenVM by viewModels<SignupScreenVM>()
 
   private lateinit var firebaseAuth: FirebaseAuth
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
-    binding = ActivitySignupScreenBinding.inflate(layoutInflater)
-    setContentView(binding.root)
-
     firebaseAuth = FirebaseAuth.getInstance()
+  }
 
+
+  override fun onInitialized(): Unit {
+    viewModel.navArguments = intent.extras?.getBundle("bundle")
+    binding.signupScreenVM = viewModel
+  }
+
+  override fun setUpClicks(): Unit {
     binding.btnSignUpOne.setOnClickListener {
       val email = binding.etEmailOne.text.toString()
       val pass = binding.etGroupNinety.text.toString()
       val name = binding.etGroupNinetyTwo.text.toString()
 
+      val destIntent = LoginScreenActivity.getIntent(this, null)
       if(email.isNotEmpty() && pass.isNotEmpty() && name.isNotEmpty()){
         firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
           if(it.isSuccessful){
-            val intent = Intent(this, LoginScreenActivity::class.java)
-            startActivity(intent)
+            startActivity(destIntent)
           }else{
             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
           }
@@ -50,20 +53,6 @@ class SignupScreenActivity :
       }else{
         Toast.makeText(this, "Empty Fields Are not Valid !!", Toast.LENGTH_SHORT).show()
       }
-    }
-
-  }
-
-
-  fun onInitialized(): Unit {
-    viewModel.navArguments = intent.extras?.getBundle("bundle")
-    binding.signupScreenVM = viewModel
-  }
-
-  fun setUpClicks(): Unit {
-    binding.btnSignUpOne.setOnClickListener {
-      val destIntent = LoginScreenActivity.getIntent(this, null)
-      startActivity(destIntent)
     }
   }
 

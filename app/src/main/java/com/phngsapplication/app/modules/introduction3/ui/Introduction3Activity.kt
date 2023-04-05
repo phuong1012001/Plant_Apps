@@ -1,4 +1,4 @@
-package com.phngsapplication.app.modules.onboarding3readmanyarticlesaboutplants.ui
+package com.phngsapplication.app.modules.introduction3.ui
 
 import android.content.Context
 import android.content.Intent
@@ -6,21 +6,21 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.base.BaseActivity
-import com.phngsapplication.app.databinding.ActivityOnboarding3ReadManyArticlesAboutPlantsBinding
+import com.phngsapplication.app.databinding.ActivityIntroduction3Binding
 import com.phngsapplication.app.modules.loginscreen.ui.LoginScreenActivity
-import com.phngsapplication.app.modules.onboarding3readmanyarticlesaboutplants.`data`.viewmodel.Onboarding3ReadManyArticlesAboutPlantsVM
+import com.phngsapplication.app.modules.introduction3.`data`.viewmodel.Introduction3VM
 import kotlin.String
 import kotlin.Unit
 
-class Onboarding3ReadManyArticlesAboutPlantsActivity :
-    BaseActivity<ActivityOnboarding3ReadManyArticlesAboutPlantsBinding>(R.layout.activity_onboarding_3_read_many_articles_about_plants)
+class Introduction3Activity :
+    BaseActivity<ActivityIntroduction3Binding>(R.layout.activity_introduction_3)
     {
-  private val viewModel: Onboarding3ReadManyArticlesAboutPlantsVM by
-      viewModels<Onboarding3ReadManyArticlesAboutPlantsVM>()
+  private val viewModel: Introduction3VM by
+      viewModels<Introduction3VM>()
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
-    binding.onboarding3ReadManyArticlesAboutPlantsVM = viewModel
+    binding.introduction3VM = viewModel
   }
 
   override fun setUpClicks(): Unit {
@@ -35,7 +35,7 @@ class Onboarding3ReadManyArticlesAboutPlantsActivity :
 
 
     fun getIntent(context: Context, bundle: Bundle?): Intent {
-      val destIntent = Intent(context, Onboarding3ReadManyArticlesAboutPlantsActivity::class.java)
+      val destIntent = Intent(context, Introduction3Activity::class.java)
       destIntent.putExtra("bundle", bundle)
       return destIntent
     }

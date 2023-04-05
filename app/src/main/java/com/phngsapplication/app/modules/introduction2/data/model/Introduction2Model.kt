@@ -8,11 +8,6 @@ data class Introduction2Model(
   /**
    * TODO Replace with dynamic value
    */
-  var txtWELOK: String? = MyApp.getInstance().resources.getString(R.string.lbl_welok)
-  ,
-  /**
-   * TODO Replace with dynamic value
-   */
   var txtLearnManyPlan: String? =
       MyApp.getInstance().resources.getString(R.string.msg_learn_many_plan)
   ,
