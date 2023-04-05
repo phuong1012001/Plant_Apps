@@ -1,10 +1,10 @@
-package com.phngsapplication.app.modules.onboarding1identifyplants.`data`.model
+package com.phngsapplication.app.modules.introduction1.`data`.model
 
 import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.di.MyApp
 import kotlin.String
 
-data class Onboarding1IdentifyPlantsModel(
+data class Introduction1Model(
   /**
    * TODO Replace with dynamic value
    */

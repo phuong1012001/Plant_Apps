@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="onboarding1IdentifyPlantsVM" type="com.phngsapplication.app.modules.onboarding1identifyplants.data.viewmodel.Onboarding1IdentifyPlantsVM"/>
+        <variable name="introduction1VM" type="com.phngsapplication.app.modules.introduction1.data.viewmodel.Introduction1VM"/>
     </data>
     <FrameLayout android:id="@+id/frameOnboarding1"
         android:layout_height="match_parent"
@@ -40,7 +40,7 @@
                 android:layout_marginTop="@dimen/_65pxv"
                 android:layout_width="wrap_content"
                 android:singleLine="true"
-                android:text="@{onboarding1IdentifyPlantsVM.onboarding1IdentifyPlantsModel.txtIdentifyPlants}"
+                android:text="@{introduction1VM.introduction1Model.txtIdentifyPlants}"
                 style="@style/txtAndadaProromanbold20" tools:text="@string/lbl_identify_plants"/>
 
             <TextView
@@ -52,7 +52,7 @@
                 android:layout_marginTop="@dimen/_19pxv"
                 android:layout_marginEnd="@dimen/_26pxh"
                 android:gravity="center_horizontal"
-                android:text="@{onboarding1IdentifyPlantsVM.onboarding1IdentifyPlantsModel.txtDescription}"
+                android:text="@{introduction1VM.introduction1Model.txtDescription}"
                 android:textSize="15sp"
                 tools:text="@string/msg_you_can_identif" />
 

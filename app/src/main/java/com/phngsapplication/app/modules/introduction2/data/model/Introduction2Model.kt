@@ -1,10 +1,10 @@
-package com.phngsapplication.app.modules.onboarding2learnmanyplantsspecies.`data`.model
+package com.phngsapplication.app.modules.introduction2.`data`.model
 
 import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.di.MyApp
 import kotlin.String
 
-data class Onboarding2LearnManyPlantsSpeciesModel(
+data class Introduction2Model(
   /**
    * TODO Replace with dynamic value
    */
