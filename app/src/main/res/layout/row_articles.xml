@@ -17,17 +17,31 @@
             android:orientation="vertical"
             tools:ignore="MissingConstraints">
 
+<!--            <ImageView-->
+<!--                android:id="@+id/imageUser"-->
+<!--                android:layout_width="@dimen/_56pxh"-->
+<!--                android:layout_height="@dimen/_16pxh"-->
+<!--                android:layout_marginStart="@dimen/_9pxh"-->
+<!--                android:layout_marginTop="@dimen/_9pxv"-->
+<!--                android:layout_marginBottom="@dimen/_2pxv"-->
+<!--                android:scaleType="fitXY"-->
+<!--                android:src="@drawable/img_user"-->
+<!--                tools:ignore="ContentDescription"-->
+<!--                tools:src="@drawable/img_user" img_rectangle22/>
+
+ tools:ignore="ContentDescription"
+                tools:src="@drawable/img_rectangle22" -->
+
             <ImageView
                 android:id="@+id/imageArticle"
                 cornerRadius="@{@dimen/_13pxh}"
-                imageRes="@{@drawable/img_rectangle22}"
+
                 android:layout_width="@dimen/_331pxh"
                 android:layout_height="@dimen/_145pxh"
                 android:layout_gravity="top|start"
                 android:layout_marginBottom="@dimen/_10pxv"
                 android:scaleType="fitXY"
-                tools:ignore="ContentDescription"
-                tools:src="@drawable/img_rectangle22" />
+               />
 
             <TextView
                 android:id="@+id/titleArticle"

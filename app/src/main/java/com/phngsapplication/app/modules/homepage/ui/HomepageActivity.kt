@@ -13,7 +13,7 @@ import com.phngsapplication.app.databinding.ActivityHomepageBinding
 import com.phngsapplication.app.modules.articles.ui.ArticlesActivity
 //import com.phngsapplication.app.modules.articles.ui.ArticlesActivity
 import com.phngsapplication.app.modules.camera.ui.CameraActivity
-import com.phngsapplication.app.modules.homepage.`data`.model.HomepageRowModel
+import com.phngsapplication.app.modules.homepage.`data`.model.PlantRowModel
 import com.phngsapplication.app.modules.homepage.`data`.viewmodel.HomepageVM
 import com.phngsapplication.app.modules.species.ui.SpeciesActivity
 import kotlin.Boolean
@@ -26,29 +26,29 @@ class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity
 
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
-    val homepageAdapter = HomepageAdapter(viewModel.homepageList.value?:mutableListOf())
-    binding.recyclerHomepage.adapter = homepageAdapter
-    homepageAdapter.setOnItemClickListener(
-    object : HomepageAdapter.OnItemClickListener {
-      override fun onItemClick(view:View, position:Int, item : HomepageRowModel) {
+
+    val plantAdapter = PlantAdapter(viewModel.homepageList.value?:mutableListOf())
+    binding.recyclerHomepage.adapter = plantAdapter
+    plantAdapter.setOnItemClickListener(
+    object : PlantAdapter.OnItemClickListener {
+      override fun onItemClick(view:View, position:Int, item : PlantRowModel) {
         onClickRecyclerHomepage(view, position, item)
       }
     }
     )
     viewModel.homepageList.observe(this) {
-      homepageAdapter.updateData(it)
+      plantAdapter.updateData(it)
     }
     binding.homepageVM = viewModel
     setUpSearchViewGroupTwentyOneListener()
   }
 
   override fun setUpClicks(): Unit {
-    binding.imageCamera.setOnClickListener {
-      ImagePickerFragmentDialog().show(supportFragmentManager)
-      { path ->//TODO HANDLE DATA
+      binding.imageCamera.setOnClickListener {
+        ImagePickerFragmentDialog().show(supportFragmentManager)
+        { path ->//TODO HANDLE DATA
+        }
       }
-
-          }
       binding.linearColumncut.setOnClickListener {
         val destIntent = SpeciesActivity.getIntent(this, null)
         startActivity(destIntent)
@@ -66,7 +66,7 @@ class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity
     fun onClickRecyclerHomepage(
       view: View,
       position: Int,
-      item: HomepageRowModel
+      item: PlantRowModel
     ): Unit {
       when(view.id) {
       }

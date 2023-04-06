@@ -6,13 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.RowHomepageBinding
-import com.phngsapplication.app.modules.homepage.`data`.model.HomepageRowModel
+import com.phngsapplication.app.modules.homepage.`data`.model.PlantRowModel
 import kotlin.Int
 import kotlin.collections.List
 
-class HomepageAdapter(
-  var list: List<HomepageRowModel>
-) : RecyclerView.Adapter<HomepageAdapter.RowHomepageVH>() {
+class PlantAdapter(
+  var list: List<PlantRowModel>
+) : RecyclerView.Adapter<PlantAdapter.RowHomepageVH>() {
   private var clickListener: OnItemClickListener? = null
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowHomepageVH {
@@ -21,17 +21,17 @@ class HomepageAdapter(
   }
 
   override fun onBindViewHolder(holder: RowHomepageVH, position: Int) {
-    val homepageRowModel = HomepageRowModel()
+    val plantRowModel = PlantRowModel()
     // TODO uncomment following line after integration with data source
     // val homepageRowModel = list[position]
-    holder.binding.homepageRowModel = homepageRowModel
+    holder.binding.homepageRowModel = plantRowModel
   }
 
   override fun getItemCount(): Int = 2
   // TODO uncomment following line after integration with data source
   // return list.size
 
-  public fun updateData(newData: List<HomepageRowModel>) {
+  public fun updateData(newData: List<PlantRowModel>) {
     list = newData
     notifyDataSetChanged()
   }
@@ -44,7 +44,7 @@ class HomepageAdapter(
     fun onItemClick(
       view: View,
       position: Int,
-      item: HomepageRowModel
+      item: PlantRowModel
     ) {
     }
   }

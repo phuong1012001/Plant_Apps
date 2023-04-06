@@ -1,69 +1,63 @@
 package com.phngsapplication.app.modules.articles.ui
 
-import android.content.ClipData.Item
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.phngsapplication.app.R
-import com.phngsapplication.app.databinding.RowArticlesBinding
-import com.phngsapplication.app.modules.articles.`data`.model.ArticlesRowModel
-import kotlin.Int
-import kotlin.collections.List
+import com.phngsapplication.app.modules.articles.data.model.ArticlesRowModel
 
 class ArticlesAdapter(
   val list: List<ArticlesRowModel>
 ) : RecyclerView.Adapter<ArticlesAdapter.RowArticlesVH>() {
-  private var clickListener: OnItemClickListener? = null
 
+  var onItemClick: ((ArticlesRowModel)->Unit)? =null   //quan trong
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowArticlesVH {
     val view=LayoutInflater.from(parent.context).inflate(R.layout.row_articles,parent,false)
     return RowArticlesVH(view)
   }
 
-  override fun getItemCount(): Int {
-    return list.size
-  }
-
   override fun onBindViewHolder(holder: RowArticlesVH, position: Int) {
-    //val articlesRowModel = ArticlesRowModel()
     val ItemViewModel = list[position]
-    holder.imageArticle.setImageResource(ItemViewModel.imageArticle)
+    //holder.imageArticle.setImageResource(R.drawable.tomato)
     holder.titleArticle.setText(ItemViewModel.titleArticle)
-    holder.imageAuthor.setImageResource(ItemViewModel.imageAuthor)
+    //holder.imageAuthor.setImageResource(ItemViewModel.imageAuthor)
     holder.txtAuthor.setText(ItemViewModel.txtAuthor)
     holder.txtDate.setText(ItemViewModel.txtDate)
 
 
-    // TODO uncomment following line after integration with data source
-    // val articlesRowModel = list[position]
-//    holder.binding.articlesRowModel
-  }
+    val drawableResourceId1 = holder.itemView.context.resources.getIdentifier(
+      ItemViewModel.imageArticle,
+      "drawable",
+      holder.itemView.context.packageName
+    )
 
-//  override fun getItemCount(): Int = 2
-  // TODO uncomment following line after integration with data source
-  // return list.size
+    Glide.with(holder.itemView.context)
+      .load(drawableResourceId1)
+      .into(holder.imageArticle)
 
-//  public fun updateData(newData: List<ArticlesRowModel>) {
-//    list = newData
-//    notifyDataSetChanged()
-//  }
 
-  fun setOnItemClickListener(clickListener: OnItemClickListener) {
-    this.clickListener = clickListener
-  }
+    val drawableResourceId2 = holder.itemView.context.resources.getIdentifier(
+      ItemViewModel.imageAuthor,
+      "drawable",
+      holder.itemView.context.packageName
+    )
 
-  interface OnItemClickListener {
-    fun onItemClick(
-      view: View,
-      position: Int,
-      item: ArticlesRowModel
-    ) {
+    Glide.with(holder.itemView.context)
+      .load(drawableResourceId2)
+      .into(holder.imageAuthor)
+
+    holder.oneArticle.setOnClickListener{
+      onItemClick?.invoke(ItemViewModel)
     }
   }
-
+  override fun getItemCount(): Int {
+    return list.size
+  }
   inner class RowArticlesVH(
     view: View
   ) : RecyclerView.ViewHolder(view) {
@@ -72,12 +66,6 @@ class ArticlesAdapter(
     val imageAuthor: ImageView = view.findViewById(R.id.imageAuthor)
     val txtAuthor: TextView = view.findViewById(R.id.txtAuthor)
     val txtDate: TextView = view.findViewById(R.id.txtDate)
-    val binding: RowArticlesBinding = RowArticlesBinding.bind(itemView)
-//    init {
-//      binding.oneArticle.setOnClickListener {
-//        // TODO replace with value from datasource
-//        clickListener?.onItemClick(it, adapterPosition, ArticlesRowModel())
-//      }
-//    }
+    val oneArticle: ConstraintLayout = view.findViewById(R.id.oneArticle)
   }
 }
