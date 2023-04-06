@@ -21,9 +21,10 @@ class ArticlesActivity : BaseActivity<ActivityArticlesBinding>(R.layout.activity
     //Hien thi adapter
     val data = ArrayList<ArticlesRowModel>()
     for(i in 1..5){
-      data.add(ArticlesRowModel("tomato", "Item" + i, "img_ellipse32", "Name" + i, "Date" + i))
+      data.add(ArticlesRowModel("img_rectangle22", "Item" + i, "img_ellipse31", "Name" + i, "Date" + i))
     }
     val adapter = ArticlesAdapter(data)
+
     binding.recyclerArticles.adapter = adapter
     adapter.onItemClick = {
       val intent = Intent(this, DetailArticlesActivity::class.java)

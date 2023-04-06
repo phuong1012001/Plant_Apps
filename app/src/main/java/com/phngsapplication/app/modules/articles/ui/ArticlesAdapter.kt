@@ -23,9 +23,7 @@ class ArticlesAdapter(
 
   override fun onBindViewHolder(holder: RowArticlesVH, position: Int) {
     val ItemViewModel = list[position]
-    //holder.imageArticle.setImageResource(R.drawable.tomato)
     holder.titleArticle.setText(ItemViewModel.titleArticle)
-    //holder.imageAuthor.setImageResource(ItemViewModel.imageAuthor)
     holder.txtAuthor.setText(ItemViewModel.txtAuthor)
     holder.txtDate.setText(ItemViewModel.txtDate)
 
