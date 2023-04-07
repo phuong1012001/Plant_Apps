@@ -117,6 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_174pxv"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -124,21 +125,24 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+
                     <androidx.recyclerview.widget.RecyclerView
-                        android:gravity="center_horizontal"
                         android:id="@+id/recyclerArticles"
+                        itemSpace="@{@dimen/_25pxh}"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/_22pxh"
                         android:layout_marginStart="@dimen/_22pxh"
                         android:layout_marginTop="@dimen/_30pxv"
-                        android:layout_width="match_parent"
+                        android:layout_marginEnd="@dimen/_22pxh"
+                        android:gravity="center_horizontal"
                         android:orientation="vertical"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                        itemSpace="@{@dimen/_25pxh}" />
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
                     <View
                         android:id="@+id/view"
                         android:layout_width="wrap_content"
