@@ -42,17 +42,25 @@ class SignupScreenActivity :
       val name = binding.etGroupNinetyTwo.text.toString()
 
       val destIntent = LoginScreenActivity.getIntent(this, null)
-      if(email.isNotEmpty() && pass.isNotEmpty() && name.isNotEmpty()){
+      if(email.isNotEmpty() && pass.isNotEmpty() && name.isNotEmpty()) {
         firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-          if(it.isSuccessful){
+          if (it.isSuccessful) {
+            firebaseAuth.currentUser?.sendEmailVerification()
+              ?.addOnSuccessListener {
+                Toast.makeText(this, "Please verify your Email !!!", Toast.LENGTH_SHORT).show()
+              }
+              ?.addOnFailureListener {
+                Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+              }
             startActivity(destIntent)
-          }else{
+          } else {
             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
           }
         }
-      }else{
-        Toast.makeText(this, "Empty Fields Are not Valid !!", Toast.LENGTH_SHORT).show()
       }
+          else{
+          Toast.makeText(this, "Empty Fields Are not Valid !!", Toast.LENGTH_SHORT).show()
+        }
     }
   }
 

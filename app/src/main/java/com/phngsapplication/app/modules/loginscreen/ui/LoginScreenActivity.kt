@@ -51,7 +51,14 @@ class LoginScreenActivity : BaseActivity<ActivityLoginScreenBinding>(R.layout.ac
       if(email.isNotEmpty() && pass.isNotEmpty()){
         firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
           if(it.isSuccessful){
-            startActivity(destIntent)
+            val verify = firebaseAuth.currentUser?.isEmailVerified
+            if(verify == true){
+              val user = firebaseAuth.currentUser
+              startActivity(destIntent)
+            }else{
+              Toast.makeText(this, "Please verify your Email !!!", Toast.LENGTH_SHORT).show()
+            }
+
           }else{
             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
           }
