@@ -93,5 +93,9 @@ dependencies {
 
     implementation 'com.vmadalin:easypermissions-ktx:0.1.0'
 
+
+    //tablayout
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:26.1.0'
 }
 

@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="introduction2VM" type="com.phngsapplication.app.modules.introduction2.data.viewmodel.Introduction2VM"/>
+
     </data>
+<!--    <variable name="introduction2VM" type="com.phngsapplication.app.modules.introduction2.data.viewmodel.Introduction2VM"/>-->
     <FrameLayout android:id="@+id/frameOnboarding2"
         android:layout_height="match_parent"
         android:layout_width="match_parent" style="@style/groupStylewhite_A700">
@@ -40,8 +41,8 @@
                 android:layout_marginTop="@dimen/_64pxv"
                 android:layout_width="match_parent"
                 android:singleLine="true"
-                android:text="@{introduction2VM.introduction2Model.txtLearnManyPlan}"
-                style="@style/txtAndadaProromanbold20" tools:text="@string/msg_learn_many_plan"/>
+                android:text="@string/msg_learn_many_plan"
+                style="@style/txtAndadaProromanbold20"/>
 
             <TextView
                 android:id="@+id/txtDescription"
@@ -52,7 +53,7 @@
                 android:layout_marginTop="@dimen/_19pxv"
                 android:layout_marginEnd="@dimen/_10pxh"
                 android:gravity="center_horizontal"
-                android:text="@{introduction2VM.introduction2Model.txtDescription}"
+                android:text="@string/msg_let_s_learn_abo"
                 android:textSize="15sp"
                 tools:text="@string/msg_let_s_learn_abo" />
 

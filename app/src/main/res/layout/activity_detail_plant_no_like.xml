@@ -167,7 +167,7 @@
                 android:layout_marginTop="@dimen/_26pxv"
                 android:layout_width="wrap_content" android:orientation="horizontal">
                 <TextView android:ellipsize="end"
-                    android:id="@+id/txtKINGDOM"
+                    android:id="@+id/KINGDOM"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_1pxv"
                     android:layout_weight="0.57"
@@ -175,7 +175,7 @@
                     android:text="@{detailPlantNoLikeVM.detailPlantNoLikeModel.txtKINGDOM}"
                     style="@style/txtAndadaProromanbold14_5" tools:text="@string/lbl_kingdom"/>
                 <TextView android:ellipsize="end"
-                    android:id="@+id/txtFAMILY"
+                    android:id="@+id/FAMILY"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_1pxv"
                     android:layout_marginStart="@dimen/_41pxh"
@@ -192,7 +192,7 @@
                 android:layout_marginTop="@dimen/_11pxv"
                 android:layout_width="wrap_content" android:orientation="horizontal">
                 <TextView android:ellipsize="end"
-                    android:id="@+id/txtPlantae"
+                    android:id="@+id/txtKINGDOM"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_1pxv"
                     android:layout_weight="0.43"
@@ -200,7 +200,7 @@
                     android:text="@{detailPlantNoLikeVM.detailPlantNoLikeModel.txtPlantae}"
                     style="@style/txtAndadaProromanmedium14_2" tools:text="@string/lbl_plantae"/>
                 <TextView android:ellipsize="end"
-                    android:id="@+id/txtCactaceae"
+                    android:id="@+id/txtFAMILY"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_66pxh"
                     android:layout_marginTop="@dimen/_1pxv"
@@ -209,7 +209,7 @@
                     android:text="@{detailPlantNoLikeVM.detailPlantNoLikeModel.txtCactaceae}"
                     style="@style/txtAndadaProromanmedium14_2" tools:text="@string/lbl_cactaceae"/>
             </LinearLayout>
-            <TextView android:ellipsize="end" android:id="@+id/txtPrice"
+            <TextView android:ellipsize="end" android:id="@+id/DESCRIPTION"
                 android:layout_gravity="start"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_23pxh"

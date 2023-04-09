@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.phngsapplication.app.modules.articles.`data`.model.ArticlesModel
-import com.phngsapplication.app.modules.articles.`data`.model.ArticlesRowModel
+import com.phngsapplication.app.model.Article
 import kotlin.collections.MutableList
 import org.koin.core.KoinComponent
 
@@ -13,6 +13,6 @@ class ArticlesVM : ViewModel(), KoinComponent {
 
   var navArguments: Bundle? = null
 
-  val articlesList: MutableLiveData<MutableList<ArticlesRowModel>> =
+  val articlesList: MutableLiveData<MutableList<Article>> =
       MutableLiveData(mutableListOf())
 }

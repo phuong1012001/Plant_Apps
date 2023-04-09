@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="detailArticlesVM" type="com.phngsapplication.app.modules.detailarticles.data.viewmodel.DetailArticlesVM"/>
+
     </data>
+<!--    <variable name="detailArticlesVM" type="com.phngsapplication.app.modules.detailarticles.data.viewmodel.DetailArticlesVM"/>-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearColumnThree"
         style="@style/groupStylewhite_A700"
@@ -132,7 +133,10 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
                     android:id="@+id/linearDetailArticles"
@@ -167,10 +171,10 @@
                         <ImageView
                             android:id="@+id/imageAuthor"
                             circular="@{true}"
-                            android:src="@drawable/img_ellipse3_37x37"
                             android:layout_width="@dimen/_37pxh"
                             android:layout_height="@dimen/_37pxh"
-                            android:scaleType="centerCrop" />
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/img_ellipse3_37x37" />
 
                         <LinearLayout
                             android:id="@+id/linearColumnshyllamonic"
@@ -339,7 +343,7 @@
                             android:ellipsize="end"
                             android:gravity="center_horizontal"
                             android:singleLine="true"
-                            android:text="@{detailArticlesVM.detailArticlesModel.txtHOMEOne}"
+                            android:text="@string/lbl_home"
                             tools:ignore="TextSizeCheck"
                             tools:text="@string/lbl_home" />
                     </LinearLayout>
@@ -392,7 +396,7 @@
                             android:ellipsize="end"
                             android:gravity="center_horizontal"
                             android:singleLine="true"
-                            android:text="@{detailArticlesVM.detailArticlesModel.txtPROFILE}"
+                            android:text="@string/lbl_profile"
                             tools:ignore="TextSizeCheck"
                             tools:text="@string/lbl_profile" />
                     </LinearLayout>

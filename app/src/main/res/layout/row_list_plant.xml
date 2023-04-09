@@ -3,161 +3,154 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="listPlantRowModel" type="com.phngsapplication.app.modules.listplant.data.model.ListPlantRowModel"/>
+        <variable name="listPlantRowModel" type="com.phngsapplication.app.model.Plant"/>
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
->
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints">
-
-        <FrameLayout
-            android:id="@+id/frameStackrectangleOne"
-            style="@style/groupStylewhite_3"
-            android:layout_width="@dimen/_139pxh"
-            android:layout_height="@dimen/_139pxv"
-            android:layout_gravity="center">
-
-            <ImageView
-                android:id="@+id/imageRectangleOne"
-                cornerRadius="@{@dimen/_3pxh}"
-                imageRes="@{@drawable/img_rectangle_125x125}"
-                android:layout_width="@dimen/_125pxh"
-                android:layout_height="@dimen/_125pxh"
-                android:layout_gravity="center|center_horizontal"
-                android:layout_marginHorizontal="@dimen/_7pxh"
-                android:layout_marginVertical="@dimen/_7pxv"
-                android:scaleType="fitXY"
-                tools:ignore="ContentDescription"
-                tools:src="@drawable/img_rectangle_125x125" />
-        </FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/oneSpecie"
+        android:layout_width="@dimen/_331pxh"
+        android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/linearColumnredcactus"
-            android:layout_width="0dp"
+            android:id="@+id/oneCatus"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_20pxh"
-            android:layout_marginTop="@dimen/_6pxv"
-            android:layout_marginBottom="@dimen/_2pxv"
-            android:layout_weight="0.54"
-            android:gravity="start"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            tools:ignore="MissingConstraints">
 
-            <TextView
-                android:id="@+id/txtRedCactus"
-                style="@style/txtAndadaProromanbold17"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_10pxh"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:text="@{listPlantRowModel.txtRedCactus}"
-                tools:ignore="TextSizeCheck"
-                tools:text="@string/lbl_red_cactus" />
+            <FrameLayout
+                android:id="@+id/frameStackrectangleOne"
+                style="@style/groupStylewhite_3"
+                android:layout_width="@dimen/_139pxh"
+                android:layout_height="@dimen/_139pxv"
+                android:layout_gravity="center">
 
-            <LinearLayout
-                android:id="@+id/linearRowkingdom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10pxv"
-                android:layout_marginEnd="@dimen/_10pxh"
-                android:gravity="start"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txtKINGDOM"
-                    style="@style/txtAndadaProromanbold12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_1pxv"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:text="@{listPlantRowModel.txtKINGDOM}"
-                    tools:ignore="TextSizeCheck"
-                    tools:text="@string/lbl_kingdom" />
-
-                <TextView
-                    android:id="@+id/txtFAMILY"
-                    style="@style/txtAndadaProromanbold12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_16pxh"
-                    android:layout_marginBottom="@dimen/_1pxv"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:text="@{listPlantRowModel.txtFAMILY}"
-                    tools:ignore="TextSizeCheck"
-                    tools:text="@string/lbl_family" />
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/imageSpecie"
+                    cornerRadius="@{@dimen/_3pxh}"
+                    android:layout_width="@dimen/_125pxh"
+                    android:layout_height="@dimen/_125pxh"
+                    android:layout_gravity="center|center_horizontal"
+                    android:layout_marginHorizontal="@dimen/_7pxh"
+                    android:layout_marginVertical="@dimen/_7pxv"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/img_rectangle_125x125"
+                    tools:ignore="ContentDescription" />
+            </FrameLayout>
 
             <LinearLayout
-                android:id="@+id/linearRowplantae"
-                android:layout_width="match_parent"
+                android:id="@+id/linearColumnredcactus"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4pxv"
-                android:layout_marginEnd="@dimen/_10pxh"
+                android:layout_marginStart="@dimen/_20pxh"
+                android:layout_marginTop="@dimen/_6pxv"
+                android:layout_marginBottom="@dimen/_2pxv"
+                android:layout_weight="0.54"
                 android:gravity="start"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txtPlantae"
-                    style="@style/txtAndadaProromanmedium12_2"
-                    android:layout_width="0dp"
+                    android:id="@+id/titleSpecie"
+                    style="@style/txtAndadaProromanbold17"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_1pxv"
-                    android:layout_weight="0.43"
+                    android:layout_marginEnd="@dimen/_10pxh"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:text="@{listPlantRowModel.txtPlantae}"
-                    tools:ignore="TextSizeCheck"
-                    tools:text="@string/lbl_plantae" />
+                    android:text="@string/lbl_red_cactus"
+                    tools:ignore="TextSizeCheck" />
+
+                <LinearLayout
+                    android:id="@+id/linearRowkingdom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_marginEnd="@dimen/_10pxh"
+                    android:gravity="start"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/KINGDOM"
+                            style="@style/txtAndadaProromanbold12"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/_1pxv"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="@string/lbl_kingdom"
+                            tools:ignore="TextSizeCheck" />
+
+                        <TextView
+                            android:id="@+id/txtKINGDOM"
+                            style="@style/txtAndadaProromanmedium12_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_1pxv"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="@string/lbl_plantae"
+                            tools:ignore="TextSizeCheck" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/FAMILY"
+                            style="@style/txtAndadaProromanbold12"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="@dimen/_1pxv"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="@string/lbl_family"
+                            tools:ignore="TextSizeCheck" />
+
+                        <TextView
+                            android:id="@+id/txtFAMILY"
+                            style="@style/txtAndadaProromanmedium12_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/_1pxv"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="@string/lbl_cactaceae"
+                            tools:ignore="TextSizeCheck" />
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/txtCactaceae"
-                    style="@style/txtAndadaProromanmedium12_2"
-                    android:layout_width="0dp"
+                    android:id="@+id/DESCRIPTION"
+                    style="@style/txtAndadaProromanbold12"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_37pxh"
-                    android:layout_marginTop="@dimen/_1pxv"
-                    android:layout_weight="0.57"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_marginEnd="@dimen/_10pxh"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:text="@{listPlantRowModel.txtCactaceae}"
-                    tools:ignore="TextSizeCheck"
-                    tools:text="@string/lbl_cactaceae" />
+                    android:text="@string/lbl_description"
+                    tools:ignore="TextSizeCheck" />
 
+                <TextView
+                    android:id="@+id/txtDescription"
+                    style="@style/txtAndadaProromanregular12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4pxv"
+                    android:text="@string/msg_cactus_spines_a"
+                    tools:ignore="TextSizeCheck" />
             </LinearLayout>
-
-            <TextView
-                android:id="@+id/txtPrice"
-                style="@style/txtAndadaProromanbold12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10pxv"
-                android:layout_marginEnd="@dimen/_10pxh"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:text="@{listPlantRowModel.txtPrice}"
-                tools:ignore="TextSizeCheck"
-                tools:text="@string/lbl_description" />
-
-            <TextView
-                android:id="@+id/txtDescription"
-                style="@style/txtAndadaProromanregular12"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_4pxv"
-                android:text="@{listPlantRowModel.txtDescription}"
-                tools:ignore="TextSizeCheck"
-                tools:text="@string/msg_cactus_spines_a" />
-
         </LinearLayout>
-    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

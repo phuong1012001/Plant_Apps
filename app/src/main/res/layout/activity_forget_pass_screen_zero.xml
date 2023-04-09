@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="forgetPassScreenZeroVM" type="com.phngsapplication.app.modules.forgetpassscreenzero.data.viewmodel.ForgetPassScreenZeroVM"/>
+
     </data>
+<!--    <variable name="forgetPassScreenZeroVM" type="com.phngsapplication.app.modules.forgetpassscreenzero.data.viewmodel.ForgetPassScreenZeroVM"/>-->
     <LinearLayout android:gravity="start"
         android:id="@+id/linearForgetPassScr"
         android:layout_height="match_parent"
@@ -16,8 +17,8 @@
             android:layout_marginTop="@dimen/_80pxv"
             android:layout_width="match_parent"
             android:singleLine="true"
-            android:text="@{forgetPassScreenZeroVM.forgetPassScreenZeroModel.txtForgetpassword}"
-            style="@style/txtAndadaProromanbold30_1" tools:text="@string/lbl_forget_password"/>
+            android:text="@string/lbl_forget_password"
+            style="@style/txtAndadaProromanbold30_1"/>
         <TextView android:ellipsize="end"
             android:id="@+id/txtPasswordhasbe"
             android:layout_height="wrap_content"
@@ -26,8 +27,8 @@
             android:layout_marginTop="@dimen/_7pxv"
             android:layout_width="match_parent"
             android:singleLine="true"
-            android:text="@{forgetPassScreenZeroVM.forgetPassScreenZeroModel.txtPasswordhasbe}"
-            style="@style/txtAndadaProromanmedium16" tools:text="@string/msg_password_has_be"/>
+            android:text="@string/msg_password_has_be"
+            style="@style/txtAndadaProromanmedium16"/>
         <androidx.appcompat.widget.AppCompatButton
             android:ellipsize="end" android:gravity="center"
             android:id="@+id/btnNext"

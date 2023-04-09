@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="signupScreenVM" type="com.phngsapplication.app.modules.signupscreen.data.viewmodel.SignupScreenVM"/>
+
     </data>
+<!--    <variable name="signupScreenVM" type="com.phngsapplication.app.modules.signupscreen.data.viewmodel.SignupScreenVM"/>-->
     <LinearLayout android:gravity="start"
         android:id="@+id/linearSignUpScreen"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:orientation="vertical" style="@style/groupStylewhite_A700">
-        <TextView android:ellipsize="end" android:id="@+id/txtSignUp"
+        <TextView android:ellipsize="end"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_23pxh"
             android:layout_marginStart="@dimen/_23pxh"
             android:layout_marginTop="@dimen/_80pxv"
             android:layout_width="wrap_content"
             android:singleLine="true"
-            android:text="@{signupScreenVM.signupScreenModel.txtSignUp}"
-            style="@style/txtAndadaProromanbold30_1" tools:text="@string/lbl_signup2"/>
-        <TextView android:ellipsize="end"
+            android:text="@string/lbl_signup2"
+            style="@style/txtAndadaProromanbold30_1"/>
+        <TextView
             android:id="@+id/txtRegisternewac"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_23pxh"
@@ -25,12 +26,10 @@
             android:layout_marginTop="@dimen/_8pxv"
             android:layout_width="wrap_content"
             android:singleLine="true"
-            android:text="@{signupScreenVM.signupScreenModel.txtRegisternewac}"
-            style="@style/txtAndadaProromanmedium16" tools:text="@string/msg_register_new_ac"/>
+            android:text="@string/msg_register_new_ac"
+            style="@style/txtAndadaProromanmedium16"/>
 
         <TextView
-            android:id="@+id/txtEmail"
-            style="@style/txtAndadaProromanbold15_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_23pxh"
@@ -38,12 +37,12 @@
             android:layout_marginEnd="@dimen/_23pxh"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@{signupScreenVM.signupScreenModel.txtEmail}"
-            tools:ignore="TextSizeCheck"
-            tools:text="@string/lbl_email" />
+            android:text="@string/lbl_email"
+            style="@style/txtAndadaProromanbold15_2"
+            tools:ignore="TextSizeCheck"/>
 
         <EditText
-            android:id="@+id/etEmailOne"
+            android:id="@+id/email"
             style="@style/etAndadaProromanmedium17"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,12 +56,12 @@
             android:paddingEnd="@dimen/_30pxh"
             android:paddingBottom="@dimen/_10pxv"
             android:singleLine="true"
-            android:text="@={signupScreenVM.signupScreenModel.etEmailOneValue}"
+            android:text=""
             android:textColorHint="@color/bluegray_800"
             tools:ignore="Autofill" />
 
         <EditText
-            android:id="@+id/etGroupNinety"
+            android:id="@+id/password"
             style="@style/etAndadaProromanmedium17_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,12 +75,12 @@
             android:paddingEnd="@dimen/_30pxh"
             android:paddingBottom="@dimen/_6pxv"
             android:singleLine="true"
-            android:text="@={signupScreenVM.signupScreenModel.etGroupNinetyValue}"
+            android:text=""
             android:textColorHint="@color/gray_600_90"
             tools:ignore="Autofill" />
 
         <EditText
-            android:id="@+id/etGroupNinetyTwo"
+            android:id="@+id/fullName"
             style="@style/etAndadaProromanmedium17_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +94,7 @@
             android:paddingEnd="@dimen/_30pxh"
             android:paddingBottom="@dimen/_5pxv"
             android:singleLine="true"
-            android:text="@={signupScreenVM.signupScreenModel.etGroupNinetyTwoValue}"
+            android:text=""
             android:textColorHint="@color/gray_600_90"
             tools:ignore="Autofill" />
 
@@ -116,7 +115,6 @@
             android:singleLine="true"
             android:text="@string/lbl_sign_up2"
             android:textAllCaps="false"
-            tools:ignore="TextSizeCheck"
-            tools:text="@string/lbl_sign_up2" />
+            tools:ignore="TextSizeCheck"/>
     </LinearLayout>
 </layout>

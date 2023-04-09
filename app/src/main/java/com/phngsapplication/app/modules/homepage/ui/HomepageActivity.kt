@@ -10,12 +10,12 @@ import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.appcomponents.views.ImagePickerFragmentDialog
 import com.phngsapplication.app.databinding.ActivityHomepageBinding
-import com.phngsapplication.app.modules.articles.ui.ArticlesActivity
-//import com.phngsapplication.app.modules.articles.ui.ArticlesActivity
+import com.phngsapplication.app.ui.ArticlesActivity
+//import com.phngsapplication.app.ui.ArticlesActivity
 import com.phngsapplication.app.modules.camera.ui.CameraActivity
 import com.phngsapplication.app.modules.homepage.`data`.model.PlantRowModel
 import com.phngsapplication.app.modules.homepage.`data`.viewmodel.HomepageVM
-import com.phngsapplication.app.modules.species.ui.SpeciesActivity
+import com.phngsapplication.app.ui.ListPlantActivity
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
@@ -50,7 +50,7 @@ class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity
         }
       }
       binding.linearColumncut.setOnClickListener {
-        val destIntent = SpeciesActivity.getIntent(this, null)
+        val destIntent = ListPlantActivity.getIntent(this, null)
         startActivity(destIntent)
       }
       binding.linearColumngroup.setOnClickListener {

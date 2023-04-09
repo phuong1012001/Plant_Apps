@@ -3,12 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="introduction1VM" type="com.phngsapplication.app.modules.introduction1.data.viewmodel.Introduction1VM"/>
+
     </data>
+<!--    <variable name="introduction1VM" type="com.phngsapplication.app.modules.introduction1.data.viewmodel.Introduction1VM"/>-->
     <FrameLayout android:id="@+id/frameOnboarding1"
         android:layout_height="match_parent"
         android:layout_width="match_parent" style="@style/groupStylewhite_A700">
-        <LinearLayout android:id="@+id/linearColumnellipsethree"
+        <LinearLayout
             android:layout_gravity="center"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/_20pxv"
@@ -18,7 +19,6 @@
             android:layout_width="match_parent" android:orientation="vertical">
 
             <FrameLayout
-                android:id="@+id/frameStackellipsethree"
                 android:layout_width="@dimen/_300pxh"
                 android:layout_height="@dimen/_300pxv"
                 android:layout_gravity="center_horizontal"
@@ -40,8 +40,8 @@
                 android:layout_marginTop="@dimen/_65pxv"
                 android:layout_width="wrap_content"
                 android:singleLine="true"
-                android:text="@{introduction1VM.introduction1Model.txtIdentifyPlants}"
-                style="@style/txtAndadaProromanbold20" tools:text="@string/lbl_identify_plants"/>
+                android:text="@string/lbl_identify_plants"
+                style="@style/txtAndadaProromanbold20"/>
 
             <TextView
                 android:id="@+id/txtDescription"
@@ -52,9 +52,8 @@
                 android:layout_marginTop="@dimen/_19pxv"
                 android:layout_marginEnd="@dimen/_26pxh"
                 android:gravity="center_horizontal"
-                android:text="@{introduction1VM.introduction1Model.txtDescription}"
-                android:textSize="15sp"
-                tools:text="@string/msg_you_can_identif" />
+                android:text="@string/msg_you_can_identif"
+                android:textSize="15sp"/>
 
             <LinearLayout
                 android:id="@+id/linearRowellipsetwentythree"

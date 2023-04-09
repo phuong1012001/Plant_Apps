@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="loginScreenVM" type="com.phngsapplication.app.modules.loginscreen.data.viewmodel.LoginScreenVM"/>
+
     </data>
+<!--    <variable name="loginScreenVM" type="com.phngsapplication.app.modules.loginscreen.data.viewmodel.LoginScreenVM"/>-->
     <LinearLayout android:gravity="start"
         android:id="@+id/linearLoginScreen"
         android:layout_height="match_parent"
@@ -15,8 +16,8 @@
             android:layout_marginTop="@dimen/_76pxv"
             android:layout_width="wrap_content"
             android:singleLine="true"
-            android:text="@{loginScreenVM.loginScreenModel.txtHello}"
-            style="@style/txtAndadaProromanbold30_1" tools:text="@string/lbl_hello"/>
+            android:text="@string/lbl_hello"
+            style="@style/txtAndadaProromanbold30_1"/>
         <TextView android:ellipsize="end"
             android:id="@+id/txtLetsLearnMor"
             android:layout_height="wrap_content"
@@ -25,8 +26,8 @@
             android:layout_marginTop="@dimen/_10pxv"
             android:layout_width="match_parent"
             android:singleLine="true"
-            android:text="@{loginScreenVM.loginScreenModel.txtLetsLearnMor}"
-            style="@style/txtAndadaProromanmedium16" tools:text="@string/msg_let_s_learn_mor2"/>
+            android:text="@string/msg_let_s_learn_mor2"
+            style="@style/txtAndadaProromanmedium16"/>
 
         <TextView
             android:id="@+id/txtEmail"
@@ -38,12 +39,11 @@
             android:layout_marginEnd="@dimen/_23pxh"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@{loginScreenVM.loginScreenModel.txtEmail}"
-            tools:ignore="TextSizeCheck"
-            tools:text="@string/lbl_email" />
+            android:text="@string/lbl_email"
+            tools:ignore="TextSizeCheck"/>
 
         <EditText
-            android:id="@+id/etEmailOne"
+            android:id="@+id/email"
             style="@style/etAndadaProromanmedium17"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,12 +57,12 @@
             android:paddingEnd="@dimen/_30pxh"
             android:paddingBottom="@dimen/_10pxv"
             android:singleLine="true"
-            android:text="@={loginScreenVM.loginScreenModel.etEmailOneValue}"
+            android:text=""
             android:textColorHint="@color/bluegray_800"
             tools:ignore="Autofill" />
 
         <EditText
-            android:id="@+id/etGroupEightyFive"
+            android:id="@+id/password"
             style="@style/etAndadaProromanmedium15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
             android:paddingEnd="@dimen/_30pxh"
             android:paddingBottom="@dimen/_9pxv"
             android:singleLine="true"
-            android:text="@={loginScreenVM.loginScreenModel.etGroupEightyFiveValue}"
+            android:text=""
             android:textColorHint="@color/gray_600_90"
             tools:ignore="Autofill,TextSizeCheck" />
         <LinearLayout android:id="@+id/linearRowrememberme"
@@ -106,7 +106,7 @@
                 tools:text="@string/lbl_remember_me" />
 
             <TextView
-                android:id="@+id/txtForgotPassword"
+                android:id="@+id/btnForgotPassword"
                 style="@style/txtAndadaProromanmedium13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -115,9 +115,8 @@
                 android:ellipsize="end"
                 android:letterSpacing="0.01"
                 android:singleLine="true"
-                android:text="@{loginScreenVM.loginScreenModel.txtForgotPassword}"
-                tools:ignore="TextSizeCheck"
-                tools:text="@string/msg_forgot_password" />
+                android:text="@string/msg_forgot_password"
+                tools:ignore="TextSizeCheck"/>
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -159,12 +158,11 @@
                 android:layout_weight="0.65"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:text="@{loginScreenVM.loginScreenModel.txtDontHaveAcco}"
-                tools:ignore="TextSizeCheck"
-                tools:text="@string/msg_don_t_have_acco" />
+                android:text="@string/msg_don_t_have_acco"
+                tools:ignore="TextSizeCheck"/>
 
             <TextView
-                android:id="@+id/txtSignUp"
+                android:id="@+id/btnSignUp"
                 style="@style/txtAndadaProromanbold13_1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -173,9 +171,8 @@
                 android:layout_weight="0.28"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:text="@{loginScreenVM.loginScreenModel.txtSignUp}"
-                tools:ignore="TextSizeCheck"
-                tools:text="@string/lbl_sign_up" />
+                android:text="@string/lbl_sign_up"
+                tools:ignore="TextSizeCheck"/>
         </LinearLayout>
     </LinearLayout>
 </layout>

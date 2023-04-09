@@ -1,0 +1,52 @@
+package com.phngsapplication.app.model
+
+import android.os.Parcel
+import android.os.Parcelable
+import kotlin.String
+
+data class Plant(
+  var imageSpecie: String,
+
+  var titleSpecie: String,
+
+  var txtKINGDOM: String,
+
+  var txtFAMILY: String,
+
+  var txtDescription: String,
+
+  var imageLike: String,
+) : Parcelable {
+  constructor(parcel: Parcel) : this(
+    parcel.readString()!!,
+    parcel.readString()!!,
+    parcel.readString()!!,
+    parcel.readString()!!,
+    parcel.readString()!!,
+    parcel.readString()!!
+  ) {
+  }
+
+  override fun writeToParcel(parcel: Parcel, flags: Int) {
+    parcel.writeString(imageSpecie)
+    parcel.writeString(titleSpecie)
+    parcel.writeString(txtKINGDOM)
+    parcel.writeString(txtFAMILY)
+    parcel.writeString(txtDescription)
+    parcel.writeString(imageLike)
+  }
+
+  override fun describeContents(): Int {
+    return 0
+  }
+
+  companion object CREATOR : Parcelable.Creator<Plant> {
+    override fun createFromParcel(parcel: Parcel): Plant {
+      return Plant(parcel)
+    }
+
+    override fun newArray(size: Int): Array<Plant?> {
+      return arrayOfNulls(size)
+    }
+  }
+}

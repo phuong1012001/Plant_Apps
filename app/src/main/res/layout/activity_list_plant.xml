@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
-    <data>
-        <variable name="listPlantVM" type="com.phngsapplication.app.modules.listplant.data.viewmodel.ListPlantVM"/>
-    </data>
+<!--    <data>-->
+<!--        <variable name="listPlantVM" type="com.phngsapplication.app.modules.listplant.data.viewmodel.ListPlantVM"/>-->
+<!--    </data>-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearColumnThree"
         style="@style/groupStylewhite_A700"
@@ -13,7 +13,6 @@
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_174pxv"
             app:layout_constraintEnd_toEndOf="parent"
@@ -21,9 +20,12 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <FrameLayout
-                android:id="@+id/frameStackarrowleft"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_174pxv">
+                android:layout_height="@dimen/_174pxv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
                     android:id="@+id/linearRowarrowleft"
@@ -46,14 +48,12 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:id="@+id/imageArrowleft"
+                            android:id="@+id/btnBack"
                             android:layout_width="@dimen/_11pxh"
                             android:layout_height="@dimen/_19pxh"
                             android:layout_marginEnd="@dimen/_10pxh"
                             android:scaleType="fitXY"
-                            android:src="@drawable/img_arrowleft"
-                            tools:ignore="ContentDescription"
-                            tools:src="@drawable/img_arrowleft" />
+                            android:src="@drawable/img_arrowleft"/>
 
                         <TextView
                             android:id="@+id/txtCactus"
@@ -64,24 +64,20 @@
                             android:layout_marginEnd="@dimen/_10pxh"
                             android:ellipsize="end"
                             android:singleLine="true"
-                            android:text="@{listPlantVM.listPlantModel.txtCactus}"
-                            tools:text="@string/lbl_cactus2" />
+                            android:text="@string/lbl_cactus2"/>
                     </LinearLayout>
 
                     <ImageView
                         android:id="@+id/imageEllipse"
-                        imageRes="@{@drawable/img_ellipse_5}"
                         android:layout_width="@dimen/_168pxh"
                         android:layout_height="@dimen/_86pxh"
                         android:layout_marginBottom="@dimen/_63pxv"
                         android:scaleType="fitXY"
-                        tools:ignore="ContentDescription"
-                        tools:src="@drawable/img_ellipse_5" />
+                        android:src="@drawable/img_ellipse_5"/>
                 </LinearLayout>
 
                 <ImageView
                     android:id="@+id/imageEllipseOne"
-                    imageRes="@{@drawable/img_ellipse_6}"
                     android:layout_width="@dimen/_75pxh"
                     android:layout_height="@dimen/_124pxh"
                     android:layout_gravity="bottom|end"
@@ -89,11 +85,10 @@
                     android:layout_marginTop="@dimen/_16pxv"
                     android:layout_marginBottom="@dimen/_16pxv"
                     android:scaleType="fitXY"
-                    tools:ignore="ContentDescription"
-                    tools:src="@drawable/img_ellipse_6" />
+                    android:src="@drawable/img_ellipse_6" />
 
                 <androidx.appcompat.widget.SearchView
-                    android:id="@+id/searchForSpecies"
+                    android:id="@+id/searchForCactus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
@@ -104,7 +99,7 @@
                     android:theme="@style/searchViewGroupTwentyOne"
                     app:iconifiedByDefault="false"
                     app:queryBackground="@android:color/transparent"
-                    app:queryHint="@string/msg_search_for_arti"
+                    app:queryHint="@string/msg_search_for_cact"
                     app:searchIcon="@drawable/img_search" />
             </FrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -112,29 +107,40 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_174pxv"
+            android:layout_marginTop="@dimen/_180pxv"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerArticles"
+                        itemSpace="@{@dimen/_25pxh}"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_22pxh"
+                        android:layout_marginTop="@dimen/_30pxv"
+                        android:layout_marginEnd="@dimen/_22pxh"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_115pxv" />
                 </LinearLayout>
             </ScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -149,7 +155,6 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent">
             <FrameLayout
-                android:id="@+id/frameStackunion"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_115pxv"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -158,28 +163,24 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageUnion"
-                    imageRes="@{@drawable/img_union}"
                     android:layout_width="@dimen/_375pxh"
                     android:layout_height="@dimen/_115pxh"
                     android:layout_gravity="center"
                     android:scaleType="fitXY"
-                    tools:ignore="ContentDescription"
-                    tools:src="@drawable/img_union" />
+                    android:src="@drawable/img_union"/>
 
                 <LinearLayout
-                    android:id="@+id/linearRow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10pxv"
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:id="@+id/linearColumnhomeOne"
+                        android:id="@+id/btnHome"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_40pxv"
-                        android:layout_weight="0.3"
+                        android:layout_weight="0.2"
                         android:orientation="vertical">
 
                         <ImageView
@@ -193,7 +194,7 @@
                             tools:src="@drawable/img_home" />
 
                         <TextView
-                            android:id="@+id/txtHOMETwo"
+                            android:id="@+id/txtHOME"
                             style="@style/txtAndadaProromanbold10_1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -203,13 +204,12 @@
                             android:ellipsize="end"
                             android:gravity="center_horizontal"
                             android:singleLine="true"
-                            android:text="@{articlesVM.articlesModel.txtHOMEOne}"
-                            tools:ignore="TextSizeCheck"
-                            tools:text="@string/lbl_home" />
+                            android:text="@string/lbl_home"
+                            tools:ignore="TextSizeCheck" />
                     </LinearLayout>
 
                     <FrameLayout
-                        android:id="@+id/frameStackplus"
+                        android:id="@+id/btnAdd"
                         style="@style/groupStyleblue_400cornerRadius"
                         android:layout_width="@dimen/_58pxh"
                         android:layout_height="@dimen/_58pxv"
@@ -223,17 +223,15 @@
                             android:layout_marginTop="@dimen/_18pxv"
                             android:layout_marginBottom="@dimen/_17pxv"
                             android:scaleType="fitXY"
-                            android:src="@drawable/img_plus"
-                            tools:ignore="ContentDescription"
-                            tools:src="@drawable/img_plus" />
+                            android:src="@drawable/img_plus"/>
                     </FrameLayout>
 
                     <LinearLayout
-                        android:id="@+id/linearColumnuser"
+                        android:id="@+id/btnProfile"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_40pxv"
-                        android:layout_weight="0.3"
+                        android:layout_weight="0.2"
                         android:orientation="vertical">
 
                         <ImageView
@@ -242,9 +240,7 @@
                             android:layout_height="@dimen/_25pxh"
                             android:layout_gravity="center"
                             android:scaleType="fitXY"
-                            android:src="@drawable/img_user_bluegray_100"
-                            tools:ignore="ContentDescription"
-                            tools:src="@drawable/img_user_bluegray_100" />
+                            android:src="@drawable/img_user_bluegray_100"/>
 
                         <TextView
                             android:id="@+id/txtPROFILE"
@@ -257,9 +253,8 @@
                             android:ellipsize="end"
                             android:gravity="center_horizontal"
                             android:singleLine="true"
-                            android:text="@{articlesVM.articlesModel.txtPROFILE }"
-                            tools:ignore="TextSizeCheck"
-                            tools:text="@string/lbl_profile" />
+                            android:text="@string/lbl_profile"
+                            tools:ignore="TextSizeCheck" />
                     </LinearLayout>
 
                 </LinearLayout>

@@ -280,7 +280,7 @@
     <style name="txtSFProTextsemibold14_1">
         <item name="android:textSize">@dimen/_14pxh</item>
         <item name="android:textColor">@color/bluegray_700</item>
-        <item name="android:fontFamily">@font/sf_pro_text</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
         <item name="android:textFontWeight" tools:targetApi="p">600</item>
     </style>
     <style name="txtAndadaProromanmedium11">

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="forgetPassScreenOneVM" type="com.phngsapplication.app.modules.forgetpassscreenone.data.viewmodel.ForgetPassScreenOneVM"/>
+
     </data>
+<!--    <variable name="forgetPassScreenOneVM" type="com.phngsapplication.app.modules.forgetpassscreenone.data.viewmodel.ForgetPassScreenOneVM"/>-->
     <LinearLayout android:gravity="start"
         android:id="@+id/linearForgetPassScr"
         android:layout_height="match_parent"
@@ -16,8 +17,8 @@
             android:layout_marginTop="@dimen/_80pxv"
             android:layout_width="match_parent"
             android:singleLine="true"
-            android:text="@{forgetPassScreenOneVM.forgetPassScreenOneModel.txtForgetpassword}"
-            style="@style/txtAndadaProromanbold30_1" tools:text="@string/lbl_forget_password"/>
+            android:text="@string/lbl_forget_password"
+            style="@style/txtAndadaProromanbold30_1"/>
         <TextView android:ellipsize="end"
             android:id="@+id/txtResetlinkwill"
             android:layout_height="wrap_content"
@@ -26,8 +27,8 @@
             android:layout_marginTop="@dimen/_9pxv"
             android:layout_width="match_parent"
             android:singleLine="true"
-            android:text="@{forgetPassScreenOneVM.forgetPassScreenOneModel.txtResetlinkwill}"
-            style="@style/txtAndadaProromanmedium16" tools:text="@string/msg_reset_link_will"/>
+            android:text="@string/msg_reset_link_will"
+            style="@style/txtAndadaProromanmedium16"/>
 
         <TextView
             android:id="@+id/txtEmail"
@@ -39,9 +40,8 @@
             android:layout_marginEnd="@dimen/_23pxh"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="@{forgetPassScreenOneVM.forgetPassScreenOneModel.txtEmail}"
-            tools:ignore="TextSizeCheck"
-            tools:text="@string/lbl_email2" />
+            android:text="@string/lbl_email2"
+            tools:ignore="TextSizeCheck"/>
 
         <EditText
             android:id="@+id/etEmailOne"
@@ -58,7 +58,7 @@
             android:paddingEnd="@dimen/_30pxh"
             android:paddingBottom="@dimen/_10pxv"
             android:singleLine="true"
-            android:text="@={forgetPassScreenOneVM.forgetPassScreenOneModel.etEmailOneValue}"
+            android:text=""
             android:textColorHint="@color/bluegray_800"
             tools:ignore="Autofill" />
 

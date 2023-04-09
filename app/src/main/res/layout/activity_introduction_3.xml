@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="introduction3VM" type="com.phngsapplication.app.modules.introduction3.data.viewmodel.Introduction3VM"/>
+
     </data>
+<!--    <variable name="introduction3VM" type="com.phngsapplication.app.modules.introduction3.data.viewmodel.Introduction3VM"/>-->
     <FrameLayout android:id="@+id/frameOnboarding3"
         android:layout_height="match_parent"
         android:layout_width="match_parent" style="@style/groupStylewhite_A700">
@@ -40,8 +41,8 @@
                 android:layout_marginTop="@dimen/_66pxv"
                 android:layout_width="match_parent"
                 android:singleLine="true"
-                android:text="@{introduction3VM.introduction3Model.txtReadManyArtic}"
-                style="@style/txtAndadaProromanbold20" tools:text="@string/msg_read_many_artic"/>
+                android:text="@string/msg_read_many_artic"
+                style="@style/txtAndadaProromanbold20"/>
 
             <TextView
                 android:id="@+id/txtDescription"
@@ -51,9 +52,8 @@
                 android:layout_marginTop="@dimen/_20pxv"
                 android:layout_marginEnd="@dimen/_2pxh"
                 android:gravity="center_horizontal"
-                android:text="@{introduction3VM.introduction3Model.txtDescription}"
-                tools:ignore="TextSizeCheck"
-                tools:text="@string/msg_let_s_learn_mor" />
+                android:text="@string/msg_let_s_learn_mor"
+                tools:ignore="TextSizeCheck"/>
 
             <LinearLayout
                 android:id="@+id/linearRowellipsetwentythree"

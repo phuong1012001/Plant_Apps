@@ -176,7 +176,7 @@
                            tools:src="@drawable/img_camera" />
 
                        <TextView
-                           android:id="@+id/txtPrice"
+                           android:id="@+id/DESCRIPTION"
                            style="@style/txtAndadaProromanbold10_4"
                            android:layout_width="match_parent"
                            android:layout_height="wrap_content"
