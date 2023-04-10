@@ -57,7 +57,7 @@ class DetailArticlesActivity :
       startActivity(destIntent)
     }
 
-    binding.btnAddPlant.setOnClickListener {
+    binding.btnAdd.setOnClickListener {
       val destIntent = CameraActivity.getIntent(this, null)
       startActivity(destIntent)
     }

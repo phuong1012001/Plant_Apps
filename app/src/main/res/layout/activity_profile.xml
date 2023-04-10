@@ -24,7 +24,7 @@
                 android:id="@+id/imageEllipse"
                 imageRes="@{@drawable/img_ellipse_187x248}"
                 android:layout_width="@dimen/_200pxh"
-                android:layout_height="@dimen/_180pxh"
+                android:layout_height="@dimen/_180pxv"
                 android:layout_gravity="center_horizontal|end"
                 android:layout_marginBottom="11dp"
                 android:scaleType="fitXY"
@@ -38,7 +38,7 @@
                 android:id="@+id/imageEllipseOne"
                 imageRes="@{@drawable/img_ellipse_1}"
                 android:layout_width="@dimen/_75pxh"
-                android:layout_height="@dimen/_124pxh"
+                android:layout_height="@dimen/_124pxv"
                 android:layout_gravity="bottom|end"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="@+id/imageEllipse"
@@ -47,6 +47,7 @@
                 tools:src="@drawable/img_ellipse_1" />
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -109,44 +110,67 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            style="@style/groupStylewhite_A700"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_200pxv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
-            style="@style/groupStylewhite_A700"
             tools:ignore="ExtraText">>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tablayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#CD29D890"
+                android:layout_height="@dimen/_40pxv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="MissingConstraints">
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ARTICLES"></com.google.android.material.tabs.TabItem>
+                    android:text="ARTICLES">
+
+                </com.google.android.material.tabs.TabItem>
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SPECIES" />
+                    android:text="SPECIES"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </com.google.android.material.tabs.TabLayout>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_40pxv"
+                app:layout_behavior="com.google.android.material.tabs.TabLayout$ScrollingviewBehavior"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tablayout"
+                tools:ignore="SpeakableTextPresentCheck">
+
+            </androidx.viewpager.widget.ViewPager>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/frameBottombar"
             style="@style/groupStyle_1"
-            android:layout_width="@dimen/_370pxh"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_115pxv"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints">
 
             <FrameLayout
                 android:id="@+id/frameStackunion"
@@ -159,27 +183,26 @@
 
                 <ImageView
                     android:id="@+id/imageUnion"
-                    imageRes="@{@drawable/img_union}"
+                    imageRes="@{@drawable/img_union_1}"
                     android:layout_width="@dimen/_375pxh"
-                    android:layout_height="@dimen/_115pxh"
+                    android:layout_height="@dimen/_115pxv"
                     android:layout_gravity="center"
                     android:scaleType="fitXY"
                     tools:ignore="ContentDescription"
-                    tools:src="@drawable/img_union" />
+                    tools:src="@drawable/img_union_1" />
 
                 <LinearLayout
                     android:id="@+id/linearRow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10pxv"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/btnHome"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_40pxv"
-                        android:layout_weight="0.3"
+                        android:layout_marginTop="@dimen/_50pxv"
+                        android:layout_weight="0.25"
                         android:orientation="vertical">
 
                         <ImageView
@@ -209,14 +232,15 @@
                     </LinearLayout>
 
                     <FrameLayout
-                        android:id="@+id/btnAddPlant"
+                        android:id="@+id/btnAdd"
                         style="@style/groupStyleblue_400cornerRadius"
                         android:layout_width="@dimen/_58pxh"
                         android:layout_height="@dimen/_58pxv"
+                        android:layout_marginTop="@dimen/_10pxv"
                         android:layout_marginBottom="@dimen/_30pxv">
 
                         <ImageView
-
+                            android:id="@+id/imagePlus"
                             android:layout_width="@dimen/_21pxh"
                             android:layout_height="@dimen/_21pxh"
                             android:layout_gravity="center"
@@ -224,7 +248,7 @@
                             android:layout_marginBottom="@dimen/_17pxv"
                             android:scaleType="fitXY"
                             android:src="@drawable/img_plus"
-                            tools:ignore="ContentDescription,DuplicateIds"
+                            tools:ignore="ContentDescription"
                             tools:src="@drawable/img_plus" />
                     </FrameLayout>
 
@@ -232,8 +256,8 @@
                         android:id="@+id/btnProfile"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_40pxv"
-                        android:layout_weight="0.3"
+                        android:layout_marginTop="@dimen/_50pxv"
+                        android:layout_weight="0.25"
                         android:orientation="vertical">
 
                         <ImageView

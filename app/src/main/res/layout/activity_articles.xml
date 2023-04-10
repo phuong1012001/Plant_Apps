@@ -19,7 +19,8 @@
             android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/groupStylewhite_A700">
 
             <FrameLayout
                 android:id="@+id/frameStackarrowleft"
@@ -53,7 +54,7 @@
                         <ImageView
                             android:id="@+id/btnBack"
                             android:layout_width="@dimen/_11pxh"
-                            android:layout_height="@dimen/_19pxh"
+                            android:layout_height="@dimen/_19pxv"
                             android:layout_marginEnd="@dimen/_10pxh"
                             android:scaleType="fitXY"
                             android:src="@drawable/img_arrowleft"
@@ -77,7 +78,7 @@
                         android:id="@+id/imageEllipse"
                         imageRes="@{@drawable/img_ellipse}"
                         android:layout_width="@dimen/_168pxh"
-                        android:layout_height="@dimen/_86pxh"
+                        android:layout_height="@dimen/_86pxv"
                         android:layout_marginBottom="@dimen/_63pxv"
                         android:scaleType="fitXY"
                         tools:ignore="ContentDescription"
@@ -88,7 +89,7 @@
                     android:id="@+id/imageEllipseOne"
                     imageRes="@{@drawable/img_ellipse_4}"
                     android:layout_width="@dimen/_75pxh"
-                    android:layout_height="@dimen/_124pxh"
+                    android:layout_height="@dimen/_124pxv"
                     android:layout_gravity="bottom|end"
                     android:layout_marginStart="@dimen/_10pxh"
                     android:layout_marginTop="@dimen/_16pxv"
@@ -127,6 +128,7 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -156,16 +158,19 @@
             </ScrollView>
 
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/frameBottombar"
             style="@style/groupStyle_1"
-            android:layout_width="@dimen/_370pxh"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_115pxv"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent">
+
             <FrameLayout
                 android:id="@+id/frameStackunion"
                 android:layout_width="match_parent"
@@ -177,27 +182,26 @@
 
                 <ImageView
                     android:id="@+id/imageUnion"
-                    imageRes="@{@drawable/img_union}"
+                    imageRes="@{@drawable/img_union_1}"
                     android:layout_width="@dimen/_375pxh"
-                    android:layout_height="@dimen/_115pxh"
+                    android:layout_height="@dimen/_115pxv"
                     android:layout_gravity="center"
                     android:scaleType="fitXY"
                     tools:ignore="ContentDescription"
-                    tools:src="@drawable/img_union" />
+                    tools:src="@drawable/img_union_1" />
 
                 <LinearLayout
                     android:id="@+id/linearRow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10pxv"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/btnHome"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_40pxv"
-                        android:layout_weight="0.3"
+                        android:layout_marginTop="@dimen/_50pxv"
+                        android:layout_weight="0.25"
                         android:orientation="vertical">
 
                         <ImageView
@@ -231,6 +235,7 @@
                         style="@style/groupStyleblue_400cornerRadius"
                         android:layout_width="@dimen/_58pxh"
                         android:layout_height="@dimen/_58pxv"
+                        android:layout_marginTop="@dimen/_10pxv"
                         android:layout_marginBottom="@dimen/_30pxv">
 
                         <ImageView
@@ -250,8 +255,8 @@
                         android:id="@+id/btnProfile"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_40pxv"
-                        android:layout_weight="0.3"
+                        android:layout_marginTop="@dimen/_50pxv"
+                        android:layout_weight="0.25"
                         android:orientation="vertical">
 
                         <ImageView
@@ -285,5 +290,6 @@
             </FrameLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

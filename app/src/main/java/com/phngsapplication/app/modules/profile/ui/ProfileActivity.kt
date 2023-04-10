@@ -3,20 +3,33 @@ package com.phngsapplication.app.modules.profile.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.viewModels
-import com.google.android.material.tabs.TabLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentPagerAdapter
+import com.phngsapplication.app.ArticlesFragment
 import com.phngsapplication.app.R
+import com.phngsapplication.app.SpeciesFragment
 import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.databinding.ActivityProfileBinding
-import com.phngsapplication.app.modules.profile.data.viewmodel.ProfileVM
-import kotlin.String
-import kotlin.Unit
+import org.koin.android.ext.android.bind
+
 
 class ProfileActivity : BaseActivity<ActivityProfileBinding>(R.layout.activity_profile) {
+  lateinit var ArticlesFragment: ArticlesFragment
+  lateinit var SpeciesFragment: SpeciesFragment
 
-  private lateinit var tablayout: TabLayout
   override fun onInitialized(): Unit {
-    binding.tablayout.
+    ArticlesFragment = ArticlesFragment();
+    SpeciesFragment = SpeciesFragment();
+
+    binding.tablayout.setupWithViewPager(binding.viewPager)
+
+
+    val fragmentManager = supportFragmentManager
+    val adapter = ViewPagerAdapter(supportFragmentManager, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT)
+    adapter.addFragment(ArticlesFragment, "Articles")
+    adapter.addFragment(SpeciesFragment, "Species")
+    binding.viewPager.setAdapter(adapter)
 
   }
 
@@ -31,5 +44,27 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(R.layout.activity_p
       destIntent.putExtra("bundle", bundle)
       return destIntent
     }
+  }
+}
+
+internal class ViewPagerAdapter(manager: FragmentManager?, behaviorResumeOnlyCurrentFragment: Int) :
+  FragmentPagerAdapter(manager!!) {
+  private val mFragmentList: MutableList<Fragment> = ArrayList()
+  private val mFragmentTitleList: MutableList<String> = ArrayList()
+  override fun getItem(position: Int): Fragment {
+    return mFragmentList[position]
+  }
+
+  override fun getCount(): Int {
+    return mFragmentList.size
+  }
+
+  fun addFragment(fragment: Fragment, title: String) {
+    mFragmentList.add(fragment)
+    mFragmentTitleList.add(title)
+  }
+
+  override fun getPageTitle(position: Int): CharSequence? {
+    return mFragmentTitleList[position]
   }
 }

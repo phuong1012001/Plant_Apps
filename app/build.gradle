@@ -97,5 +97,7 @@ dependencies {
     //tablayout
     //noinspection GradleCompatible
     implementation 'com.android.support:design:26.1.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:support-v4:26.1.0'
 }
 

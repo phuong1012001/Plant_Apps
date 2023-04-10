@@ -15,6 +15,7 @@ import com.phngsapplication.app.ui.ArticlesActivity
 import com.phngsapplication.app.modules.camera.ui.CameraActivity
 import com.phngsapplication.app.modules.homepage.`data`.model.PlantRowModel
 import com.phngsapplication.app.modules.homepage.`data`.viewmodel.HomepageVM
+import com.phngsapplication.app.modules.profile.ui.ProfileActivity
 import com.phngsapplication.app.ui.ListPlantActivity
 import kotlin.Boolean
 import kotlin.Int
@@ -59,6 +60,10 @@ class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity
       }
       binding.linearColumncamera.setOnClickListener {
         val destIntent = CameraActivity.getIntent(this, null)
+        startActivity(destIntent)
+      }
+      binding.linearColumnuser.setOnClickListener{
+        val destIntent = ProfileActivity.getIntent(this, null)
         startActivity(destIntent)
       }
     }
