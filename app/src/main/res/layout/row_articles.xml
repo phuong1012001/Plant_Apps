@@ -35,13 +35,12 @@
             <ImageView
                 android:id="@+id/imageArticle"
                 cornerRadius="@{@dimen/_13pxh}"
-                android:src="@drawable/img_rectangle22"
                 android:layout_width="@dimen/_331pxh"
-                android:layout_height="@dimen/_145pxh"
+                android:layout_height="@dimen/_145pxv"
                 android:layout_gravity="top|start"
                 android:layout_marginBottom="@dimen/_10pxv"
                 android:scaleType="fitXY"
-               />
+                android:src="@drawable/img_rectangle22" />
 
             <TextView
                 android:id="@+id/titleArticle"
