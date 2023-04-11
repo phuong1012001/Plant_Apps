@@ -7,6 +7,9 @@ import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.phngsapplication.app.R
 import com.phngsapplication.app.adapter.ArticlesAdapter
 import com.phngsapplication.app.appcomponents.base.BaseActivity
@@ -20,6 +23,7 @@ import com.phngsapplication.app.modules.homepage.data.model.HomepageRowModel
 import com.phngsapplication.app.modules.homepage.`data`.viewmodel.HomepageVM
 import com.phngsapplication.app.modules.profile.ui.ProfileActivity
 import com.phngsapplication.app.ui.ListPlantActivity
+import com.phngsapplication.app.ui.LoginScreenActivity
 import kotlin.Boolean
 import kotlin.Int
 import kotlin.String
@@ -28,16 +32,36 @@ import kotlin.Unit
 class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity_homepage) {
   private val viewModel: HomepageVM by viewModels<HomepageVM>()
 
+  private lateinit var firebaseAuth: FirebaseAuth
+  private lateinit var database: DatabaseReference
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    firebaseAuth = FirebaseAuth.getInstance()
+    checkUser()
+  }
+
+  private fun checkUser() {
+    //get current user
+    val firebaseUser = firebaseAuth.currentUser
+    if(firebaseUser == null){
+      val destIntent = LoginScreenActivity.getIntent(this, null)
+      startActivity(destIntent)
+    }
+    else{
+      //logged in, get and show user infor
+      val email = firebaseUser.email
+      val name = FirebaseDatabase.getInstance().
+      Log.d("Name", name.toString())
+      //set to textview
+      binding.txtName.text = "Hello $name"
+
+    }
+  }
+
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
 
-//    val data = ArrayList<Article>()
-//    for(i in 1..5){
-//      data.add(Article("tomato", "Item" + i, "img_ellipse31", "Name" + i, "Date" + i))
-//    }
-//    val adapter = ArticlesAdapter(data)
-//
-//    binding.recyclerHomepage.adapter = adapter
 
     val data = ArrayList<HomepageRowModel>()
     for(i in 1..5){
@@ -54,6 +78,8 @@ class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity
       }
     }
     )
+
+    //binding.txtName.text = "Hello" + " A"
   }
 
   override fun setUpClicks(): Unit {
@@ -88,7 +114,6 @@ class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity
       when(view.id) {
         R.id.frameStackrectanglefortyfour ->  {
           val destIntent = ArticlesActivity.getIntent(this, null)
-          Log.d("AAAAAAA", "D")
           startActivity(destIntent)
         }
       }

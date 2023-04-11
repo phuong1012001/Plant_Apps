@@ -1,5 +1,6 @@
 package com.phngsapplication.app.ui
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -17,9 +18,16 @@ class LoginScreenActivity : BaseActivity<ActivityLoginScreenBinding>(R.layout.ac
 
   private lateinit var firebaseAuth: FirebaseAuth
 
+  private lateinit var progressDialog: ProgressDialog
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     firebaseAuth = FirebaseAuth.getInstance()
+
+    //init progress Dialog
+    progressDialog = ProgressDialog(this)
+    progressDialog.setTitle("Please wait !")
+    progressDialog.setCanceledOnTouchOutside(false)
   }
 
   override fun onInitialized(): Unit {
@@ -40,9 +48,19 @@ class LoginScreenActivity : BaseActivity<ActivityLoginScreenBinding>(R.layout.ac
       val destIntent = HomepageActivity.getIntent(this, null)
 
       if(email.isNotEmpty() && pass.isNotEmpty()){
+        progressDialog.setMessage("Logging...")
+        progressDialog.show()
+
         firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
           if(it.isSuccessful){
             startActivity(destIntent)
+            val verify = firebaseAuth.currentUser?.isEmailVerified
+            if(verify == true){
+              val user = firebaseAuth.currentUser
+              startActivity(destIntent)
+            }else{
+              Toast.makeText(this, "Please verify your Email !!!", Toast.LENGTH_SHORT).show()
+            }
           }else{
             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
           }
