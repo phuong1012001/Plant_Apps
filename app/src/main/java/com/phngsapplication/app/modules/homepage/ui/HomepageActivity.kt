@@ -3,17 +3,20 @@ package com.phngsapplication.app.modules.homepage.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import com.phngsapplication.app.R
+import com.phngsapplication.app.adapter.ArticlesAdapter
 import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.appcomponents.views.ImagePickerFragmentDialog
 import com.phngsapplication.app.databinding.ActivityHomepageBinding
+import com.phngsapplication.app.model.Article
 import com.phngsapplication.app.ui.ArticlesActivity
 //import com.phngsapplication.app.ui.ArticlesActivity
 import com.phngsapplication.app.modules.camera.ui.CameraActivity
-import com.phngsapplication.app.modules.homepage.`data`.model.PlantRowModel
+import com.phngsapplication.app.modules.homepage.data.model.HomepageRowModel
 import com.phngsapplication.app.modules.homepage.`data`.viewmodel.HomepageVM
 import com.phngsapplication.app.modules.profile.ui.ProfileActivity
 import com.phngsapplication.app.ui.ListPlantActivity
@@ -28,20 +31,29 @@ class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity
   override fun onInitialized(): Unit {
     viewModel.navArguments = intent.extras?.getBundle("bundle")
 
-    val plantAdapter = PlantAdapter(viewModel.homepageList.value?:mutableListOf())
-    binding.recyclerHomepage.adapter = plantAdapter
-    plantAdapter.setOnItemClickListener(
-    object : PlantAdapter.OnItemClickListener {
-      override fun onItemClick(view:View, position:Int, item : PlantRowModel) {
+//    val data = ArrayList<Article>()
+//    for(i in 1..5){
+//      data.add(Article("tomato", "Item" + i, "img_ellipse31", "Name" + i, "Date" + i))
+//    }
+//    val adapter = ArticlesAdapter(data)
+//
+//    binding.recyclerHomepage.adapter = adapter
+
+    val data = ArrayList<HomepageRowModel>()
+    for(i in 1..5){
+      data.add(HomepageRowModel("a", "b"))
+    }
+
+    val homepageAdapter = HomepageAdapter(data)
+
+    binding.recyclerHomepage.adapter = homepageAdapter
+    homepageAdapter.setOnItemClickListener(
+    object : HomepageAdapter.OnItemClickListener {
+      override fun onItemClick(view: View, position: Int, item: HomepageRowModel) {
         onClickRecyclerHomepage(view, position, item)
       }
     }
     )
-    viewModel.homepageList.observe(this) {
-      plantAdapter.updateData(it)
-    }
-    binding.homepageVM = viewModel
-    setUpSearchViewGroupTwentyOneListener()
   }
 
   override fun setUpClicks(): Unit {
@@ -71,9 +83,14 @@ class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity
     fun onClickRecyclerHomepage(
       view: View,
       position: Int,
-      item: PlantRowModel
+      item: HomepageRowModel
     ): Unit {
       when(view.id) {
+        R.id.frameStackrectanglefortyfour ->  {
+          val destIntent = ArticlesActivity.getIntent(this, null)
+          Log.d("AAAAAAA", "D")
+          startActivity(destIntent)
+        }
       }
     }
 

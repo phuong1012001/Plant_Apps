@@ -1,47 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="homepageRowModel" type="com.phngsapplication.app.modules.homepage.data.model.PlantRowModel"/>
+        <variable name="homepageRowModel" type="com.phngsapplication.app.modules.homepage.data.model.HomepageRowModel"/>
     </data>
-    <FrameLayout android:id="@+id/frameStackrectanglefortyfour"
-        android:layout_height="wrap_content" android:layout_width="@dimen/_299pxh">
-        <ImageView android:id="@+id/imageRectangleFortyFour"
-            android:layout_gravity="start"
-            android:layout_height="@dimen/_160pxh"
-            android:layout_width="@dimen/_299pxh"
-            android:scaleType="fitXY" cornerRadius="@{@dimen/_3pxh}"
-            imageRes="@{@drawable/img_rectangle44}"
-            tools:ignore="ContentDescription" tools:src="@drawable/img_rectangle44"/>
-        <LinearLayout android:id="@+id/linearColumnhomeplants"
-            android:layout_gravity="start"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:orientation="vertical" style="@style/groupStylegray_800_38cornerRadius">
-            <TextView android:ellipsize="end"
-                android:id="@+id/txtHomePlants"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/_13pxh"
-                android:layout_marginStart="@dimen/_13pxh"
-                android:layout_marginTop="@dimen/_103pxv"
-                android:layout_width="wrap_content"
-                android:singleLine="true"
-                android:text="@{homepageRowModel.txtHomePlants}"
-                style="@style/txtAndadaProromanbold18" tools:text="@string/lbl_home_plants"/>
 
-            <TextView
-                android:id="@+id/txt68TypesofPla"
-                style="@style/txtAndadaProromanmedium12"
-                android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameStackrectanglefortyfour"
+        android:layout_width="@dimen/_299pxh"
+        android:layout_height="wrap_content">
+
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:text="AAAAAAAAAAAAAAAAAAAAAAAAAAA"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toStartOf="parent"-->
+        <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+        <FrameLayout
+            android:layout_width="@dimen/_299pxh"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageRectangleFortyFour"
+                cornerRadius="@{@dimen/_3pxh}"
+                imageRes="@{@drawable/img_rectangle44}"
+                android:layout_width="@dimen/_299pxh"
+                android:layout_height="@dimen/_160pxh"
+                android:layout_gravity="start"
+                android:scaleType="fitXY"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/img_rectangle44" />
+
+            <LinearLayout
+                android:id="@+id/linearColumnhomeplants"
+                style="@style/groupStylegray_800_38cornerRadius"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_13pxh"
-                android:layout_marginTop="@dimen/_4pxv"
-                android:layout_marginEnd="@dimen/_13pxh"
-                android:layout_marginBottom="@dimen/_15pxv"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:text="@{homepageRowModel.txt68TypesofPla}"
-                tools:ignore="TextSizeCheck"
-                tools:text="@string/msg_68_types_of_pla" />
-        </LinearLayout>
-    </FrameLayout>
+                android:layout_gravity="start"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtHomePlants"
+                    style="@style/txtAndadaProromanbold18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_13pxh"
+                    android:layout_marginTop="@dimen/_103pxv"
+                    android:layout_marginEnd="@dimen/_13pxh"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/lbl_home_plants" />
+
+                <TextView
+                    android:id="@+id/txt68TypesofPla"
+                    style="@style/txtAndadaProromanmedium12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_13pxh"
+                    android:layout_marginTop="@dimen/_4pxv"
+                    android:layout_marginEnd="@dimen/_13pxh"
+                    android:layout_marginBottom="@dimen/_15pxv"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/msg_68_types_of_pla"
+                    tools:ignore="TextSizeCheck" />
+            </LinearLayout>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

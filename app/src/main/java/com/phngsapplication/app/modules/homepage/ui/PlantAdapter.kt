@@ -24,7 +24,7 @@ class PlantAdapter(
     val plantRowModel = PlantRowModel()
     // TODO uncomment following line after integration with data source
     // val homepageRowModel = list[position]
-    holder.binding.homepageRowModel = plantRowModel
+    //holder.binding.homepageRowModel = plantRowModel
   }
 
   override fun getItemCount(): Int = 2
