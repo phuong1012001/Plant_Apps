@@ -51,10 +51,10 @@ class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity
     else{
       //logged in, get and show user infor
       val email = firebaseUser.email
-      val name = FirebaseDatabase.getInstance().
-      Log.d("Name", name.toString())
-      //set to textview
-      binding.txtName.text = "Hello $name"
+//      val name = FirebaseDatabase.getInstance().
+//      Log.d("Name", name.toString())
+//      //set to textview
+//      binding.txtName.text = "Hello $name"
 
     }
   }
