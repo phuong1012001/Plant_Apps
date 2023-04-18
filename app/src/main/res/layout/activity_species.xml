@@ -123,16 +123,20 @@
 <!--                            style="@style/txtAndadaProromanmedium14" tools:text="@string/msg_search_for_spec"/>-->
 <!--                    </LinearLayout>  -->
                 </FrameLayout>
-                <LinearLayout android:id="@+id/linearRowc"
+
+                <LinearLayout
+                    android:id="@+id/linearRowc"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_23pxh"
                     android:layout_marginStart="@dimen/_23pxh"
                     android:layout_marginTop="@dimen/_10pxv"
-                    android:layout_width="match_parent" android:orientation="horizontal">
+                    android:layout_marginEnd="@dimen/_23pxh"
+                    android:orientation="horizontal">
 
                     <ScrollView
-                        android:layout_width="wrap_content"
+                        android:layout_width="266dp"
                         android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
                         android:layout_weight="0.5"
                         android:paddingBottom="90dp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -148,7 +152,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/txtC"
+                                android:id="@+id/txtL"
                                 style="@style/txtAndadaProromanbold14_1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -159,26 +163,51 @@
                                 android:text="@{speciesVM.speciesModel.txtC}"
                                 tools:ignore="TextSizeCheck"
                                 tools:text="@string/lbl_c" />
+                            <ListView
+                                android:id="@+id/ItemL"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                />
+
                         </LinearLayout>
                     </ScrollView>
 
-                    <ListView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_307pxh"
-                        android:layout_marginTop="@dimen/_1pxv"
+                    <ScrollView
+                        android:layout_width="10dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="0.5"
-                        android:singleLine="true" />
-<!--                    <TextView android:ellipsize="end"-->
-<!--                        android:id="@+id/txtOne"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="@dimen/_307pxh"-->
-<!--                        android:layout_marginTop="@dimen/_1pxv"-->
-<!--                        android:layout_weight="0.5"-->
-<!--                        android:layout_width="0dp" android:singleLine="true"-->
-<!--                        android:text="@{speciesVM.speciesModel.txtOne}"-->
-<!--                        style="@style/txtAndadaProromanbold14_2" tools:text="@string/lbl"/>-->
+                        android:paddingBottom="90dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0">
 
+                        <LinearLayout
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/txtR"
+                                style="@style/txtAndadaProromanbold14_1"
+                                android:layout_width="30dp"
+                                android:layout_height="29dp"
+                                android:layout_marginBottom="@dimen/_1pxv"
+                                android:layout_weight="0.5"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="@{speciesVM.speciesModel.txtC}"
+                                tools:ignore="TextSizeCheck"
+                                tools:text="@string/lbl_c" />
+
+                            <ListView
+                                android:id="@+id/ItemR"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp" />
+                        </LinearLayout>
+                    </ScrollView>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
