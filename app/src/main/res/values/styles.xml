@@ -54,6 +54,7 @@
     <style name="groupStylegray_800_38cornerRadius">
         <item name="android:background">@drawable/rectangle_bg_gray_800_38_radius_3</item>
     </style>
+<!--    //-->
     <style name="groupStylewhite_A700">
         <item name="android:background">@drawable/rectangle_bg_white_a700</item>
     </style>
@@ -534,5 +535,23 @@
         <item name="android:textSize">@dimen/_14pxh</item>
 <!--        <item name="android:textColorPrimary">@color/bluegray_100</item>-->
         <item name="android:textColorHint">@color/bluegray_100</item>
+    </style>
+    <style name="AppThem" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="txtAlphabet1">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/teal_A400_7f</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+    </style>
+    <style name="txtAlphabet2">
+        <item name="android:textSize">@dimen/_14pxh</item>
+        <item name="android:textColor">@color/bluegray_700</item>
+        <item name="android:fontFamily">@font/andada_pro</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
     </style>
 </resources>

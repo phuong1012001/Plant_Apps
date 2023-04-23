@@ -93,7 +93,7 @@
                     android:src="@drawable/img_group50" tools:ignore="ContentDescription"/>
             </FrameLayout>
             <TextView android:ellipsize="end"
-                android:id="@+id/txtCircleCactus"
+                android:id="@+id/txtPlant"
                 android:layout_gravity="start"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/_23pxh"

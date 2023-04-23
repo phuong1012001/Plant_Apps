@@ -1,4 +1,4 @@
-package com.phngsapplication.app.modules.homepage.ui
+package com.phngsapplication.app.adapter
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -6,27 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.phngsapplication.app.R
-import com.phngsapplication.app.databinding.RowHomepageBinding
+import com.phngsapplication.app.databinding.RowPlantTypesBinding
 import com.phngsapplication.app.modules.homepage.`data`.model.HomepageRowModel
 import kotlin.Int
 import kotlin.collections.List
 
-class HomepageAdapter(
+class PlantTypesAdapter(
     var list: List<HomepageRowModel>
-) : RecyclerView.Adapter<HomepageAdapter.RowHomepageVH>() {
+) : RecyclerView.Adapter<PlantTypesAdapter.RowHomepageVH>() {
     private var clickListener: OnItemClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowHomepageVH {
-        val view=LayoutInflater.from(parent.context).inflate(R.layout.row_homepage,parent,false)
+        val view=LayoutInflater.from(parent.context).inflate(R.layout.row_plant_types,parent,false)
         return RowHomepageVH(view)
     }
 
     override fun onBindViewHolder(holder: RowHomepageVH, position: Int) {
         val homepageRowModel = HomepageRowModel()
-        // TODO uncomment following line after integration with data source
-        // val homepageRowModel = list[position]
-        Log.d("A", "A")
-        holder.binding.homepageRowModel = homepageRowModel
+
     }
 
     override fun getItemCount(): Int {
@@ -54,9 +51,9 @@ class HomepageAdapter(
     inner class RowHomepageVH(
         view: View
     ) : RecyclerView.ViewHolder(view) {
-        val binding: RowHomepageBinding = RowHomepageBinding.bind(itemView)
+        val binding: RowPlantTypesBinding = RowPlantTypesBinding.bind(itemView)
         init {
-            binding.frameStackrectanglefortyfour.setOnClickListener {
+            binding.plantTypes.setOnClickListener {
                 // TODO replace with value from datasource
                 clickListener?.onItemClick(it, adapterPosition, HomepageRowModel())
             }

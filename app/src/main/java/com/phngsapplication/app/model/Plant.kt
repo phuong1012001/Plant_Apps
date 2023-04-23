@@ -5,9 +5,9 @@ import android.os.Parcelable
 import kotlin.String
 
 data class Plant(
-  var imageSpecie: String,
+  var imagePlant: String,
 
-  var titleSpecie: String,
+  var txtPlant: String,
 
   var txtKINGDOM: String,
 
@@ -28,8 +28,8 @@ data class Plant(
   }
 
   override fun writeToParcel(parcel: Parcel, flags: Int) {
-    parcel.writeString(imageSpecie)
-    parcel.writeString(titleSpecie)
+    parcel.writeString(imagePlant)
+    parcel.writeString(txtPlant)
     parcel.writeString(txtKINGDOM)
     parcel.writeString(txtFAMILY)
     parcel.writeString(txtDescription)
@@ -49,4 +49,5 @@ data class Plant(
       return arrayOfNulls(size)
     }
   }
+
 }

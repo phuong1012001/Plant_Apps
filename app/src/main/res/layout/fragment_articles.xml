@@ -1,14 +1,171 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ArticlesFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="BBBBBBBBBBBBB" />
+        tools:context=".ui.ArticlesFragment">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/linearColumnThree"
+            style="@style/groupStylewhite_A700"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="start"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                style="@style/groupStylewhite_A700"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <FrameLayout
+                    android:id="@+id/frameStackarrowleft"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_180pxv"
+                    android:gravity="start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:id="@+id/linearRowarrowleft"
+                        style="@style/groupStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|start"
+                        android:layout_marginBottom="@dimen/_10pxv"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/linearColumnarrowleft"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_23pxh"
+                            android:layout_marginTop="@dimen/_31pxv"
+                            android:layout_marginBottom="@dimen/_42pxv"
+                            android:layout_weight="0.52"
+                            android:gravity="start"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:id="@+id/btnBack"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_25pxv">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_11pxh"
+                                    android:layout_height="@dimen/_19pxv"
+                                    android:layout_marginEnd="@dimen/_10pxh"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/img_arrowleft"
+                                    tools:ignore="ContentDescription,ImageContrastCheck"
+                                    tools:src="@drawable/img_arrowleft" />
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/txtArticles"
+                                style="@style/txtAndadaProromanbold30"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_15pxv"
+                                android:layout_marginEnd="@dimen/_10pxh"
+                                android:ellipsize="end"
+                                android:singleLine="true"
+                                android:text="@string/lbl_articles"
+                                tools:ignore="TextContrastCheck"
+                                tools:text="@string/lbl_articles" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/imageEllipse"
+                            imageRes="@{@drawable/img_ellipse}"
+                            android:layout_width="@dimen/_168pxh"
+                            android:layout_height="@dimen/_86pxv"
+                            android:layout_marginBottom="@dimen/_63pxv"
+                            android:scaleType="fitXY"
+                            tools:ignore="ContentDescription,ImageContrastCheck"
+                            tools:src="@drawable/img_ellipse" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageEllipseOne"
+                        imageRes="@{@drawable/img_ellipse_4}"
+                        android:layout_width="@dimen/_75pxh"
+                        android:layout_height="@dimen/_124pxv"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginStart="@dimen/_10pxh"
+                        android:layout_marginTop="@dimen/_16pxv"
+                        android:layout_marginBottom="@dimen/_16pxv"
+                        android:scaleType="fitXY"
+                        tools:ignore="ContentDescription,ImageContrastCheck"
+                        tools:src="@drawable/img_ellipse_4" />
+
+                    <androidx.appcompat.widget.SearchView
+                        android:id="@+id/searchForArticles"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center"
+                        android:layout_marginStart="@dimen/_23pxh"
+                        android:layout_marginTop="@dimen/_10pxv"
+                        android:layout_marginEnd="@dimen/_23pxh"
+                        android:background="@drawable/rectangle_bg_white_a702_radius_25"
+                        android:theme="@style/searchViewGroupTwentyOne"
+                        app:iconifiedByDefault="false"
+                        app:queryBackground="@android:color/transparent"
+                        app:queryHint="@string/msg_search_for_arti"
+                        app:searchIcon="@drawable/img_search" />
+                </FrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                style="@style/groupStylewhite_A700"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_185pxv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ScrollView
+                    android:id="@+id/scroollView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerArticles"
+                            itemSpace="@{@dimen/_25pxh}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_22pxh"
+                            android:layout_marginTop="@dimen/_30pxv"
+                            android:layout_marginEnd="@dimen/_22pxh"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                    </LinearLayout>
+                </ScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</layout>

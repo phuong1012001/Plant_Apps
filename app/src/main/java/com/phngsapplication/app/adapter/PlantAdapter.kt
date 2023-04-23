@@ -13,33 +13,33 @@ import com.phngsapplication.app.model.Plant
 import kotlin.Int
 import kotlin.collections.List
 
-class ListPlantAdapter(
+class PlantAdapter(
   var list: List<Plant>
-) : RecyclerView.Adapter<ListPlantAdapter.RowListPlantVH>() {
+) : RecyclerView.Adapter<PlantAdapter.RowPlantVH>() {
 
   var onItemClick: ((Plant)->Unit)? =null   //quan trong
 
-  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowListPlantVH {
-    val view=LayoutInflater.from(parent.context).inflate(R.layout.row_list_plant,parent,false)
-    return RowListPlantVH(view)
+  override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowPlantVH {
+    val view=LayoutInflater.from(parent.context).inflate(R.layout.row_plant,parent,false)
+    return RowPlantVH(view)
   }
 
-  override fun onBindViewHolder(holder: RowListPlantVH, position: Int) {
+  override fun onBindViewHolder(holder: RowPlantVH, position: Int) {
     val item = list[position]
-    holder.titleSpecie.setText(item.titleSpecie)
+    holder.titlePlant.setText(item.txtPlant)
     holder.txtKINGDOM.setText(item.txtKINGDOM)
     holder.txtFAMILY.setText(item.txtFAMILY)
     holder.txtDescription.setText(item.txtDescription)
 
     val drawableResourceId = holder.itemView.context.resources.getIdentifier(
-      item.imageSpecie,
+      item.imagePlant,
       "drawable",
       holder.itemView.context.packageName
     )
 
     Glide.with(holder.itemView.context)
       .load(drawableResourceId)
-      .into(holder.imageSpecie)
+      .into(holder.imagePlant)
 
     holder.oneSpecie.setOnClickListener{
       onItemClick?.invoke(item)
@@ -50,11 +50,11 @@ class ListPlantAdapter(
     return list.size
   }
 
-  inner class RowListPlantVH(
+  inner class RowPlantVH(
     view: View
   ) : RecyclerView.ViewHolder(view) {
-    val imageSpecie: ImageView = view.findViewById(R.id.imageSpecie)
-    val titleSpecie: TextView = view.findViewById(R.id.titleSpecie)
+    val imagePlant: ImageView = view.findViewById(R.id.imageSpecie)
+    val titlePlant: TextView = view.findViewById(R.id.titleSpecie)
     val txtKINGDOM: TextView = view.findViewById(R.id.txtKINGDOM)
     val txtFAMILY: TextView = view.findViewById(R.id.txtFAMILY)
     val txtDescription: TextView = view.findViewById(R.id.txtDescription)

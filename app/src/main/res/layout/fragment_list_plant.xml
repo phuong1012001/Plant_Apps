@@ -2,12 +2,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
+
     </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.SpeciesFragment">
+        tools:context=".ui.ListPlantFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/linearColumnThree"
@@ -16,9 +19,8 @@
             android:layout_height="match_parent"
             android:gravity="start"
             android:orientation="vertical">
+
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
-                style="@style/groupStylewhite_A700"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -26,12 +28,12 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <FrameLayout
-                    android:id="@+id/frameStackarrowleft"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_180pxv"
-                    android:gravity="start"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:ignore="MissingConstraints">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <LinearLayout
                         android:id="@+id/linearRowarrowleft"
@@ -69,7 +71,7 @@
                             </FrameLayout>
 
                             <TextView
-                                android:id="@+id/txtSpecies"
+                                android:id="@+id/txtPlant"
                                 style="@style/txtAndadaProromanbold30"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -77,23 +79,20 @@
                                 android:layout_marginEnd="@dimen/_10pxh"
                                 android:ellipsize="end"
                                 android:singleLine="true"
-                                android:text="@string/lbl_species2" />
+                                android:text="@string/lbl_cactus2" />
                         </LinearLayout>
 
                         <ImageView
                             android:id="@+id/imageEllipse"
-                            imageRes="@{@drawable/img_ellipse_2}"
                             android:layout_width="@dimen/_168pxh"
                             android:layout_height="@dimen/_86pxh"
                             android:layout_marginBottom="@dimen/_63pxv"
                             android:scaleType="fitXY"
-                            tools:ignore="ContentDescription"
-                            tools:src="@drawable/img_ellipse_2" />
+                            android:src="@drawable/img_ellipse_5" />
                     </LinearLayout>
 
                     <ImageView
                         android:id="@+id/imageEllipseOne"
-                        imageRes="@{@drawable/img_ellipse_4}"
                         android:layout_width="@dimen/_75pxh"
                         android:layout_height="@dimen/_124pxh"
                         android:layout_gravity="bottom|end"
@@ -101,11 +100,10 @@
                         android:layout_marginTop="@dimen/_16pxv"
                         android:layout_marginBottom="@dimen/_16pxv"
                         android:scaleType="fitXY"
-                        tools:ignore="ContentDescription"
-                        tools:src="@drawable/img_ellipse_4" />
+                        android:src="@drawable/img_ellipse_6" />
 
                     <androidx.appcompat.widget.SearchView
-                        android:id="@+id/searchForSpecies"
+                        android:id="@+id/searchForCactus"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center"
@@ -116,13 +114,12 @@
                         android:theme="@style/searchViewGroupTwentyOne"
                         app:iconifiedByDefault="false"
                         app:queryBackground="@android:color/transparent"
-                        app:queryHint="@string/msg_search_for_spec"
+                        app:queryHint="@string/msg_search_for_cact"
                         app:searchIcon="@drawable/img_search" />
                 </FrameLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                style="@style/groupStylewhite_A700"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_185pxv"
@@ -131,29 +128,39 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
+                <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginStart="@dimen/_14pxh"
-                    android:layout_marginTop="@dimen/_14pxv"
-                    android:layout_marginEnd="@dimen/_14pxh">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView1"
-                        android:layout_width="@dimen/_330pxh"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView2"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-                </LinearLayout>
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerListPlant"
+                            itemSpace="@{@dimen/_25pxh}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_22pxh"
+                            android:layout_marginTop="@dimen/_30pxv"
+                            android:layout_marginEnd="@dimen/_22pxh"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+                        <View
+                            android:id="@+id/view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_115pxv" />
+                    </LinearLayout>
+                </ScrollView>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </FrameLayout>

@@ -6,12 +6,11 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.phngsapplication.app.ArticlesFragment
+import com.phngsapplication.app.ui.ArticlesFragment
 import com.phngsapplication.app.R
-import com.phngsapplication.app.SpeciesFragment
+import com.phngsapplication.app.ui.SpeciesFragment
 import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.databinding.ActivityProfileBinding
-import org.koin.android.ext.android.bind
 
 
 class ProfileActivity : BaseActivity<ActivityProfileBinding>(R.layout.activity_profile) {

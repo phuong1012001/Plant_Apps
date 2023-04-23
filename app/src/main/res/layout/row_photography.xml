@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+<!--        <variable name="homepageRowModel" type="com.phngsapplication.app.modules.homepage.data.model.HomepageRowModel"/>-->
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/photography"
+        android:layout_width="@dimen/_126pxh"
+        android:layout_height="@dimen/_144pxv">
+        <FrameLayout
+            android:layout_width="@dimen/_126pxh"
+            android:layout_height="@dimen/_144pxv"
+            tools:ignore="MissingConstraints">
+            <ImageView
+                android:id="@+id/image"
+                cornerRadius="@{@dimen/_3pxh}"
+                imageRes="@{@drawable/img_rectangle25}"
+                android:layout_width="@dimen/_126pxh"
+                android:layout_height="@dimen/_144pxh"
+                android:layout_gravity="start"
+                android:scaleType="fitXY"
+                tools:ignore="ContentDescription"
+                android:src="@drawable/img_rectangle25" />
+
+            <LinearLayout
+                android:id="@+id/linear"
+                style="@style/groupStylewhite_A700_99cornerRadius"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_109pxv"
+                android:layout_marginEnd="@dimen/_76pxh"
+                android:layout_marginBottom="@dimen/_15pxv"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtImage"
+                    style="@style/txtAndadaProromanmedium10"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_11pxh"
+                    android:layout_marginTop="@dimen/_3pxv"
+                    android:layout_marginEnd="@dimen/_9pxh"
+                    android:layout_marginBottom="@dimen/_4pxv"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:singleLine="true"
+                    android:text="@string/lbl_mini"
+                    tools:ignore="TextSizeCheck"/>
+            </LinearLayout>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

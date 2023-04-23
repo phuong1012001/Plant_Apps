@@ -3,19 +3,16 @@ package com.phngsapplication.app.modules.homepage.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.phngsapplication.app.R
-import com.phngsapplication.app.adapter.ArticlesAdapter
+import com.phngsapplication.app.adapter.PlantTypesAdapter
 import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.appcomponents.views.ImagePickerFragmentDialog
 import com.phngsapplication.app.databinding.ActivityHomepageBinding
-import com.phngsapplication.app.model.Article
 import com.phngsapplication.app.ui.ArticlesActivity
 //import com.phngsapplication.app.ui.ArticlesActivity
 import com.phngsapplication.app.modules.camera.ui.CameraActivity
@@ -68,11 +65,11 @@ class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity
       data.add(HomepageRowModel("a", "b"))
     }
 
-    val homepageAdapter = HomepageAdapter(data)
+    val plantTypesAdapter = PlantTypesAdapter(data)
 
-    binding.recyclerHomepage.adapter = homepageAdapter
-    homepageAdapter.setOnItemClickListener(
-    object : HomepageAdapter.OnItemClickListener {
+    binding.recyclerHomepage.adapter = plantTypesAdapter
+    plantTypesAdapter.setOnItemClickListener(
+    object : PlantTypesAdapter.OnItemClickListener {
       override fun onItemClick(view: View, position: Int, item: HomepageRowModel) {
         onClickRecyclerHomepage(view, position, item)
       }
@@ -112,7 +109,7 @@ class HomepageActivity : BaseActivity<ActivityHomepageBinding>(R.layout.activity
       item: HomepageRowModel
     ): Unit {
       when(view.id) {
-        R.id.frameStackrectanglefortyfour ->  {
+        R.id.plantTypes ->  {
           val destIntent = ArticlesActivity.getIntent(this, null)
           startActivity(destIntent)
         }

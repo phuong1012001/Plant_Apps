@@ -54,7 +54,7 @@
                     android:id="@+id/imageAuthor"
                     circular="@{true}"
                     imageRes="@{@drawable/img_ellipse31}"
-                    android:layout_width="@dimen/_28pxh"
+                    android:layout_width="24dp"
                     android:layout_height="@dimen/_28pxh"
                     android:layout_marginTop="@dimen/_1pxv"
                     android:layout_marginBottom="@dimen/_1pxv"

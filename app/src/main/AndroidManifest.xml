@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.phngsapplication.app" >
+    package="com.phngsapplication.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -17,7 +17,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp"
-        android:usesCleartextTraffic="true" >
+        android:usesCleartextTraffic="true">
+<!--        <activity-->
+<!--            android:name=".ui.MainActivity"-->
+<!--            android:exported="false" />-->
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.Introduction2Activity"
             android:screenOrientation="portrait" />
@@ -26,8 +40,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.ArticlesActivity"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ui.DetailArticlesActivity"
             android:screenOrientation="portrait" />
@@ -58,15 +71,16 @@
         <activity
             android:name=".ui.DetailPlantActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.Introduction1Activity"
-            android:exported="true"
-            android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+<!--        <activity-->
+<!--            android:name=".ui.Introduction1Activity"-->
+<!--            android:exported="true"-->
+<!--            android:screenOrientation="portrait">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
         <activity
             android:name=".ui.ForgetPassScreenZeroActivity"
             android:screenOrientation="portrait" />

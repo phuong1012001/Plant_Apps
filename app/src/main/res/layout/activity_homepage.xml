@@ -149,8 +149,8 @@
                    android:layout_marginStart="@dimen/_14pxh"
                    android:layout_marginTop="@dimen/_35pxv"
                    android:layout_marginEnd="@dimen/_14pxh"
-                   android:orientation="horizontal"
-                   android:baselineAligned="false">
+                   android:baselineAligned="false"
+                   android:orientation="horizontal">
 
                    <LinearLayout
                        android:id="@+id/linearColumncamera"
@@ -187,7 +187,7 @@
                            android:gravity="center_horizontal"
                            android:singleLine="true"
                            android:text="@string/lbl_adding_new2"
-                           tools:ignore="TextSizeCheck"/>
+                           tools:ignore="TextSizeCheck" />
                    </LinearLayout>
 
                    <LinearLayout
@@ -226,7 +226,7 @@
                            android:ellipsize="end"
                            android:singleLine="true"
                            android:text="@string/lbl_species"
-                           tools:ignore="TextSizeCheck"/>
+                           tools:ignore="TextSizeCheck" />
                    </LinearLayout>
 
                    <LinearLayout
@@ -265,7 +265,7 @@
                            android:gravity="center_horizontal"
                            android:singleLine="true"
                            android:text="@string/lbl_articles2"
-                           tools:ignore="TextSizeCheck"/>
+                           tools:ignore="TextSizeCheck" />
                    </LinearLayout>
                </LinearLayout>
 

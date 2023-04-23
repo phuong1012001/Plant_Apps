@@ -7,19 +7,9 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/frameStackrectanglefortyfour"
+        android:id="@+id/plantTypes"
         android:layout_width="@dimen/_299pxh"
         android:layout_height="wrap_content">
-
-        <!--        <TextView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent"-->
-        <!--            android:text="AAAAAAAAAAAAAAAAAAAAAAAAAAA"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--            app:layout_constraintEnd_toEndOf="parent"-->
-        <!--            app:layout_constraintStart_toStartOf="parent"-->
-        <!--            app:layout_constraintTop_toTopOf="parent" />-->
-
         <FrameLayout
             android:layout_width="@dimen/_299pxh"
             android:layout_height="wrap_content"
@@ -29,7 +19,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imageRectangleFortyFour"
+                android:id="@+id/imagePlantTypes"
                 cornerRadius="@{@dimen/_3pxh}"
                 imageRes="@{@drawable/img_rectangle44}"
                 android:layout_width="@dimen/_299pxh"
@@ -60,7 +50,7 @@
                     android:text="@string/lbl_home_plants" />
 
                 <TextView
-                    android:id="@+id/txt68TypesofPla"
+                    android:id="@+id/txtNumberTypes"
                     style="@style/txtAndadaProromanmedium12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

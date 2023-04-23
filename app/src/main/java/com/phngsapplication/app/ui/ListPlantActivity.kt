@@ -7,7 +7,7 @@ import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.databinding.ActivityListPlantBinding
 import com.phngsapplication.app.model.Plant
-import com.phngsapplication.app.adapter.ListPlantAdapter
+import com.phngsapplication.app.adapter.PlantAdapter
 import kotlin.String
 import kotlin.Unit
 
@@ -19,7 +19,7 @@ class ListPlantActivity : BaseActivity<ActivityListPlantBinding>(R.layout.activi
     for(i in 1..5){
       data.add(Plant("img_rectangle_3", "Item" + i, "KINGDOM" + i, "Family" + i, "Des" + i, "Like"))
     }
-    val adapter = ListPlantAdapter(data)
+    val adapter = PlantAdapter(data)
     binding.recyclerArticles.adapter = adapter
 
     adapter.onItemClick = {

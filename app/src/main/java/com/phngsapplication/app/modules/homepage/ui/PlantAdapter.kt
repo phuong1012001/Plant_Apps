@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.phngsapplication.app.R
-import com.phngsapplication.app.databinding.RowHomepageBinding
+import com.phngsapplication.app.databinding.RowPlantTypesBinding
 import com.phngsapplication.app.modules.homepage.`data`.model.PlantRowModel
 import kotlin.Int
 import kotlin.collections.List
@@ -16,7 +16,7 @@ class PlantAdapter(
   private var clickListener: OnItemClickListener? = null
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowHomepageVH {
-    val view=LayoutInflater.from(parent.context).inflate(R.layout.row_homepage,parent,false)
+    val view=LayoutInflater.from(parent.context).inflate(R.layout.row_plant_types,parent,false)
     return RowHomepageVH(view)
   }
 
@@ -52,6 +52,6 @@ class PlantAdapter(
   inner class RowHomepageVH(
     view: View
   ) : RecyclerView.ViewHolder(view) {
-    val binding: RowHomepageBinding = RowHomepageBinding.bind(itemView)
+    val binding1: RowPlantTypesBinding = RowPlantTypesBinding.bind(itemView)
   }
 }
