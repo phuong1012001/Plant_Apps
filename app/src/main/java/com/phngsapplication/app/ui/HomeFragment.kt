@@ -1,5 +1,7 @@
 package com.phngsapplication.app.ui
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,9 +12,6 @@ import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.FragmentHomeBinding
 import com.phngsapplication.app.modules.homepage.data.model.HomepageRowModel
 import com.phngsapplication.app.adapter.PlantTypesAdapter
-import com.phngsapplication.app.appcomponents.views.ImagePickerFragmentDialog
-import com.phngsapplication.app.modules.camera.ui.CameraActivity
-import com.phngsapplication.app.modules.profile.ui.ProfileActivity
 
 class HomeFragment : Fragment() {
 
@@ -59,10 +58,9 @@ class HomeFragment : Fragment() {
         binding.bttonArticles.setOnClickListener {
             mainActivity.goToArticles()
         }
-//        binding.buttonAddingNew.setOnClickListener {
-//            val destIntent = CameraActivity.getIntent(this, null)
-//            startActivity(destIntent)
-//        }
+        binding.buttonAddingNew.setOnClickListener {
+            mainActivity.goToCamere()
+        }
     }
 
     fun onClickRecyclerHomepage(
@@ -77,7 +75,29 @@ class HomeFragment : Fragment() {
         }
     }
 
-    companion object {
+    private fun setUpSearchViewGroupTwentyOneListener(): Unit {
+//        binding.searchViewGroupTwentyOne.setOnQueryTextListener(object :
+//            SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(p0 : String) : Boolean {
+//                // Performs search when user hit
+//                // the search button on the keyboard
+//                return false
+//            }
+//            override fun onQueryTextChange(p0 : String) : Boolean {
+//                // Start filtering the list as user
+//                // start entering the characters
+//                return false
+//            }
+//        })
+    }
 
+    companion object {
+        const val TAG: String = "HOMEPAGE_ACTIVITY"
+
+//        fun getIntent(context: Context, bundle: Bundle?): Intent {
+//            val destIntent = Intent(context, HomepageActivity::class.java)
+//            destIntent.putExtra("bundle", bundle)
+//            return destIntent
+//        }
     }
 }

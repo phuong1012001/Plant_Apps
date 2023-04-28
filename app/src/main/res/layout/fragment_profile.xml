@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -11,10 +12,162 @@
         android:layout_height="match_parent"
         tools:context=".ui.ProfileFragment">
 
-        <!-- TODO: Update blank fragment layout -->
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/hello_blank_fragment" />
+            style="@style/groupStylewhite_A700">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_200pxv"
+                style="@style/groupStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imageEllipse"
+                    imageRes="@{@drawable/img_ellipse_187x248}"
+                    android:layout_width="@dimen/_200pxh"
+                    android:layout_height="@dimen/_180pxv"
+                    android:layout_gravity="center_horizontal|end"
+                    android:layout_marginBottom="11dp"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription"
+                    tools:src="@drawable/img_ellipse_187x248" />
+
+                <ImageView
+                    android:id="@+id/imageEllipseOne"
+                    imageRes="@{@drawable/img_ellipse_1}"
+                    android:layout_width="@dimen/_75pxh"
+                    android:layout_height="@dimen/_124pxv"
+                    android:layout_gravity="bottom|end"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/imageEllipse"
+                    tools:ignore="ContentDescription,MissingConstraints"
+                    tools:layout_editor_absoluteY="77dp"
+                    tools:src="@drawable/img_ellipse_1" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/imageAvatar"
+                        circular="@{true}"
+                        imageRes="@{@drawable/img_ellipse_79x79}"
+                        android:layout_width="@dimen/_79pxh"
+                        android:layout_height="@dimen/_79pxh"
+                        android:layout_marginBottom="@dimen/_10pxv"
+                        android:scaleType="fitStart"
+                        tools:ignore="ContentDescription"
+                        tools:src="@drawable/img_ellipse_79x79" />
+
+                    <TextView
+                        android:id="@+id/txtName"
+                        style="@style/txtAndadaProromanbold25"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center_horizontal|top"
+                        android:singleLine="true"
+                        android:text="@string/lbl_taylor_swift" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageLocation"
+                            android:layout_width="@dimen/_11pxh"
+                            android:layout_height="@dimen/_17pxh"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_location"
+                            tools:ignore="ContentDescription"
+                            tools:src="@drawable/img_location" />
+
+                        <TextView
+                            android:id="@+id/txtLosAngelesCa"
+                            style="@style/txtAndadaProromanbold15_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5pxh"
+                            android:ellipsize="end"
+                            android:gravity="center_horizontal"
+                            android:singleLine="true"
+                            android:text="@string/msg_los_angeles_ca"
+                            tools:ignore="TextSizeCheck" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout4"
+                style="@style/groupStylewhite_A700"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_200pxv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+                tools:ignore="ExtraText">>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tablayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40pxv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints">
+
+<!--                    <com.google.android.material.tabs.TabItem-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="ARTICLES">-->
+
+<!--                    </com.google.android.material.tabs.TabItem>-->
+
+<!--                    <com.google.android.material.tabs.TabItem-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="SPECIES"-->
+<!--                        tools:ignore="TouchTargetSizeCheck" />-->
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_40pxv"
+                    app:layout_behavior="com.google.android.material.tabs.TabLayout$ScrollingviewBehavior"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tablayout"
+                    tools:ignore="SpeakableTextPresentCheck">
+
+                </androidx.viewpager.widget.ViewPager>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </layout>

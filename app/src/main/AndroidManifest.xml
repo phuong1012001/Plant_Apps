@@ -18,19 +18,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true">
-<!--        <activity-->
-<!--            android:name=".ui.MainActivity"-->
-<!--            android:exported="false" />-->
-
         <activity
             android:name=".ui.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.Introduction1Activity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+
         </activity>
         <activity
             android:name=".ui.Introduction2Activity"
@@ -39,27 +40,9 @@
             android:name=".ui.Introduction3Activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.ArticlesActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity
-            android:name=".ui.DetailArticlesActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".modules.homepage.ui.HomepageActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".modules.species.ui.SpeciesActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".modules.detailplantnolike.ui.DetailPlantNoLikeActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".ui.LoginScreenActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.ListPlantActivity"
-            android:screenOrientation="portrait" />
-        <activity
+                <activity
             android:name=".ui.SignupScreenActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -68,27 +51,14 @@
         <activity
             android:name=".modules.addingnewplant.ui.AddingNewPlantActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.DetailPlantActivity"
-            android:screenOrientation="portrait" />
-<!--        <activity-->
-<!--            android:name=".ui.Introduction1Activity"-->
-<!--            android:exported="true"-->
-<!--            android:screenOrientation="portrait">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
-        <activity
+               <activity
             android:name=".ui.ForgetPassScreenZeroActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.ForgetPassScreenOneActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".modules.camera.ui.CameraActivity"
+            android:name=".ui.CameraActivity"
             android:screenOrientation="portrait" />
     </application>
 

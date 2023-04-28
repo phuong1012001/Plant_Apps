@@ -9,7 +9,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.databinding.ActivityLoginScreenBinding
-import com.phngsapplication.app.modules.homepage.ui.HomepageActivity
 import kotlin.String
 import kotlin.Unit
 
@@ -45,7 +44,7 @@ class LoginScreenActivity : BaseActivity<ActivityLoginScreenBinding>(R.layout.ac
     binding.btnLogin.setOnClickListener{
       val email = binding.email.text.toString()
       val pass = binding.password.text.toString()
-      val destIntent = HomepageActivity.getIntent(this, null)
+      val destIntent = MainActivity.getIntent(this, null)
 
       if(email.isNotEmpty() && pass.isNotEmpty()){
         progressDialog.setMessage("Logging...")

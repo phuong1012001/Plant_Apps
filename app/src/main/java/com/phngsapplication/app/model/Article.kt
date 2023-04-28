@@ -5,8 +5,8 @@ import android.os.Parcelable
 import kotlin.String
 
 data class Article(
-  var imageArticle: String
-  ,
+  var imageArticle: String,
+
   var titleArticle: String,
 
   var imageAuthor: String,
