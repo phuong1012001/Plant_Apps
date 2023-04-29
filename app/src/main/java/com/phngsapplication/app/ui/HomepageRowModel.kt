@@ -1,4 +1,4 @@
-package com.phngsapplication.app.modules.homepage.`data`.model
+package com.phngsapplication.app.ui
 
 import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.di.MyApp
