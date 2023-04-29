@@ -1,7 +1,8 @@
-package com.phngsapplication.app.ui
+package com.phngsapplication.app.modules.homepage.`data`.model
 
 import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.di.MyApp
+import kotlin.String
 
 data class HomepageRowModel(
     /**
