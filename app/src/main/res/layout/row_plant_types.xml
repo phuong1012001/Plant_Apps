@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <variable name="homepageRowModel" type="com.phngsapplication.app.modules.homepage.data.model.HomepageRowModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

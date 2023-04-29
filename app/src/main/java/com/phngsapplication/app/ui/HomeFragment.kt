@@ -1,7 +1,5 @@
 package com.phngsapplication.app.ui
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,7 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.FragmentHomeBinding
-import com.phngsapplication.app.modules.homepage.data.model.HomepageRowModel
 import com.phngsapplication.app.adapter.PlantTypesAdapter
 
 class HomeFragment : Fragment() {

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.RowPlantTypesBinding
-import com.phngsapplication.app.modules.homepage.`data`.model.HomepageRowModel
+import com.phngsapplication.app.ui.HomepageRowModel
 import kotlin.Int
 import kotlin.collections.List
 

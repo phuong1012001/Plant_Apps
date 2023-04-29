@@ -5,11 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import androidx.camera.activity.CameraConfiguration
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
-import coil.api.load
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.phngsapplication.app.R
@@ -18,8 +14,6 @@ import com.phngsapplication.app.databinding.ActivityMainBinding
 import com.phngsapplication.app.model.Article
 import com.phngsapplication.app.model.Plant
 import com.phngsapplication.app.model.Species
-import kotlinx.android.synthetic.main.activity_main.*
-import retrofit2.http.Url
 import kotlin.random.Random
 
 

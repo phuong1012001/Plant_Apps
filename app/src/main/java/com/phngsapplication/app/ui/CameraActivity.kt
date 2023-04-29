@@ -15,9 +15,6 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.ImageView
-import androidx.camera.activity.CameraConfiguration
-import androidx.camera.activity.FLAGS_FULLSCREEN
-import androidx.camera.activity.simulateClick
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -108,9 +105,9 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    setContentView(androidx.camera.activity.R.layout.activity_camera)
-    container = findViewById(androidx.camera.activity.R.id.camera_container)
-    viewFinder = findViewById(androidx.camera.activity.R.id.view_finder)
+    setContentView(R.layout.activity_camera)
+    container = findViewById(R.id.camera_container)
+    viewFinder = findViewById(R.id.view_finder)
 
     // Try to provide a seamless rotation for devices that support it
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

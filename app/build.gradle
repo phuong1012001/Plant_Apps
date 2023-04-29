@@ -109,7 +109,7 @@ dependencies {
 //    implementation "androidx.camera:camera-activity:1.0.0"
 
     implementation "androidx.camera:camera-view:1.0.0-alpha08"
-    implementation 'com.github.owahltinez:androidx-camera-activity:master-SNAPSHOT'
+//    implementation 'com.github.owahltinez:androidx-camera-activity:master-SNAPSHOT'
 
     // CameraX
     def camerax_version = "1.0.0-beta01"
