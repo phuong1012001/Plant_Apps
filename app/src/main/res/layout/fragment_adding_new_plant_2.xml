@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.AddingNewPlant2Fragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <FrameLayout android:gravity="start"
+                    android:id="@+id/frameStackrectanglesixtytwo"
+                    android:layout_height="@dimen/_249pxv" android:layout_width="match_parent">
+                    <ImageView android:id="@+id/imageNewPlant"
+                        android:layout_gravity="start"
+                        android:layout_height="@dimen/_249pxh"
+                        android:layout_width="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img_rectangle62"
+                        tools:ignore="ContentDescription"/>
+                    <FrameLayout
+                        android:id="@+id/btnBack"
+                        android:layout_width="71dp"
+                        android:layout_height="60dp">
+
+                        <ImageView
+                            android:id="@+id/imageBack"
+                            android:layout_width="@dimen/_11pxh"
+                            android:layout_height="@dimen/_19pxv"
+                            android:layout_gravity="top|start"
+                            android:layout_marginStart="@dimen/_23pxh"
+                            android:layout_marginTop="@dimen/_30pxv"
+                            android:layout_marginEnd="@dimen/_23pxh"
+                            android:layout_marginBottom="@dimen/_30pxv"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/img_arrowleft"
+                            tools:ignore="ContentDescription"
+                            tools:src="@drawable/img_arrowleft" />
+                    </FrameLayout>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/txtAddingNew"
+                    style="@style/txtAndadaProromanbold27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="@dimen/_23pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/lbl_adding_new"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtPlant"
+                    style="@style/txtAndadaProromanbold28"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="@dimen/_23pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="Plant"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/name"
+                    style="@style/etAndadaProromanmedium17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_23pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_marginEnd="@dimen/_23pxh"
+                    android:paddingEnd="@dimen/_30pxh"
+                    android:paddingBottom="@dimen/_9pxv"
+                    android:ellipsize="end"
+                    android:hint="name specie"
+                    android:minHeight="48dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/bluegray_800"
+                    tools:ignore="Autofill"
+                    tools:layout_editor_absoluteY="258dp" />
+                <EditText
+                    android:id="@+id/kingdom"
+                    style="@style/etAndadaProromanmedium17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_23pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_marginEnd="@dimen/_23pxh"
+                    android:paddingEnd="@dimen/_30pxh"
+                    android:paddingBottom="@dimen/_9pxv"
+                    android:ellipsize="end"
+                    android:hint="kingdom"
+                    android:minHeight="48dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/bluegray_800"
+                    tools:ignore="Autofill"
+                    tools:layout_editor_absoluteY="258dp" />
+                <EditText
+                    android:id="@+id/family"
+                    style="@style/etAndadaProromanmedium17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_23pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_marginEnd="@dimen/_23pxh"
+                    android:paddingEnd="@dimen/_30pxh"
+                    android:paddingBottom="@dimen/_9pxv"
+                    android:ellipsize="end"
+                    android:hint="family"
+                    android:minHeight="48dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/bluegray_800"
+                    tools:ignore="Autofill"
+                    tools:layout_editor_absoluteY="258dp" />
+                <EditText
+                    android:id="@+id/decreption"
+                    style="@style/etAndadaProromanmedium17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_23pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_marginEnd="@dimen/_23pxh"
+                    android:paddingEnd="@dimen/_30pxh"
+                    android:paddingBottom="@dimen/_9pxv"
+                    android:ellipsize="end"
+                    android:hint="decreption"
+                    android:minHeight="48dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/bluegray_800"
+                    tools:ignore="Autofill"
+                    tools:layout_editor_absoluteY="258dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnSubmit"
+                    style="@style/btnSolidRounded_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_23pxh"
+                    android:layout_marginTop="@dimen/_50pxv"
+                    android:layout_marginEnd="@dimen/_23pxh"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/_30pxh"
+                    android:paddingTop="@dimen/_16pxv"
+                    android:paddingEnd="@dimen/_30pxh"
+                    android:paddingBottom="@dimen/_16pxv"
+                    android:singleLine="true"
+                    android:text="SUBMIT"
+                    android:textAllCaps="false"
+                    tools:ignore="TextSizeCheck"
+                    tools:text="SUBMIT" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+</layout>

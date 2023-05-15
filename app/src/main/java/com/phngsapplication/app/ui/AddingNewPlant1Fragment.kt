@@ -5,19 +5,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import coil.api.load
 import com.bumptech.glide.Glide
 import com.phngsapplication.app.R
-import com.phngsapplication.app.databinding.FragmentAddingNewPlantBinding
-import kotlinx.android.synthetic.main.fragment_adding_new_plant.*
+import com.phngsapplication.app.databinding.FragmentAddingNewPlant1Binding
 import java.io.File
 
-class AddingNewPlantFragment : Fragment() {
+class AddingNewPlant1Fragment : Fragment() {
 
-    private lateinit var binding: FragmentAddingNewPlantBinding
+    private lateinit var binding: FragmentAddingNewPlant1Binding
     private lateinit var mainActivity: MainActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,11 +28,11 @@ class AddingNewPlantFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         mainActivity = getActivity() as MainActivity
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_adding_new_plant, container, false)
-
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_adding_new_plant_1, container, false)
+        var a: String? = null
         var bundleReceive: Bundle? = getArguments()
         if(bundleReceive != null){
-            var a: String = bundleReceive.get("Uri") as String
+            a = bundleReceive.get("Uri") as String
             Log.d("uri", a)
 
             var uri = a.toUri()
@@ -42,7 +41,14 @@ class AddingNewPlantFragment : Fragment() {
                 .load(File(uri.getPath()))
                 .into(binding.imageNewPlant)
         }
-
+        binding.btnNext.setOnClickListener{
+            var name = binding.name.text.toString()
+            if(name.isNotEmpty() && a != null){
+                mainActivity.goToAddingNewPlant2(a, name)
+            }else{
+                Toast.makeText(mainActivity, "Species not Valid !!", Toast.LENGTH_SHORT).show()
+            }
+        }
         return binding.root
     }
 

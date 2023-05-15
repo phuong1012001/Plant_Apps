@@ -26,7 +26,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     var DetailArticlesFragment = DetailArticlesFragment()
     var ArticlesProfileFragment = ArticlesProfileFragment()
     var ProfileFragment = ProfileFragment()
-    var AddingNewPlantFragment = AddingNewPlantFragment()
+    var AddingNewPlant1Fragment = AddingNewPlant1Fragment()
+    var AddingNewPlant2Fragment = AddingNewPlant2Fragment()
     lateinit var uri: String
 
 
@@ -81,6 +82,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         }
     }
 
+    public fun goToHome(){
+        replaceFragment(HomeFragment)
+    }
+
     public fun goToDetailPlantTypes(){
         var bundle: Bundle = Bundle()
         bundle.putSerializable("a", "a")
@@ -131,8 +136,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     public fun goToAddingNewPlant(uri: String){
         var bundle: Bundle = Bundle()
         bundle.putString("Uri", uri)
-        AddingNewPlantFragment.setArguments(bundle)
-        replaceFragment(AddingNewPlantFragment)
+        AddingNewPlant1Fragment.setArguments(bundle)
+        replaceFragment(AddingNewPlant1Fragment)
+    }
+
+    public fun goToAddingNewPlant2(uri: String, species:String){
+        var bundle: Bundle = Bundle()
+        bundle.putString("Uri", uri)
+        bundle.putString("Species", species)
+        AddingNewPlant2Fragment.setArguments(bundle)
+        replaceFragment(AddingNewPlant2Fragment)
     }
 
     public fun a(){
