@@ -33,10 +33,12 @@ class ListPlantFragment : Fragment() {
         if(bundleReceive != null){
             val species: Species = bundleReceive.get("listPlant") as Species
             if(species != null){
-                val adapter = PlantAdapter(species.plants)
+                val adapter = species.plants?.let { PlantAdapter(it) }
                 binding.recyclerListPlant.adapter = adapter
-                adapter.onItemClick = {
-                    mainActivity.goToDetailPlant(it)
+                if (adapter != null) {
+                    adapter.onItemClick = {
+                        mainActivity.goToDetailPlant(it)
+                    }
                 }
             }
         }

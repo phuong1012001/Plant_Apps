@@ -82,6 +82,27 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:id="@+id/speciesTV"
+                    style="@style/etAndadaProromanmedium17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_23pxh"
+                    android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_marginEnd="@dimen/_23pxh"
+                    android:drawableEnd="@drawable/ic_down_gray"
+                    android:paddingEnd="@dimen/_30pxh"
+                    android:paddingBottom="@dimen/_9pxv"
+                    android:ellipsize="end"
+                    android:hint="name specie"
+                    android:inputType="textEmailAddress"
+                    android:minHeight="48dp"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColorHint="@color/bluegray_800"
+                    tools:ignore="Autofill"
+                    tools:layout_editor_absoluteY="258dp" />
+
                 <EditText
                     android:id="@+id/name"
                     style="@style/etAndadaProromanmedium17"

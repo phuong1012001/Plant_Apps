@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "35604284881",
-    "project_id": "login-3b5ff",
-    "storage_bucket": "login-3b5ff.appspot.com"
+    "project_number": "566878171970",
+    "project_id": "app-plant-709a9",
+    "storage_bucket": "app-plant-709a9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:35604284881:android:936e764c735340842c0cf0",
+        "mobilesdk_app_id": "1:566878171970:android:1f6f71d98d988b6c7d8edb",
         "android_client_info": {
           "package_name": "com.phngsapplication.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "35604284881-nrhb6i8le2f83dat7hssnci0drim1vo7.apps.googleusercontent.com",
+          "client_id": "566878171970-me0k3iaqntjiv0ev9hla15kum16a98be.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCCQeCWVBBh15SLwGRJfhpmtOUs_aAvIz8"
+          "current_key": "AIzaSyCY33RYPXUfaoqqUdjyNeuq81A9QK89LfE"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "35604284881-nrhb6i8le2f83dat7hssnci0drim1vo7.apps.googleusercontent.com",
+              "client_id": "566878171970-me0k3iaqntjiv0ev9hla15kum16a98be.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
