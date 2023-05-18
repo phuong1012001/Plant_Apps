@@ -20,12 +20,9 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true"
+
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".ui.Introduction1Activity"
@@ -41,7 +38,13 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.LoginScreenActivity"
-            android:screenOrientation="portrait" />
+            android:exported="true"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
                 <activity
             android:name=".ui.SignupScreenActivity"
             android:screenOrientation="portrait" />
