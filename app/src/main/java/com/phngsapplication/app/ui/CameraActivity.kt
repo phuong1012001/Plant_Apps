@@ -277,9 +277,6 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
     startActivityForResult(
       Intent.createChooser(intent, "Select File"),
       REQUEST_SELECT_IMAGE_IN_ALBUM);
-    setResult(RESULT_OK, Intent().apply {
-      putExtra(CameraConfiguration.GALLERY_IMAGE_URI, getUri)
-    }
   }
 
   /** Declare and bind preview, capture and analysis use cases */
