@@ -18,4 +18,6 @@ object CameraConfiguration {
 
     /** User configuration key for camera switching behavior */
     const val CAMERA_SWITCH_DISABLED = "$LIB.CAMERA_SWITCH_DISABLED"
+    // New key for loading image from gallery
+    const var GALLERY_IMAGE_URI = "$LIB.GALLERY_IMAGE_URI"
 }

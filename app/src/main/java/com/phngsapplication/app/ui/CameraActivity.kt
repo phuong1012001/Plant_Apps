@@ -9,6 +9,7 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
@@ -90,7 +91,6 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
   private val permissionsRequestCode by lazy {
       Random.nextInt(0, 10000)
   }
-
   /**
    * Helper function used to retrieve a configuration value given its key. The priority order is:
    * 1. Intent extras bundle
@@ -104,10 +104,10 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
     setContentView(R.layout.activity_camera)
     container = findViewById(R.id.camera_container)
     viewFinder = findViewById(R.id.view_finder)
+
 
     // Try to provide a seamless rotation for devices that support it
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -174,21 +174,20 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
    * Method used to re-draw the camera UI controls, called every time configuration changes.
    */
   private fun drawCameraControls() {
-
     // Remove previous UI if any
     container.findViewById<ConstraintLayout>(R.id.camera_controls_container)?.let {
       container.removeView(it)
     }
 
     // Inflate a new view containing all UI for controlling the camera
-    val controls = View.inflate(this, R.layout.camera_controls, container)
+    val controls = layoutInflater.inflate(R.layout.camera_controls, container, false)
+    container.addView(controls)
 
     // Listener for button used to capture photo
-    controls.findViewById<ImageButton>(R.id.camera_capture_button).setOnClickListener {
-
+    controls.findViewById<ImageButton>(R.id.camera_capture_button)?.setOnClickListener {
       // Disable all camera controls
-      findViewById<ImageButton>(R.id.camera_capture_button).isEnabled = false
-      findViewById<ImageView>(R.id.camera_switch_button).isEnabled = false
+      controls.findViewById<ImageButton>(R.id.camera_capture_button)?.isEnabled = false
+      controls.findViewById<ImageView>(R.id.camera_switch_button)?.isEnabled = false
 
       // Get a stable reference of the modifiable image capture use case
       imageCapture?.let { imageCapture ->
@@ -207,36 +206,52 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
           .setMetadata(metadata)
           .build()
 
-        // Setup image capture listener which is triggered after photo has been taken
-        imageCapture.takePicture(
-          outputOptions, executor, object : ImageCapture.OnImageSavedCallback {
+        // Setup image capture listener which is triggered after the photo has been taken
+        imageCapture.takePicture(outputOptions, executor, object : ImageCapture.OnImageSavedCallback {
+          override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+            val savedUri = output.savedUri ?: Uri.fromFile(photoFile)
+            Log.d(TAG, "Image captured successfully: $savedUri")
+            setResult(RESULT_OK, Intent().apply {
+              putExtra(CameraConfiguration.IMAGE_URI, savedUri)
+            })
+            finish()
+          }
 
-            @SuppressLint("SuspiciousIndentation")
-            override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-              val savedUri = output.savedUri ?: Uri.fromFile(photoFile)
-              Log.d(TAG, "Image captured successfully: $savedUri")
-              setResult(RESULT_OK, Intent().apply {
-                putExtra(CameraConfiguration.IMAGE_URI, savedUri)
-              })
-              finish()
-            }
-
-            override fun onError(exc: ImageCaptureException) {
-              Log.e(TAG, "Error capturing image", exc)
-              cancelAndFinish()
-            }
-          })
+          override fun onError(exc: ImageCaptureException) {
+            Log.e(TAG, "Error capturing image", exc)
+            cancelAndFinish()
+          }
+        })
+      }
+    }
+    //MinhTuyen
+    controls.findViewById<ImageView>(R.id.imageRectangle)?.setOnClickListener {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+          PackageManager.PERMISSION_DENIED){
+          //permission denied
+          val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+          //show popup to request runtime permission
+          requestPermissions(permissions, PERMISSION_CODE);
+        }
+        else{
+          //permission already granted
+          selectImageGallery();
+        }
+      }
+      else{
+        //system OS is < Marshmallow
+        selectImageGallery();
       }
     }
 
     // Listener for button used to switch cameras
-    controls.findViewById<ImageView>(R.id.camera_switch_button).setOnClickListener {
-
+    controls.findViewById<ImageView>(R.id.camera_switch_button)?.setOnClickListener {
       // Flip-flop the required lens facing
       lensFacing = if (CameraSelector.LENS_FACING_FRONT == lensFacing) {
-          CameraSelector.LENS_FACING_BACK
+        CameraSelector.LENS_FACING_BACK
       } else {
-          CameraSelector.LENS_FACING_FRONT
+        CameraSelector.LENS_FACING_FRONT
       }
 
       // Re-bind all use cases
@@ -245,6 +260,26 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
 
     // Apply user configuration every time controls are drawn
     applyUserConfiguration()
+  }
+
+  //MinhTuyen
+  private fun selectImageGallery(){
+//    val intent = Intent(Intent.ACTION_GET_CONTENT)
+//    intent.type = "image/*"
+//    if (intent.resolveActivity(packageManager) != null) {
+//      startActivityForResult(intent, REQUEST_SELECT_IMAGE_IN_ALBUM)
+//    }
+    val intent =  Intent(
+      Intent.ACTION_PICK,
+      MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+    );
+    intent.setType("image/*");
+    startActivityForResult(
+      Intent.createChooser(intent, "Select File"),
+      REQUEST_SELECT_IMAGE_IN_ALBUM);
+    setResult(RESULT_OK, Intent().apply {
+      putExtra(CameraConfiguration.GALLERY_IMAGE_URI, getUri)
+    }
   }
 
   /** Declare and bind preview, capture and analysis use cases */
@@ -281,6 +316,8 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
       //  point factory is ready
     }, executor)
   }
+
+
 
   override fun onResume() {
     super.onResume()
@@ -338,6 +375,8 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
     const val TAG: String = "CAMERA_ACTIVITY"
     private const val FILENAME = "yyyy-MM-dd-HH-mm-ss-SSS"
     private const val PHOTO_EXTENSION = ".jpg"
+    private val REQUEST_SELECT_IMAGE_IN_ALBUM = 1000
+    private val PERMISSION_CODE = 1001
 
     fun getIntent(context: Context, bundle: Bundle?): Intent {
       val destIntent = Intent(context, CameraActivity::class.java)
