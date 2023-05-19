@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_grap"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.phngsapplication.app.ui.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home_to_articlesFragment"
+            app:destination="@id/articlesFragment" />
+        <action
+            android:id="@+id/action_home_to_speciesFragment"
+            app:destination="@id/speciesFragment" />
+        <action
+            android:id="@+id/action_home_to_cameraActivity"
+            app:destination="@id/cameraActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.phngsapplication.app.ui.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+    </fragment>
+    <fragment
+        android:id="@+id/articlesFragment"
+        android:name="com.phngsapplication.app.ui.ArticlesFragment"
+        android:label="ArticlesFragment"
+        tools:layout="@layout/fragment_articles">
+        <action
+            android:id="@+id/action_articlesFragment_to_detailArticlesFragment"
+            app:destination="@id/detailArticlesFragment" />
+        <action
+            android:id="@+id/action_articlesFragment_to_home"
+            app:destination="@id/home"
+            app:popUpTo="@+id/home"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/speciesFragment"
+        android:name="com.phngsapplication.app.ui.SpeciesFragment"
+        android:label="SpeciesFragment"
+        tools:layout="@layout/fragment_species">
+        <action
+            android:id="@+id/action_speciesFragment_to_listPlantFragment"
+            app:destination="@id/listPlantFragment" />
+        <action
+            android:id="@+id/action_speciesFragment_to_home"
+            app:destination="@id/home"
+            app:popUpTo="@+id/home"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <activity
+        android:id="@+id/cameraActivity"
+        android:name="com.phngsapplication.app.ui.CameraActivity"
+        android:label="CameraActivity"
+        tools:layout="@layout/activity_camera"/>
+    <fragment
+        android:id="@+id/addPlant"
+        android:name="com.phngsapplication.app.ui.AddingNewPlant1Fragment"
+        android:label="AddingNewPlant1Fragment"
+        tools:layout="@layout/fragment_adding_new_plant_1">
+        <action
+            android:id="@+id/action_addPlant_to_addingNewPlant2Fragment"
+            app:destination="@id/addingNewPlant2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addingNewPlant2Fragment"
+        android:name="com.phngsapplication.app.ui.AddingNewPlant2Fragment"
+        android:label="AddingNewPlant2Fragment"
+        tools:layout="@layout/fragment_adding_new_plant_2"/>
+    <fragment
+        android:id="@+id/detailArticlesFragment"
+        android:name="com.phngsapplication.app.ui.DetailArticlesFragment"
+        android:label="DetailArticlesFragment"
+        tools:layout="@layout/fragment_detail_articles">
+        <argument
+            android:name="article"
+            app:argType="com.phngsapplication.app.model.Article" />
+        <action
+            android:id="@+id/action_detailArticlesFragment_to_articlesFragment"
+            app:destination="@id/articlesFragment"
+            app:popUpTo="@+id/articlesFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/listPlantFragment"
+        android:name="com.phngsapplication.app.ui.ListPlantFragment"
+        android:label="ListPlantFragment"
+        tools:layout="@layout/fragment_list_plant">
+        <action
+            android:id="@+id/action_listPlantFragment_to_detailPlantFragment"
+            app:destination="@id/detailPlantFragment" />
+        <argument
+            android:name="specie"
+            app:argType="com.phngsapplication.app.model.Species" />
+        <action
+            android:id="@+id/action_listPlantFragment_to_speciesFragment"
+            app:destination="@id/speciesFragment"
+            app:popUpTo="@+id/speciesFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailPlantFragment"
+        android:name="com.phngsapplication.app.ui.DetailPlantFragment"
+        android:label="DetailPlantFragment"
+        tools:layout="@layout/fragment_detail_plant">
+        <argument
+            android:name="plant"
+            app:argType="com.phngsapplication.app.model.Plant" />
+        <action
+            android:id="@+id/action_detailPlantFragment_to_listPlantFragment"
+            app:destination="@id/listPlantFragment"
+            app:popUpTo="@+id/listPlantFragment"
+            app:popUpToInclusive="true"/>
+    </fragment>
+</navigation>

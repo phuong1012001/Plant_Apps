@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.phngsapplication.app.R
 import com.phngsapplication.app.adapter.PlantAdapter
 import com.phngsapplication.app.databinding.FragmentListPlantBinding
@@ -16,9 +18,10 @@ class ListPlantFragment : Fragment() {
     private lateinit var binding: FragmentListPlantBinding
     private lateinit var mainActivity: MainActivity
 
+    val args: ListPlantFragmentArgs by navArgs()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -29,20 +32,24 @@ class ListPlantFragment : Fragment() {
         mainActivity = getActivity() as MainActivity
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_plant, container, false)
 
-        var bundleReceive: Bundle? = getArguments()
-        if(bundleReceive != null){
-            val species: Species = bundleReceive.get("listPlant") as Species
-            if(species != null){
-                val adapter = PlantAdapter(species.plants)
-                binding.recyclerListPlant.adapter = adapter
-                adapter.onItemClick = {
-                    mainActivity.goToDetailPlant(it)
-                }
+        //Load danh sach plant
+        val species = args.specie
+        if(species != null){
+            val adapter = PlantAdapter(species.plants)
+            binding.recyclerListPlant.adapter = adapter
+
+            //Thao tac chon de xem chi tiet ve cay
+            adapter.onItemClick = {
+                val action = ListPlantFragmentDirections.actionListPlantFragmentToDetailPlantFragment(it)
+                val controller = findNavController()
+                controller.navigate(action)
             }
         }
 
+        //Thao tac voi button
         binding.btnBack.setOnClickListener{
-            getFragmentManager()?.popBackStack()
+            val controller = findNavController()
+            controller.navigate(R.id.action_listPlantFragment_to_speciesFragment)
         }
 
         return binding.root

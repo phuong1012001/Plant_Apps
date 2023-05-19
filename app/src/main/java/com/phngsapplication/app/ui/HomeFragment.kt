@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.FragmentHomeBinding
 import com.phngsapplication.app.adapter.PlantTypesAdapter
@@ -50,13 +51,16 @@ class HomeFragment : Fragment() {
 
     fun setUpClicks(): Unit {
         binding.bttonSpecies.setOnClickListener {
-            mainActivity.goToSpecies()
+            val controller = findNavController()
+            controller.navigate(R.id.action_home_to_speciesFragment)
         }
         binding.bttonArticles.setOnClickListener {
-            mainActivity.goToArticles()
+            val controller = findNavController()
+            controller.navigate(R.id.action_home_to_articlesFragment)
         }
         binding.buttonAddingNew.setOnClickListener {
-            mainActivity.goToCamere()
+            val controller = findNavController()
+            controller.navigate(R.id.action_home_to_cameraActivity)
         }
     }
 

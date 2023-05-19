@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.phngsapplication.app.R
 import com.phngsapplication.app.adapter.ArticlesAdapter
 import com.phngsapplication.app.databinding.FragmentArticlesBinding
@@ -31,14 +32,19 @@ class ArticlesFragment : Fragment() {
             data.add(Article("tomato", "Item" + i, "img_rectangle_125x125", "Name" + i, "Date" + i))
         }
         val adapter = ArticlesAdapter(data)
-
         binding.recyclerArticles.adapter = adapter
+
+
+        //Thao tac buttion khong sua
         adapter.onItemClick = {
-            mainActivity.goToDetailArticles(it)
+            val action = ArticlesFragmentDirections.actionArticlesFragmentToDetailArticlesFragment(it)
+            val controller = findNavController()
+            controller.navigate(action)
         }
 
         binding.btnBack.setOnClickListener{
-            getFragmentManager()?.popBackStack()
+            val controller = findNavController()
+            controller.navigate(R.id.action_articlesFragment_to_home)
         }
         return binding.root
     }

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.phngsapplication.app.R
 import com.phngsapplication.app.adapter.AlphabetAdapter
 import com.phngsapplication.app.adapter.SpeciesAdapter
@@ -80,12 +81,18 @@ class SpeciesFragment : Fragment() {
         //Them vao adapter
         val adapter1 = SpeciesAdapter(data2)
         binding.recyclerView1.adapter = adapter1
+
+
+        //Thao tac voi button
         adapter1.onItemClick = {
-            mainActivity.goToListPlant(it)
+            val action = SpeciesFragmentDirections.actionSpeciesFragmentToListPlantFragment(it)
+            val controller = findNavController()
+            controller.navigate(action)
         }
 
         binding.btnBack.setOnClickListener{
-            getFragmentManager()?.popBackStack()
+            val controller = findNavController()
+            controller.navigate(R.id.action_speciesFragment_to_home)
         }
 
         return binding.root

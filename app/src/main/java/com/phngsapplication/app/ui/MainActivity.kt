@@ -6,6 +6,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.phngsapplication.app.R
@@ -34,19 +38,28 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
 
+    private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
-        replaceFragment(HomeFragment)
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.home ->replaceFragment(HomeFragment)
-                R.id.profile->replaceFragment(ProfileFragment)
-            }
-            true
-        }
+        val navHostFragment = supportFragmentManager.findFragmentById(
+            R.id.frameBottombar
+        ) as NavHostFragment
+        navController = navHostFragment.navController
+
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavigationView.setupWithNavController(navController)
+
+//        replaceFragment(HomeFragment)
+//        binding.bottomNavigationView.setOnItemSelectedListener {
+//            when(it.itemId){
+//                R.id.home ->replaceFragment(HomeFragment)
+//                R.id.profile->replaceFragment(ProfileFragment)
+//            }
+//            true
+//        }
     }
 
     private fun checkUser() {

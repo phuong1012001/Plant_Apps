@@ -73,7 +73,6 @@ class LoginScreenActivity : BaseActivity<ActivityLoginScreenBinding>(R.layout.ac
   companion object {
     const val TAG: String = "LOGIN_SCREEN_ACTIVITY"
 
-
     fun getIntent(context: Context, bundle: Bundle?): Intent {
       val destIntent = Intent(context, LoginScreenActivity::class.java)
       destIntent.putExtra("bundle", bundle)

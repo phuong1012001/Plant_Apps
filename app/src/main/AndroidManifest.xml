@@ -19,7 +19,7 @@
         android:theme="@style/Theme.MyApp"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.Introduction"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -28,30 +28,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.Introduction1Activity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
-
         </activity>
-        <activity
-            android:name=".ui.Introduction2Activity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ui.Introduction3Activity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.LoginScreenActivity"
             android:screenOrientation="portrait" />
-                <activity
+        <activity
             android:name=".ui.SignupScreenActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".modules.profile.ui.ProfileActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".modules.addingnewplant.ui.AddingNewPlantActivity"
-            android:screenOrientation="portrait" />
-               <activity
             android:name=".ui.ForgetPassScreenZeroActivity"
             android:screenOrientation="portrait" />
         <activity
