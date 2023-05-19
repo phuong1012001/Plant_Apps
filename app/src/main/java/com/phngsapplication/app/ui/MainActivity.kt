@@ -24,12 +24,7 @@ import kotlin.random.Random
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     var HomeFragment = HomeFragment()
     var SpeciesFragment = SpeciesFragment()
-    var ListPlantFragment = ListPlantFragment()
-    var DetailPlantFragment = DetailPlantFragment()
-    var ArticlesFragment = ArticlesFragment()
-    var DetailArticlesFragment = DetailArticlesFragment()
     var ArticlesProfileFragment = ArticlesProfileFragment()
-    var ProfileFragment = ProfileFragment()
     var AddingNewPlant1Fragment = AddingNewPlant1Fragment()
     var AddingNewPlant2Fragment = AddingNewPlant2Fragment()
     lateinit var uri: String
@@ -44,6 +39,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
+
+
+
         val navHostFragment = supportFragmentManager.findFragmentById(
             R.id.frameBottombar
         ) as NavHostFragment
@@ -51,15 +49,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView.setupWithNavController(navController)
-
-//        replaceFragment(HomeFragment)
-//        binding.bottomNavigationView.setOnItemSelectedListener {
-//            when(it.itemId){
-//                R.id.home ->replaceFragment(HomeFragment)
-//                R.id.profile->replaceFragment(ProfileFragment)
-//            }
-//            true
-//        }
     }
 
     private fun checkUser() {
@@ -104,46 +93,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         bundle.putSerializable("a", "a")
         SpeciesFragment.setArguments(bundle)
         replaceFragment(SpeciesFragment)
-    }
-
-    public fun goToArticles(){
-        var bundle: Bundle = Bundle()
-        bundle.putSerializable("a", "a")
-        ArticlesFragment.setArguments(bundle)
-        replaceFragment(ArticlesFragment)
-    }
-
-    public fun goToCamere(){
-        val destIntent = CameraActivity.getIntent(this, null)
-        startActivityForResult(destIntent, PHOTO_REQUEST_CODE)
-    }
-
-    public fun goToDetailArticles(article: Article){
-        var bundle: Bundle = Bundle()
-        bundle.putParcelable("article", article)
-        DetailArticlesFragment.setArguments(bundle)
-        replaceFragment(DetailArticlesFragment)
-    }
-
-    public fun goToSpecies(){
-        var bundle: Bundle = Bundle()
-        bundle.putSerializable("a", "a")
-        SpeciesFragment.setArguments(bundle)
-        replaceFragment(SpeciesFragment)
-    }
-
-    public fun goToListPlant(listPlant: Species){
-        var bundle: Bundle = Bundle()
-        bundle.putParcelable("listPlant", listPlant)
-        ListPlantFragment.setArguments(bundle)
-        replaceFragment(ListPlantFragment)
-    }
-
-    public fun goToDetailPlant(plant: Plant){
-        var bundle: Bundle = Bundle()
-        bundle.putParcelable("Plant", plant)
-        DetailPlantFragment.setArguments(bundle)
-        replaceFragment(DetailPlantFragment)
     }
 
     public fun goToAddingNewPlant(uri: String){
