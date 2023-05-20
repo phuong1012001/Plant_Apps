@@ -16,6 +16,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -65,6 +66,7 @@ private const val IMMERSIVE_FLAG_TIMEOUT = 500L
  */
 class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_camera) {
 
+  lateinit var mImageView: ImageView
   private lateinit var container: ConstraintLayout
   private lateinit var viewFinder: PreviewView
 
@@ -227,15 +229,13 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
     //MinhTuyen
     controls.findViewById<ImageView>(R.id.imageRectangle)?.setOnClickListener {
       if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-        if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
-          PackageManager.PERMISSION_DENIED){
-          //permission denied
+        if(!hasReadStoragePermission(this)){
+          Toast.makeText(this, "Don't permission STORAGE", Toast.LENGTH_SHORT).show()
           val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
-          //show popup to request runtime permission
-          requestPermissions(permissions, PERMISSION_CODE);
-        }
-        else{
-          //permission already granted
+          ActivityCompat.requestPermissions(
+            this, permissions, PERMISSION_CODE
+          )
+        } else {
           selectImageGallery();
         }
       }
@@ -260,6 +260,9 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
 
     // Apply user configuration every time controls are drawn
     applyUserConfiguration()
+  }
+  fun hasReadStoragePermission(context: Context): Boolean {
+    return ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
   }
 
   //MinhTuyen
@@ -344,9 +347,25 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
     super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     if (requestCode == permissionsRequestCode && hasPermissions(this)) {
       bindCameraUseCases()
+    } else if(requestCode == PERMISSION_CODE && hasReadStoragePermission(this)){
+      selectImageGallery();
+    } else if(requestCode == PERMISSION_CODE && !hasReadStoragePermission(this)){
+
     } else {
       // Indicate that the user cancelled the action and exit if no permissions are granted
       cancelAndFinish()
+    }
+  }
+
+  @SuppressLint("MissingSuperCall")
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    if(resultCode == RESULT_OK && requestCode == REQUEST_SELECT_IMAGE_IN_ALBUM){
+      Log.d("ANH", data?.data.toString())
+      //mImageView.setImageURI(data?.data)
+      setResult(RESULT_OK, Intent().apply {
+        putExtra(CameraConfiguration.IMAGE_URI, data?.data)
+      })
+      finish()
     }
   }
 

@@ -7,6 +7,7 @@ data class Species(
     var nameSpecies: String,
     var plants: List<Plant>
 ) : Parcelable {
+
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.createTypedArrayList(Plant)!!

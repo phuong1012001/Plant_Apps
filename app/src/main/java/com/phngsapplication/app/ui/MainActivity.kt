@@ -78,19 +78,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             val photoUri = data?.extras?.get(CameraConfiguration.IMAGE_URI) as Uri?
             photoUri?.let {
 //                photo_view.load(it)
-
                 goToAddingNewPlant(photoUri.toString())
-                Log.e(TAG, "CHECK TAKE IMAGE: " + photoUri.toString());
-
-            }
-        }
-        // MinhTuyen
-       else if (requestCode == REQUEST_SELECT_IMAGE_IN_ALBUM && resultCode == Activity.RESULT_OK) {
-            val selectedImageUri = data?.data
-            // Handle the selected image here
-            if (selectedImageUri != null) {
-                goToAddingNewPlant(selectedImageUri.toString())
-               Log.e(TAG, "CHECK LOAD IMAGE: " + selectedImageUri.toString());
             }
         }
     }

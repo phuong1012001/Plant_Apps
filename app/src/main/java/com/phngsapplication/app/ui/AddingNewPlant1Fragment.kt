@@ -37,9 +37,11 @@ class AddingNewPlant1Fragment : Fragment() {
 
             var uri = a.toUri()
 
-            Glide.with(this)
-                .load(File(uri.getPath()))
-                .into(binding.imageNewPlant)
+            binding.imageNewPlant.setImageURI(uri)
+
+//            Glide.with(this)
+//                .load(File(uri.getPath()))
+//                .into(binding.imageNewPlant)
         }
         binding.btnNext.setOnClickListener{
             var name = binding.name.text.toString()
