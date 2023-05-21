@@ -28,7 +28,6 @@ class SpeciesAdapter (
         holder.alphabet.setText(item.alphabet)
 
         val adapter = NameSpeciesAdapter(item.species)
-        Log.d("BBB", item.species.size.toString())
         holder.recyclerView.adapter = adapter
 
         adapter.onItemClick = {

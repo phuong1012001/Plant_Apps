@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_home_to_cameraActivity"
             app:destination="@id/cameraActivity" />
+        <action
+            android:id="@+id/action_home_to_addPlant"
+            app:destination="@id/addPlant" />
     </fragment>
     <fragment
         android:id="@+id/profile"
@@ -67,12 +70,25 @@
         <action
             android:id="@+id/action_addPlant_to_addingNewPlant2Fragment"
             app:destination="@id/addingNewPlant2Fragment" />
+        <argument
+            android:name="uri"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/addingNewPlant2Fragment"
         android:name="com.phngsapplication.app.ui.AddingNewPlant2Fragment"
         android:label="AddingNewPlant2Fragment"
-        tools:layout="@layout/fragment_adding_new_plant_2"/>
+        tools:layout="@layout/fragment_adding_new_plant_2">
+        <argument
+            android:name="uri"
+            app:argType="string" />
+        <argument
+            android:name="nameSpecie"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_addingNewPlant2Fragment_to_home"
+            app:destination="@id/home" />
+    </fragment>
     <fragment
         android:id="@+id/detailArticlesFragment"
         android:name="com.phngsapplication.app.ui.DetailArticlesFragment"

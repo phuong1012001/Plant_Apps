@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -74,18 +75,23 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == PHOTO_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            val photoUri = data?.extras?.get(CameraConfiguration.IMAGE_URI) as Uri?
-            photoUri?.let {
-//                photo_view.load(it)
-
-                goToAddingNewPlant(photoUri.toString())
-            }
-        }
+//        Log.e("AAAAAA", "BBBBbbbbbbbbbbbbb")
+//        if (requestCode == PHOTO_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+//            val photoUri = data?.extras?.get(CameraConfiguration.IMAGE_URI) as Uri?
+//            photoUri?.let {
+//                Log.e("AAAAAA", "BBBB")
+////                photo_view.load(it)
+//
+////                goToAddingNewPlant(photoUri.toString())
+//            }
+//        }
     }
 
     public fun goToHome(){
         replaceFragment(HomeFragment)
+
+//        val destIntent = CameraActivity.getIntent(this, null)
+//        startActivityForResult(destIntent, PHOTO_REQUEST_CODE)
     }
 
     public fun goToDetailPlantTypes(){

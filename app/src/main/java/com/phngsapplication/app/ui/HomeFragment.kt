@@ -1,20 +1,38 @@
 package com.phngsapplication.app.ui
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.phngsapplication.app.R
-import com.phngsapplication.app.databinding.FragmentHomeBinding
 import com.phngsapplication.app.adapter.PlantTypesAdapter
+import com.phngsapplication.app.databinding.FragmentHomeBinding
+import kotlin.random.Random
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private lateinit var mainActivity: MainActivity
+    private val PHOTO_REQUEST_CODE = Random.nextInt(0, 10000)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == PHOTO_REQUEST_CODE && resultCode == Activity.RESULT_OK){
+            val photoUri = data?.extras?.get(CameraConfiguration.IMAGE_URI) as Uri?
+            photoUri?.let {
+                val action = HomeFragmentDirections.actionHomeToAddPlant(photoUri.toString())
+                val controller = findNavController()
+                controller.navigate(action)
+            }
+        }
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,8 +77,11 @@ class HomeFragment : Fragment() {
             controller.navigate(R.id.action_home_to_articlesFragment)
         }
         binding.buttonAddingNew.setOnClickListener {
-            val controller = findNavController()
-            controller.navigate(R.id.action_home_to_cameraActivity)
+//            val controller = findNavController()
+//            controller.navigate(R.id.action_home_to_cameraActivity)
+
+            val intent = Intent(activity, CameraActivity::class.java)
+            startActivityForResult(intent, PHOTO_REQUEST_CODE)
         }
     }
 
@@ -94,11 +115,5 @@ class HomeFragment : Fragment() {
 
     companion object {
         const val TAG: String = "HOMEPAGE_ACTIVITY"
-
-//        fun getIntent(context: Context, bundle: Bundle?): Intent {
-//            val destIntent = Intent(context, HomepageActivity::class.java)
-//            destIntent.putExtra("bundle", bundle)
-//            return destIntent
-//        }
     }
 }

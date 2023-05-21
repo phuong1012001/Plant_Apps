@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.FragmentAddingNewPlant2Binding
@@ -20,6 +21,8 @@ class AddingNewPlant2Fragment : Fragment() {
     private lateinit var binding: FragmentAddingNewPlant2Binding
     private lateinit var mainActivity: MainActivity
 
+    val args: AddingNewPlant2FragmentArgs by navArgs()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -30,15 +33,9 @@ class AddingNewPlant2Fragment : Fragment() {
     ): View? {
         mainActivity = getActivity() as MainActivity
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_adding_new_plant_2, container, false)
-        var a: String? = null
-        var species: String? = null
-        var bundleReceive: Bundle? = getArguments()
-        if(bundleReceive != null){
-            species = bundleReceive.get("Species") as String
-
-            a = bundleReceive.get("Uri") as String
-            Log.d("uri", a)
-
+        var a = args.uri
+        var species = args.nameSpecie
+        if(species != null){
             var uri = a.toUri()
 
             Glide.with(this)
