@@ -28,6 +28,9 @@
         android:name="com.phngsapplication.app.ui.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profile_to_loginScreenActivity"
+            app:destination="@id/loginScreenActivity" />
     </fragment>
     <fragment
         android:id="@+id/articlesFragment"
@@ -134,4 +137,9 @@
             app:popUpTo="@+id/listPlantFragment"
             app:popUpToInclusive="true"/>
     </fragment>
+    <activity
+        android:id="@+id/loginScreenActivity"
+        android:name="com.phngsapplication.app.ui.LoginScreenActivity"
+        android:label="LoginScreenActivity"
+        tools:layout="@layout/activity_login_screen"/>
 </navigation>

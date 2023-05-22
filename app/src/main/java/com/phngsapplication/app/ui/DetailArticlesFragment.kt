@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -62,7 +63,8 @@ class DetailArticlesFragment : Fragment() {
 
         //Thao tac voi button
         binding.btnBack.setOnClickListener{
-            getFragmentManager()?.popBackStack()
+            val controller = findNavController()
+            controller.navigate(R.id.action_detailArticlesFragment_to_articlesFragment)
         }
 
         return binding.root

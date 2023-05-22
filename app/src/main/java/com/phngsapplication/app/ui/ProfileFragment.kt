@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.navigation.fragment.findNavController
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.FragmentProfileBinding
 
@@ -33,6 +34,16 @@ class ProfileFragment : Fragment() {
     ): View? {
         mainActivity = getActivity() as MainActivity
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+
+        binding.toolbar.setOnMenuItemClickListener() {
+            when(it.itemId){
+                R.id.logout->{
+                    val controller = findNavController()
+                    controller.navigate(R.id.action_profile_to_loginScreenActivity)
+                }
+            }
+            true
+        }
 
         binding.tablayout.setupWithViewPager(binding.viewPager)
         val fragmentManager = childFragmentManager
