@@ -139,19 +139,24 @@
                     android:layout_marginTop="@dimen/_14pxv"
                     android:layout_marginEnd="@dimen/_14pxh">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView1"
-                        android:layout_width="@dimen/_330pxh"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView2"
+                    <in.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
+                        android:id="@+id/fastscrollerrecycler"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                        android:layout_height="match_parent"/>
+
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/recyclerView1"-->
+<!--                        android:layout_width="@dimen/_330pxh"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:orientation="vertical"-->
+<!--                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
+
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/recyclerView2"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:orientation="vertical"-->
+<!--                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>-->
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

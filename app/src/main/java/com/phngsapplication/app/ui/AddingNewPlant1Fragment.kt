@@ -14,6 +14,8 @@ import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.FragmentAddingNewPlant1Binding
+import com.phngsapplication.app.extensions.ui.AddingNewPlant1FragmentArgs
+import com.phngsapplication.app.extensions.ui.AddingNewPlant1FragmentDirections
 import java.io.File
 
 class AddingNewPlant1Fragment : Fragment() {
