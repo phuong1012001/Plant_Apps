@@ -141,7 +141,7 @@ class AddingNewPlant2Fragment : Fragment() {
 
         //set data to db
         val ref = FirebaseDatabase.getInstance().getReference("Species")
-        ref.child(name)
+        ref.child("$timestamp")
             .setValue(hashMap)
             .addOnSuccessListener {
                 //user info save, open user dashboard

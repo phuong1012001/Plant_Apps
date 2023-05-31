@@ -20,6 +20,7 @@ import com.phngsapplication.app.databinding.FragmentSpeciesBinding
 import com.phngsapplication.app.model.Plant
 import com.phngsapplication.app.model.Species
 import com.phngsapplication.app.model.SpeciesAlphabet
+import com.phngsapplication.app.model.SpeciesDB
 
 class SpeciesFragment : Fragment() {
 
@@ -82,20 +83,23 @@ class SpeciesFragment : Fragment() {
                     val speciesAlphabets = ArrayList<SpeciesAlphabet>()
                     for (ds in snapshot.children) {
                         Log.e("ERROR0: ", "Toi cho getDATA, but it's not link")
-                        val speciesAlphabet = ds.getValue(SpeciesAlphabet::class.java)
-                        if (speciesAlphabet != null) {
-                            speciesAlphabets.add(speciesAlphabet)
-                        }
-                    }
+//                        Log.d("AAAAAAAAAAAAAAAAAAAAAA", ds.)
+                        val speciesAlphabet = ds.getValue(SpeciesDB::class.java)
+                        Log.d("AAAAAAAAAAAAAAAAAAAAAA", speciesAlphabet.toString())
 
-                    val plantNames = ArrayList<String>() // List to store plant names
-                    for (speciesAlphabet in speciesAlphabets) {
-                        for (species in speciesAlphabet.species) {
-                            species.plants?.forEach { plant ->
-                                plant.txtname?.let { plantNames.add(it) } // Add plant name to the list
-                            }
-                        }
+//                        if (speciesAlphabet != null) {
+//                            speciesAlphabets.add(speciesAlphabet)
+//                        }
                     }
+//
+//                    val plantNames = ArrayList<String>() // List to store plant names
+//                    for (speciesAlphabet in speciesAlphabets) {
+//                        for (species in speciesAlphabet.species) {
+//                            species.plants?.forEach { plant ->
+//                                plant.txtname?.let { plantNames.add(it) } // Add plant name to the list
+//                            }
+//                        }
+//                    }
 
                     // Use the plantNames list to display or process the names as required
                 }
