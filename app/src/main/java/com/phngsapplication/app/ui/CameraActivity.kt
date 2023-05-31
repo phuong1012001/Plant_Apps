@@ -9,12 +9,14 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -64,6 +66,7 @@ private const val IMMERSIVE_FLAG_TIMEOUT = 500L
  */
 class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_camera) {
 
+  lateinit var mImageView: ImageView
   private lateinit var container: ConstraintLayout
   private lateinit var viewFinder: PreviewView
 
@@ -72,11 +75,11 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
   private var lensFacing: Int = CameraSelector.LENS_FACING_BACK
 
   private val cameraProvider by lazy {
-      ProcessCameraProvider.getInstance(this)
+    ProcessCameraProvider.getInstance(this)
   }
 
   private val executor by lazy {
-      ContextCompat.getMainExecutor(this)
+    ContextCompat.getMainExecutor(this)
   }
 
   private val metadata by lazy {
@@ -88,9 +91,8 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
   }
 
   private val permissionsRequestCode by lazy {
-      Random.nextInt(0, 10000)
+    Random.nextInt(0, 10000)
   }
-
   /**
    * Helper function used to retrieve a configuration value given its key. The priority order is:
    * 1. Intent extras bundle
@@ -104,15 +106,15 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
     setContentView(R.layout.activity_camera)
     container = findViewById(R.id.camera_container)
     viewFinder = findViewById(R.id.view_finder)
 
+
     // Try to provide a seamless rotation for devices that support it
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
       window.attributes.rotationAnimation =
-          WindowManager.LayoutParams.ROTATION_ANIMATION_SEAMLESS
+        WindowManager.LayoutParams.ROTATION_ANIMATION_SEAMLESS
     }
 
     // Operate on the viewfinder's thread to make sure it's ready
@@ -174,21 +176,20 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
    * Method used to re-draw the camera UI controls, called every time configuration changes.
    */
   private fun drawCameraControls() {
-
     // Remove previous UI if any
     container.findViewById<ConstraintLayout>(R.id.camera_controls_container)?.let {
       container.removeView(it)
     }
 
     // Inflate a new view containing all UI for controlling the camera
-    val controls = View.inflate(this, R.layout.camera_controls, container)
+    val controls = layoutInflater.inflate(R.layout.camera_controls, container, false)
+    container.addView(controls)
 
     // Listener for button used to capture photo
-    controls.findViewById<ImageButton>(R.id.camera_capture_button).setOnClickListener {
-
+    controls.findViewById<ImageButton>(R.id.camera_capture_button)?.setOnClickListener {
       // Disable all camera controls
-      findViewById<ImageButton>(R.id.camera_capture_button).isEnabled = false
-      findViewById<ImageView>(R.id.camera_switch_button).isEnabled = false
+      controls.findViewById<ImageButton>(R.id.camera_capture_button)?.isEnabled = false
+      controls.findViewById<ImageView>(R.id.camera_switch_button)?.isEnabled = false
 
       // Get a stable reference of the modifiable image capture use case
       imageCapture?.let { imageCapture ->
@@ -207,36 +208,50 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
           .setMetadata(metadata)
           .build()
 
-        // Setup image capture listener which is triggered after photo has been taken
-        imageCapture.takePicture(
-          outputOptions, executor, object : ImageCapture.OnImageSavedCallback {
+        // Setup image capture listener which is triggered after the photo has been taken
+        imageCapture.takePicture(outputOptions, executor, object : ImageCapture.OnImageSavedCallback {
+          override fun onImageSaved(output: ImageCapture.OutputFileResults) {
+            val savedUri = output.savedUri ?: Uri.fromFile(photoFile)
+            Log.d(TAG, "Image captured successfully: $savedUri")
+            setResult(RESULT_OK, Intent().apply {
+              putExtra(CameraConfiguration.IMAGE_URI, savedUri)
+            })
+            finish()
+          }
 
-            @SuppressLint("SuspiciousIndentation")
-            override fun onImageSaved(output: ImageCapture.OutputFileResults) {
-              val savedUri = output.savedUri ?: Uri.fromFile(photoFile)
-              Log.d(TAG, "Image captured successfully: $savedUri")
-              setResult(RESULT_OK, Intent().apply {
-                putExtra(CameraConfiguration.IMAGE_URI, savedUri)
-              })
-              finish()
-            }
-
-            override fun onError(exc: ImageCaptureException) {
-              Log.e(TAG, "Error capturing image", exc)
-              cancelAndFinish()
-            }
-          })
+          override fun onError(exc: ImageCaptureException) {
+            Log.e(TAG, "Error capturing image", exc)
+            cancelAndFinish()
+          }
+        })
+      }
+    }
+    //MinhTuyen
+    controls.findViewById<ImageView>(R.id.imageRectangle)?.setOnClickListener {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        if(!hasReadStoragePermission(this)){
+          Toast.makeText(this, "Don't permission STORAGE", Toast.LENGTH_SHORT).show()
+          val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+          ActivityCompat.requestPermissions(
+            this, permissions, PERMISSION_CODE
+          )
+        } else {
+          selectImageGallery();
+        }
+      }
+      else{
+        //system OS is < Marshmallow
+        selectImageGallery();
       }
     }
 
     // Listener for button used to switch cameras
-    controls.findViewById<ImageView>(R.id.camera_switch_button).setOnClickListener {
-
+    controls.findViewById<ImageView>(R.id.camera_switch_button)?.setOnClickListener {
       // Flip-flop the required lens facing
       lensFacing = if (CameraSelector.LENS_FACING_FRONT == lensFacing) {
-          CameraSelector.LENS_FACING_BACK
+        CameraSelector.LENS_FACING_BACK
       } else {
-          CameraSelector.LENS_FACING_FRONT
+        CameraSelector.LENS_FACING_FRONT
       }
 
       // Re-bind all use cases
@@ -245,6 +260,26 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
 
     // Apply user configuration every time controls are drawn
     applyUserConfiguration()
+  }
+  fun hasReadStoragePermission(context: Context): Boolean {
+    return ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+  }
+
+  //MinhTuyen
+  private fun selectImageGallery(){
+//    val intent = Intent(Intent.ACTION_GET_CONTENT)
+//    intent.type = "image/*"
+//    if (intent.resolveActivity(packageManager) != null) {
+//      startActivityForResult(intent, REQUEST_SELECT_IMAGE_IN_ALBUM)
+//    }
+    val intent =  Intent(
+      Intent.ACTION_PICK,
+      MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+    );
+    intent.setType("image/*");
+    startActivityForResult(
+      Intent.createChooser(intent, "Select File"),
+      REQUEST_SELECT_IMAGE_IN_ALBUM);
   }
 
   /** Declare and bind preview, capture and analysis use cases */
@@ -282,14 +317,16 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
     }, executor)
   }
 
+
+
   override fun onResume() {
     super.onResume()
 
     // Request permissions each time the app resumes, since they can be revoked at any time
     if (!hasPermissions(this)) {
-        ActivityCompat.requestPermissions(
-            this, permissions.toTypedArray(), permissionsRequestCode
-        )
+      ActivityCompat.requestPermissions(
+        this, permissions.toTypedArray(), permissionsRequestCode
+      )
     } else {
       drawCameraControls()
       bindCameraUseCases()
@@ -303,16 +340,32 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
   }
 
   override fun onRequestPermissionsResult(
-      requestCode: Int,
-      permissions: Array<out String>,
-      grantResults: IntArray
+    requestCode: Int,
+    permissions: Array<out String>,
+    grantResults: IntArray
   ) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     if (requestCode == permissionsRequestCode && hasPermissions(this)) {
       bindCameraUseCases()
+    } else if(requestCode == PERMISSION_CODE && hasReadStoragePermission(this)){
+      selectImageGallery();
+    } else if(requestCode == PERMISSION_CODE && !hasReadStoragePermission(this)){
+
     } else {
       // Indicate that the user cancelled the action and exit if no permissions are granted
       cancelAndFinish()
+    }
+  }
+
+  @SuppressLint("MissingSuperCall")
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    if(resultCode == RESULT_OK && requestCode == REQUEST_SELECT_IMAGE_IN_ALBUM){
+      Log.d("ANH", data?.data.toString())
+      //mImageView.setImageURI(data?.data)
+      setResult(RESULT_OK, Intent().apply {
+        putExtra(CameraConfiguration.IMAGE_URI, data?.data)
+      })
+      finish()
     }
   }
 
@@ -338,6 +391,8 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
     const val TAG: String = "CAMERA_ACTIVITY"
     private const val FILENAME = "yyyy-MM-dd-HH-mm-ss-SSS"
     private const val PHOTO_EXTENSION = ".jpg"
+    private val REQUEST_SELECT_IMAGE_IN_ALBUM = 1000
+    private val PERMISSION_CODE = 1001
 
     fun getIntent(context: Context, bundle: Bundle?): Intent {
       val destIntent = Intent(context, CameraActivity::class.java)
@@ -347,12 +402,12 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
 
     /** Helper function used to create a timestamped file */
     private fun createFile(
-        baseFolder: File,
-        format: String = FILENAME,
-        extension: String = PHOTO_EXTENSION
+      baseFolder: File,
+      format: String = FILENAME,
+      extension: String = PHOTO_EXTENSION
     ) = File(
-        baseFolder, SimpleDateFormat(format, Locale.US)
-            .format(System.currentTimeMillis()) + extension
+      baseFolder, SimpleDateFormat(format, Locale.US)
+        .format(System.currentTimeMillis()) + extension
     )
   }
 }

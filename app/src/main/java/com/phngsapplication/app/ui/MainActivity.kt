@@ -5,11 +5,13 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.base.BaseActivity
+import com.phngsapplication.app.appcomponents.ui.loadImageFromNetwork
 import com.phngsapplication.app.databinding.ActivityMainBinding
 import com.phngsapplication.app.model.Article
 import com.phngsapplication.app.model.Plant
@@ -76,7 +78,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             val photoUri = data?.extras?.get(CameraConfiguration.IMAGE_URI) as Uri?
             photoUri?.let {
 //                photo_view.load(it)
-
                 goToAddingNewPlant(photoUri.toString())
             }
         }
@@ -170,6 +171,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         const val TAG: String = "MAIN_ACTIVITY"
 
         private val PHOTO_REQUEST_CODE = Random.nextInt(0, 10000)
+        private val REQUEST_SELECT_IMAGE_IN_ALBUM = 1001
         fun getIntent(context: Context, bundle: Bundle?): Intent {
             val destIntent = Intent(context, MainActivity::class.java)
             destIntent.putExtra(TAG, bundle)

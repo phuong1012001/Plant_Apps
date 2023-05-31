@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/categoryTv"
                 style="@style/txtAlphabet1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50pxv"

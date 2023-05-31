@@ -2,10 +2,12 @@ package com.phngsapplication.app.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 import kotlin.String
-
 data class Plant(
   var imagePlant: String,
+
+  var txtname: String,
 
   var txtPlant: String,
 
@@ -23,12 +25,14 @@ data class Plant(
     parcel.readString()!!,
     parcel.readString()!!,
     parcel.readString()!!,
+    parcel.readString()!!,
     parcel.readString()!!
   ) {
   }
 
   override fun writeToParcel(parcel: Parcel, flags: Int) {
     parcel.writeString(imagePlant)
+    parcel.writeString(txtname)
     parcel.writeString(txtPlant)
     parcel.writeString(txtKINGDOM)
     parcel.writeString(txtFAMILY)

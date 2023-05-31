@@ -11,8 +11,8 @@ import com.phngsapplication.app.model.Species
 import com.phngsapplication.app.model.SpeciesAlphabet
 import com.phngsapplication.app.ui.SpeciesFragment
 
-class SpeciesAdapter (
-    var list: List<SpeciesAlphabet>
+class SpeciesAdapter(
+    var list: ArrayList<SpeciesAlphabet>
     ) : RecyclerView.Adapter<SpeciesAdapter.RowDSSpeciesVH>() {
 
     var onItemClick: ((Species)->Unit)? =null   //quan trong
@@ -25,12 +25,12 @@ class SpeciesAdapter (
 
     override fun onBindViewHolder(holder: RowDSSpeciesVH, position: Int) {
         val item = list[position]
-        holder.alphabet.setText(item.alphabet)
+        holder.categoryTv.setText(item.alphabet)
+
 
         val adapter = NameSpeciesAdapter(item.species)
         Log.d("BBB", item.species.size.toString())
         holder.recyclerView.adapter = adapter
-
         adapter.onItemClick = {
             onItemClick?.invoke(it)
         }
@@ -43,7 +43,7 @@ class SpeciesAdapter (
     inner class RowDSSpeciesVH(
         view: View
     ) : RecyclerView.ViewHolder(view) {
-        val alphabet: TextView = view.findViewById(R.id.textView)
+        val categoryTv: TextView = view.findViewById(R.id.categoryTv)
         val recyclerView: RecyclerView = view.findViewById(R.id.recyclerView)
     }
 }
