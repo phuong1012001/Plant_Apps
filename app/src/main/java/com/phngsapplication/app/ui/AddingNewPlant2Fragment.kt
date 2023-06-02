@@ -2,6 +2,7 @@ package com.phngsapplication.app.ui
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -18,10 +19,12 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.FragmentAddingNewPlant2Binding
 import com.phngsapplication.app.model.Plant
 import com.phngsapplication.app.model.Species
+import com.phngsapplication.app.ui.CameraActivity.Companion.TAG
 import java.io.File
 
 class AddingNewPlant2Fragment : Fragment() {
@@ -106,16 +109,21 @@ class AddingNewPlant2Fragment : Fragment() {
         var a: String? = null
         var species: String? = null
         var bundleReceive: Bundle? = getArguments()
+        //MT
+        var uri: Uri? = null
         if(bundleReceive != null){
             species = bundleReceive.get("Species") as String
 
             a = bundleReceive.get("Uri") as String
             Log.d("uri", a)
-
-            var uri = a.toUri()
+            //MT
+//            uri = a.toUri()
+            uri = Uri.parse(a)
 
             Glide.with(this)
-                .load(File(uri.getPath()))
+//                .load(File(uri.getPath()))
+                    //MT
+                .load(uri)
                 .into(binding.imageNewPlant)
         }
 
@@ -133,7 +141,9 @@ class AddingNewPlant2Fragment : Fragment() {
                 //Them
                 var plant:Plant = Plant(a, namePlant, kingdom, family, decreption, "DisLike")
                 //Species
-                validateData()
+                if (uri != null) {
+                    validateData(uri)
+                }
                 mainActivity.goToHome()
             }else{
                 Toast.makeText(mainActivity, "Not Valid !!", Toast.LENGTH_SHORT).show()
@@ -149,7 +159,7 @@ class AddingNewPlant2Fragment : Fragment() {
     private var description = ""
     private var species = ""
 
-    private fun validateData() {
+    private fun validateData(uri:Uri) {
         // get data
         species = binding.speciesTV.text.toString().trim()
         plant = binding.name.text.toString().trim()
@@ -173,16 +183,44 @@ class AddingNewPlant2Fragment : Fragment() {
             Toast.makeText(mainActivity, "Enter Pick Species...", Toast.LENGTH_SHORT).show()
         }
         else{
-            addPlantFirebase()
+            //MT
+            uploadImageToStorage(uri)
+//            addPlantFirebase()
         }
     }
 
-    private fun addPlantFirebase() {
+    // Upload image to Firebase Storage and add URL to Realtime Database
+    private fun uploadImageToStorage(uri: Uri) {
+        Log.d(TAG, "uploadImageToStorage: uploading to storage ...")
+        val timestamp = System.currentTimeMillis()
+        val filePathAndName = "Species/$timestamp"
+        val storageReference = FirebaseStorage.getInstance().getReference(filePathAndName)
+
+        storageReference.putFile(uri)
+            .addOnSuccessListener { taskSnapshot ->
+                storageReference.downloadUrl
+                    .addOnSuccessListener { uri ->
+                        val uploadedImageUrl = uri.toString()
+                        Log.e("Hinh anh load: ", uploadedImageUrl)
+                        addPlantFirebase(uploadedImageUrl, timestamp)
+                    }
+                    .addOnFailureListener { e ->
+                        Log.d(TAG, "uploadImageToStorage: failed to get download URL due to ${e.message}")
+                        Toast.makeText(mainActivity, "Failed to get download URL", Toast.LENGTH_SHORT).show()
+                    }
+            }
+            .addOnFailureListener { e ->
+                Log.d(TAG, "uploadImageToStorage: failed to upload due to ${e.message}")
+                Toast.makeText(mainActivity, "Failed to upload due to ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun addPlantFirebase(uploadedImageUrl:String, timestamp:Long) {
         // show progress
         //progressDialog.show()
 
         //timestamp
-        val timestamp = System.currentTimeMillis()
+//        val timestamp = System.currentTimeMillis()
 
         //setup data to add db
         val hashMap: HashMap<String, Any?> = HashMap()
@@ -192,6 +230,7 @@ class AddingNewPlant2Fragment : Fragment() {
         hashMap["kingdom"] = "$kingdom"
         hashMap["family"] = "$family"
         hashMap["description"] = "$description"
+        hashMap["URL"] = "$uploadedImageUrl"
 
         hashMap["timestamp"] = timestamp
         hashMap["uid"] = "${firebaseAuth.uid}"
