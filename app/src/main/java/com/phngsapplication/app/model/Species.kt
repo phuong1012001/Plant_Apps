@@ -5,7 +5,7 @@ import android.os.Parcelable
 
 data class Species(
     var nameSpecies: String,
-    var plants: List<Plant>
+    var plants: List<Plant>?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,

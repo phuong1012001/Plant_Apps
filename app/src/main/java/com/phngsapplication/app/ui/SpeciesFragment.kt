@@ -20,7 +20,7 @@ import com.phngsapplication.app.databinding.FragmentSpeciesBinding
 import com.phngsapplication.app.model.Plant
 import com.phngsapplication.app.model.Species
 import com.phngsapplication.app.model.SpeciesAlphabet
-import com.phngsapplication.app.model.SpeciesDB
+//import com.phngsapplication.app.model.SpeciesDB
 
 class SpeciesFragment : Fragment() {
 
@@ -38,7 +38,7 @@ class SpeciesFragment : Fragment() {
 
     private var databaseReference: DatabaseReference? = null
     var plant = ArrayList<Plant>()
-
+    var species_name = ArrayList<Species>()
 
     //==========================
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,44 +72,65 @@ class SpeciesFragment : Fragment() {
         alphabet.add("Y")
         alphabet.add("Z")
         Log.e("ERROR1: ", "Toi cho getDATA, but it's not link")
-        getData()
+        for(i in 10..20){
+            plant.add(Plant("img_rectangle_3", "Name" + i, "Item" + i, "KINGDOM" + i, "Family" + i, "Des" + i, "Like"))
+        }
+        getData(plant, species_name)
 
     }
-    private fun getData() {
-        databaseReference = FirebaseDatabase.getInstance().getReference("Species")
-        databaseReference?.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    val speciesAlphabets = ArrayList<SpeciesAlphabet>()
-                    for (ds in snapshot.children) {
-                        Log.e("ERROR0: ", "Toi cho getDATA, but it's not link")
-//                        Log.d("AAAAAAAAAAAAAAAAAAAAAA", ds.)
-                        val speciesAlphabet = ds.getValue(SpeciesDB::class.java)
-                        Log.d("AAAAAAAAAAAAAAAAAAAAAA", speciesAlphabet.toString())
-
-//                        if (speciesAlphabet != null) {
-//                            speciesAlphabets.add(speciesAlphabet)
-//                        }
-                    }
+//    private fun getData() {
+//        databaseReference = FirebaseDatabase.getInstance().getReference("Species")
+//        databaseReference?.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                if (snapshot.exists()) {
+//                    val speciesAlphabets = ArrayList<SpeciesAlphabet>()
+//                    for (ds in snapshot.children) {
+//                        Log.e("ERROR0: ", "Toi cho getDATA, but it's not link")
+////                        Log.d("AAAAAAAAAAAAAAAAAAAAAA", ds.)
+//                        val speciesAlphabet = ds.getValue(SpeciesDB::class.java)
+//                        Log.d("AAAAAAAAAAAAAAAAAAAAAA", speciesAlphabet.toString())
 //
-//                    val plantNames = ArrayList<String>() // List to store plant names
-//                    for (speciesAlphabet in speciesAlphabets) {
-//                        for (species in speciesAlphabet.species) {
-//                            species.plants?.forEach { plant ->
-//                                plant.txtname?.let { plantNames.add(it) } // Add plant name to the list
-//                            }
-//                        }
+////                        if (speciesAlphabet != null) {
+////                            speciesAlphabets.add(speciesAlphabet)
+////                        }
 //                    }
-
-                    // Use the plantNames list to display or process the names as required
+////
+////                    val plantNames = ArrayList<String>() // List to store plant names
+////                    for (speciesAlphabet in speciesAlphabets) {
+////                        for (species in speciesAlphabet.species) {
+////                            species.plants?.forEach { plant ->
+////                                plant.txtname?.let { plantNames.add(it) } // Add plant name to the list
+////                            }
+////                        }
+////                    }
+//
+//                    // Use the plantNames list to display or process the names as required
+//                }
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//                Log.i("Error", error.message)
+//            }
+//        })
+//    }
+    private fun getData(plant: ArrayList<Plant>, species_name: ArrayList<Species>){
+        var ref = FirebaseDatabase.getInstance().getReference("Species")
+        ref.addValueEventListener(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                species_name.clear()
+                for(ds in snapshot.children){
+                    val name = ds.child("species").value
+                    Log.d("Name get data: ", name.toString())
+                    species_name.add(Species(name.toString(), plant))
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.i("Error", error.message)
+                TODO("Not yet implemented")
             }
         })
     }
+
 
 
     override fun onCreateView(
@@ -119,24 +140,22 @@ class SpeciesFragment : Fragment() {
         mainActivity = getActivity() as MainActivity
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_species, container, false)
 
-
-
         val adapter2 = AlphabetAdapter(alphabet)
 
         binding.recyclerView2.adapter = adapter2
 
-        val data = ArrayList<Plant>()
-        for(i in 10..20){
-            data.add(Plant("img_rectangle_3", "Name" + i, "Item" + i, "KINGDOM" + i, "Family" + i, "Des" + i, "Like"))
-        }
+//        val data = ArrayList<Plant>()
+//        for(i in 10..20){
+//            data.add(Plant("img_rectangle_3", "Item" + i, "KINGDOM" + i, "Family" + i, "Des" + i, "Like"))
+//        }
 
-        val data1 = ArrayList<Species>()
-        data1.add(Species("B", data))
-        data1.add(Species("C", data))
-        data1.add(Species("D", data))
+//        val data1 = ArrayList<Species>()
+
+//        loadSpecies(data1, data)
+        //get data species
 
         val data2 = ArrayList<SpeciesAlphabet>()
-        data2.add(SpeciesAlphabet("A", data1))
+        data2.add(SpeciesAlphabet("A", species_name))
 
         //Them vao adapter
         val adapter1 = SpeciesAdapter(data2)
@@ -145,40 +164,12 @@ class SpeciesFragment : Fragment() {
             mainActivity.goToListPlant(it)
         }
 
-//        //MT
-//        //init arraylist
-//        categoryArrayList = ArrayList<SpeciesAlphabet>()
-//        //get all categories from firebase database ... Firebase DB > Categories
-//        val ref = FirebaseDatabase.getInstance().getReference("Species/")
-//        ref.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                categoryArrayList.clear()
-//                for (ds in snapshot.children) {
-//                    //get data as model
-//                    val model = ds.child().getValue(String::class.java)
-//                    //add to arraylist
-//                    categoryArrayList.add(model!!)
-//                }
-//                //setup adapter
-//                adapterSpecies = SpeciesAdapter(categoryArrayList)
-//                //set adapter to recyclerview
-//                binding.recyclerView1.adapter = adapterSpecies
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//
-//            }
-//        })
-
-
-        //=====================================
-        binding.btnBack.setOnClickListener {
+        binding.btnBack.setOnClickListener{
             getFragmentManager()?.popBackStack()
         }
 
         return binding.root
     }
-
     companion object {
 
     }

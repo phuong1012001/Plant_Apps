@@ -31,6 +31,7 @@ class SpeciesAdapter(
         val adapter = NameSpeciesAdapter(item.species)
         Log.d("BBB", item.species.size.toString())
         holder.recyclerView.adapter = adapter
+
         adapter.onItemClick = {
             onItemClick?.invoke(it)
         }
