@@ -19,8 +19,6 @@
 
             <ImageView
                 android:id="@+id/imagePlantTypes"
-                cornerRadius="@{@dimen/_3pxh}"
-                imageRes="@{@drawable/img_rectangle44}"
                 android:layout_width="@dimen/_299pxh"
                 android:layout_height="@dimen/_160pxh"
                 android:layout_gravity="start"

@@ -89,7 +89,6 @@
 
                         <ImageView
                             android:id="@+id/imageEllipse"
-                            imageRes="@{@drawable/img_ellipse}"
                             android:layout_width="@dimen/_168pxh"
                             android:layout_height="@dimen/_86pxv"
                             android:layout_marginBottom="@dimen/_63pxv"
@@ -100,7 +99,6 @@
 
                     <ImageView
                         android:id="@+id/imageEllipseOne"
-                        imageRes="@{@drawable/img_ellipse_4}"
                         android:layout_width="@dimen/_75pxh"
                         android:layout_height="@dimen/_124pxv"
                         android:layout_gravity="bottom|end"
@@ -154,7 +152,6 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerArticles"
-                            itemSpace="@{@dimen/_25pxh}"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_22pxh"

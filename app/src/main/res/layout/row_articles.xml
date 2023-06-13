@@ -19,7 +19,6 @@
 
             <ImageView
                 android:id="@+id/imageArticle"
-                cornerRadius="@{@dimen/_13pxh}"
                 android:layout_width="@dimen/_331pxh"
                 android:layout_height="@dimen/_145pxv"
                 android:layout_gravity="top|start"
@@ -52,8 +51,6 @@
 
                 <ImageView
                     android:id="@+id/imageAuthor"
-                    circular="@{true}"
-                    imageRes="@{@drawable/img_ellipse31}"
                     android:layout_width="24dp"
                     android:layout_height="@dimen/_28pxh"
                     android:layout_marginTop="@dimen/_1pxv"

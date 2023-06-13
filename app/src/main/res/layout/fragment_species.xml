@@ -82,7 +82,6 @@
 
                         <ImageView
                             android:id="@+id/imageEllipse"
-                            imageRes="@{@drawable/img_ellipse_2}"
                             android:layout_width="@dimen/_168pxh"
                             android:layout_height="@dimen/_86pxh"
                             android:layout_marginBottom="@dimen/_63pxv"
@@ -93,7 +92,6 @@
 
                     <ImageView
                         android:id="@+id/imageEllipseOne"
-                        imageRes="@{@drawable/img_ellipse_4}"
                         android:layout_width="@dimen/_75pxh"
                         android:layout_height="@dimen/_124pxh"
                         android:layout_gravity="bottom|end"

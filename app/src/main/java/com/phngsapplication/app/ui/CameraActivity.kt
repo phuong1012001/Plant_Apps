@@ -15,6 +15,7 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -24,9 +25,10 @@ import androidx.camera.view.PreviewView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.lifecycle.LifecycleOwner
 import com.phngsapplication.app.R
-import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.databinding.ActivityCameraBinding
 import java.io.File
 import java.text.SimpleDateFormat
@@ -36,33 +38,9 @@ import kotlin.random.Random
 
 
 private const val IMMERSIVE_FLAG_TIMEOUT = 500L
+class CameraActivity : AppCompatActivity(){
 
-/**
- * Helper activity used to capture a single photo. The captured photo is saved to the app's internal
- * storage folder, and the URI is sent back to the launching activity as an intent extra.
- *
- * This activity can be customized in two ways:
- * 1. Using Intent extras
- * ```
- * startActivityForResult(Intent(this, PhotoActivity::class.java).apply {
- *     putExtra(FULL_SCREEN_ENABLED, true)
- * }, PHOTO_REQUEST_CODE)
- * ```
- * 2. Using Manifest metadata
- * ```
- * <activity name="androidx.camera.activity.PhotoActivity>
- *     <meta-data
- *         android:name="androidx.camera.activity.FULL_SCREEN_ENABLED"
- *         android:value="true" />
- * </activity>
- * ```
- *
- * The different customization options are:
- * - `CAMERA_SWITCH_DISABLED`: hides camera switch button (use default camera only)
- * - `FULL_SCREEN_ENABLED`: puts the application into immersive mode for this activity
- * - `VIEW_FINDER_OVERLAY`: resource ID to inflate within the camera view (viewfinder)
- */
-class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_camera) {
+  private lateinit var binding: ActivityCameraBinding
 
   private lateinit var container: ConstraintLayout
   private lateinit var viewFinder: PreviewView
@@ -104,6 +82,7 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    binding = DataBindingUtil.setContentView(this, R.layout.activity_camera)
 
     setContentView(R.layout.activity_camera)
     container = findViewById(R.id.camera_container)
@@ -325,13 +304,6 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
   /** Convenience method used to check if all permissions required by this app are granted */
   private fun hasPermissions(context: Context) = permissions.all {
     ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
-  }
-
-  override fun onInitialized(): Unit {
-  }
-
-  override fun setUpClicks(): Unit {
-
   }
 
   companion object {

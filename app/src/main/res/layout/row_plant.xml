@@ -27,7 +27,6 @@
 
                 <ImageView
                     android:id="@+id/imageSpecie"
-                    cornerRadius="@{@dimen/_3pxh}"
                     android:layout_width="@dimen/_125pxh"
                     android:layout_height="@dimen/_125pxh"
                     android:layout_gravity="center|center_horizontal"

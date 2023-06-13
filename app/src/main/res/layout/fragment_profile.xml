@@ -39,7 +39,6 @@
 
                 <ImageView
                     android:id="@+id/imageEllipse"
-                    imageRes="@{@drawable/img_ellipse_187x248}"
                     android:layout_width="@dimen/_200pxh"
                     android:layout_height="@dimen/_180pxv"
                     android:layout_gravity="center_horizontal|end"
@@ -53,7 +52,6 @@
 
                 <ImageView
                     android:id="@+id/imageEllipseOne"
-                    imageRes="@{@drawable/img_ellipse_1}"
                     android:layout_width="@dimen/_75pxh"
                     android:layout_height="@dimen/_124pxv"
                     android:layout_gravity="bottom|end"
@@ -76,8 +74,6 @@
 
                     <ImageView
                         android:id="@+id/imageAvatar"
-                        circular="@{true}"
-                        imageRes="@{@drawable/img_ellipse_79x79}"
                         android:layout_width="@dimen/_79pxh"
                         android:layout_height="@dimen/_79pxh"
                         android:layout_marginBottom="@dimen/_10pxv"

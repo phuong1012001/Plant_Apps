@@ -54,7 +54,6 @@
 
                         <ImageView
                             android:id="@+id/imageEllipse"
-                            imageRes="@{@drawable/img_ellipse_86x168}"
                             android:layout_width="@dimen/_168pxh"
                             android:layout_height="@dimen/_86pxh"
                             android:layout_marginStart="@dimen/_55pxh"
@@ -66,7 +65,6 @@
 
                     <ImageView
                         android:id="@+id/imageEllipseOne"
-                        imageRes="@{@drawable/img_ellipse_1}"
                         android:layout_width="@dimen/_75pxh"
                         android:layout_height="@dimen/_124pxh"
                         android:layout_gravity="bottom|end"
@@ -109,8 +107,6 @@
 
                     <ImageView
                         android:id="@+id/imageAvatar"
-                        circular="@{true}"
-                        imageRes="@{@drawable/img_ellipse_47x47}"
                         android:layout_width="@dimen/_47pxh"
                         android:layout_height="@dimen/_47pxh"
                         android:layout_gravity="top|end"
@@ -266,7 +262,6 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerPlantTypes"
-                    itemSpace="@{@dimen/_14pxh}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_23pxh"
@@ -291,7 +286,6 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerPhotography"
-                    itemSpace="@{@dimen/_14pxh}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_23pxh"

@@ -167,7 +167,6 @@
 
                 <ImageView
                     android:id="@+id/imageRectangle"
-                    cornerRadius="@{@dimen/_3pxh}"
                     android:layout_width="@dimen/_40pxh"
                     android:layout_height="@dimen/_40pxh"
                     android:layout_gravity="center|right"

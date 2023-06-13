@@ -6,9 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.phngsapplication.app.R
-import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.databinding.ActivityForgetPassScreenZeroBinding
-import com.phngsapplication.app.databinding.ActivityLoginScreenBinding
 import kotlin.String
 import kotlin.Unit
 
