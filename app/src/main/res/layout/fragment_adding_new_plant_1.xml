@@ -98,7 +98,7 @@
                     android:minHeight="48dp"
                     android:singleLine="true"
                     android:text=""
-                    android:textColorHint="@color/bluegray_800"
+                    android:textColorHint="@color/gray_600_90"
                     tools:ignore="Autofill"
                     tools:layout_editor_absoluteY="258dp" />
 

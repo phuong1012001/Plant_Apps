@@ -56,6 +56,14 @@ class ProfileFragment : Fragment() {
         bundle.putString("A", "HOA")
         SpeciesFragment.setArguments(bundle)
 
+//        binding.toolbar.setOnItemSelectedListener {
+//            when(it.itemId){
+//                R.id.home ->replaceFragment(HomeFragment)
+//                R.id.profile->replaceFragment(ProfileFragment)
+//            }
+//            true
+//        }
+
         //Thong tin
 //        var bundleReceive: Bundle? = getArguments()
 //        if(bundleReceive != null){

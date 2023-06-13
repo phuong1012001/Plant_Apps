@@ -67,7 +67,7 @@
         tools:layout="@layout/activity_camera"/>
     <fragment
         android:id="@+id/addPlant"
-        android:name="com.phngsapplication.app.extensions.ui.AddingNewPlant1Fragment"
+        android:name="com.phngsapplication.app.ui.AddingNewPlant1Fragment"
         android:label="AddingNewPlant1Fragment"
         tools:layout="@layout/fragment_adding_new_plant_1">
         <action

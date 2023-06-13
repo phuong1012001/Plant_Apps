@@ -3,19 +3,26 @@ package com.phngsapplication.app.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.phngsapplication.app.R
 import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.databinding.ActivityForgetPassScreenZeroBinding
+import com.phngsapplication.app.databinding.ActivityLoginScreenBinding
 import kotlin.String
 import kotlin.Unit
 
-class ForgetPassScreenZeroActivity :
-    BaseActivity<ActivityForgetPassScreenZeroBinding>(R.layout.activity_forget_pass_screen_zero) {
+class ForgetPassScreenZeroActivity : AppCompatActivity(){
 
-  override fun onInitialized(): Unit {
+  private lateinit var binding: ActivityForgetPassScreenZeroBinding
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    binding = DataBindingUtil.setContentView(this, R.layout.activity_forget_pass_screen_zero)
+
+    setUpClicks()
   }
 
-  override fun setUpClicks(): Unit {
+  fun setUpClicks(): Unit {
     binding.btnNext.setOnClickListener {
       val destIntent = LoginScreenActivity.getIntent(this, null)
       startActivity(destIntent)

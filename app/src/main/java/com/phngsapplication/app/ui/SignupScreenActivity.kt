@@ -5,16 +5,18 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.phngsapplication.app.R
-import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.databinding.ActivitySignupScreenBinding
 import kotlin.String
 import kotlin.Unit
 
-class SignupScreenActivity :
-  BaseActivity<ActivitySignupScreenBinding>(R.layout.activity_signup_screen) {
+class SignupScreenActivity : AppCompatActivity() {
+
+  private lateinit var binding: ActivitySignupScreenBinding
 
   private lateinit var firebaseAuth: FirebaseAuth
 
@@ -26,19 +28,18 @@ class SignupScreenActivity :
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    binding = DataBindingUtil.setContentView(this, R.layout.activity_signup_screen)
     firebaseAuth = FirebaseAuth.getInstance()
 
     //init progress Dialog
     progressDialog = ProgressDialog(this)
     progressDialog.setTitle("Please wait !")
     progressDialog.setCanceledOnTouchOutside(false)
+
+    setUpClicks()
   }
 
-
-  override fun onInitialized(): Unit {
-  }
-
-  override fun setUpClicks(): Unit {
+  fun setUpClicks(): Unit {
     binding.btnSignUpOne.setOnClickListener {
       email = binding.email.text.toString()
       pass = binding.password.text.toString()

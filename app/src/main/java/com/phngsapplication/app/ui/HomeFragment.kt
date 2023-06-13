@@ -26,6 +26,7 @@ class HomeFragment : Fragment() {
         if (requestCode == PHOTO_REQUEST_CODE && resultCode == Activity.RESULT_OK){
             val photoUri = data?.extras?.get(CameraConfiguration.IMAGE_URI) as Uri?
             photoUri?.let {
+                Log.e("AAAAAAAAAAAA", photoUri.toString())
                 val action = HomeFragmentDirections.actionHomeToAddPlant(photoUri.toString())
                 val controller = findNavController()
                 controller.navigate(action)

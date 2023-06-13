@@ -39,10 +39,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
-
-
-
-
         val navHostFragment = supportFragmentManager.findFragmentById(
             R.id.frameBottombar
         ) as NavHostFragment
@@ -73,8 +69,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onInitialized(): Unit {
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
 //        Log.e("AAAAAA", "BBBBbbbbbbbbbbbbb")
 //        if (requestCode == PHOTO_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
 //            val photoUri = data?.extras?.get(CameraConfiguration.IMAGE_URI) as Uri?
@@ -85,7 +81,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 ////                goToAddingNewPlant(photoUri.toString())
 //            }
 //        }
-    }
+//    }
 
     public fun goToHome(){
         replaceFragment(HomeFragment)
