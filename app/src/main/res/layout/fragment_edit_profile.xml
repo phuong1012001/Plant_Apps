@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.ProfileFragment">
+        tools:context=".ui.EditProfileFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -25,17 +25,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="?attr/actionBarSize"
-                    android:theme="?attr/actionBarTheme"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:menu="@menu/menu_profile"/>
 
                 <ImageView
                     android:id="@+id/imageEllipse"
@@ -72,14 +61,24 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
+                    <!--                    <ImageView-->
+                    <!--                        android:id="@+id/imageAvatar"-->
+                    <!--                        circular="@{true}"-->
+                    <!--                        imageRes="@{@drawable/img_ellipse_79x79}"-->
+                    <!--                        android:layout_width="@dimen/_79pxh"-->
+                    <!--                        android:layout_height="@dimen/_79pxh"-->
+                    <!--                        android:layout_marginBottom="@dimen/_10pxv"-->
+                    <!--                        android:scaleType="fitStart"-->
+                    <!--                        tools:ignore="ContentDescription"-->
+                    <!--                        tools:src="@drawable/img_ellipse_79x79" />-->
                     <ImageView
-                        android:id="@+id/imageAvatar"
+                        android:id="@+id/edit_profile_image"
                         android:layout_width="@dimen/_79pxh"
                         android:layout_height="@dimen/_79pxh"
                         android:layout_marginBottom="@dimen/_10pxv"
                         android:scaleType="fitStart"
-                        android:src="@drawable/img_ellipse_79x79"
-                        tools:ignore="ContentDescription" />
+                        tools:ignore="ContentDescription"
+                        android:src="@drawable/img_ellipse_79x79" />
 
                     <TextView
                         android:id="@+id/txtName"
@@ -89,35 +88,13 @@
                         android:ellipsize="end"
                         android:gravity="center_horizontal|top"
                         android:singleLine="true"
-                        android:text="@string/lbl_taylor_swift" />
+                        android:text="@string/edit_profile_data" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/imageLocation"
-                            android:layout_width="@dimen/_11pxh"
-                            android:layout_height="@dimen/_17pxh"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/img_location"
-                            tools:ignore="ContentDescription"
-                            tools:src="@drawable/img_location" />
-
-                        <TextView
-                            android:id="@+id/txtLosAngelesCa"
-                            style="@style/txtAndadaProromanbold15_1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_5pxh"
-                            android:ellipsize="end"
-                            android:gravity="center_horizontal"
-                            android:singleLine="true"
-                            android:text="@string/msg_los_angeles_ca"
-                            tools:ignore="TextSizeCheck" />
-                    </LinearLayout>
+                        android:orientation="horizontal" />
 
                 </LinearLayout>
 
@@ -132,49 +109,46 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
-                tools:ignore="ExtraText">>
-
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tablayout"
+                tools:ignore="ExtraText"/>
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".ui.EditProfileFragment"
+                android:orientation="vertical"
+                android:gravity="center">
+                <TextView
+                    android:id="@+id/profilepic"
+                    style="@style/txtAndadaProromanbold25"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40pxv"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingConstraints">
-
-<!--                    <com.google.android.material.tabs.TabItem-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="ARTICLES">-->
-
-<!--                    </com.google.android.material.tabs.TabItem>-->
-
-<!--                    <com.google.android.material.tabs.TabItem-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="SPECIES"-->
-<!--                        tools:ignore="TouchTargetSizeCheck" />-->
-
-                </com.google.android.material.tabs.TabLayout>
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/viewPager"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/update_profile_pic"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/editname"
+                    style="@style/txtAndadaProromanbold25"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/_40pxv"
-                    app:layout_behavior="com.google.android.material.tabs.TabLayout$ScrollingviewBehavior"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tablayout"
-                    tools:ignore="SpeakableTextPresentCheck">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/update_name"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-                </androidx.viewpager.widget.ViewPager>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
+                <TextView
+                    android:id="@+id/changepassword"
+                    style="@style/txtAndadaProromanbold25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/change_password"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </layout>

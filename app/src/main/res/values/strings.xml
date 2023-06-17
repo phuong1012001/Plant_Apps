@@ -150,4 +150,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_main2">Main2Activity</string>
+
+
+    <string name="edit_profile_data">Edit Profile Data</string>
+    <string name="update_profile_pic">Update Profile Pic</string>
+    <string name="update_name">Update Name</string>
+    <string name="change_password">Change Password</string>
 </resources>

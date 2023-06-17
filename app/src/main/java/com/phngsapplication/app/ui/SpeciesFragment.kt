@@ -1,18 +1,21 @@
 package com.phngsapplication.app.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.phngsapplication.app.R
 import com.phngsapplication.app.adapter.SpeciesAdapter
 import com.phngsapplication.app.databinding.FragmentSpeciesBinding
-import com.phngsapplication.app.model.Plant
 import com.phngsapplication.app.model.Species
 import com.phngsapplication.app.model.SpeciesAlphabet
 import `in`.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
@@ -23,8 +26,11 @@ class SpeciesFragment : Fragment() {
     private lateinit var binding: FragmentSpeciesBinding
     private lateinit var mainActivity: MainActivity
 
-    val alphabet = ArrayList<String>()
     var mRecyclerView: IndexFastScrollRecyclerView? = null
+
+    val args: SpeciesFragmentArgs by navArgs()
+
+    private var db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +43,14 @@ class SpeciesFragment : Fragment() {
         mainActivity = getActivity() as MainActivity
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_species, container, false)
 
+        var speciesList = args.listSpecies
+        Log.d("listSpecies", speciesList.size.toString())
+
         mRecyclerView = binding.fastscrollerrecycler
-        val adapter = initialiseUI()
+        var adapter = initialiseUI(speciesList)
 
         adapter.onItemClick = {
-            val action = SpeciesFragmentDirections.actionSpeciesFragmentToListPlantFragment(it)
+            val action = SpeciesFragmentDirections.actionSpeciesFragmentToListPlantFragment(it.nameSpecies, it.id)
             val controller = findNavController()
             controller.navigate(action)
         }
@@ -53,41 +62,24 @@ class SpeciesFragment : Fragment() {
 
         return binding.root
     }
+    private fun initialiseUI(data1 : Array<Species>): SpeciesAdapter {
+        var data2 = ArrayList<SpeciesAlphabet>()
+        var data3 = ArrayList<Species>()
 
-    private fun initialiseUI(): SpeciesAdapter{
-        val data = ArrayList<Plant>()
-        for(i in 10..20){
-            data.add(Plant("img_rectangle_3", "Item" + i, "KINGDOM" + i, "Family" + i, "Des" + i, "Like"))
+        var c: Char = 'A'
+        data2 = ArrayList()
+        while (c <= 'Z') {
+
+            data3 = ArrayList()
+            for(sp in data1){
+                if(sp.nameSpecies[0] == c)
+                {
+                    data3.add(sp)
+                }
+            }
+            data2.add(SpeciesAlphabet(c.toString(), data3))
+            ++c
         }
-
-        val data1 = ArrayList<Species>()
-        data1.add(Species("B", data))
-        data1.add(Species("C", data))
-        data1.add(Species("D", data))
-
-        val data2 = ArrayList<SpeciesAlphabet>()
-        data2.add(SpeciesAlphabet("A", data1))
-        data2.add(SpeciesAlphabet("B", data1))
-        data2.add(SpeciesAlphabet("C", data1))
-        data2.add(SpeciesAlphabet("D", data1))
-        data2.add(SpeciesAlphabet("E", data1))
-        data2.add(SpeciesAlphabet("F", data1))
-        data2.add(SpeciesAlphabet("G", data1))
-        data2.add(SpeciesAlphabet("H", data1))
-        data2.add(SpeciesAlphabet("I", data1))
-        data2.add(SpeciesAlphabet("J", data1))
-        data2.add(SpeciesAlphabet("K", data1))
-        data2.add(SpeciesAlphabet("L", data1))
-        data2.add(SpeciesAlphabet("M", data1))
-        data2.add(SpeciesAlphabet("N", data1))
-        data2.add(SpeciesAlphabet("O", data1))
-        data2.add(SpeciesAlphabet("P", data1))
-        data2.add(SpeciesAlphabet("Q", data1))
-        data2.add(SpeciesAlphabet("R", data1))
-        data2.add(SpeciesAlphabet("S", data1))
-        data2.add(SpeciesAlphabet("T", data1))
-        data2.add(SpeciesAlphabet("U", data1))
-
         val adapter1 = SpeciesAdapter(data2)
         mRecyclerView?.apply {
             layoutManager = LinearLayoutManager(context)

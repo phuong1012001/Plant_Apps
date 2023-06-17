@@ -21,6 +21,9 @@ class LoginScreenActivity: AppCompatActivity()
 
   private lateinit var progressDialog: ProgressDialog
 
+  private var isBackPressedOne: Boolean = false
+  private var backPressedTime = 0L
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     binding = DataBindingUtil.setContentView(this, R.layout.activity_login_screen)
@@ -32,6 +35,25 @@ class LoginScreenActivity: AppCompatActivity()
     progressDialog.setCanceledOnTouchOutside(false)
 
     setUpClicks()
+  }
+
+  override fun onBackPressed() {
+//    if(isBackPressedOne){
+//      super.onBackPressed()
+//      return;
+//    }
+//    Toast.makeText(this, "Press again to exit!!!", Toast.LENGTH_SHORT).show()
+//    isBackPressedOne = true
+//
+//    new Handler().postDelayed
+
+    if (backPressedTime + 2000 > System.currentTimeMillis()){
+      super.onBackPressed()
+      return;
+    } else {
+      Toast.makeText(this, "Press again to exit!!!", Toast.LENGTH_SHORT).show()
+    }
+    backPressedTime = System.currentTimeMillis()
   }
 
   fun setUpClicks(): Unit {

@@ -7,7 +7,7 @@
         android:icon="@drawable/ic_baseline_home_24"/>
     <item android:id="@+id/addPlant"
         app:showAsAction="always"
-        android:title="" />
+        android:title=""/>
     <item android:title="Profile"
         android:id="@+id/profile"
         app:showAsAction="always"

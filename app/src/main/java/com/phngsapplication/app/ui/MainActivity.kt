@@ -7,9 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.phngsapplication.app.R
@@ -20,18 +23,10 @@ import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
-
-    var HomeFragment = HomeFragment()
-    var SpeciesFragment = SpeciesFragment()
-    var ArticlesProfileFragment = ArticlesProfileFragment()
-    var AddingNewPlant1Fragment = AddingNewPlant1Fragment()
-    var AddingNewPlant2Fragment = AddingNewPlant2Fragment()
     lateinit var uri: String
 
 
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var database: DatabaseReference
 
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +41,11 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         bottomNavigationView.setupWithNavController(navController)
+
+        binding.fab.setOnClickListener {
+            val navController = findNavController(R.id.frameBottombar)
+            navController.navigate(R.id.fab)
+        }
     }
 
     private fun checkUser() {
@@ -56,73 +56,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(destIntent)
         }
         else{
-            //logged in, get and show user infor
             val email = firebaseUser.email
-//      val name = FirebaseDatabase.getInstance().
-//      Log.d("Name", name.toString())
-//      //set to textview
-//      binding.txtName.text = "Hello $name"
-
         }
     }
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        Log.e("AAAAAA", "BBBBbbbbbbbbbbbbb")
-//        if (requestCode == PHOTO_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-//            val photoUri = data?.extras?.get(CameraConfiguration.IMAGE_URI) as Uri?
-//            photoUri?.let {
-//                Log.e("AAAAAA", "BBBB")
-////                photo_view.load(it)
-//
-////                goToAddingNewPlant(photoUri.toString())
-//            }
-//        }
-//    }
-
-    public fun goToHome(){
-        replaceFragment(HomeFragment)
-
-//        val destIntent = CameraActivity.getIntent(this, null)
-//        startActivityForResult(destIntent, PHOTO_REQUEST_CODE)
-    }
-
-    public fun goToDetailPlantTypes(){
-        var bundle: Bundle = Bundle()
-        bundle.putSerializable("a", "a")
-        SpeciesFragment.setArguments(bundle)
-        replaceFragment(SpeciesFragment)
-    }
-
-    public fun goToAddingNewPlant(uri: String){
-        var bundle: Bundle = Bundle()
-        bundle.putString("Uri", uri)
-        AddingNewPlant1Fragment.setArguments(bundle)
-        replaceFragment(AddingNewPlant1Fragment)
-    }
-
-    public fun goToAddingNewPlant2(uri: String, species:String){
-        var bundle: Bundle = Bundle()
-        bundle.putString("Uri", uri)
-        bundle.putString("Species", species)
-        AddingNewPlant2Fragment.setArguments(bundle)
-        replaceFragment(AddingNewPlant2Fragment)
-    }
-
-    public fun a(){
-        var bundle: Bundle = Bundle()
-        bundle.putString("A", "HOA")
-        ArticlesProfileFragment.setArguments(bundle)
-    }
-
-    private fun replaceFragment(fragment: Fragment){
-        if(fragment!=null){
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.frameBottombar, fragment)
-            transaction.addToBackStack(fragment.javaClass.getName())
-            transaction.commit()
-        }
-    }
 
     companion object {
         const val TAG: String = "MAIN_ACTIVITY"

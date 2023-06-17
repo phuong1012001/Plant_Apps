@@ -3,11 +3,16 @@ package com.phngsapplication.app.ui
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.FragmentProfileBinding
 
@@ -19,11 +24,15 @@ class ProfileFragment : Fragment() {
     lateinit var ArticlesFragment: ArticlesProfileFragment
     lateinit var SpeciesFragment: SpeciesProfileFragment
 
+    private var db = Firebase.firestore
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ArticlesFragment = ArticlesProfileFragment();
         SpeciesFragment = SpeciesProfileFragment();
+
+        firebaseAuth = FirebaseAuth.getInstance()
 
         setHasOptionsMenu(true)
     }
@@ -41,6 +50,10 @@ class ProfileFragment : Fragment() {
                     val controller = findNavController()
                     controller.navigate(R.id.action_profile_to_loginScreenActivity)
                 }
+                R.id.changePassword->{
+                    val controller = findNavController()
+                    controller.navigate(R.id.action_profile_to_editProfileFragment)
+                }
             }
             true
         }
@@ -56,32 +69,8 @@ class ProfileFragment : Fragment() {
         bundle.putString("A", "HOA")
         SpeciesFragment.setArguments(bundle)
 
-//        binding.toolbar.setOnItemSelectedListener {
-//            when(it.itemId){
-//                R.id.home ->replaceFragment(HomeFragment)
-//                R.id.profile->replaceFragment(ProfileFragment)
-//            }
-//            true
-//        }
-
         //Thong tin
-//        var bundleReceive: Bundle? = getArguments()
-//        if(bundleReceive != null){
-//            val profile: Profile = bundleReceive.get("profile") as Profile
-//            if(profile != null){
-//                binding.txtName.setText(profile.name)
-//                binding.txtLosAngelesCa.setText(profile.address)
-//                val drawableResourceId1 = this.resources.getIdentifier(profile.imageAvatar,
-//                    "drawable",
-//                    mainActivity.packageName)
-//
-//
-//                Glide.with(this)
-//                    .load(drawableResourceId1)
-//                    .into(binding.imageAvatar)
-//            }
-//        }
-
+        loadUserFromFireStore()
 
         return binding.root
     }
@@ -93,6 +82,35 @@ class ProfileFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun loadUserFromFireStore() {
+        //data1 = ArrayList()
+        db = FirebaseFirestore.getInstance()
+
+        db.collection("User").get().addOnSuccessListener {  }
+            .addOnSuccessListener {
+                if(!it.isEmpty){
+                    for(data in it.documents){
+                        val uid = data.get("id").toString()
+                        if(firebaseAuth.uid.toString() == uid){
+                            val name = data.get("name").toString()
+                            Log.d("Name", name)
+                            binding.txtName.text = name
+                            break
+                        }
+
+                    }
+                }
+            }
+            .addOnFailureListener {e->
+                Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+
+
+//        Glide.with(this)
+//            .load(Plant.imagePlant)
+//            .into(binding.imageAvatar)
     }
 
     companion object {

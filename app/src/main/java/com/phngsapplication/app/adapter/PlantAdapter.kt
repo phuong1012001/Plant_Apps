@@ -31,14 +31,14 @@ class PlantAdapter(
     holder.txtFAMILY.setText(item.txtFAMILY)
     holder.txtDescription.setText(item.txtDescription)
 
-    val drawableResourceId = holder.itemView.context.resources.getIdentifier(
-      item.imagePlant,
-      "drawable",
-      holder.itemView.context.packageName
-    )
+//    val drawableResourceId = holder.itemView.context.resources.getIdentifier(
+//      item.imagePlant,
+//      "drawable",
+//      holder.itemView.context.packageName
+//    )
 
     Glide.with(holder.itemView.context)
-      .load(drawableResourceId)
+      .load(item.imagePlant)
       .into(holder.imagePlant)
 
     holder.oneSpecie.setOnClickListener{
