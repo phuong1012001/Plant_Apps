@@ -2,6 +2,7 @@ package com.phngsapplication.app.ui
 
 import android.app.ProgressDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,10 +43,6 @@ class AddingNewPlant1Fragment : Fragment() {
         binding.btnNext.setOnClickListener{
             var name = binding.name.text.toString()
             if(name.isNotEmpty()){
-//                val action = AddingNewPlant1FragmentDirections.actionAddPlantToAddingNewPlant2Fragment(uri, name)
-//                val controller = findNavController()
-//                controller.navigate(action)
-//                mainActivity.goToAddingNewPlant2(a, name)
                 validateData()
             }else{
                 Toast.makeText(mainActivity, "Species not Valid !!", Toast.LENGTH_SHORT).show()
@@ -56,8 +53,6 @@ class AddingNewPlant1Fragment : Fragment() {
     }
 
     private var species = ""
-    private var plant = ""
-    private var description = ""
 
     private fun validateData() {
         // get data
@@ -85,6 +80,7 @@ class AddingNewPlant1Fragment : Fragment() {
 
         db.collection("User/$userId/Species").document("$timestamp").set(speciesMap)
             .addOnSuccessListener {
+
                 //user info save, open user dashboard
                 //progressDialog.dismiss()
                 Toast.makeText(mainActivity, "Add FireStore Successfully...", Toast.LENGTH_SHORT).show()

@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.ActivitySignupScreenBinding
 import kotlin.String
@@ -21,6 +23,8 @@ class SignupScreenActivity : AppCompatActivity() {
   private lateinit var firebaseAuth: FirebaseAuth
 
   private lateinit var progressDialog: ProgressDialog
+
+  private var db = Firebase.firestore
 
   private var email = ""
   private var pass = ""
@@ -60,6 +64,7 @@ class SignupScreenActivity : AppCompatActivity() {
                 Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
               }
             updateUserInfo()
+            updateUserInfoFireStore()
             startActivity(destIntent)
           }else{
             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
@@ -69,6 +74,31 @@ class SignupScreenActivity : AppCompatActivity() {
         Toast.makeText(this, "Empty Fields Are not Valid !!", Toast.LENGTH_SHORT).show()
       }
     }
+  }
+
+  private fun updateUserInfoFireStore() {
+    val timestamp = System.currentTimeMillis()
+    val userId = FirebaseAuth.getInstance().currentUser!!.uid
+    val userMap = hashMapOf(
+      "id" to userId,
+      "email" to email,
+      "name" to name,
+      "profileImage" to "",
+      "timestamp" to timestamp,
+    )
+
+
+
+    db.collection("User").document(userId).set(userMap)
+      .addOnSuccessListener {
+        //user info save, open user dashboard
+        //progressDialog.dismiss()
+        Toast.makeText(this, "Add FireStore Successfully...", Toast.LENGTH_SHORT).show()
+      }
+      .addOnFailureListener{e->
+        //progressDialog.dismiss()
+        Toast.makeText(this, "Failed to add FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
+      }
   }
 
   private fun updateUserInfo() {
