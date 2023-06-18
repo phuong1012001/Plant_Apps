@@ -9,6 +9,8 @@ data class Plant(
 
   var speciesId: String,
 
+  var speciesName: String,
+
   var imagePlant: String,
 
   var txtPlant: String,
@@ -35,6 +37,7 @@ data class Plant(
     parcel.readString()!!,
     parcel.readString()!!,
     parcel.readString()!!,
+    parcel.readString()!!,
     parcel.readString()!!
   ) {
   }
@@ -42,6 +45,7 @@ data class Plant(
   override fun writeToParcel(parcel: Parcel, flags: Int) {
     parcel.writeString(plantId)
     parcel.writeString(speciesId)
+    parcel.writeString(speciesName)
     parcel.writeString(imagePlant)
     parcel.writeString(txtPlant)
     parcel.writeString(txtKINGDOM)

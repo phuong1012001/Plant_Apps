@@ -17,8 +17,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.FragmentDetailPlantBinding
-import com.phngsapplication.app.model.Plant
-import org.koin.android.ext.android.bind
 
 class DetailPlantFragment : Fragment() {
 
@@ -26,10 +24,10 @@ class DetailPlantFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
 
     private lateinit var firebaseAuth: FirebaseAuth
+    private var db = Firebase.firestore
 
     private var like: Boolean = false
     var like1:String = ""
-    private var db = Firebase.firestore
 
     val args: DetailPlantFragmentArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,13 +42,15 @@ class DetailPlantFragment : Fragment() {
         mainActivity = getActivity() as MainActivity
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail_plant, container, false)
 
+        //Xet bieu thuong LIKE_DISLIKE
+        val like = args.like
+        if(like == "like")
+            binding.btnLike.setBackgroundResource(R.drawable.rectangle_bg_red_a200_radius_28_5)
+        else
+            binding.btnLike.setBackgroundResource(R.drawable.rectangle_bg_white_a200_radius_28_5);
+
         val Plant = args.plant
         if(Plant != null){
-            Log.d("AAAAAAAA", Plant.toString())
-//            val drawableResourceId1 = this.resources.getIdentifier(Plant.imagePlant,
-//                "drawable",
-//                mainActivity.packageName)
-
             Glide.with(this)
                 .load(Plant.imagePlant)
                 .into(binding.image)
@@ -58,8 +58,6 @@ class DetailPlantFragment : Fragment() {
 //                val drawableResourceId2 = this.resources.getIdentifier(Plant.imagePlant,
 //                    "drawable",
 //                    mainActivity.packageName)
-//
-//
 //                Glide.with(this)
 //                    .load(drawableResourceId2)
 //                    .into(binding.like)
@@ -70,43 +68,15 @@ class DetailPlantFragment : Fragment() {
             binding.txtDescription.setText(Plant.txtDescription)
             binding.btnDanger.text = Plant.txtCharacterOne
             binding.btnDecoration.text = Plant.txtCharacterTwo
-
-            db.collection("User").get().addOnSuccessListener {  }
-                .addOnSuccessListener {
-                    if(!it.isEmpty){
-                        for(data in it.documents){
-                            val uid = data.get("id")
-                            if(uid.toString() == firebaseAuth.uid.toString()) {
-                                db.collection("User/$uid/UserLikePlant").get().addOnSuccessListener { }
-                                    .addOnSuccessListener { it1 ->
-                                        if (!it1.isEmpty) {
-                                            for (data in it1.documents) {
-                                                val idPlant = data.get("plantId")
-                                                Log.d("id", idPlant.toString())
-                                                like1 = data.get("like").toString()
-                                                if(idPlant.toString() == Plant.plantId && like1 == "true") {
-                                                    Log.d("like1", like1)
-                                                    binding.btnLike.setBackgroundResource(R.drawable.rectangle_bg_red_a200_radius_28_5)
-                                                }
-//                                                else if(idPlant.toString() == Plant.plantId && like1 == "true")
-//                                                    binding.btnLike.setBackgroundResource(R.drawable.rectangle_bg_red_a200_radius_28_5)
-                                            }
-                                        }
-                                    }
-                            }
-                        }
-                    }
-                }
-                .addOnFailureListener {e->
-                    Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
-                }
         }
 
         var button_background : Int = 0
+        Log.d("Like", like)
         button_background = if(like1 == "true")
             2
         else 1
 
+        Log.d("button_background", button_background.toString())
 
         binding.btnLike.setOnClickListener {
             if(button_background==2){
@@ -123,8 +93,9 @@ class DetailPlantFragment : Fragment() {
         }
 
         binding.btnBack.setOnClickListener{
+            val action = DetailPlantFragmentDirections.actionDetailPlantFragmentToListPlantFragment(Plant.speciesName, Plant.speciesId)
             val controller = findNavController()
-            controller.navigate(R.id.action_detailPlantFragment_to_listPlantFragment)
+            controller.navigate(action)
         }
         return binding.root
     }
@@ -160,9 +131,6 @@ class DetailPlantFragment : Fragment() {
     }
 
     private fun addUserLikePlantFirebase(plantId: String, toString: String) {
-        // show progress
-        //progressDialog.show()
-
         //timestamp
         val timestamp = System.currentTimeMillis()
 

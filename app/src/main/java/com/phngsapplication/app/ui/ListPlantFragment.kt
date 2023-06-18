@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -26,12 +27,17 @@ class ListPlantFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
 
     var data = ArrayList<Plant>()
+    var data1 = ArrayList<Species>()
+    private lateinit var plantId : ArrayList<String>
+
     private var db = Firebase.firestore
+    private lateinit var firebaseAuth: FirebaseAuth
 
     val args: ListPlantFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        firebaseAuth = FirebaseAuth.getInstance()
     }
 
     override fun onCreateView(
@@ -43,28 +49,92 @@ class ListPlantFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_list_plant, container, false)
 
         //Load danh sach plant
-        val species = args.species
+        val nameSpecies = args.species
         val idSpecies = args.idSpecies
-        Log.d("AAA", species)
+
         data = ArrayList()
-        loadPlantFromFireStore(idSpecies, species)
+        plantId = ArrayList()
+
+        loadPlantFromFireStore(idSpecies, nameSpecies)
+        loadLikeFromFireStore()
+        loadSpeciesFromFireStore()
 
         //Thao tac voi button
         binding.btnBack.setOnClickListener{
+            var speciesArr : Array<Species> = data1.toTypedArray() //Danh sach loai
+            val action = ListPlantFragmentDirections.actionListPlantFragmentToSpeciesFragment(speciesArr)
             val controller = findNavController()
-            controller.navigate(R.id.action_listPlantFragment_to_speciesFragment)
+            controller.navigate(action)
         }
 
         return binding.root
     }
 
     @SuppressLint("SuspiciousIndentation")
-    private fun loadPlantFromFireStore(idSpecies: String, speciesDaTa: String) {
-        //init array list
+    private fun loadLikeFromFireStore() {
+        db = FirebaseFirestore.getInstance()
+        db.collection("User").get().addOnSuccessListener {  }
+            .addOnSuccessListener {
+                if(!it.isEmpty){
+                    for(data in it.documents){
+                        val uid = data.get("id")
+                        if(uid.toString() == firebaseAuth.uid.toString()) {
+                            db.collection("User/$uid/UserLikePlant").get().addOnSuccessListener { }
+                                .addOnSuccessListener { it1 ->
+                                    if (!it1.isEmpty) {
+                                        for (data in it1.documents) {
+                                            val idPlant = data.get("plantId")
+                                            val like = data.get("like")
+                                            if(like.toString() == "true") {
+                                                plantId.add(idPlant.toString())
+                                                Log.d("plant id",idPlant.toString())
+                                            }
+                                        }
+                                    }
+                                }
+                        }
+                    }
+                }
+            }
+            .addOnFailureListener {e->
+                Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun loadSpeciesFromFireStore() {
+        db = FirebaseFirestore.getInstance()
+        db.collection("User").get().addOnSuccessListener {  }
+            .addOnSuccessListener {
+                if(!it.isEmpty){
+                    data1.clear()
+                    for(data in it.documents){
+                        val uid = data.get("id")
+                        db.collection("User/$uid/Species").get().addOnSuccessListener {  }
+                            .addOnSuccessListener {it1->
+                                if(!it1.isEmpty){
+                                    //data1.clear()
+                                    for(data in it1.documents){
+                                        val species = data.get("species")
+                                        val id = data.get("id")
+
+                                        data1.add(Species(id.toString(), species.toString(),"1", null))
+                                    }
+                                }
+                            }
+                    }
+                }
+            }
+            .addOnFailureListener {e->
+                Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    @SuppressLint("SuspiciousIndentation")
+    private fun loadPlantFromFireStore(idSpecies: String, nameSpecies: String) {
         data = ArrayList()
         db = FirebaseFirestore.getInstance()
 
-        binding.txtPlant.setText(speciesDaTa)
+        binding.txtPlant.setText(nameSpecies)
 
         db.collection("User").get().addOnSuccessListener {  }
             .addOnSuccessListener {it3->
@@ -101,6 +171,7 @@ class ListPlantFragment : Fragment() {
                                                                 Plant(
                                                                     plantId.toString(),
                                                                     idSpecies,
+                                                                    nameSpecies,
                                                                     imagePlant.toString(),
                                                                     plantName.toString(),
                                                                     kingdom.toString(),
@@ -112,12 +183,18 @@ class ListPlantFragment : Fragment() {
                                                                 )
                                                             )
                                                         }
-                                                        if(speciesDaTa != null){
+                                                        if(data != null){
                                                             val adapter = data?.let { PlantAdapter(it) }
                                                             binding.recyclerListPlant.adapter = adapter
                                                             if (adapter != null) {
+                                                                var like : String = "dislike"
                                                                 adapter.onItemClick = {
-                                                                    val action = ListPlantFragmentDirections.actionListPlantFragmentToDetailPlantFragment(it)
+                                                                    for(ds in plantId){
+                                                                        if(ds == it.plantId){
+                                                                            like = "like"
+                                                                        }
+                                                                    }
+                                                                    val action = ListPlantFragmentDirections.actionListPlantFragmentToDetailPlantFragment(it, like)
                                                                     val controller = findNavController()
                                                                     controller.navigate(action)
                                                                 }

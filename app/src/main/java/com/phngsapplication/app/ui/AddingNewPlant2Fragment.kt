@@ -88,10 +88,6 @@ class AddingNewPlant2Fragment : Fragment() {
             speciesPickDialog()
         }
 
-        binding.speciesTV.setOnClickListener {
-            speciesPickDialog()
-        }
-
         binding.btnSubmit.setOnClickListener{
             var name_plant = binding.name.text.toString()
             var kingdom = binding.kingdom.text.toString()
@@ -116,18 +112,6 @@ class AddingNewPlant2Fragment : Fragment() {
         speciesArrList = ArrayList()
         db = FirebaseFirestore.getInstance()
 
-//        db.collection("Species").get().addOnSuccessListener {  }
-//            .addOnSuccessListener {
-//                if(!it.isEmpty){
-//                    speciesArrList.clear()
-//                    for(data in it.documents){
-//                        val species = data.get("species")
-//                        val id = data.get("id")
-//                        Log.d("Name get data: ", species.toString())
-//                        speciesArrList.add(Species(id.toString(), species.toString(), null))
-//                    }
-//                }
-//            }
         db.collection("User").get().addOnSuccessListener {  }
             .addOnSuccessListener {
                 if(!it.isEmpty){

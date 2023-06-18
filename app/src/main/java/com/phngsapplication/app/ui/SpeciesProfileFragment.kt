@@ -29,13 +29,10 @@ class SpeciesProfileFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
 
     private lateinit var firebaseAuth: FirebaseAuth
+    private var db = Firebase.firestore
 
     private lateinit var plantId : ArrayList<String>
-    private var uid = ""
-
     var plant = ArrayList<Plant>()
-
-    private var db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +49,6 @@ class SpeciesProfileFragment : Fragment() {
         plant = ArrayList()
         plantId = ArrayList()
 
-        //db reference to load species DF > Plants
         db.collection("User").get().addOnSuccessListener {  }
             .addOnSuccessListener {
                 if(!it.isEmpty){
@@ -81,14 +77,12 @@ class SpeciesProfileFragment : Fragment() {
                 Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
 
-        //db reference to load species DF > Plants
         loadPlantFromFireStore()
 
         return binding.root
     }
 
     private fun loadPlantFromFireStore() {
-        //init array list
         db = FirebaseFirestore.getInstance()
 
         db.collection("User").get().addOnSuccessListener {  }
@@ -102,7 +96,7 @@ class SpeciesProfileFragment : Fragment() {
                                 if (!it1.isEmpty) {
                                     //data1.clear()
                                     for (data3 in it1.documents) {
-                                        val species = data3.get("species")
+                                        val species = data3.get("species").toString()
                                         val id = data3.get("id").toString()
                                         db.collection("User/$uid/Species/$id/Plants")
                                             .get().addOnSuccessListener { }
@@ -131,6 +125,7 @@ class SpeciesProfileFragment : Fragment() {
                                                                     Plant(
                                                                         idPlant.toString(),
                                                                         id,
+                                                                        species,
                                                                         imagePlant.toString(),
                                                                         plantName.toString(),
                                                                         kingdom.toString(),
@@ -150,13 +145,9 @@ class SpeciesProfileFragment : Fragment() {
                                                                 adapter
                                                             if (adapter != null) {
                                                                 adapter.onItemClick = {
-                                                                    val action =
-                                                                        ListPlantFragmentDirections.actionListPlantFragmentToDetailPlantFragment(
-                                                                            it
-                                                                        )
-                                                                    val controller =
-                                                                        findNavController()
-                                                                    controller.navigate(action)
+//                                                                    val action = ProfileFragmentDirections.actionProfileToDetailPlantFragment(it, "like")
+//                                                                    val controller = findNavController()
+//                                                                    controller.navigate(action)
                                                                 }
                                                             }
                                                         }
