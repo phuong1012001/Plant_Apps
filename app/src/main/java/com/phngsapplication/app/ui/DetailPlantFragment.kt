@@ -100,14 +100,6 @@ class DetailPlantFragment : Fragment() {
         return binding.root
     }
 
-    private fun updateUserLikePlantFirebase(plantId: String, like: String) {
-        val editMap = mapOf(
-            "like" to like
-        )
-        val ref = FirebaseDatabase.getInstance().getReference("UserLikePlant")
-        ref.child("${firebaseAuth.uid}$plantId").updateChildren(editMap)
-    }
-
     private fun updateUserLikePlantFireStore(plantId: String, like: String) {
         val timestamp = System.currentTimeMillis()
         val userLikePlantMap = hashMapOf(
@@ -120,40 +112,10 @@ class DetailPlantFragment : Fragment() {
 
         db.collection("User/$userId/UserLikePlant").document("$plantId").set(userLikePlantMap)
             .addOnSuccessListener {
-                //user info save, open user dashboard
-                //progressDialog.dismiss()
                 Toast.makeText(mainActivity, "Add FireStore Successfully...", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{e->
-                //progressDialog.dismiss()
                 Toast.makeText(mainActivity, "Failed to add FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
-            }
-    }
-
-    private fun addUserLikePlantFirebase(plantId: String, toString: String) {
-        //timestamp
-        val timestamp = System.currentTimeMillis()
-
-        //setup data to add db
-        val hashMap: HashMap<String, Any?> = HashMap()
-        hashMap["id"] = "${firebaseAuth.uid}$plantId"
-        hashMap["plantId"] = plantId
-        hashMap["uid"] = "${firebaseAuth.uid}"
-        hashMap["like"] = like
-        hashMap["timestamp"] = timestamp
-
-        //set data to db
-        val ref = FirebaseDatabase.getInstance().getReference("UserLikePlant")
-        ref.child("${firebaseAuth.uid}$plantId")
-            .setValue(hashMap)
-            .addOnSuccessListener {
-                //user info save, open user dashboard
-                //progressDialog.dismiss()
-                Toast.makeText(mainActivity, "Add Successfully...", Toast.LENGTH_SHORT).show()
-            }
-            .addOnFailureListener{e->
-                //progressDialog.dismiss()
-                Toast.makeText(mainActivity, "Failed to add due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 

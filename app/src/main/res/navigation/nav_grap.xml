@@ -92,9 +92,6 @@
             android:label="HomeFragment"
             tools:layout="@layout/fragment_home">
             <action
-                android:id="@+id/action_home_to_articlesFragment"
-                app:destination="@id/articlesFragment" />
-            <action
                 android:id="@+id/action_home_to_speciesFragment"
                 app:destination="@id/speciesFragment" />
             <action
@@ -103,6 +100,9 @@
             <action
                 android:id="@+id/action_home_to_addingNewPlant2Fragment"
                 app:destination="@id/addingNewPlant2Fragment" />
+            <action
+                android:id="@+id/action_homeFragment_to_articlesFragment"
+                app:destination="@id/articlesFragment" />
         </fragment>
         <fragment
             android:id="@+id/detailArticlesFragment"
@@ -117,6 +117,9 @@
                 app:destination="@id/articlesFragment"
                 app:popUpTo="@+id/articlesFragment"
                 app:popUpToInclusive="true" />
+            <argument
+                android:name="like"
+                app:argType="string" />
         </fragment>
         <fragment
             android:id="@+id/articlesFragment"
@@ -130,6 +133,23 @@
                 android:id="@+id/action_articlesFragment_to_home"
                 app:destination="@id/home"
                 app:popUpTo="@+id/home"
+                app:popUpToInclusive="true" />
+            <action
+                android:id="@+id/action_articlesFragment_to_postArticles"
+                app:destination="@id/postArticles" />
+            <argument
+                android:name="article"
+                app:argType="com.phngsapplication.app.model.Article[]" />
+        </fragment>
+        <fragment
+            android:id="@+id/postArticles"
+            android:name="com.phngsapplication.app.ui.PostArticles"
+            android:label="PostArticles"
+            tools:layout="@layout/fragment_post_articles">
+            <action
+                android:id="@+id/action_postArticles_to_articlesFragment"
+                app:destination="@id/articlesFragment"
+                app:popUpTo="@id/articlesFragment"
                 app:popUpToInclusive="true" />
         </fragment>
         <fragment

@@ -74,12 +74,7 @@ class AddingNewPlant2Fragment : Fragment() {
         var uri: Uri? = null
 
         if(a != null){
-//            var uri = a.toUri()
             uri = Uri.parse(a)
-
-//            Glide.with(this)
-//                .load(File(uri.getPath()))
-//                .into(binding.imageNewPlant)
             Glide.with(this)
                 .load(File(uri.getPath()))
                 .into(binding.imageNewPlant)
@@ -108,7 +103,6 @@ class AddingNewPlant2Fragment : Fragment() {
     }
 
     private fun loadSpeciesFromFireStore() {
-        //init array list
         speciesArrList = ArrayList()
         db = FirebaseFirestore.getInstance()
 
@@ -138,30 +132,6 @@ class AddingNewPlant2Fragment : Fragment() {
             }
     }
 
-    private fun loadSpecies() {
-        //init array list
-        speciesArrList = ArrayList()
-
-        //db reference to load species DF > Species
-        val ref = FirebaseDatabase.getInstance().getReference("Species")
-        ref.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                Log.d("TAG", "Start get data")
-                speciesArrList.clear()
-                for(ds in snapshot.children){
-                    val species = ds.child("species").value
-                    val id = ds.child("id").value
-                    Log.d("Name get data: ", species.toString())
-                    speciesArrList.add(Species(id.toString(), species.toString(), "1" , null))
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
-    }
-
     private fun speciesPickDialog() {
         Log.d("TAG", "Show pick Species")
 
@@ -175,8 +145,6 @@ class AddingNewPlant2Fragment : Fragment() {
         val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Pick Species")
             .setItems(speciesArr){dialog, which ->
-                //handle item click
-                // get clicked item
                 selectSpeciesTitle = speciesArrList[which].nameSpecies
                 selectSpeciesId = speciesArrList[which].id
                 selectUidOfSpecies = speciesArrList[which].uid
@@ -185,11 +153,9 @@ class AddingNewPlant2Fragment : Fragment() {
                 Log.d("TAG", "Select Species: $selectSpeciesTitle")
             }
             .show()
-
     }
 
     private fun validateData(uri: Uri) {
-        // get data
         species = binding.speciesTV.text.toString().trim()
         plant = binding.name.text.toString().trim()
         kingdom = binding.kingdom.text.toString().trim()
@@ -215,7 +181,6 @@ class AddingNewPlant2Fragment : Fragment() {
         }
         else{
             uploadImageToStorage(uri)
-            //addPlantFirebase()
         }
     }
 
@@ -249,8 +214,6 @@ class AddingNewPlant2Fragment : Fragment() {
     private fun addPlantFireStore(uploadedImageUrl: String, timestamp: Long) {
         val plantMap = hashMapOf(
             "id" to "$timestamp",
-//            "species" to species,
-//            "species" to "$species",
             "plant" to "$plant",
             "kingdom" to "$kingdom",
             "family" to "$family",
@@ -259,24 +222,19 @@ class AddingNewPlant2Fragment : Fragment() {
             "characterTwo" to "$characteristicTwo",
             "URL" to "$uploadedImageUrl",
             "timestamp" to timestamp,
-            //"uid" to "${firebaseAuth.uid}"
         )
 
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
         db.collection("User/$selectUidOfSpecies/Species/$selectSpeciesId/Plants").document("$timestamp").set(plantMap)
             .addOnSuccessListener {
-                //user info save, open user dashboard
-                //progressDialog.dismiss()
                 Toast.makeText(mainActivity, "Add FireStore Successfully...", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{e->
-                //progressDialog.dismiss()
                 Toast.makeText(mainActivity, "Failed to add FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
     companion object {
-
     }
 }

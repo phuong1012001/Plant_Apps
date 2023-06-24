@@ -33,7 +33,9 @@
         </activity>
         <activity
             android:name=".ui.LoginScreenActivity"
-            android:screenOrientation="portrait" />
+            android:exported="true"
+            android:screenOrientation="portrait">
+        </activity>
         <activity
             android:name=".ui.SignupScreenActivity"
             android:screenOrientation="portrait" />

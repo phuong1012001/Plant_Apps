@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
@@ -43,6 +44,8 @@ class ProfileFragment : Fragment() {
     ): View? {
         mainActivity = getActivity() as MainActivity
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+        //Thong tin
+        loadUserFromFireStore()
 
         binding.toolbar.setOnMenuItemClickListener() {
             when(it.itemId){
@@ -65,12 +68,9 @@ class ProfileFragment : Fragment() {
         adapter.addFragment(SpeciesFragment, "Species")
         binding.viewPager.setAdapter(adapter)
 
-        var bundle: Bundle = Bundle()
-        bundle.putString("A", "HOA")
-        SpeciesFragment.setArguments(bundle)
-
-        //Thong tin
-        loadUserFromFireStore()
+//        var bundle: Bundle = Bundle()
+//        bundle.putString("A", "HOA")
+//        SpeciesFragment.setArguments(bundle)
 
         return binding.root
     }
@@ -85,7 +85,6 @@ class ProfileFragment : Fragment() {
     }
 
     private fun loadUserFromFireStore() {
-        //data1 = ArrayList()
         db = FirebaseFirestore.getInstance()
 
         db.collection("User").get().addOnSuccessListener {  }
@@ -95,22 +94,22 @@ class ProfileFragment : Fragment() {
                         val uid = data.get("id").toString()
                         if(firebaseAuth.uid.toString() == uid){
                             val name = data.get("name").toString()
+                            val image = data.get("profileImage").toString()
+                            val address = data.get("local").toString()
                             Log.d("Name", name)
                             binding.txtName.text = name
+                            Glide.with(this)
+                                .load(image)
+                                .into(binding.imageAvatar)
+                            binding.txtLosAngelesCa.text = address
                             break
                         }
-
                     }
                 }
             }
             .addOnFailureListener {e->
                 Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
-
-
-//        Glide.with(this)
-//            .load(Plant.imagePlant)
-//            .into(binding.imageAvatar)
     }
 
     companion object {

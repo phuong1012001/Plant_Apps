@@ -1,5 +1,6 @@
 package com.phngsapplication.app.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -65,7 +66,6 @@ class SpeciesProfileFragment : Fragment() {
                                                 plantId.add(idPlant.toString())
                                                 Log.d("plant id",idPlant.toString())
                                             }
-//
                                         }
                                     }
                                 }
@@ -82,6 +82,7 @@ class SpeciesProfileFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun loadPlantFromFireStore() {
         db = FirebaseFirestore.getInstance()
 
@@ -104,11 +105,8 @@ class SpeciesProfileFragment : Fragment() {
                                                 if (!it2.isEmpty) {
                                                     //data1.clear()
                                                     for (data1 in it2.documents) {
-
                                                         val plantName = data1.get("plant")
                                                         val idPlant = data1.get("id")
-                                                        //val speciesId = data1.get("speciesId")
-                                                        //val imagePlant = "img_rectangle_3"
                                                         val imagePlant = data1.get("URL")
                                                         val kingdom = data1.get("kingdom")
                                                         val family = data1.get("family")

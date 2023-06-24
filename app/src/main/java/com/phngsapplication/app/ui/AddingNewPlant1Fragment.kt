@@ -1,8 +1,6 @@
 package com.phngsapplication.app.ui
 
-import android.app.ProgressDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +13,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.FragmentAddingNewPlant1Binding
-import java.io.File
 
 class AddingNewPlant1Fragment : Fragment() {
 
@@ -23,10 +20,8 @@ class AddingNewPlant1Fragment : Fragment() {
     private lateinit var mainActivity: MainActivity
 
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var progressDialog: ProgressDialog
 
     private var db = Firebase.firestore
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +43,6 @@ class AddingNewPlant1Fragment : Fragment() {
                 Toast.makeText(mainActivity, "Species not Valid !!", Toast.LENGTH_SHORT).show()
             }
         }
-
         return binding.root
     }
 
@@ -80,21 +74,14 @@ class AddingNewPlant1Fragment : Fragment() {
 
         db.collection("User/$userId/Species").document("$timestamp").set(speciesMap)
             .addOnSuccessListener {
-
-                //user info save, open user dashboard
-                //progressDialog.dismiss()
                 Toast.makeText(mainActivity, "Add FireStore Successfully...", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{e->
-                //progressDialog.dismiss()
                 Toast.makeText(mainActivity, "Failed to add FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
     private fun addSpeciesFirebase() {
-        // show progress
-        //progressDialog.show()
-
         //timestamp
         val timestamp = System.currentTimeMillis()
 
@@ -110,12 +97,9 @@ class AddingNewPlant1Fragment : Fragment() {
         ref.child("$timestamp")
             .setValue(hashMap)
             .addOnSuccessListener {
-                //user info save, open user dashboard
-                //progressDialog.dismiss()
                 Toast.makeText(mainActivity, "Add Successfully...", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{e->
-                //progressDialog.dismiss()
                 Toast.makeText(mainActivity, "Failed to add due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }

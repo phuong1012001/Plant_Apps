@@ -8,10 +8,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -22,6 +26,7 @@ import com.google.firebase.ktx.Firebase
 import com.phngsapplication.app.R
 import com.phngsapplication.app.adapter.PlantTypesAdapter
 import com.phngsapplication.app.databinding.FragmentHomeBinding
+import com.phngsapplication.app.model.Article
 import com.phngsapplication.app.model.Species
 import kotlin.random.Random
 
@@ -33,6 +38,11 @@ class HomeFragment : Fragment() {
 
     var data1 = ArrayList<Species>() //Mang Species
     private var db = Firebase.firestore
+
+    var articleList = ArrayList<Article>()
+    private lateinit var set: ImageView
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var firebaseUser: FirebaseUser
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -51,6 +61,8 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        firebaseAuth = FirebaseAuth.getInstance()
+        firebaseUser = firebaseAuth.currentUser!!
     }
 
     override fun onCreateView(
@@ -77,6 +89,14 @@ class HomeFragment : Fragment() {
             }
         )
 
+        set = binding.imageAvatar
+
+        //Load User
+        loadImageFromUser()
+
+        //Load Articles
+        loadArticlesFromFireStore()
+
         //Load Species
         loadSpeciesFromFireStore()
 
@@ -94,8 +114,11 @@ class HomeFragment : Fragment() {
             controller.navigate(action)
         }
         binding.bttonArticles.setOnClickListener {
+            var articlesArr : Array<Article> = articleList.toTypedArray()
+            Log.d("Szie Article", articlesArr.size.toString())
+            val action = HomeFragmentDirections.actionHomeFragmentToArticlesFragment(articlesArr)
             val controller = findNavController()
-            controller.navigate(R.id.action_home_to_articlesFragment)
+            controller.navigate(action)
         }
         binding.buttonAddingNew.setOnClickListener {
             val intent = Intent(activity, CameraActivity::class.java)
@@ -115,6 +138,70 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun loadImageFromUser() {
+        db.collection("User").get().addOnSuccessListener {  }
+            .addOnSuccessListener {
+                if(!it.isEmpty){
+                    for(data in it.documents){
+                        val image = data.get("profileImage")
+                        val uid = data.get("id")
+                        val name = data.get("name")
+                        if(uid.toString() == firebaseUser.uid)
+                        {
+                            Log.d("User", uid.toString())
+                            binding.txtName.text = "Hello ${name.toString()}"
+                            try {
+                                Glide.with(requireContext()).load(image).into(set)
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+                    }
+                }
+            }
+            .addOnFailureListener {e->
+                Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun loadArticlesFromFireStore() {
+        db = FirebaseFirestore.getInstance()
+        db.collection("User").get().addOnSuccessListener {  }
+            .addOnSuccessListener {
+                if(!it.isEmpty){
+                    articleList.clear()
+                    for(data in it.documents){
+                        val uid = data.get("id")
+                        val name = data.get("name")
+                        val avatar = data.get("profileImage")
+                        db.collection("User/$uid/Articles").get().addOnSuccessListener {  }
+                            .addOnSuccessListener {it1->
+                                if(!it1.isEmpty){
+                                    //data1.clear()
+                                    for(data in it1.documents){
+                                        val imgArticle = data.get("URL")
+                                        val titleArticle = data.get("caption")
+                                        val contentArticle = data.get("content")
+                                        val txtDate = data.get("timestamp")
+                                        articleList.add(Article(
+                                            imgArticle.toString(),
+                                            titleArticle.toString(),
+                                            contentArticle.toString(),
+                                            avatar.toString(),
+                                            name.toString(),
+                                            txtDate.toString()
+                                        ))
+                                    }
+                                }
+                            }
+                    }
+                }
+            }
+            .addOnFailureListener {e->
+                Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
     private fun setUpSearchViewGroupTwentyOneListener(): Unit {
 //        binding.searchViewGroupTwentyOne.setOnQueryTextListener(object :
 //            SearchView.OnQueryTextListener {
@@ -130,6 +217,8 @@ class HomeFragment : Fragment() {
 //            }
 //        })
     }
+
+
 
     private fun loadSpeciesFromFireStore() {
         //data1 = ArrayList()

@@ -156,4 +156,10 @@
     <string name="update_profile_pic">Update Profile Pic</string>
     <string name="update_name">Update Name</string>
     <string name="change_password">Change Password</string>
+    <string name="update_local">Update Local</string>
+    <string name="new_post">New Post!</string>
+    <string name="write_something">Write something!</string>
+    <string name="posting_as">Posting As</string>
+    <string name="anonymous">Anonymous</string>
+    <string name="post_articles">Post Articles</string>
 </resources>

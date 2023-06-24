@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.phngsapplication.app.R
 import com.phngsapplication.app.model.Article
+import java.util.*
 
 class ArticlesAdapter(
   val list: List<Article>
@@ -25,34 +26,42 @@ class ArticlesAdapter(
     val ItemViewModel = list[position]
     holder.titleArticle.setText(ItemViewModel.titleArticle)
     holder.txtAuthor.setText(ItemViewModel.txtAuthor)
-    holder.txtDate.setText(ItemViewModel.txtDate)
+    holder.txtDate.setText(getShortDate(ItemViewModel.txtDate.toLong()))
 
+//    val drawableResourceId1 = holder.itemView.context.resources.getIdentifier(
+//      ItemViewModel.imageArticle,
+//      "drawable",
+//      holder.itemView.context.packageName
+//    )
+//
+//    Glide.with(holder.itemView.context)
+//      .load(drawableResourceId1)
+//      .into(holder.imageArticle)
 
-    val drawableResourceId1 = holder.itemView.context.resources.getIdentifier(
-      ItemViewModel.imageArticle,
-      "drawable",
-      holder.itemView.context.packageName
-    )
 
     Glide.with(holder.itemView.context)
-      .load(drawableResourceId1)
+      .load(ItemViewModel.imageArticle)
       .into(holder.imageArticle)
 
-
-    val drawableResourceId2 = holder.itemView.context.resources.getIdentifier(
-      ItemViewModel.imageAuthor,
-      "drawable",
-      holder.itemView.context.packageName
-    )
-
     Glide.with(holder.itemView.context)
-      .load(drawableResourceId2)
+      .load(ItemViewModel.imageAuthor)
       .into(holder.imageAuthor)
 
     holder.oneArticle.setOnClickListener{
       onItemClick?.invoke(ItemViewModel)
     }
   }
+
+  private fun getShortDate(ts:Long?):String{
+    if(ts == null) return ""
+    //Get instance of calendar
+    val calendar = Calendar.getInstance(Locale.getDefault())
+    //get current date from ts
+    calendar.timeInMillis = ts
+    //return formatted date
+    return android.text.format.DateFormat.format("yyyy. MM. dd", calendar).toString()
+  }
+
   override fun getItemCount(): Int {
     return list.size
   }

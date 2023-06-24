@@ -130,7 +130,7 @@
                 style="@style/groupStylewhite_A700"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_185pxv"
+                android:layout_marginTop="@dimen/_200pxv"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -149,6 +149,45 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/bttonPostArticles"
+                            style="@style/groupStylewhite_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_12pxh"
+                            android:layout_weight="0.32"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/imageGroup"
+                                android:layout_width="@dimen/_27pxh"
+                                android:layout_height="@dimen/_20pxh"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginStart="@dimen/_24pxh"
+                                android:layout_marginTop="@dimen/_15pxv"
+                                android:layout_marginEnd="@dimen/_24pxh"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/img_group_teal_a402"
+                                tools:ignore="ContentDescription"
+                                tools:src="@drawable/img_group_teal_a402" />
+
+                            <TextView
+                                android:id="@+id/txtPostArticle"
+                                style="@style/txtAndadaProromanbold10_4"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_24pxh"
+                                android:layout_marginTop="@dimen/_5pxv"
+                                android:layout_marginEnd="@dimen/_28pxh"
+                                android:layout_marginBottom="@dimen/_15pxv"
+                                android:ellipsize="end"
+                                android:gravity="center_horizontal"
+                                android:singleLine="true"
+                                android:text="@string/post_articles"
+                                tools:ignore="TextSizeCheck" />
+                        </LinearLayout>
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerArticles"

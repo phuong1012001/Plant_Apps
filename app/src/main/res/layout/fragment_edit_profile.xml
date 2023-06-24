@@ -139,6 +139,17 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/editlocal"
+                    style="@style/txtAndadaProromanbold25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="Update Local"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <TextView
                     android:id="@+id/changepassword"
                     style="@style/txtAndadaProromanbold25"
                     android:layout_width="match_parent"

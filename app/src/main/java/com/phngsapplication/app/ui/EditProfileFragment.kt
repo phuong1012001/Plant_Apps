@@ -1,6 +1,7 @@
 package com.phngsapplication.app.ui
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
 import android.app.ProgressDialog
@@ -11,6 +12,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.text.TextUtils
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,16 +26,16 @@ import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.FragmentEditProfileBinding
-import com.phngsapplication.app.databinding.FragmentHomeBinding
-import org.koin.android.ext.android.bind
-
 
 class EditProfileFragment : Fragment() {
     private lateinit var binding: FragmentEditProfileBinding
+    private lateinit var mainActivity: MainActivity
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseUser: FirebaseUser
@@ -42,10 +44,9 @@ class EditProfileFragment : Fragment() {
     private lateinit var storageReference: StorageReference
 
     private val storagePath = "Users_Profile_Cover_image/"
-    private lateinit var uid: String
-    private lateinit var set: ImageView
 
     private lateinit var pd: ProgressDialog
+    private var db = Firebase.firestore
 
     private val cameraPermission =
         arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -58,6 +59,7 @@ class EditProfileFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -73,23 +75,7 @@ class EditProfileFragment : Fragment() {
         pd = ProgressDialog(requireContext())
         pd.setCanceledOnTouchOutside(false)
 
-        val query: Query = databaseReference.orderByChild("email").equalTo(firebaseUser.email)
-        query.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                for (dataSnapshot1 in dataSnapshot.children) {
-                    val image = dataSnapshot1.child("image").value.toString()
-                    try {
-                        Glide.with(requireContext()).load(image).into(binding.editProfileImage)
-                    } catch (e: Exception) {
-                        e.printStackTrace()
-                    }
-                }
-            }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                // Handle error
-            }
-        })
+        loadImageFromUser()
 
         binding.changepassword.setOnClickListener {
             pd.setMessage("Changing Password")
@@ -107,35 +93,36 @@ class EditProfileFragment : Fragment() {
             showNamePhoneUpdate("name")
         }
 
+        binding.editlocal.setOnClickListener{
+            pd.setMessage("Updating Local")
+            showLocalUpdate("local")
+        }
+
         return binding.root
     }
 
-    private fun checkStoragePermission(): Boolean {
-        val result = ContextCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        ) == PackageManager.PERMISSION_GRANTED
-        return result
-    }
-
-    private fun requestStoragePermission() {
-        requestPermissions(storagePermission, STORAGE_REQUEST)
-    }
-
-    private fun checkCameraPermission(): Boolean {
-        val result = ContextCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.CAMERA
-        ) == PackageManager.PERMISSION_GRANTED
-        val result1 = ContextCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        ) == PackageManager.PERMISSION_GRANTED
-        return result && result1
-    }
-
-    private fun requestCameraPermission() {
-        requestPermissions(cameraPermission, CAMERA_REQUEST)
+    private fun loadImageFromUser() {
+        db.collection("User").get().addOnSuccessListener {  }
+            .addOnSuccessListener {
+                if(!it.isEmpty){
+                    for(data in it.documents){
+                        val image = data.get("profileImage")
+                        val uid = data.get("id")
+                        if(uid.toString() == firebaseUser.uid)
+                        {
+                            Log.d("User", uid.toString())
+                            try {
+                                Glide.with(requireContext()).load(image).into(binding.editProfileImage)
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+                    }
+                }
+            }
+            .addOnFailureListener {e->
+                Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun showPasswordChangeDialog() {
@@ -224,6 +211,110 @@ class EditProfileFragment : Fragment() {
         builder.create().show()
     }
 
+    private fun showNamePhoneUpdate(key: String) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Update $key")
+        val linearLayout = LinearLayout(requireContext())
+        linearLayout.orientation = LinearLayout.VERTICAL
+        linearLayout.setPadding(10, 10, 10, 10)
+
+        val editText = EditText(requireContext())
+        editText.hint = "Enter $key"
+        linearLayout.addView(editText)
+
+        builder.setView(linearLayout)
+        builder.setPositiveButton("Update") { _, _ ->
+            val value = editText.text.toString().trim()
+            if (!TextUtils.isEmpty(value)) {
+                val userMap = mapOf(
+                    "name" to value,
+                )
+                db.collection("User").document(firebaseAuth.uid.toString()).update(userMap)
+                    .addOnSuccessListener {
+                        //user info save, open user dashboard
+                        //progressDialog.dismiss()
+                        Toast.makeText(requireContext(), "Updated Successfully...", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener{e->
+                        //progressDialog.dismiss()
+                        Toast.makeText(requireContext(), "Failed to add FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+            } else {
+                Toast.makeText(requireContext(), "Please enter $key", Toast.LENGTH_SHORT).show()
+            }
+        }
+        builder.setNegativeButton("Cancel") { dialogInterface, _ ->
+            dialogInterface.dismiss()
+        }
+        builder.create().show()
+    }
+
+    private fun showLocalUpdate(key: String) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Update $key")
+        val linearLayout = LinearLayout(requireContext())
+        linearLayout.orientation = LinearLayout.VERTICAL
+        linearLayout.setPadding(10, 10, 10, 10)
+
+        val editText = EditText(requireContext())
+        editText.hint = "Enter $key"
+        linearLayout.addView(editText)
+
+        builder.setView(linearLayout)
+        builder.setPositiveButton("Update") { _, _ ->
+            val value = editText.text.toString().trim()
+            if (!TextUtils.isEmpty(value)) {
+                val userMap = mapOf(
+                    "local" to value,
+                )
+                db.collection("User").document(firebaseAuth.uid.toString()).update(userMap)
+                    .addOnSuccessListener {
+                        //user info save, open user dashboard
+                        //progressDialog.dismiss()
+                        Toast.makeText(requireContext(), "Updated Successfully...", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener{e->
+                        //progressDialog.dismiss()
+                        Toast.makeText(requireContext(), "Failed to add FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
+                    }
+            } else {
+                Toast.makeText(requireContext(), "Please enter $key", Toast.LENGTH_SHORT).show()
+            }
+        }
+        builder.setNegativeButton("Cancel") { dialogInterface, _ ->
+            dialogInterface.dismiss()
+        }
+        builder.create().show()
+    }
+
+    private fun checkStoragePermission(): Boolean {
+        val result = ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ) == PackageManager.PERMISSION_GRANTED
+        return result
+    }
+
+    private fun requestStoragePermission() {
+        requestPermissions(storagePermission, STORAGE_REQUEST)
+    }
+
+    private fun checkCameraPermission(): Boolean {
+        val result = ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.CAMERA
+        ) == PackageManager.PERMISSION_GRANTED
+        val result1 = ContextCompat.checkSelfPermission(
+            requireContext(),
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ) == PackageManager.PERMISSION_GRANTED
+        return result && result1
+    }
+
+    private fun requestCameraPermission() {
+        requestPermissions(cameraPermission, CAMERA_REQUEST)
+    }
+
     private fun pickFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
@@ -243,34 +334,7 @@ class EditProfileFragment : Fragment() {
         startActivityForResult(intent, IMAGE_PICK_CAMERA_REQUEST)
     }
 
-    private fun showNamePhoneUpdate(key: String) {
-        val builder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Update $key")
-        val linearLayout = LinearLayout(requireContext())
-        linearLayout.orientation = LinearLayout.VERTICAL
-        linearLayout.setPadding(10, 10, 10, 10)
 
-        val editText = EditText(requireContext())
-        editText.hint = "Enter $key"
-        linearLayout.addView(editText)
-
-        builder.setView(linearLayout)
-        builder.setPositiveButton("Update") { _, _ ->
-            val value = editText.text.toString().trim()
-            if (!TextUtils.isEmpty(value)) {
-                val result: HashMap<String, Any> = HashMap()
-                result[key] = value
-                databaseReference!!.child(firebaseUser.uid).updateChildren(result)
-                Toast.makeText(requireContext(), "Updated...", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(requireContext(), "Please enter $key", Toast.LENGTH_SHORT).show()
-            }
-        }
-        builder.setNegativeButton("Cancel") { dialogInterface, _ ->
-            dialogInterface.dismiss()
-        }
-        builder.create().show()
-    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -324,11 +388,19 @@ class EditProfileFragment : Fragment() {
                 while (!uriTask.isSuccessful);
                 val downloadUri = uriTask.result
                 if (uriTask.isSuccessful) {
-                    val results: HashMap<String, Any> = HashMap()
-                    results[profileOrCoverPhoto] = downloadUri.toString()
-                    databaseReference!!.child(firebaseUser.uid).updateChildren(results)
-                    pd.dismiss()
-                    Toast.makeText(requireContext(), "Image updated", Toast.LENGTH_SHORT).show()
+                    val userMap = mapOf(
+                        "profileImage" to downloadUri.toString(),
+                    )
+                    db.collection("User").document(firebaseAuth.uid.toString()).update(userMap)
+                        .addOnSuccessListener {
+                            pd.dismiss()
+                            Toast.makeText(requireContext(), "Image Updated...", Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener{e->
+                            pd.dismiss()
+                            Toast.makeText(requireContext(), "Failed to add FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    loadImageFromUser()
                 } else {
                     pd.dismiss()
                     Toast.makeText(requireContext(), "Error occurred", Toast.LENGTH_SHORT).show()

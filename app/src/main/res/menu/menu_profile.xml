@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/changePassword"
-        android:title="Change Password"
+        android:title="Change Profile"
         app:showAsAction="never"/>
 
     <item android:id="@+id/logout"
