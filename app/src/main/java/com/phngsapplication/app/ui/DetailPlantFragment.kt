@@ -55,6 +55,7 @@ class DetailPlantFragment : Fragment() {
                 .load(Plant.imagePlant)
                 .into(binding.image)
 
+
 //                val drawableResourceId2 = this.resources.getIdentifier(Plant.imagePlant,
 //                    "drawable",
 //                    mainActivity.packageName)
@@ -92,7 +93,7 @@ class DetailPlantFragment : Fragment() {
             }
         }
 
-        binding.btnBack.setOnClickListener{
+        binding.toolbar.setNavigationOnClickListener{
             val action = DetailPlantFragmentDirections.actionDetailPlantFragmentToListPlantFragment(Plant.speciesName, Plant.speciesId)
             val controller = findNavController()
             controller.navigate(action)

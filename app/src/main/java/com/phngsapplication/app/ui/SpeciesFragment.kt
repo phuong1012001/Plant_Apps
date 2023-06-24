@@ -58,10 +58,16 @@ class SpeciesFragment : Fragment() {
             controller.navigate(action)
         }
 
-        binding.btnBack.setOnClickListener{
+//        binding.btnBack.setOnClickListener{
+//            val controller = findNavController()
+//            controller.navigate(R.id.action_speciesFragment_to_home)
+//        }
+        binding.toolbar.setNavigationOnClickListener {
             val controller = findNavController()
             controller.navigate(R.id.action_speciesFragment_to_home)
         }
+
+
 
         return binding.root
     }

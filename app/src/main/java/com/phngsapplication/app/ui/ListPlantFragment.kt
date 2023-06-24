@@ -60,7 +60,7 @@ class ListPlantFragment : Fragment() {
         loadSpeciesFromFireStore()
 
         //Thao tac voi button
-        binding.btnBack.setOnClickListener{
+        binding.toolbar.setNavigationOnClickListener{
             var speciesArr : Array<Species> = data1.toTypedArray() //Danh sach loai
             val action = ListPlantFragmentDirections.actionListPlantFragmentToSpeciesFragment(speciesArr)
             val controller = findNavController()
