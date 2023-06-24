@@ -60,7 +60,7 @@ class ArticlesProfileFragment : Fragment() {
                                             val like = data.get("like")
                                             if(like.toString() == "true") {
                                                 articleId.add(idArticle.toString())
-                                                Log.d("article id",idArticle.toString())
+                                                Log.d("article id 1",idArticle.toString())
                                             }
                                         }
                                     }
@@ -109,6 +109,7 @@ class ArticlesProfileFragment : Fragment() {
                                                     )
                                                 )
                                             }
+                                        Log.d("AAAAAAAAAAA", articleList.size.toString())
                                         if (articleList != null) {
                                             val adapter =
                                                 articleList?.let { ArticlesAdapter(it) }

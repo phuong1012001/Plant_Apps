@@ -9,7 +9,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/oneSpecie"
         android:layout_width="@dimen/_331pxh"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        tools:elevation="3dp"
+        android:background="@drawable/background_item">
 
         <LinearLayout
             android:id="@+id/oneCatus"
@@ -17,25 +20,16 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             tools:ignore="MissingConstraints">
-
-            <FrameLayout
-                android:id="@+id/frameStackrectangleOne"
-                style="@style/groupStylewhite_3"
-                android:layout_width="@dimen/_139pxh"
-                android:layout_height="@dimen/_139pxv"
-                android:layout_gravity="center">
-
-                <ImageView
-                    android:id="@+id/imageSpecie"
-                    android:layout_width="@dimen/_125pxh"
-                    android:layout_height="@dimen/_125pxh"
-                    android:layout_gravity="center|center_horizontal"
-                    android:layout_marginHorizontal="@dimen/_7pxh"
-                    android:layout_marginVertical="@dimen/_7pxv"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/img_rectangle_125x125"
-                    tools:ignore="ContentDescription" />
-            </FrameLayout>
+            <ImageView
+                android:id="@+id/imageSpecie"
+                android:layout_width="@dimen/_125pxh"
+                android:layout_height="@dimen/_125pxh"
+                android:layout_gravity="center|center_horizontal"
+                android:layout_marginHorizontal="@dimen/_7pxh"
+                android:layout_marginVertical="@dimen/_7pxv"
+                android:scaleType="fitXY"
+                android:src="@drawable/img_rectangle_125x125"
+                tools:ignore="ContentDescription" />
 
             <LinearLayout
                 android:id="@+id/linearColumnredcactus"

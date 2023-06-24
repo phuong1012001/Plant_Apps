@@ -96,7 +96,7 @@ class DetailArticlesFragment : Fragment() {
 
         //Thao tac voi button
         loadArticlesFromFireStore()
-        binding.btnBack.setOnClickListener{
+        binding.toolbar.setNavigationOnClickListener{
             var articlesArr : Array<Article> = articleList.toTypedArray()
             val action = DetailArticlesFragmentDirections.actionDetailArticlesFragmentToArticlesFragment(articlesArr)
             val controller = findNavController()

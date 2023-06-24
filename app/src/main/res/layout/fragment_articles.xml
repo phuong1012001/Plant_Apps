@@ -42,60 +42,42 @@
                         android:id="@+id/linearRowarrowleft"
                         style="@style/groupStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_155pxv"
                         android:layout_gravity="top|start"
                         android:layout_marginBottom="@dimen/_10pxv"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:id="@+id/linearColumnarrowleft"
-                            android:layout_width="0dp"
+                        android:orientation="vertical">
+                        <androidx.appcompat.widget.Toolbar
+                            android:id="@+id/toolbar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="?attr/actionBarSize"
+                            android:theme="?attr/actionBarTheme"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:navigationIcon="@drawable/img_arrowleft"/>
+                        <TextView
+                            android:id="@+id/txtArticles"
+                            style="@style/txtAndadaProromanbold30"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_23pxh"
-                            android:layout_marginTop="@dimen/_31pxv"
-                            android:layout_marginBottom="@dimen/_42pxv"
-                            android:layout_weight="0.52"
-                            android:gravity="start"
-                            android:orientation="vertical">
-
-                            <FrameLayout
-                                android:id="@+id/btnBack"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_25pxv">
-
-                                <ImageView
-                                    android:layout_width="@dimen/_11pxh"
-                                    android:layout_height="@dimen/_19pxv"
-                                    android:layout_marginEnd="@dimen/_10pxh"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/img_arrowleft"
-                                    tools:ignore="ContentDescription,ImageContrastCheck"
-                                    tools:src="@drawable/img_arrowleft" />
-                            </FrameLayout>
-
-                            <TextView
-                                android:id="@+id/txtArticles"
-                                style="@style/txtAndadaProromanbold30"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_15pxv"
-                                android:layout_marginEnd="@dimen/_10pxh"
-                                android:ellipsize="end"
-                                android:singleLine="true"
-                                android:text="@string/lbl_articles"
-                                tools:ignore="TextContrastCheck"
-                                tools:text="@string/lbl_articles" />
-                        </LinearLayout>
-
-                        <ImageView
-                            android:id="@+id/imageEllipse"
-                            android:layout_width="@dimen/_168pxh"
-                            android:layout_height="@dimen/_86pxv"
-                            android:layout_marginBottom="@dimen/_63pxv"
-                            android:scaleType="fitXY"
-                            tools:ignore="ContentDescription,ImageContrastCheck"
-                            tools:src="@drawable/img_ellipse" />
+                            android:layout_marginTop="@dimen/_5pxv"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="@string/lbl_articles"
+                            tools:ignore="TextContrastCheck"
+                            tools:text="@string/lbl_articles" />
                     </LinearLayout>
+                    <ImageView
+                        android:id="@+id/imageEllipse"
+                        android:layout_width="@dimen/_168pxh"
+                        android:layout_height="@dimen/_86pxh"
+                        android:layout_marginStart="@dimen/_208pxh"
+                        android:layout_marginBottom="@dimen/_63pxv"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img_ellipse_5" />
 
                     <ImageView
                         android:id="@+id/imageEllipseOne"

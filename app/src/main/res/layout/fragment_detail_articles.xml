@@ -24,7 +24,7 @@
                 android:id="@+id/constraintLayout2"
                 style="@style/groupStylewhite_A700"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_300pxv"
+                android:layout_height="@dimen/_320pxv"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -32,46 +32,41 @@
                 <FrameLayout
                     android:id="@+id/frameStackvegetables"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_297pxv"
+                    android:layout_height="match_parent"
                     android:gravity="start"
                     tools:ignore="MissingConstraints">
-
-                    <FrameLayout
-                        android:id="@+id/frameStackrectangle"
+                    <com.google.android.material.appbar.AppBarLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_249pxv"
-                        android:layout_gravity="top|start"
-                        android:layout_marginBottom="@dimen/_10pxv">
+                        android:layout_height="@dimen/_250pxv"
+                        android:fitsSystemWindows="true"
+                        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-                        <ImageView
-                            android:id="@+id/imageArticle"
+                        <com.google.android.material.appbar.CollapsingToolbarLayout
                             android:layout_width="match_parent"
-                            android:layout_height="@dimen/_249pxv"
-                            android:layout_gravity="start|center_horizontal"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/img_rectangle22" />
-
-                        <FrameLayout
-                            android:id="@+id/btnBack"
-                            android:layout_width="71dp"
-                            android:layout_height="60dp">
-
+                            android:layout_height="@dimen/_250pxv"
+                            app:contentScrim="@color/colorPrimary"
+                            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed|snap"
+                            app:toolbarId="@id/toolbar">
                             <ImageView
-                                android:id="@+id/imageBack"
-                                android:layout_width="@dimen/_11pxh"
-                                android:layout_height="@dimen/_19pxv"
-                                android:layout_gravity="top|start"
-                                android:layout_marginStart="@dimen/_23pxh"
-                                android:layout_marginTop="@dimen/_30pxv"
-                                android:layout_marginEnd="@dimen/_23pxh"
-                                android:layout_marginBottom="@dimen/_30pxv"
+                                android:id="@+id/imageArticle"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_249pxv"
+                                android:layout_gravity="start|center_horizontal"
                                 android:scaleType="fitXY"
-                                android:src="@drawable/img_arrowleft"
-                                tools:ignore="ContentDescription"
-                                tools:src="@drawable/img_arrowleft" />
-                        </FrameLayout>
+                                android:src="@drawable/img_rectangle22" />
+                            <androidx.appcompat.widget.Toolbar
+                                android:id="@+id/toolbar"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="?attr/actionBarSize"
+                                android:theme="?attr/actionBarTheme"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:navigationIcon="@drawable/img_arrowleft"/>
+                        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-                    </FrameLayout>
+                    </com.google.android.material.appbar.AppBarLayout>
 
                     <LinearLayout
                         android:id="@+id/linearRowvegetables"
@@ -127,7 +122,7 @@
                         android:layout_marginStart="@dimen/_23pxh"
                         android:layout_marginTop="@dimen/_20pxv"
                         android:layout_marginEnd="@dimen/_23pxh"
-                        android:layout_marginBottom="@dimen/_20pxv"
+                        android:layout_marginBottom="@dimen/_40pxv"
                         android:background="@drawable/rectangle_bg_red_a200_radius_28_5"
                         android:paddingHorizontal="@dimen/_15pxh"
                         android:paddingVertical="@dimen/_15pxv"
@@ -141,7 +136,7 @@
                 style="@style/groupStylewhite_A700"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_300pxv"
+                android:layout_marginTop="@dimen/_320pxv"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

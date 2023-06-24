@@ -91,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center"
                         android:layout_marginStart="@dimen/_23pxh"
-                        android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_marginTop="@dimen/_10pxv"
                         android:layout_marginEnd="@dimen/_23pxh"
                         android:background="@drawable/rectangle_bg_white_a702_radius_25"
                         android:theme="@style/searchViewGroupTwentyOne"

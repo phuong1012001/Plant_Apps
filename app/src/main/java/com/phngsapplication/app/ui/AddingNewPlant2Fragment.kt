@@ -71,14 +71,16 @@ class AddingNewPlant2Fragment : Fragment() {
         mainActivity = getActivity() as MainActivity
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_adding_new_plant_2, container, false)
         var a = args.uri
-        var uri: Uri? = null
+       // var uri: Uri? = null
+        var uri = a.toUri()
+        binding.imageNewPlant.setImageURI(uri)
 
-        if(a != null){
-            uri = Uri.parse(a)
-            Glide.with(this)
-                .load(File(uri.getPath()))
-                .into(binding.imageNewPlant)
-        }
+//        if(a != null){
+//            uri = Uri.parse(a)
+//            Glide.with(this)
+//                .load(File(uri.getPath()))
+//                .into(binding.imageNewPlant)
+//        }
         binding.speciesTV.setOnClickListener {
             speciesPickDialog()
         }

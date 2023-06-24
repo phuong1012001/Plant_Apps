@@ -7,7 +7,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/oneArticle"
         android:layout_width="@dimen/_331pxh"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        tools:elevation="3dp"
+        android:background="@drawable/background_item">
 
         <LinearLayout
             style="@style/groupStylewhite_A702cornerRadius"
@@ -37,7 +40,7 @@
                 android:text="@string/msg_david_austin_w"
                 tools:ignore="TextSizeCheck"
                 />
-<!--            tools:text="@string/msg_david_austin_w"-->
+
             <LinearLayout
                 android:id="@+id/linearRowellipsethirtyone"
                 android:layout_width="match_parent"

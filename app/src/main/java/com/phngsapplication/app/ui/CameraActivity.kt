@@ -9,12 +9,14 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
@@ -208,6 +210,24 @@ class CameraActivity : AppCompatActivity(){
       }
     }
 
+    controls.findViewById<ImageView>(R.id.imageRectangle)?.setOnClickListener {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        if(!hasReadStoragePermission(this)){
+          Toast.makeText(this, "Don't permission STORAGE", Toast.LENGTH_SHORT).show()
+          val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+          ActivityCompat.requestPermissions(
+            this, permissions, PERMISSION_CODE
+          )
+        } else {
+          selectImageGallery();
+        }
+      }
+      else{
+        //system OS is < Marshmallow
+        selectImageGallery();
+      }
+    }
+
     // Listener for button used to switch cameras
     controls.findViewById<ImageView>(R.id.camera_switch_button).setOnClickListener {
 
@@ -224,6 +244,21 @@ class CameraActivity : AppCompatActivity(){
 
     // Apply user configuration every time controls are drawn
     applyUserConfiguration()
+  }
+
+  fun hasReadStoragePermission(context: Context): Boolean {
+    return ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+  }
+
+  private fun selectImageGallery(){
+    val intent =  Intent(
+      Intent.ACTION_PICK,
+      MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+    );
+    intent.setType("image/*");
+    startActivityForResult(
+      Intent.createChooser(intent, "Select File"),
+      REQUEST_SELECT_IMAGE_IN_ALBUM);
   }
 
   /** Declare and bind preview, capture and analysis use cases */
@@ -289,9 +324,25 @@ class CameraActivity : AppCompatActivity(){
     super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     if (requestCode == permissionsRequestCode && hasPermissions(this)) {
       bindCameraUseCases()
+    } else if(requestCode == PERMISSION_CODE && hasReadStoragePermission(this)){
+      selectImageGallery();
+    } else if(requestCode == PERMISSION_CODE && !hasReadStoragePermission(this)){
+
     } else {
       // Indicate that the user cancelled the action and exit if no permissions are granted
       cancelAndFinish()
+    }
+  }
+
+  @SuppressLint("MissingSuperCall")
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    if(resultCode == RESULT_OK && requestCode == REQUEST_SELECT_IMAGE_IN_ALBUM){
+      Log.d("ANH", data?.data.toString())
+      //mImageView.setImageURI(data?.data)
+      setResult(RESULT_OK, Intent().apply {
+        putExtra(CameraConfiguration.IMAGE_URI, data?.data)
+      })
+      finish()
     }
   }
 
@@ -310,6 +361,8 @@ class CameraActivity : AppCompatActivity(){
     const val TAG: String = "CAMERA_ACTIVITY"
     private const val FILENAME = "yyyy-MM-dd-HH-mm-ss-SSS"
     private const val PHOTO_EXTENSION = ".jpg"
+    private val REQUEST_SELECT_IMAGE_IN_ALBUM = 1000
+    private val PERMISSION_CODE = 1001
 
     fun getIntent(context: Context, bundle: Bundle?): Intent {
       val destIntent = Intent(context, CameraActivity::class.java)

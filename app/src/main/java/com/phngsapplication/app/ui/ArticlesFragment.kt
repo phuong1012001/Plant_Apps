@@ -74,7 +74,7 @@ class ArticlesFragment : Fragment() {
             PostSpace.navigate(R.id.action_articlesFragment_to_postArticles)
         }
 
-        binding.btnBack.setOnClickListener{
+        binding.toolbar.setNavigationOnClickListener{
             val controller = findNavController()
             controller.navigate(R.id.action_articlesFragment_to_home)
         }
