@@ -97,7 +97,6 @@ class ArticlesFragment : Fragment() {
                                             val like = data.get("like")
                                             if(like.toString() == "true") {
                                                 articleId.add(idArticle.toString())
-                                                Log.d("article id",idArticle.toString())
                                             }
                                         }
                                     }

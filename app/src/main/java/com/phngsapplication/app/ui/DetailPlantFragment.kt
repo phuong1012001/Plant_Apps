@@ -72,21 +72,16 @@ class DetailPlantFragment : Fragment() {
         }
 
         var button_background : Int = 0
-        Log.d("Like", like)
         button_background = if(like1 == "true")
             2
         else 1
 
-        Log.d("button_background", button_background.toString())
-
         binding.btnLike.setOnClickListener {
             if(button_background==2){
-                Log.d("AAAA", "1")
                 binding.btnLike.setBackgroundResource(R.drawable.rectangle_bg_white_a200_radius_28_5);
                 button_background=1;
                 updateUserLikePlantFireStore(Plant.plantId, "false")
             } else if(button_background==1){
-                Log.d("AAAA", "2")
                 binding.btnLike.setBackgroundResource(R.drawable.rectangle_bg_red_a200_radius_28_5);
                 button_background=2;
                 updateUserLikePlantFireStore(Plant.plantId, "true")

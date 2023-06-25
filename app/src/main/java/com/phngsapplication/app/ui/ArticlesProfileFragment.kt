@@ -109,7 +109,6 @@ class ArticlesProfileFragment : Fragment() {
                                                     )
                                                 )
                                             }
-                                        Log.d("AAAAAAAAAAA", articleList.size.toString())
                                         if (articleList != null) {
                                             val adapter =
                                                 articleList?.let { ArticlesAdapter(it) }

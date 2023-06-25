@@ -110,7 +110,6 @@ class EditProfileFragment : Fragment() {
                         val uid = data.get("id")
                         if(uid.toString() == firebaseUser.uid)
                         {
-                            Log.d("User", uid.toString())
                             try {
                                 Glide.with(requireContext()).load(image).into(binding.editProfileImage)
                             } catch (e: Exception) {
