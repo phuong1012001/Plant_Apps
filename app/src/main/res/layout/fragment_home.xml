@@ -115,7 +115,7 @@
                         android:layout_marginEnd="@dimen/_23pxh"
                         android:layout_marginBottom="@dimen/_43pxv"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/img_ellipse_47x47"
+
                         tools:ignore="ContentDescription" />
                 </FrameLayout>
 

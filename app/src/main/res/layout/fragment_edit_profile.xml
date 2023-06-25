@@ -77,8 +77,7 @@
                         android:layout_height="@dimen/_79pxh"
                         android:layout_marginBottom="@dimen/_10pxv"
                         android:scaleType="fitStart"
-                        tools:ignore="ContentDescription"
-                        android:src="@drawable/img_ellipse_79x79" />
+                        tools:ignore="ContentDescription" />
 
                     <TextView
                         android:id="@+id/txtName"
@@ -117,48 +116,56 @@
                 tools:context=".ui.EditProfileFragment"
                 android:orientation="vertical"
                 android:gravity="center">
-                <TextView
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/profilepic"
-                    style="@style/txtAndadaProromanbold25"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
+                    android:layout_width="@dimen/_250pxh"
+                    android:layout_height="@dimen/_50pxh"
+                    android:layout_marginTop="40dp"
+                    app:icon="@drawable/baseline_wallpaper_24"
+                    style="@style/txtAndadaProromanbold30"
                     android:text="@string/update_profile_pic"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
-                <TextView
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:backgroundTint="@color/teal_A402"/>
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/editname"
-                    style="@style/txtAndadaProromanbold25"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_250pxh"
+                    android:layout_height="@dimen/_50pxh"
                     android:layout_marginTop="20dp"
+                    style="@style/txtAndadaProromanbold30"
                     android:text="@string/update_name"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    app:icon="@drawable/ic_baseline_person_outline_24"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:backgroundTint="@color/teal_A402"/>
 
-                <TextView
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/editlocal"
-                    style="@style/txtAndadaProromanbold25"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_250pxh"
+                    android:layout_height="@dimen/_50pxh"
                     android:layout_marginTop="20dp"
+                    style="@style/txtAndadaProromanbold30"
                     android:text="Update Local"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    app:icon="@drawable/ic_baseline_arrow_circle_update_24"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:backgroundTint="@color/teal_A402"/>
 
-                <TextView
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/changepassword"
-                    style="@style/txtAndadaProromanbold25"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/_250pxh"
+                    android:layout_height="@dimen/_50pxh"
                     android:layout_marginTop="20dp"
+                    style="@style/txtAndadaProromanbold30"
                     android:text="@string/change_password"
                     android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp" />
+                    app:icon="@drawable/ic_baseline_info_24"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    app:backgroundTint="@color/teal_A402"/>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>

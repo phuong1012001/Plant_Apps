@@ -78,7 +78,7 @@
                         android:layout_height="@dimen/_79pxh"
                         android:layout_marginBottom="@dimen/_10pxv"
                         android:scaleType="fitStart"
-                        android:src="@drawable/img_ellipse_79x79"
+
                         tools:ignore="ContentDescription" />
 
                     <TextView
