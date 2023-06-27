@@ -16,17 +16,16 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.phngsapplication.app.R
+import com.phngsapplication.app.adapter.PhotoAdapter
 import com.phngsapplication.app.adapter.PlantTypesAdapter
 import com.phngsapplication.app.databinding.FragmentHomeBinding
 import com.phngsapplication.app.model.Article
+import com.phngsapplication.app.model.Photo
+import com.phngsapplication.app.model.PlantTypes
 import com.phngsapplication.app.model.Species
 import kotlin.random.Random
 
@@ -71,21 +70,24 @@ class HomeFragment : Fragment() {
         mainActivity = getActivity() as MainActivity
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
-        val data = ArrayList<HomepageRowModel>()
-        for(i in 1..5){
-            data.add(HomepageRowModel("a", "b"))
-        }
+        val data = ArrayList<PlantTypes>()
+        data.add(PlantTypes("Cây trong nhà", 8))
+        data.add(PlantTypes("Cây nhiệt đới", 7))
+        data.add(PlantTypes("Cây ưa nước", 10))
+
 
         val plantTypesAdapter = PlantTypesAdapter(data)
 
         binding.recyclerPlantTypes.adapter = plantTypesAdapter
-        plantTypesAdapter.setOnItemClickListener(
-            object : PlantTypesAdapter.OnItemClickListener {
-                override fun onItemClick(view: View, position: Int, item: HomepageRowModel) {
-                    onClickRecyclerHomepage(view, position, item)
-                }
-            }
-        )
+
+        val data1 = ArrayList<Photo>()
+        data1.add(Photo("Big", "img_rectangle_1"))
+        data1.add(Photo("HCMUS", "img_rectangle_1"))
+        data1.add(Photo("Small", "img_rectangle_1"))
+
+        val phptoGraphy = PhotoAdapter(data1)
+
+        binding.recyclerPhotography.adapter = phptoGraphy
 
         set = binding.imageAvatar
 
@@ -127,7 +129,7 @@ class HomeFragment : Fragment() {
     fun onClickRecyclerHomepage(
         view: View,
         position: Int,
-        item: HomepageRowModel
+        item: PlantTypes
     ): Unit {
         when(view.id) {
             R.id.plantTypes ->  {
