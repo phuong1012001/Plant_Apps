@@ -31,6 +31,7 @@ class ArticlesFragment : Fragment() {
     private lateinit var articleId : ArrayList<String>
     private var db = Firebase.firestore
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var searchView: androidx.appcompat.widget.SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +53,8 @@ class ArticlesFragment : Fragment() {
         }
         val adapter = ArticlesAdapter(data)
         binding.recyclerArticles.adapter = adapter
+
+        searchView = binding.searchForArticles
 
         articleId = ArrayList()
         loadLikeFromFireStore()
@@ -78,7 +81,58 @@ class ArticlesFragment : Fragment() {
             val controller = findNavController()
             controller.navigate(R.id.action_articlesFragment_to_home)
         }
+
+        searchView.setOnQueryTextListener(object :androidx.appcompat.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Log.d("text new", newText.toString())
+                filterList(newText)
+                return true
+            }
+
+        })
+
         return binding.root
+    }
+
+    private fun filterList(query: String?) {
+        if(query != null){
+            var ftList = ArrayList<Article>()
+            ftList = ArrayList()
+            for (i in articlesList!!){
+                //Log.d("filter", i.nameSpecies)
+                if(i.titleArticle.lowercase(Locale.ROOT).contains(query) || i.titleArticle.uppercase(Locale.ROOT).contains(query)){
+                    Log.d("filter 2", i.titleArticle)
+                    ftList.add(i)
+                }
+            }
+            if(ftList.isEmpty()){
+                val adapter = ArticlesAdapter(ftList)
+                binding.recyclerArticles.adapter = adapter
+                Toast.makeText(requireContext(), "No data found", Toast.LENGTH_SHORT).show()
+            }else{
+                val adapter = ArticlesAdapter(ftList)
+                binding.recyclerArticles.adapter = adapter
+
+                searchView = binding.searchForArticles
+
+                //Thao tac buttion khong sua
+                adapter.onItemClick = {
+                    var like: String = "dislike"
+                    for (ds in articleId) {
+                        if (ds == it.txtDate) {
+                            like = "like"
+                        }
+                    }
+                    val action = ArticlesFragmentDirections.actionArticlesFragmentToDetailArticlesFragment(it, like)
+                    val controller = findNavController()
+                    controller.navigate(action)
+                }
+            }
+        }
     }
 
     private fun loadLikeFromFireStore() {
@@ -108,26 +162,6 @@ class ArticlesFragment : Fragment() {
             .addOnFailureListener {e->
                 Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
-    }
-
-    private fun getDateTime(s: String): String? {
-        try {
-            val sdf = SimpleDateFormat("MM/dd/yyyy")
-            val netDate = Date(s.toLong() * 1000)
-            return sdf.format(netDate)
-        } catch (e: Exception) {
-            return e.toString()
-        }
-    }
-
-    private fun getShortDate(ts:Long?):String{
-        if(ts == null) return ""
-        //Get instance of calendar
-        val calendar = Calendar.getInstance(Locale.getDefault())
-        //get current date from ts
-        calendar.timeInMillis = ts
-        //return formatted date
-        return android.text.format.DateFormat.format("yyyy. MM. dd", calendar).toString()
     }
 
     companion object {

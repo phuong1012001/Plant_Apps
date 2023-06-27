@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -28,6 +29,7 @@ class SpeciesFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
 
     var mRecyclerView: IndexFastScrollRecyclerView? = null
+    private lateinit var searchView: androidx.appcompat.widget.SearchView
 
     val args: SpeciesFragmentArgs by navArgs()
 
@@ -57,20 +59,57 @@ class SpeciesFragment : Fragment() {
             val controller = findNavController()
             controller.navigate(action)
         }
+        searchView = binding.searchForSpecies
 
-//        binding.btnBack.setOnClickListener{
-//            val controller = findNavController()
-//            controller.navigate(R.id.action_speciesFragment_to_home)
-//        }
+        searchView.setOnQueryTextListener(object :androidx.appcompat.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Log.d("text new", newText.toString())
+                filterList(newText, speciesList)
+                return true
+            }
+
+        })
         binding.toolbar.setNavigationOnClickListener {
             val controller = findNavController()
             controller.navigate(R.id.action_speciesFragment_to_home)
         }
 
-
-
         return binding.root
     }
+
+    private fun filterList(query: String?, speciesList: Array<Species>) {
+        if(query != null){
+            val ftList = ArrayList<Species>()
+            for (i in speciesList!!){
+                //Log.d("filter", i.nameSpecies)
+                if(i.nameSpecies.lowercase(Locale.ROOT).contains(query)){
+                    Log.d("filter 2", i.nameSpecies)
+                    ftList.add(i)
+                }
+            }
+            if(ftList.isEmpty()){
+                var adapter = initialiseUI(ftList.toTypedArray())
+                adapter.onItemClick = {
+                    val action = SpeciesFragmentDirections.actionSpeciesFragmentToListPlantFragment(it.nameSpecies, it.id)
+                    val controller = findNavController()
+                    controller.navigate(action)
+                }
+                Toast.makeText(requireContext(), "No data found", Toast.LENGTH_SHORT).show()
+            }else{
+                var adapter = initialiseUI(ftList.toTypedArray())
+                adapter.onItemClick = {
+                    val action = SpeciesFragmentDirections.actionSpeciesFragmentToListPlantFragment(it.nameSpecies, it.id)
+                    val controller = findNavController()
+                    controller.navigate(action)
+                }
+            }
+        }
+    }
+
     private fun initialiseUI(data1 : Array<Species>): SpeciesAdapter {
         var data2 = ArrayList<SpeciesAlphabet>()
         var data3 = ArrayList<Species>()

@@ -20,6 +20,8 @@ import com.phngsapplication.app.adapter.PlantAdapter
 import com.phngsapplication.app.databinding.FragmentListPlantBinding
 import com.phngsapplication.app.model.Plant
 import com.phngsapplication.app.model.Species
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ListPlantFragment : Fragment() {
 
@@ -32,6 +34,8 @@ class ListPlantFragment : Fragment() {
 
     private var db = Firebase.firestore
     private lateinit var firebaseAuth: FirebaseAuth
+
+    private lateinit var searchView: androidx.appcompat.widget.SearchView
 
     val args: ListPlantFragmentArgs by navArgs()
 
@@ -59,6 +63,21 @@ class ListPlantFragment : Fragment() {
         loadLikeFromFireStore()
         loadSpeciesFromFireStore()
 
+        searchView = binding.searchForCactus
+
+        searchView.setOnQueryTextListener(object :androidx.appcompat.widget.SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Log.d("text new", newText.toString())
+                filterList(newText)
+                return true
+            }
+
+        })
+
         //Thao tac voi button
         binding.toolbar.setNavigationOnClickListener{
             var speciesArr : Array<Species> = data1.toTypedArray() //Danh sach loai
@@ -68,6 +87,41 @@ class ListPlantFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun filterList(query: String?) {
+        if(query != null){
+            var ftList = ArrayList<Plant>()
+            ftList = ArrayList()
+            for (i in data){
+                //Log.d("filter", i.nameSpecies)
+                if(i.txtPlant.lowercase(Locale.ROOT).contains(query)){
+                    Log.d("filter 2", i.txtPlant)
+                    ftList.add(i)
+                }
+            }
+            if(ftList.isEmpty()){
+                val adapter = ftList?.let { PlantAdapter(it) }
+                binding.recyclerListPlant.adapter = adapter
+                Toast.makeText(requireContext(), "No data found", Toast.LENGTH_SHORT).show()
+            }else{
+                val adapter = ftList?.let { PlantAdapter(it) }
+                binding.recyclerListPlant.adapter = adapter
+                if (adapter != null) {
+                    var like : String = "dislike"
+                    adapter.onItemClick = {
+                        for(ds in plantId){
+                            if(ds == it.plantId){
+                                like = "like"
+                            }
+                        }
+                        val action = ListPlantFragmentDirections.actionListPlantFragmentToDetailPlantFragment(it, like)
+                        val controller = findNavController()
+                        controller.navigate(action)
+                    }
+                }
+            }
+        }
     }
 
     @SuppressLint("SuspiciousIndentation")
