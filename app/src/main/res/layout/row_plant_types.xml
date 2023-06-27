@@ -25,7 +25,7 @@
                 android:layout_width="@dimen/_299pxh"
                 android:layout_height="@dimen/_160pxh"
                 android:layout_gravity="start"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 tools:ignore="ContentDescription"
                 android:src="@drawable/img_rectangle44" />
 

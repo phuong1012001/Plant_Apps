@@ -52,8 +52,9 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_249pxv"
                                 android:layout_gravity="start|center_horizontal"
-                                android:scaleType="fitXY"
+                                android:scaleType="centerCrop"
                                 android:src="@drawable/img_rectangle22" />
+
                             <androidx.appcompat.widget.Toolbar
                                 android:id="@+id/toolbar"
                                 android:layout_width="match_parent"
@@ -63,7 +64,7 @@
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:navigationIcon="@drawable/img_arrowleft"/>
+                                app:navigationIcon="@drawable/img_arrowleft" />
                         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
                     </com.google.android.material.appbar.AppBarLayout>
@@ -180,13 +181,20 @@
                             android:gravity="start"
                             android:orientation="horizontal">
 
-                            <ImageView
-                                android:id="@+id/imageAuthor"
-                                android:layout_width="@dimen/_37pxh"
-                                android:layout_height="@dimen/_37pxh"
-                                android:layout_gravity="center_horizontal|center_vertical"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/img_rectangle" />
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/_5pxv"
+                                tools:ignore="ContentDescription"
+                                app:cardCornerRadius="@dimen/_19pxh">
+                                <ImageView
+                                    android:id="@+id/imageAuthor"
+                                    android:layout_width="@dimen/_38pxh"
+                                    android:layout_height="@dimen/_38pxh"
+                                    android:layout_gravity="center_horizontal|center_vertical"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/img_rectangle" />
+                            </androidx.cardview.widget.CardView>
 
                             <LinearLayout
                                 android:id="@+id/linearColumnshyllamonic"

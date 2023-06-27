@@ -27,7 +27,7 @@
                 android:layout_gravity="center|center_horizontal"
                 android:layout_marginHorizontal="@dimen/_7pxh"
                 android:layout_marginVertical="@dimen/_7pxv"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 android:src="@drawable/img_rectangle_125x125"
                 tools:ignore="ContentDescription" />
 

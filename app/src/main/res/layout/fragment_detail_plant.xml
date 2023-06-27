@@ -47,7 +47,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_250pxh"
                                 android:layout_gravity="center|start"
-                                android:scaleType="fitXY"
+                                android:scaleType="centerCrop"
                                 android:src="@drawable/img_rectangle_5"
                                 tools:ignore="ContentDescription" />
                             <androidx.appcompat.widget.Toolbar
