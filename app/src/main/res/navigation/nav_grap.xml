@@ -174,5 +174,9 @@
         android:id="@+id/editProfileFragment2"
         android:name="com.phngsapplication.app.ui.EditProfileFragment"
         android:label="fragment_edit_profile"
-        tools:layout="@layout/fragment_edit_profile" />
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_profile"
+            app:destination="@id/profile" />
+    </fragment>
 </navigation>

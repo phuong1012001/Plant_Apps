@@ -20,6 +20,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.AuthCredential
 import com.google.firebase.auth.EmailAuthProvider
@@ -96,6 +97,11 @@ class EditProfileFragment : Fragment() {
         binding.editlocal.setOnClickListener{
             pd.setMessage("Updating Local")
             showLocalUpdate("local")
+        }
+
+        binding.toolbar.setNavigationOnClickListener {
+            val controller = findNavController()
+            controller.navigate(R.id.action_editProfileFragment_to_profile)
         }
 
         return binding.root

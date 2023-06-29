@@ -51,8 +51,11 @@ class ProfileFragment : Fragment() {
         binding.toolbar.setOnMenuItemClickListener() {
             when(it.itemId){
                 R.id.logout->{
+                    firebaseAuth.signOut()
+                    val action = ProfileFragmentDirections.actionProfileToLoginScreenActivity()
                     val controller = findNavController()
-                    controller.navigate(R.id.action_profile_to_loginScreenActivity)
+                    controller.navigate(action)
+                    mainActivity.finish()
                 }
                 R.id.changePassword->{
                     val controller = findNavController()

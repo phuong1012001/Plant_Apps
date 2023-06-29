@@ -43,6 +43,7 @@ class ForgetPassScreenOneActivity : AppCompatActivity(){
 
       val destIntent = ForgetPassScreenZeroActivity.getIntent(this, null)
       startActivity(destIntent)
+      this.finish()
     }
   }
 

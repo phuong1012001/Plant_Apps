@@ -24,6 +24,7 @@ class ForgetPassScreenZeroActivity : AppCompatActivity(){
     binding.btnNext.setOnClickListener {
       val destIntent = LoginScreenActivity.getIntent(this, null)
       startActivity(destIntent)
+      this.finish()
     }
   }
 

@@ -66,6 +66,7 @@ class SignupScreenActivity : AppCompatActivity() {
             updateUserInfo()
             updateUserInfoFireStore()
             startActivity(destIntent)
+            this.finish()
           }else{
             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
           }

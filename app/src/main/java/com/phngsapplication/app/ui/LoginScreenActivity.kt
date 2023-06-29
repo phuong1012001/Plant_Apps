@@ -3,6 +3,7 @@ package com.phngsapplication.app.ui
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,8 +11,6 @@ import androidx.databinding.DataBindingUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.ActivityLoginScreenBinding
-import kotlin.String
-import kotlin.Unit
 
 class LoginScreenActivity: AppCompatActivity()
 {
@@ -67,7 +66,9 @@ class LoginScreenActivity: AppCompatActivity()
           if(it.isSuccessful){
             val verify = firebaseAuth.currentUser?.isEmailVerified
             if(verify == true){
+              destIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
               startActivity(destIntent)
+              this.finish()
             }else{
               Toast.makeText(this, "Please verify your Email !!!", Toast.LENGTH_SHORT).show()
             }
