@@ -21,7 +21,6 @@ class LoginScreenActivity: AppCompatActivity()
 
   private lateinit var progressDialog: ProgressDialog
 
-  private var isBackPressedOne: Boolean = false
   private var backPressedTime = 0L
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,20 +32,10 @@ class LoginScreenActivity: AppCompatActivity()
     progressDialog = ProgressDialog(this)
     progressDialog.setTitle("Please wait !")
     progressDialog.setCanceledOnTouchOutside(false)
-
     setUpClicks()
   }
 
   override fun onBackPressed() {
-//    if(isBackPressedOne){
-//      super.onBackPressed()
-//      return;
-//    }
-//    Toast.makeText(this, "Press again to exit!!!", Toast.LENGTH_SHORT).show()
-//    isBackPressedOne = true
-//
-//    new Handler().postDelayed
-
     if (backPressedTime + 2000 > System.currentTimeMillis()){
       super.onBackPressed()
       return;
@@ -76,10 +65,8 @@ class LoginScreenActivity: AppCompatActivity()
 
         firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
           if(it.isSuccessful){
-            startActivity(destIntent)
             val verify = firebaseAuth.currentUser?.isEmailVerified
             if(verify == true){
-              val user = firebaseAuth.currentUser
               startActivity(destIntent)
             }else{
               Toast.makeText(this, "Please verify your Email !!!", Toast.LENGTH_SHORT).show()

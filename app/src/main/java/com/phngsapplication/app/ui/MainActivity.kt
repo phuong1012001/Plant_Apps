@@ -5,30 +5,24 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.ActivityMainBinding
 import kotlin.random.Random
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    lateinit var uri: String
 
+    private lateinit var navController: NavController
 
     private lateinit var firebaseAuth: FirebaseAuth
 
-    private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -49,14 +43,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkUser() {
-        //get current user
         val firebaseUser = firebaseAuth.currentUser
         if(firebaseUser == null){
             val destIntent = LoginScreenActivity.getIntent(this, null)
             startActivity(destIntent)
-        }
-        else{
-            val email = firebaseUser.email
         }
     }
 

@@ -1,5 +1,6 @@
 package com.phngsapplication.app.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -18,7 +19,6 @@ import com.phngsapplication.app.R
 import com.phngsapplication.app.adapter.ArticlesAdapter
 import com.phngsapplication.app.databinding.FragmentArticlesBinding
 import com.phngsapplication.app.model.Article
-import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -27,11 +27,12 @@ class ArticlesFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
 
     val args: ArticlesFragmentArgs by navArgs()
+
     var articlesList : Array<Article>? = null
     private lateinit var articleId : ArrayList<String>
+
     private var db = Firebase.firestore
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var searchView: androidx.appcompat.widget.SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +54,6 @@ class ArticlesFragment : Fragment() {
         }
         val adapter = ArticlesAdapter(data)
         binding.recyclerArticles.adapter = adapter
-
-        searchView = binding.searchForArticles
 
         articleId = ArrayList()
         loadLikeFromFireStore()
@@ -82,7 +81,7 @@ class ArticlesFragment : Fragment() {
             controller.navigate(R.id.action_articlesFragment_to_home)
         }
 
-        searchView.setOnQueryTextListener(object :androidx.appcompat.widget.SearchView.OnQueryTextListener{
+        binding.searchForArticles.setOnQueryTextListener(object :androidx.appcompat.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false
             }
@@ -117,8 +116,6 @@ class ArticlesFragment : Fragment() {
                 val adapter = ArticlesAdapter(ftList)
                 binding.recyclerArticles.adapter = adapter
 
-                searchView = binding.searchForArticles
-
                 //Thao tac buttion khong sua
                 adapter.onItemClick = {
                     var like: String = "dislike"
@@ -135,6 +132,7 @@ class ArticlesFragment : Fragment() {
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun loadLikeFromFireStore() {
         db = FirebaseFirestore.getInstance()
         db.collection("User").get().addOnSuccessListener {  }

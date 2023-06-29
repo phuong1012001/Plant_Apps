@@ -6,6 +6,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.storage.StorageReference
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues
 import android.content.Intent
@@ -40,8 +41,6 @@ class PostArticles : Fragment() {
     private lateinit var storageReference: StorageReference
     private lateinit var firestoredatabase: FirebaseFirestore
 
-//    private val storagePath = "ImagePostArticles/"
-    private lateinit var uid: String
     private lateinit var postCoverPhoto: String
 
     private lateinit var imagePost: ImageView
@@ -53,7 +52,6 @@ class PostArticles : Fragment() {
     private lateinit var closeButton: ImageView
     private lateinit var sendButton: ImageView
     private lateinit var attachmentCloseButton: ImageView
-    private lateinit var attachedImageName: TextView
     private lateinit var postStatus: EditText
     private lateinit var postTitle: EditText
 
@@ -164,16 +162,10 @@ class PostArticles : Fragment() {
             }
         }
 
-//        view.post {
-//            postStatus.requestFocus()
-//            val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//            imm.showSoftInput(binding.post, InputMethodManager.SHOW_IMPLICIT)
-//        }
-//
-//        setEnabled(true, binding.progressBar, binding.sendButton)
         return view
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun loadArticlesFromFireStore() {
         db = FirebaseFirestore.getInstance()
         db.collection("User").get().addOnSuccessListener {  }
@@ -332,7 +324,6 @@ class PostArticles : Fragment() {
 
         pd.show()
         val timestamp = System.currentTimeMillis()
-//        val filePathAndName = storagePath + "" + postCoverPhoto + "_" + firebaseUser.uid
         val filePathAndName = "ImagePostArticles/$timestamp"
         val storageReference2nd = storageReference.child(filePathAndName)
         storageReference2nd.putFile(uri!!)

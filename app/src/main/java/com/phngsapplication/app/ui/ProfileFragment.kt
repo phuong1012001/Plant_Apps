@@ -1,5 +1,6 @@
 package com.phngsapplication.app.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -68,10 +69,6 @@ class ProfileFragment : Fragment() {
         adapter.addFragment(SpeciesFragment, "Species")
         binding.viewPager.setAdapter(adapter)
 
-//        var bundle: Bundle = Bundle()
-//        bundle.putString("A", "HOA")
-//        SpeciesFragment.setArguments(bundle)
-
         return binding.root
     }
 
@@ -80,13 +77,9 @@ class ProfileFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
-    }
-
+    @SuppressLint("SuspiciousIndentation")
     private fun loadUserFromFireStore() {
         db = FirebaseFirestore.getInstance()
-
         db.collection("User").get().addOnSuccessListener {  }
             .addOnSuccessListener {
                 if(!it.isEmpty){

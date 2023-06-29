@@ -23,11 +23,8 @@ class DetailPlantFragment : Fragment() {
     private lateinit var binding: FragmentDetailPlantBinding
     private lateinit var mainActivity: MainActivity
 
-    private lateinit var firebaseAuth: FirebaseAuth
     private var db = Firebase.firestore
-
-    private var like: Boolean = false
-    var like1:String = ""
+    private lateinit var firebaseAuth: FirebaseAuth
 
     val args: DetailPlantFragmentArgs by navArgs()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,14 +52,6 @@ class DetailPlantFragment : Fragment() {
                 .load(Plant.imagePlant)
                 .into(binding.image)
 
-
-//                val drawableResourceId2 = this.resources.getIdentifier(Plant.imagePlant,
-//                    "drawable",
-//                    mainActivity.packageName)
-//                Glide.with(this)
-//                    .load(drawableResourceId2)
-//                    .into(binding.like)
-
             binding.txtPlant.setText(Plant.txtPlant)
             binding.txtKINGDOM.setText(Plant.txtKINGDOM)
             binding.txtFAMILY.setText(Plant.txtFAMILY)
@@ -72,7 +61,7 @@ class DetailPlantFragment : Fragment() {
         }
 
         var button_background : Int = 0
-        button_background = if(like1 == "true")
+        button_background = if(like == "true")
             2
         else 1
 

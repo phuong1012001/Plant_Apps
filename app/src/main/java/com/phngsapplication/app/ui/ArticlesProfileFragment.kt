@@ -1,5 +1,6 @@
 package com.phngsapplication.app.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,25 +16,26 @@ import com.google.firebase.ktx.Firebase
 import com.phngsapplication.app.R
 import com.phngsapplication.app.adapter.ArticlesAdapter
 import com.phngsapplication.app.databinding.FragmentArticlesProfileBinding
-import com.phngsapplication.app.databinding.FragmentListPlantBinding
 import com.phngsapplication.app.model.Article
 
 class ArticlesProfileFragment : Fragment() {
     private lateinit var binding: FragmentArticlesProfileBinding
     private lateinit var mainActivity: MainActivity
-    private lateinit var firebaseAuth: FirebaseAuth
 
     private lateinit var articleId : ArrayList<String>
-
     var articleList = ArrayList<Article>()
 
     private var db = Firebase.firestore
-    private var title: String? = null
-    private var page = 0
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         firebaseAuth = FirebaseAuth.getInstance()
+
+        articleList = ArrayList()
+        articleId = ArrayList()
+
+        loadArticlesLike()
     }
 
     override fun onCreateView(
@@ -43,9 +45,13 @@ class ArticlesProfileFragment : Fragment() {
         mainActivity = getActivity() as MainActivity
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_articles_profile, container, false)
 
-        articleList = ArrayList()
-        articleId = ArrayList()
+        loadArticlesFromFireStore()
 
+        return binding.root
+    }
+
+    @SuppressLint("SuspiciousIndentation")
+    private fun loadArticlesLike() {
         db.collection("User").get().addOnSuccessListener {  }
             .addOnSuccessListener {
                 if(!it.isEmpty){
@@ -72,11 +78,9 @@ class ArticlesProfileFragment : Fragment() {
             .addOnFailureListener {e->
                 Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
-
-        loadArticlesFromFireStore()
-        return binding.root
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun loadArticlesFromFireStore() {
         db = FirebaseFirestore.getInstance()
         db.collection("User").get().addOnSuccessListener {  }
@@ -110,21 +114,8 @@ class ArticlesProfileFragment : Fragment() {
                                                 )
                                             }
                                         if (articleList != null) {
-                                            val adapter =
-                                                articleList?.let { ArticlesAdapter(it) }
-                                            binding.recyclerArticles.adapter =
-                                                adapter
-                                            if (adapter != null) {
-//                                                adapter.onItemClick = {
-//                                                    val action =
-//                                                        ListPlantFragmentDirections.actionListPlantFragmentToDetailPlantFragment(
-//                                                            it, "like"
-//                                                        )
-//                                                    val controller =
-//                                                        findNavController()
-//                                                    controller.navigate(action)
-                                                // }
-                                            }
+                                            val adapter = articleList?.let { ArticlesAdapter(it) }
+                                            binding.recyclerArticles.adapter = adapter
                                         }
                                     }
                                 }

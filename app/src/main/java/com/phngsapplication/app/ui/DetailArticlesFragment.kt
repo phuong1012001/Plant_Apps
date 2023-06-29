@@ -1,5 +1,6 @@
 package com.phngsapplication.app.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -28,6 +29,7 @@ class DetailArticlesFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
 
     private var db = Firebase.firestore
+
     var articleList = ArrayList<Article>()
 
     val args: DetailArticlesFragmentArgs by navArgs()
@@ -56,15 +58,6 @@ class DetailArticlesFragment : Fragment() {
             binding.txtDate.setText(getShortDate(Article.txtDate.toLong()))
             binding.txtTitleArticle.setText(Article.titleArticle)
             binding.txtDescription.setText(Article.contentArticle)
-
-//            val drawableResourceId1 = this.resources.getIdentifier(Article.imageArticle,
-//                "drawable",
-//                mainActivity.packageName)
-//
-//
-//            Glide.with(this)
-//                .load(drawableResourceId1)
-//                .into(binding.imageArticle)
 
             Glide.with(this)
                 .load(Article.imageArticle)
@@ -106,6 +99,7 @@ class DetailArticlesFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun loadArticlesFromFireStore() {
         db = FirebaseFirestore.getInstance()
         db.collection("User").get().addOnSuccessListener {  }
@@ -166,12 +160,9 @@ class DetailArticlesFragment : Fragment() {
 
         db.collection("User/$userId/UserLikeArticle").document("$articleId").set(userLikeArticleMap)
             .addOnSuccessListener {
-                //user info save, open user dashboard
-                //progressDialog.dismiss()
                 Toast.makeText(mainActivity, "Add FireStore Successfully...", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener{e->
-                //progressDialog.dismiss()
                 Toast.makeText(mainActivity, "Failed to add FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }

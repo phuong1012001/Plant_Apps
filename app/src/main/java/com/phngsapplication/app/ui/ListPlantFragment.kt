@@ -155,6 +155,7 @@ class ListPlantFragment : Fragment() {
             }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun loadSpeciesFromFireStore() {
         db = FirebaseFirestore.getInstance()
         db.collection("User").get().addOnSuccessListener {  }

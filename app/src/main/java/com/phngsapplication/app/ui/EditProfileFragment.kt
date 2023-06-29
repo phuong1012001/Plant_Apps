@@ -101,6 +101,7 @@ class EditProfileFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private fun loadImageFromUser() {
         db.collection("User").get().addOnSuccessListener {  }
             .addOnSuccessListener {

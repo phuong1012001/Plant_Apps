@@ -13,8 +13,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.phngsapplication.app.R
 import com.phngsapplication.app.adapter.SpeciesAdapter
 import com.phngsapplication.app.databinding.FragmentSpeciesBinding
@@ -34,7 +32,6 @@ class SpeciesFragment : Fragment() {
     val args: SpeciesFragmentArgs by navArgs()
 
     private lateinit var firebaseAuth: FirebaseAuth
-    private var db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

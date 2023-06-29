@@ -23,10 +23,7 @@ import com.phngsapplication.app.R
 import com.phngsapplication.app.adapter.PhotoAdapter
 import com.phngsapplication.app.adapter.PlantTypesAdapter
 import com.phngsapplication.app.databinding.FragmentHomeBinding
-import com.phngsapplication.app.model.Article
-import com.phngsapplication.app.model.Photo
-import com.phngsapplication.app.model.PlantTypes
-import com.phngsapplication.app.model.Species
+import com.phngsapplication.app.model.*
 import kotlin.random.Random
 
 class HomeFragment : Fragment() {
@@ -36,10 +33,11 @@ class HomeFragment : Fragment() {
     private val PHOTO_REQUEST_CODE = Random.nextInt(0, 10000)
 
     var data1 = ArrayList<Species>() //Mang Species
-    private var db = Firebase.firestore
-
     var articleList = ArrayList<Article>()
     private lateinit var set: ImageView
+    private var user = Profile(null, null, null, null, null)
+
+    private var db = Firebase.firestore
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseUser: FirebaseUser
 
@@ -60,6 +58,8 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
         firebaseAuth = FirebaseAuth.getInstance()
         firebaseUser = firebaseAuth.currentUser!!
+        Log.e("BBBBBB", "AAAAAAAAAAAAAAAAA")
+        loadImageFromUser()
     }
 
     override fun onCreateView(
@@ -70,11 +70,21 @@ class HomeFragment : Fragment() {
         mainActivity = getActivity() as MainActivity
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
+        //Load User
+        if(user.name != null) {
+            Log.e("USER", user.toString())
+            binding.txtName.text = "Hello ${user.name}"
+            try {
+                Glide.with(requireContext()).load(user.imageAvatar).into(binding.imageAvatar)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+
         val data = ArrayList<PlantTypes>()
         data.add(PlantTypes("Cây trong nhà", 8))
         data.add(PlantTypes("Cây nhiệt đới", 7))
         data.add(PlantTypes("Cây ưa nước", 10))
-
 
         val plantTypesAdapter = PlantTypesAdapter(data)
 
@@ -88,11 +98,6 @@ class HomeFragment : Fragment() {
         val phptoGraphy = PhotoAdapter(data1)
 
         binding.recyclerPhotography.adapter = phptoGraphy
-
-        set = binding.imageAvatar
-
-        //Load User
-        loadImageFromUser()
 
         //Load Articles
         loadArticlesFromFireStore()
@@ -115,7 +120,7 @@ class HomeFragment : Fragment() {
         }
         binding.bttonArticles.setOnClickListener {
             var articlesArr : Array<Article> = articleList.toTypedArray()
-            Log.d("Szie Article", articlesArr.size.toString())
+            Log.d("Size Article", articlesArr.size.toString())
             val action = HomeFragmentDirections.actionHomeFragmentToArticlesFragment(articlesArr)
             val controller = findNavController()
             controller.navigate(action)
@@ -126,32 +131,20 @@ class HomeFragment : Fragment() {
         }
     }
 
-    fun onClickRecyclerHomepage(
-        view: View,
-        position: Int,
-        item: PlantTypes
-    ): Unit {
-        when(view.id) {
-            R.id.plantTypes ->  {
-//                mainActivity.goToDetailPlantTypes()
-            }
-        }
-    }
-
     private fun loadImageFromUser() {
         db.collection("User").get().addOnSuccessListener {  }
             .addOnSuccessListener {
                 if(!it.isEmpty){
                     for(data in it.documents){
-                        val image = data.get("profileImage")
-                        val uid = data.get("id")
-                        val name = data.get("name")
-                        if(uid.toString() == firebaseUser.uid)
+                        user.id = data.get("id").toString()
+
+                        if(user.id == firebaseUser.uid)
                         {
-                            Log.d("User", uid.toString())
-                            binding.txtName.text = "Hello ${name.toString()}"
+                            user.name = data.get("name").toString()
+                            user.imageAvatar = data.get("profileImage").toString()
+                            binding.txtName.text = "Hello ${user.name}"
                             try {
-                                Glide.with(requireContext()).load(image).into(set)
+                                Glide.with(requireContext()).load(user.imageAvatar).into(binding.imageAvatar)
                             } catch (e: Exception) {
                                 e.printStackTrace()
                             }
@@ -201,24 +194,6 @@ class HomeFragment : Fragment() {
                 Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
-
-    private fun setUpSearchViewGroupTwentyOneListener(): Unit {
-//        binding.searchViewGroupTwentyOne.setOnQueryTextListener(object :
-//            SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(p0 : String) : Boolean {
-//                // Performs search when user hit
-//                // the search button on the keyboard
-//                return false
-//            }
-//            override fun onQueryTextChange(p0 : String) : Boolean {
-//                // Start filtering the list as user
-//                // start entering the characters
-//                return false
-//            }
-//        })
-    }
-
-
 
     private fun loadSpeciesFromFireStore() {
         //data1 = ArrayList()

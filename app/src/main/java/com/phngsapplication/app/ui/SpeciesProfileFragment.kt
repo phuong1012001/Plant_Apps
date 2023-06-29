@@ -9,13 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -29,15 +23,21 @@ class SpeciesProfileFragment : Fragment() {
     private lateinit var binding: FragmentSpeciesProfileBinding
     private lateinit var mainActivity: MainActivity
 
-    private lateinit var firebaseAuth: FirebaseAuth
-    private var db = Firebase.firestore
-
     private lateinit var plantId : ArrayList<String>
     var plant = ArrayList<Plant>()
+
+    private var db = Firebase.firestore
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         firebaseAuth = FirebaseAuth.getInstance()
+
+        plant = ArrayList()
+        plantId = ArrayList()
+
+        loadPlantLike()
+        loadPlantFromFireStore()
     }
 
     override fun onCreateView(
@@ -47,9 +47,16 @@ class SpeciesProfileFragment : Fragment() {
         mainActivity = getActivity() as MainActivity
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_species_profile, container, false)
 
-        plant = ArrayList()
-        plantId = ArrayList()
+        if (plant != null) {
+            val adapter = plant?.let { PlantAdapter(it) }
+            binding.recyclerSpecies.adapter = adapter
+        }
 
+        return binding.root
+    }
+
+    @SuppressLint("SuspiciousIndentation")
+    private fun loadPlantLike() {
         db.collection("User").get().addOnSuccessListener {  }
             .addOnSuccessListener {
                 if(!it.isEmpty){
@@ -76,10 +83,6 @@ class SpeciesProfileFragment : Fragment() {
             .addOnFailureListener {e->
                 Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
             }
-
-        loadPlantFromFireStore()
-
-        return binding.root
     }
 
     @SuppressLint("SuspiciousIndentation")
@@ -137,17 +140,8 @@ class SpeciesProfileFragment : Fragment() {
                                                             }
                                                         }
                                                         if (plant != null) {
-                                                            val adapter =
-                                                                plant?.let { PlantAdapter(it) }
-                                                            binding.recyclerSpecies.adapter =
-                                                                adapter
-                                                            if (adapter != null) {
-                                                                adapter.onItemClick = {
-//                                                                    val action = ProfileFragmentDirections.actionProfileToDetailPlantFragment(it, "like")
-//                                                                    val controller = findNavController()
-//                                                                    controller.navigate(action)
-                                                                }
-                                                            }
+                                                            val adapter = plant?.let { PlantAdapter(it) }
+                                                            binding.recyclerSpecies.adapter = adapter
                                                         }
 
                                                     }

@@ -121,7 +121,7 @@
                             android:id="@+id/imageAvatar"
                             android:layout_width="@dimen/_48pxh"
                             android:layout_height="@dimen/_48pxh"
-                            android:src="@drawable/img_rectangle62"
+
                             android:scaleType="centerCrop"/>
                     </androidx.cardview.widget.CardView>
 
