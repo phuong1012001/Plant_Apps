@@ -1,12 +1,20 @@
 package com.phngsapplication.app.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.FragmentProfileBinding
 
@@ -18,11 +26,15 @@ class ProfileFragment : Fragment() {
     lateinit var ArticlesFragment: ArticlesProfileFragment
     lateinit var SpeciesFragment: SpeciesProfileFragment
 
+    private var db = Firebase.firestore
+    private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ArticlesFragment = ArticlesProfileFragment();
         SpeciesFragment = SpeciesProfileFragment();
+
+        firebaseAuth = FirebaseAuth.getInstance()
 
         setHasOptionsMenu(true)
     }
@@ -33,6 +45,25 @@ class ProfileFragment : Fragment() {
     ): View? {
         mainActivity = getActivity() as MainActivity
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+        //Thong tin
+        loadUserFromFireStore()
+
+        binding.toolbar.setOnMenuItemClickListener() {
+            when(it.itemId){
+                R.id.logout->{
+                    firebaseAuth.signOut()
+                    val action = ProfileFragmentDirections.actionProfileToLoginScreenActivity()
+                    val controller = findNavController()
+                    controller.navigate(action)
+                    mainActivity.finish()
+                }
+                R.id.changePassword->{
+                    val controller = findNavController()
+                    controller.navigate(R.id.action_profile_to_editProfileFragment)
+                }
+            }
+            true
+        }
 
         binding.tablayout.setupWithViewPager(binding.viewPager)
         val fragmentManager = childFragmentManager
@@ -40,29 +71,6 @@ class ProfileFragment : Fragment() {
         adapter.addFragment(ArticlesFragment, "Articles")
         adapter.addFragment(SpeciesFragment, "Species")
         binding.viewPager.setAdapter(adapter)
-
-        var bundle: Bundle = Bundle()
-        bundle.putString("A", "HOA")
-        SpeciesFragment.setArguments(bundle)
-
-        //Thong tin
-//        var bundleReceive: Bundle? = getArguments()
-//        if(bundleReceive != null){
-//            val profile: Profile = bundleReceive.get("profile") as Profile
-//            if(profile != null){
-//                binding.txtName.setText(profile.name)
-//                binding.txtLosAngelesCa.setText(profile.address)
-//                val drawableResourceId1 = this.resources.getIdentifier(profile.imageAvatar,
-//                    "drawable",
-//                    mainActivity.packageName)
-//
-//
-//                Glide.with(this)
-//                    .load(drawableResourceId1)
-//                    .into(binding.imageAvatar)
-//            }
-//        }
-
 
         return binding.root
     }
@@ -72,8 +80,32 @@ class ProfileFragment : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
+    @SuppressLint("SuspiciousIndentation")
+    private fun loadUserFromFireStore() {
+        db = FirebaseFirestore.getInstance()
+        db.collection("User").get().addOnSuccessListener {  }
+            .addOnSuccessListener {
+                if(!it.isEmpty){
+                    for(data in it.documents){
+                        val uid = data.get("id").toString()
+                        if(firebaseAuth.uid.toString() == uid){
+                            val name = data.get("name").toString()
+                            val image = data.get("profileImage").toString()
+                            val address = data.get("local").toString()
+                            Log.d("Name", name)
+                            binding.txtName.text = name
+                            Glide.with(this)
+                                .load(image)
+                                .into(binding.imageAvatar)
+                            binding.txtLosAngelesCa.text = address
+                            break
+                        }
+                    }
+                }
+            }
+            .addOnFailureListener {e->
+                Toast.makeText(mainActivity, "Failed to load FireStore due to ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     companion object {

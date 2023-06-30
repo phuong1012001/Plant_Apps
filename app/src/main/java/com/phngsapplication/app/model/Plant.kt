@@ -5,6 +5,12 @@ import android.os.Parcelable
 import kotlin.String
 
 data class Plant(
+  var plantId: String,
+
+  var speciesId: String,
+
+  var speciesName: String,
+
   var imagePlant: String,
 
   var txtPlant: String,
@@ -15,9 +21,18 @@ data class Plant(
 
   var txtDescription: String,
 
+  var txtCharacterOne: String,
+
+  var txtCharacterTwo: String,
+
   var imageLike: String,
 ) : Parcelable {
   constructor(parcel: Parcel) : this(
+    parcel.readString()!!,
+    parcel.readString()!!,
+    parcel.readString()!!,
+    parcel.readString()!!,
+    parcel.readString()!!,
     parcel.readString()!!,
     parcel.readString()!!,
     parcel.readString()!!,
@@ -28,11 +43,16 @@ data class Plant(
   }
 
   override fun writeToParcel(parcel: Parcel, flags: Int) {
+    parcel.writeString(plantId)
+    parcel.writeString(speciesId)
+    parcel.writeString(speciesName)
     parcel.writeString(imagePlant)
     parcel.writeString(txtPlant)
     parcel.writeString(txtKINGDOM)
     parcel.writeString(txtFAMILY)
     parcel.writeString(txtDescription)
+    parcel.writeString(txtCharacterOne)
+    parcel.writeString(txtCharacterTwo)
     parcel.writeString(imageLike)
   }
 

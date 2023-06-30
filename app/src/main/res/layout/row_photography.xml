@@ -7,27 +7,28 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/photography"
-        android:layout_width="@dimen/_126pxh"
-        android:layout_height="@dimen/_144pxv">
+        android:layout_width="@dimen/_144pxv"
+        android:layout_height="@dimen/_144pxv"
+        android:layout_margin="10dp"
+        tools:elevation="3dp">
         <FrameLayout
-            android:layout_width="@dimen/_126pxh"
+            android:layout_width="@dimen/_144pxv"
             android:layout_height="@dimen/_144pxv"
             tools:ignore="MissingConstraints">
+
             <ImageView
                 android:id="@+id/image"
-                cornerRadius="@{@dimen/_3pxh}"
-                imageRes="@{@drawable/img_rectangle25}"
-                android:layout_width="@dimen/_126pxh"
-                android:layout_height="@dimen/_144pxh"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="start"
-                android:scaleType="fitXY"
-                tools:ignore="ContentDescription"
-                android:src="@drawable/img_rectangle25" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_rectangle25"
+                tools:ignore="ContentDescription" />
 
             <LinearLayout
                 android:id="@+id/linear"
                 style="@style/groupStylewhite_A700_99cornerRadius"
-                android:layout_width="match_parent"
+                android:layout_width="@dimen/_70pxv"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_109pxv"
                 android:layout_marginEnd="@dimen/_76pxh"
@@ -40,10 +41,6 @@
                     style="@style/txtAndadaProromanmedium10"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/_11pxh"
-                    android:layout_marginTop="@dimen/_3pxv"
-                    android:layout_marginEnd="@dimen/_9pxh"
-                    android:layout_marginBottom="@dimen/_4pxv"
                     android:ellipsize="end"
                     android:gravity="center_horizontal"
                     android:singleLine="true"

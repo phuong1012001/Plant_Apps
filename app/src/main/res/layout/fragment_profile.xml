@@ -26,9 +26,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:menu="@menu/menu_profile"/>
+
                 <ImageView
                     android:id="@+id/imageEllipse"
-                    imageRes="@{@drawable/img_ellipse_187x248}"
                     android:layout_width="@dimen/_200pxh"
                     android:layout_height="@dimen/_180pxv"
                     android:layout_gravity="center_horizontal|end"
@@ -42,7 +52,6 @@
 
                 <ImageView
                     android:id="@+id/imageEllipseOne"
-                    imageRes="@{@drawable/img_ellipse_1}"
                     android:layout_width="@dimen/_75pxh"
                     android:layout_height="@dimen/_124pxv"
                     android:layout_gravity="bottom|end"
@@ -62,18 +71,19 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:id="@+id/imageAvatar"
-                        circular="@{true}"
-                        imageRes="@{@drawable/img_ellipse_79x79}"
-                        android:layout_width="@dimen/_79pxh"
-                        android:layout_height="@dimen/_79pxh"
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/_10pxv"
-                        android:scaleType="fitStart"
                         tools:ignore="ContentDescription"
-                        tools:src="@drawable/img_ellipse_79x79" />
-
+                        app:cardCornerRadius="@dimen/_40pxh">
+                        <ImageView
+                            android:id="@+id/imageAvatar"
+                            android:layout_width="@dimen/_80pxh"
+                            android:layout_height="@dimen/_80pxh"
+                            android:scaleType="centerCrop"
+                            tools:ignore="ContentDescription" />
+                    </androidx.cardview.widget.CardView>
                     <TextView
                         android:id="@+id/txtName"
                         style="@style/txtAndadaProromanbold25"

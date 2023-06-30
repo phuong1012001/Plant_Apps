@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_introduction"
+    app:startDestination="@id/introduction1Fragment">
+
+    <fragment
+        android:id="@+id/introduction1Fragment"
+        android:name="com.phngsapplication.app.ui.Introduction1Fragment"
+        android:label="Introduction1Fragment"
+        tools:layout="@layout/fragment_introduction_1">
+        <action
+            android:id="@+id/action_introduction1Fragment_to_introduction2Fragment"
+            app:destination="@id/introduction2Fragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/introduction2Fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/introduction2Fragment"
+        android:name="com.phngsapplication.app.ui.Introduction2Fragment"
+        android:label="Introduction2Fragment"
+        tools:layout="@layout/fragment_introduction_2">
+        <action
+            android:id="@+id/action_introduction2Fragment_to_introduction3Fragment"
+            app:destination="@id/introduction3Fragment"
+            app:popUpTo="@id/introduction3Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/introduction3Fragment"
+        android:name="com.phngsapplication.app.ui.Introduction3Fragment"
+        android:label="Introduction3Fragment"
+        tools:layout="@layout/fragment_introduction_3">
+        <action
+            android:id="@+id/action_introduction3Fragment_to_loginScreenActivity"
+            app:destination="@id/loginScreenActivity"
+            app:popUpTo="@id/loginScreenActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/loginScreenActivity"
+        android:name="com.phngsapplication.app.ui.LoginScreenActivity"
+        android:label="LoginScreenActivity"
+        tools:layout="@layout/activity_login_screen"/>
+</navigation>

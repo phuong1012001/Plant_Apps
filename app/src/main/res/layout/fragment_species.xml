@@ -37,63 +37,45 @@
                         android:id="@+id/linearRowarrowleft"
                         style="@style/groupStyle"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/_155pxv"
                         android:layout_gravity="top|start"
                         android:layout_marginBottom="@dimen/_10pxv"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
+                        <androidx.appcompat.widget.Toolbar
+                            android:id="@+id/toolbar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="?attr/actionBarSize"
+                            android:theme="?attr/actionBarTheme"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:navigationIcon="@drawable/img_arrowleft"/>
 
-                        <LinearLayout
-                            android:id="@+id/linearColumnarrowleft"
-                            android:layout_width="0dp"
+                        <TextView
+                            android:id="@+id/txtSpecies"
+                            style="@style/txtAndadaProromanbold30"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_23pxh"
-                            android:layout_marginTop="@dimen/_31pxv"
-                            android:layout_marginBottom="@dimen/_42pxv"
-                            android:layout_weight="0.52"
-                            android:gravity="start"
-                            android:orientation="vertical">
-
-                            <FrameLayout
-                                android:id="@+id/btnBack"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_25pxv">
-
-                                <ImageView
-                                    android:layout_width="@dimen/_11pxh"
-                                    android:layout_height="@dimen/_19pxv"
-                                    android:layout_marginEnd="@dimen/_10pxh"
-                                    android:scaleType="fitXY"
-                                    android:src="@drawable/img_arrowleft"
-                                    tools:ignore="ContentDescription,ImageContrastCheck"
-                                    tools:src="@drawable/img_arrowleft" />
-                            </FrameLayout>
-
-                            <TextView
-                                android:id="@+id/txtSpecies"
-                                style="@style/txtAndadaProromanbold30"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_15pxv"
-                                android:layout_marginEnd="@dimen/_10pxh"
-                                android:ellipsize="end"
-                                android:singleLine="true"
-                                android:text="@string/lbl_species2" />
-                        </LinearLayout>
-
-                        <ImageView
-                            android:id="@+id/imageEllipse"
-                            imageRes="@{@drawable/img_ellipse_2}"
-                            android:layout_width="@dimen/_168pxh"
-                            android:layout_height="@dimen/_86pxh"
-                            android:layout_marginBottom="@dimen/_63pxv"
-                            android:scaleType="fitXY"
-                            tools:ignore="ContentDescription"
-                            tools:src="@drawable/img_ellipse_2" />
+                            android:layout_marginTop="@dimen/_5pxv"
+                            android:layout_marginEnd="@dimen/_10pxh"
+                            android:ellipsize="end"
+                            android:singleLine="true"
+                            android:text="@string/lbl_species2" />
                     </LinearLayout>
 
                     <ImageView
+                        android:id="@+id/imageEllipse"
+                        android:layout_width="@dimen/_168pxh"
+                        android:layout_height="@dimen/_86pxh"
+                        android:layout_marginStart="@dimen/_208pxh"
+                        android:layout_marginBottom="@dimen/_63pxv"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/img_ellipse_5" />
+
+                    <ImageView
                         android:id="@+id/imageEllipseOne"
-                        imageRes="@{@drawable/img_ellipse_4}"
                         android:layout_width="@dimen/_75pxh"
                         android:layout_height="@dimen/_124pxh"
                         android:layout_gravity="bottom|end"
@@ -101,8 +83,7 @@
                         android:layout_marginTop="@dimen/_16pxv"
                         android:layout_marginBottom="@dimen/_16pxv"
                         android:scaleType="fitXY"
-                        tools:ignore="ContentDescription"
-                        tools:src="@drawable/img_ellipse_4" />
+                        android:src="@drawable/img_ellipse_6" />
 
                     <androidx.appcompat.widget.SearchView
                         android:id="@+id/searchForSpecies"
@@ -110,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|center"
                         android:layout_marginStart="@dimen/_23pxh"
-                        android:layout_marginTop="@dimen/_10pxv"
+                    android:layout_marginTop="@dimen/_10pxv"
                         android:layout_marginEnd="@dimen/_23pxh"
                         android:background="@drawable/rectangle_bg_white_a702_radius_25"
                         android:theme="@style/searchViewGroupTwentyOne"
@@ -139,19 +120,10 @@
                     android:layout_marginTop="@dimen/_14pxv"
                     android:layout_marginEnd="@dimen/_14pxh">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView1"
-                        android:layout_width="@dimen/_330pxh"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerView2"
+                    <in.myinnos.alphabetsindexfastscrollrecycler.IndexFastScrollRecyclerView
+                        android:id="@+id/fastscrollerrecycler"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                        android:layout_height="match_parent"/>
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

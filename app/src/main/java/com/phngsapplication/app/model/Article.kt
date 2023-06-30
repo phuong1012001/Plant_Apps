@@ -9,6 +9,8 @@ data class Article(
 
   var titleArticle: String,
 
+  var contentArticle: String,
+
   var imageAuthor: String,
 
   var txtAuthor: String,
@@ -20,6 +22,7 @@ data class Article(
     parcel.readString()!!,
     parcel.readString()!!,
     parcel.readString()!!,
+    parcel.readString()!!,
     parcel.readString()!!
   ) {
   }
@@ -27,6 +30,7 @@ data class Article(
   override fun writeToParcel(parcel: Parcel, flags: Int) {
     parcel.writeString(imageArticle)
     parcel.writeString(titleArticle)
+    parcel.writeString(contentArticle)
     parcel.writeString(imageAuthor)
     parcel.writeString(txtAuthor)
     parcel.writeString(txtDate)

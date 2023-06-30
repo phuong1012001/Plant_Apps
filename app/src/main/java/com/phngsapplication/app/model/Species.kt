@@ -4,16 +4,22 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Species(
+    var id: String,
     var nameSpecies: String,
-    var plants: List<Plant>
+    var uid: String,
+    var plants: List<Plant>?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString()!!,
+        parcel.readString()!!,
         parcel.readString()!!,
         parcel.createTypedArrayList(Plant)!!
     ) {
     }
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(id)
         parcel.writeString(nameSpecies)
+        parcel.writeString(uid)
         parcel.writeTypedList(plants)
     }
 

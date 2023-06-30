@@ -9,12 +9,15 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.WindowManager
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageCaptureException
@@ -24,9 +27,10 @@ import androidx.camera.view.PreviewView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.lifecycle.LifecycleOwner
 import com.phngsapplication.app.R
-import com.phngsapplication.app.appcomponents.base.BaseActivity
 import com.phngsapplication.app.databinding.ActivityCameraBinding
 import java.io.File
 import java.text.SimpleDateFormat
@@ -36,33 +40,9 @@ import kotlin.random.Random
 
 
 private const val IMMERSIVE_FLAG_TIMEOUT = 500L
+class CameraActivity : AppCompatActivity(){
 
-/**
- * Helper activity used to capture a single photo. The captured photo is saved to the app's internal
- * storage folder, and the URI is sent back to the launching activity as an intent extra.
- *
- * This activity can be customized in two ways:
- * 1. Using Intent extras
- * ```
- * startActivityForResult(Intent(this, PhotoActivity::class.java).apply {
- *     putExtra(FULL_SCREEN_ENABLED, true)
- * }, PHOTO_REQUEST_CODE)
- * ```
- * 2. Using Manifest metadata
- * ```
- * <activity name="androidx.camera.activity.PhotoActivity>
- *     <meta-data
- *         android:name="androidx.camera.activity.FULL_SCREEN_ENABLED"
- *         android:value="true" />
- * </activity>
- * ```
- *
- * The different customization options are:
- * - `CAMERA_SWITCH_DISABLED`: hides camera switch button (use default camera only)
- * - `FULL_SCREEN_ENABLED`: puts the application into immersive mode for this activity
- * - `VIEW_FINDER_OVERLAY`: resource ID to inflate within the camera view (viewfinder)
- */
-class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_camera) {
+  private lateinit var binding: ActivityCameraBinding
 
   private lateinit var container: ConstraintLayout
   private lateinit var viewFinder: PreviewView
@@ -104,6 +84,7 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    binding = DataBindingUtil.setContentView(this, R.layout.activity_camera)
 
     setContentView(R.layout.activity_camera)
     container = findViewById(R.id.camera_container)
@@ -229,6 +210,24 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
       }
     }
 
+    controls.findViewById<ImageView>(R.id.imageRectangle)?.setOnClickListener {
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+        if(!hasReadStoragePermission(this)){
+          Toast.makeText(this, "Don't permission STORAGE", Toast.LENGTH_SHORT).show()
+          val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+          ActivityCompat.requestPermissions(
+            this, permissions, PERMISSION_CODE
+          )
+        } else {
+          selectImageGallery();
+        }
+      }
+      else{
+        //system OS is < Marshmallow
+        selectImageGallery();
+      }
+    }
+
     // Listener for button used to switch cameras
     controls.findViewById<ImageView>(R.id.camera_switch_button).setOnClickListener {
 
@@ -245,6 +244,21 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
 
     // Apply user configuration every time controls are drawn
     applyUserConfiguration()
+  }
+
+  fun hasReadStoragePermission(context: Context): Boolean {
+    return ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+  }
+
+  private fun selectImageGallery(){
+    val intent =  Intent(
+      Intent.ACTION_PICK,
+      MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+    );
+    intent.setType("image/*");
+    startActivityForResult(
+      Intent.createChooser(intent, "Select File"),
+      REQUEST_SELECT_IMAGE_IN_ALBUM);
   }
 
   /** Declare and bind preview, capture and analysis use cases */
@@ -310,9 +324,25 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
     super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     if (requestCode == permissionsRequestCode && hasPermissions(this)) {
       bindCameraUseCases()
+    } else if(requestCode == PERMISSION_CODE && hasReadStoragePermission(this)){
+      selectImageGallery();
+    } else if(requestCode == PERMISSION_CODE && !hasReadStoragePermission(this)){
+
     } else {
       // Indicate that the user cancelled the action and exit if no permissions are granted
       cancelAndFinish()
+    }
+  }
+
+  @SuppressLint("MissingSuperCall")
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    if(resultCode == RESULT_OK && requestCode == REQUEST_SELECT_IMAGE_IN_ALBUM){
+      Log.d("ANH", data?.data.toString())
+      //mImageView.setImageURI(data?.data)
+      setResult(RESULT_OK, Intent().apply {
+        putExtra(CameraConfiguration.IMAGE_URI, data?.data)
+      })
+      finish()
     }
   }
 
@@ -327,17 +357,12 @@ class CameraActivity : BaseActivity<ActivityCameraBinding>(R.layout.activity_cam
     ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
   }
 
-  override fun onInitialized(): Unit {
-  }
-
-  override fun setUpClicks(): Unit {
-
-  }
-
   companion object {
     const val TAG: String = "CAMERA_ACTIVITY"
     private const val FILENAME = "yyyy-MM-dd-HH-mm-ss-SSS"
     private const val PHOTO_EXTENSION = ".jpg"
+    private val REQUEST_SELECT_IMAGE_IN_ALBUM = 1000
+    private val PERMISSION_CODE = 1001
 
     fun getIntent(context: Context, bundle: Bundle?): Intent {
       val destIntent = Intent(context, CameraActivity::class.java)

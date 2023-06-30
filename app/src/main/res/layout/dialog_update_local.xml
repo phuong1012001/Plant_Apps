@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/update_local"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/name_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
+
+        <EditText
+            android:id="@+id/name_edit_log"
+            style="@style/etAndadaProromanmedium17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_23pxh"
+            android:layout_marginTop="@dimen/_10pxv"
+            android:layout_marginEnd="@dimen/_23pxh"
+            android:paddingEnd="@dimen/_30pxh"
+            android:paddingBottom="@dimen/_9pxv"
+            android:ellipsize="end"
+            android:hint="Fill-out local"
+            android:minHeight="48dp"
+            android:singleLine="true"
+            android:textColorHint="@color/bluegray_800"
+            tools:ignore="Autofill"
+            tools:layout_editor_absoluteY="258dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

@@ -8,7 +8,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/plantTypes"
         android:layout_width="@dimen/_299pxh"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/_160pxh"
+        android:layout_margin="10dp"
+        tools:elevation="3dp">
+
         <FrameLayout
             android:layout_width="@dimen/_299pxh"
             android:layout_height="wrap_content"
@@ -19,25 +22,23 @@
 
             <ImageView
                 android:id="@+id/imagePlantTypes"
-                cornerRadius="@{@dimen/_3pxh}"
-                imageRes="@{@drawable/img_rectangle44}"
                 android:layout_width="@dimen/_299pxh"
                 android:layout_height="@dimen/_160pxh"
                 android:layout_gravity="start"
-                android:scaleType="fitXY"
+                android:scaleType="centerCrop"
                 tools:ignore="ContentDescription"
-                tools:src="@drawable/img_rectangle44" />
+                android:src="@drawable/img_rectangle44" />
 
             <LinearLayout
                 android:id="@+id/linearColumnhomeplants"
                 style="@style/groupStylegray_800_38cornerRadius"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="start"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txtHomePlants"
+                    android:id="@+id/txtTypePlant"
                     style="@style/txtAndadaProromanbold18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

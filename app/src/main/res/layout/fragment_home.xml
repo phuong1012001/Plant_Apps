@@ -17,18 +17,21 @@
             android:layout_height="match_parent"
             android:gravity="start"
             android:orientation="vertical">
-
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="@style/groupStylewhite_A700"
-                android:orientation="vertical">
+                android:layout_height="@dimen/_180pxv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <FrameLayout
                     android:id="@+id/frameStackhellotaylor"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_180pxv"
                     android:gravity="start"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="MissingConstraints">
 
                     <LinearLayout
@@ -54,7 +57,6 @@
 
                         <ImageView
                             android:id="@+id/imageEllipse"
-                            imageRes="@{@drawable/img_ellipse_86x168}"
                             android:layout_width="@dimen/_168pxh"
                             android:layout_height="@dimen/_86pxh"
                             android:layout_marginStart="@dimen/_55pxh"
@@ -66,7 +68,6 @@
 
                     <ImageView
                         android:id="@+id/imageEllipseOne"
-                        imageRes="@{@drawable/img_ellipse_1}"
                         android:layout_width="@dimen/_75pxh"
                         android:layout_height="@dimen/_124pxh"
                         android:layout_gravity="bottom|end"
@@ -106,207 +107,212 @@
                         app:queryBackground="@android:color/transparent"
                         app:queryHint="@string/msg_search_for_plan"
                         app:searchIcon="@drawable/img_search" />
-
-                    <ImageView
-                        android:id="@+id/imageAvatar"
-                        circular="@{true}"
-                        imageRes="@{@drawable/img_ellipse_47x47}"
-                        android:layout_width="@dimen/_47pxh"
-                        android:layout_height="@dimen/_47pxh"
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_gravity="top|end"
                         android:layout_marginStart="@dimen/_23pxh"
                         android:layout_marginTop="@dimen/_43pxv"
                         android:layout_marginEnd="@dimen/_23pxh"
                         android:layout_marginBottom="@dimen/_43pxv"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/img_ellipse_47x47"
-                        tools:ignore="ContentDescription" />
-                </FrameLayout>
-
-                <LinearLayout
-                    android:id="@+id/linearRowcamera"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_14pxh"
-                    android:layout_marginTop="@dimen/_35pxv"
-                    android:layout_marginEnd="@dimen/_14pxh"
-                    android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@+id/frameStackhellotaylor"
-                    tools:ignore="MissingConstraints">
-
-                    <LinearLayout
-                        android:id="@+id/buttonAddingNew"
-                        style="@style/groupStylewhite_2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.36"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
+                        tools:ignore="ContentDescription"
+                        app:cardCornerRadius="@dimen/_24pxh">
                         <ImageView
-                            android:id="@+id/imageCamera"
-                            android:layout_width="@dimen/_21pxh"
-                            android:layout_height="@dimen/_17pxh"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginStart="@dimen/_20pxh"
-                            android:layout_marginTop="@dimen/_18pxv"
-                            android:layout_marginEnd="@dimen/_20pxh"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/img_camera"
-                            tools:ignore="ContentDescription"
-                            tools:src="@drawable/img_camera" />
+                            android:id="@+id/imageAvatar"
+                            android:layout_width="@dimen/_48pxh"
+                            android:layout_height="@dimen/_48pxh"
 
-                        <TextView
-                            android:id="@+id/DESCRIPTION"
-                            style="@style/txtAndadaProromanbold10_4"
+                            android:scaleType="centerCrop"/>
+                    </androidx.cardview.widget.CardView>
+
+                </FrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_180pxv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="SpeakableTextPresentCheck">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        style="@style/groupStylewhite_A700"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:id="@+id/linearRowcamera"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_20pxh"
-                            android:layout_marginTop="@dimen/_10pxv"
-                            android:layout_marginEnd="@dimen/_20pxh"
-                            android:layout_marginBottom="@dimen/_10pxv"
-                            android:ellipsize="end"
-                            android:gravity="center_horizontal"
-                            android:singleLine="true"
-                            android:text="@string/lbl_adding_new2"
-                            tools:ignore="TextSizeCheck" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/bttonSpecies"
-                        style="@style/groupStylewhite_2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_20pxh"
-                        android:layout_weight="0.32"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/imageCut"
-                            android:layout_width="@dimen/_22pxh"
-                            android:layout_height="@dimen/_25pxh"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginStart="@dimen/_28pxh"
-                            android:layout_marginTop="@dimen/_12pxv"
-                            android:layout_marginEnd="@dimen/_28pxh"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/img_cut_teal_a402"
-                            tools:ignore="ContentDescription"
-                            tools:src="@drawable/img_cut_teal_a402" />
-
+                            android:layout_marginStart="@dimen/_14pxh"
+                            android:layout_marginTop="@dimen/_35pxv"
+                            android:layout_marginEnd="@dimen/_14pxh"
+                            android:orientation="horizontal"
+                            app:layout_constraintTop_toBottomOf="@+id/frameStackhellotaylor"
+                            tools:ignore="MissingConstraints">
+                            <LinearLayout
+                                android:id="@+id/buttonAddingNew"
+                                style="@style/groupStylewhite_2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.36"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+                                <ImageView
+                                    android:id="@+id/imageCamera"
+                                    android:layout_width="@dimen/_21pxh"
+                                    android:layout_height="@dimen/_17pxh"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="@dimen/_20pxh"
+                                    android:layout_marginTop="@dimen/_18pxv"
+                                    android:layout_marginEnd="@dimen/_20pxh"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/img_camera"
+                                    tools:ignore="ContentDescription"
+                                    tools:src="@drawable/img_camera" />
+                                <TextView
+                                    android:id="@+id/DESCRIPTION"
+                                    style="@style/txtAndadaProromanbold10_4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_20pxh"
+                                    android:layout_marginTop="@dimen/_10pxv"
+                                    android:layout_marginEnd="@dimen/_20pxh"
+                                    android:layout_marginBottom="@dimen/_10pxv"
+                                    android:ellipsize="end"
+                                    android:gravity="center_horizontal"
+                                    android:singleLine="true"
+                                    android:text="@string/lbl_adding_new2"
+                                    tools:ignore="TextSizeCheck" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/bttonSpecies"
+                                style="@style/groupStylewhite_2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_20pxh"
+                                android:layout_weight="0.32"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+                                <ImageView
+                                    android:id="@+id/imageCut"
+                                    android:layout_width="@dimen/_22pxh"
+                                    android:layout_height="@dimen/_25pxh"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="@dimen/_28pxh"
+                                    android:layout_marginTop="@dimen/_12pxv"
+                                    android:layout_marginEnd="@dimen/_28pxh"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/img_cut_teal_a402"
+                                    tools:ignore="ContentDescription"
+                                    tools:src="@drawable/img_cut_teal_a402" />
+                                <TextView
+                                    android:id="@+id/txtSPECIES"
+                                    style="@style/txtAndadaProromanbold10_4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="@dimen/_28pxh"
+                                    android:layout_marginTop="@dimen/_6pxv"
+                                    android:layout_marginEnd="@dimen/_27pxh"
+                                    android:layout_marginBottom="@dimen/_12pxv"
+                                    android:ellipsize="end"
+                                    android:singleLine="true"
+                                    android:text="@string/lbl_species"
+                                    tools:ignore="TextSizeCheck" />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/bttonArticles"
+                                style="@style/groupStylewhite_2"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/_12pxh"
+                                android:layout_weight="0.32"
+                                android:gravity="center_horizontal"
+                                android:orientation="vertical">
+                                <ImageView
+                                    android:id="@+id/imageGroup"
+                                    android:layout_width="@dimen/_21pxh"
+                                    android:layout_height="@dimen/_16pxh"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginStart="@dimen/_24pxh"
+                                    android:layout_marginTop="@dimen/_15pxv"
+                                    android:layout_marginEnd="@dimen/_24pxh"
+                                    android:scaleType="fitXY"
+                                    android:src="@drawable/img_group_teal_a402"
+                                    tools:ignore="ContentDescription"
+                                    tools:src="@drawable/img_group_teal_a402" />
+                                <TextView
+                                    android:id="@+id/txtARTICLES"
+                                    style="@style/txtAndadaProromanbold10_4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_24pxh"
+                                    android:layout_marginTop="@dimen/_12pxv"
+                                    android:layout_marginEnd="@dimen/_23pxh"
+                                    android:layout_marginBottom="@dimen/_12pxv"
+                                    android:ellipsize="end"
+                                    android:gravity="center_horizontal"
+                                    android:singleLine="true"
+                                    android:text="@string/lbl_articles2"
+                                    tools:ignore="TextSizeCheck" />
+                            </LinearLayout>
+                        </LinearLayout>
                         <TextView
-                            android:id="@+id/txtSPECIES"
-                            style="@style/txtAndadaProromanbold10_4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginStart="@dimen/_28pxh"
-                            android:layout_marginTop="@dimen/_6pxv"
-                            android:layout_marginEnd="@dimen/_27pxh"
-                            android:layout_marginBottom="@dimen/_12pxv"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="@dimen/_23pxh"
+                            android:layout_marginTop="@dimen/_32pxv"
+                            android:layout_marginEnd="@dimen/_23pxh"
                             android:ellipsize="end"
                             android:singleLine="true"
-                            android:text="@string/lbl_species"
-                            tools:ignore="TextSizeCheck" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/bttonArticles"
-                        style="@style/groupStylewhite_2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_12pxh"
-                        android:layout_weight="0.32"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:id="@+id/imageGroup"
-                            android:layout_width="@dimen/_21pxh"
-                            android:layout_height="@dimen/_16pxh"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_marginStart="@dimen/_24pxh"
-                            android:layout_marginTop="@dimen/_15pxv"
-                            android:layout_marginEnd="@dimen/_24pxh"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/img_group_teal_a402"
-                            tools:ignore="ContentDescription"
-                            tools:src="@drawable/img_group_teal_a402" />
-
-                        <TextView
-                            android:id="@+id/txtARTICLES"
-                            style="@style/txtAndadaProromanbold10_4"
+                            android:text="@string/lbl_plant_types"
+                            style="@style/txtAndadaProromanbold17"/>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerPlantTypes"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_24pxh"
-                            android:layout_marginTop="@dimen/_12pxv"
+                            android:layout_marginStart="@dimen/_23pxh"
+                            android:layout_marginTop="@dimen/_13pxv"
                             android:layout_marginEnd="@dimen/_23pxh"
-                            android:layout_marginBottom="@dimen/_12pxv"
+                            android:gravity="start"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="start"
+                            android:layout_marginStart="@dimen/_23pxh"
+                            android:layout_marginTop="@dimen/_26pxv"
+                            android:layout_marginEnd="@dimen/_23pxh"
                             android:ellipsize="end"
-                            android:gravity="center_horizontal"
                             android:singleLine="true"
-                            android:text="@string/lbl_articles2"
-                            tools:ignore="TextSizeCheck" />
+                            style="@style/txtAndadaProromanbold17"
+                            android:text="@string/lbl_photography"
+                            tools:text="@string/lbl_photography" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerPhotography"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_23pxh"
+                            android:layout_marginTop="@dimen/_13pxv"
+                            android:layout_marginEnd="@dimen/_23pxh"
+                            android:gravity="start"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                        <View
+                            android:id="@+id/view"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_50pxv" />
                     </LinearLayout>
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="@dimen/_23pxh"
-                    android:layout_marginTop="@dimen/_32pxv"
-                    android:layout_marginEnd="@dimen/_23pxh"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:text="@string/lbl_plant_types"
-                    style="@style/txtAndadaProromanbold17"/>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerPlantTypes"
-                    itemSpace="@{@dimen/_14pxh}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_23pxh"
-                    android:layout_marginTop="@dimen/_13pxv"
-                    android:layout_marginEnd="@dimen/_23pxh"
-                    android:gravity="start"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="@dimen/_23pxh"
-                    android:layout_marginTop="@dimen/_26pxv"
-                    android:layout_marginEnd="@dimen/_23pxh"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    style="@style/txtAndadaProromanbold17"
-                    android:text="@string/lbl_photography"
-                    tools:text="@string/lbl_photography" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerPhotography"
-                    itemSpace="@{@dimen/_14pxh}"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_23pxh"
-                    android:layout_marginTop="@dimen/_13pxv"
-                    android:layout_marginEnd="@dimen/_23pxh"
-                    android:gravity="start"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
-                <View
-                    android:id="@+id/view"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_115pxv" />
-
-            </LinearLayout>
+                </ScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 </layout>

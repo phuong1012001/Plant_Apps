@@ -4,15 +4,15 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class Profile(
-    var name: String,
+    var id: String?,
 
-    var imageAvatar: String,
+    var name: String?,
 
-    var address: String,
+    var imageAvatar: String?,
 
-    var email: String,
+    var address: String?,
 
-    var passWord: String
+    var email: String?
 ): Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
@@ -24,11 +24,11 @@ data class Profile(
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(id)
         parcel.writeString(name)
         parcel.writeString(imageAvatar)
         parcel.writeString(address)
         parcel.writeString(email)
-        parcel.writeString(passWord)
     }
 
     override fun describeContents(): Int {
