@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -13,6 +14,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.phngsapplication.app.R
 import com.phngsapplication.app.databinding.ActivitySignupScreenBinding
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 import kotlin.String
 import kotlin.Unit
 
@@ -51,24 +54,26 @@ class SignupScreenActivity : AppCompatActivity() {
 
       val destIntent = LoginScreenActivity.getIntent(this, null)
       if(email.isNotEmpty() && pass.isNotEmpty() && name.isNotEmpty()){
-        firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
-          if(it.isSuccessful){
-            firebaseAuth.currentUser?.sendEmailVerification()
-              ?.addOnSuccessListener {
-                //account created, --> add user infor in db
+        if(emailValidator(email) && isValidPassword(pass)) {
+            firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
+            if(it.isSuccessful){
+              firebaseAuth.currentUser?.sendEmailVerification()
+                ?.addOnSuccessListener {
+                  //account created, --> add user infor in db
 
-                Toast.makeText(this, "Please verify your Email !!!", Toast.LENGTH_SHORT).show()
-              }
-              ?.addOnFailureListener {e->
-                progressDialog.dismiss()
-                Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
-              }
-            updateUserInfo()
-            updateUserInfoFireStore()
-            startActivity(destIntent)
-            this.finish()
-          }else{
-            Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                  Toast.makeText(this, "Please verify your Email !!!", Toast.LENGTH_SHORT).show()
+                }
+                ?.addOnFailureListener {e->
+                  progressDialog.dismiss()
+                  Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+                }
+              updateUserInfo()
+              updateUserInfoFireStore()
+              startActivity(destIntent)
+              this.finish()
+            }else{
+              Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+            }
           }
         }
       }else{
@@ -135,6 +140,34 @@ class SignupScreenActivity : AppCompatActivity() {
       }
 
   }
+
+  private fun emailValidator(email: String) :  Boolean{
+    // Android offers the inbuilt patterns which the entered
+    // data from the EditText field needs to be compared with
+    // In this case the entered data needs to compared with
+    // the EMAIL_ADDRESS, which is implemented same below
+    if (email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+      //Toast.makeText(this, "Email Verified !", Toast.LENGTH_SHORT).show()
+      return true
+    } else {
+      Toast.makeText(this, "Enter valid Email address !", Toast.LENGTH_SHORT).show()
+      return false
+    }
+  }
+
+  private fun isValidPassword(password: String?): Boolean {
+    val pattern: Pattern
+    val matcher: Matcher
+    val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{11,}$"
+    pattern = Pattern.compile(PASSWORD_PATTERN)
+    matcher = pattern.matcher(password)
+    if(matcher.matches()){
+      return true
+    }else
+      Toast.makeText(this, "Password consists of 11 characters with letters, numbers and special characters, lowercase and uppercase !!", Toast.LENGTH_SHORT).show()
+    return false
+  }
+
 
   companion object {
     const val TAG: String = "SIGNUP_SCREEN_ACTIVITY"
