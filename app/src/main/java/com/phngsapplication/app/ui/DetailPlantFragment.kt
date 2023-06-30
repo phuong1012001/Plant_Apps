@@ -61,7 +61,7 @@ class DetailPlantFragment : Fragment() {
         }
 
         var button_background : Int = 0
-        button_background = if(like == "true")
+        button_background = if(like == "like")
             2
         else 1
 

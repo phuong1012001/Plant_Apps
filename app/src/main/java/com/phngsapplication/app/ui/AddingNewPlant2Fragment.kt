@@ -101,6 +101,11 @@ class AddingNewPlant2Fragment : Fragment() {
             }
         }
 
+        binding.toolbar.setNavigationOnClickListener{
+            val controller = findNavController()
+            controller.navigate(R.id.action_addingNewPlant2Fragment_to_homeFragment2)
+        }
+
         return binding.root
     }
 

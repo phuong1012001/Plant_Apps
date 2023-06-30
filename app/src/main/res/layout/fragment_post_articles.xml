@@ -30,23 +30,25 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="60dp"
                     android:background="#2DDA93"
                     android:clipToPadding="false"
                     android:paddingTop="8dp">
 
                     <!--clear feeds button -->
+
                     <EditText
                         android:id="@+id/header"
                         style="@style/txtAndadaProromanbold28"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
-                        android:layout_marginStart="-1dp"
-                        android:layout_marginLeft="-1dp"
-                        android:textColorHint="@color/gray_600_90"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_toStartOf="@+id/closeButton"
+                        android:gravity="center"
                         android:hint="New Title ..."
+                        android:textColorHint="@color/gray_600_90"
                         android:textSize="24sp" />
 
                     <ImageView
@@ -74,13 +76,15 @@
                 <FrameLayout android:gravity="start"
                     android:id="@+id/frameStackrectanglesixtytwo"
                     android:layout_height="@dimen/_230pxv" android:layout_width="match_parent">
-                    <ImageView android:id="@+id/imagePost"
-                        android:layout_gravity="start"
-                        android:layout_height="@dimen/_249pxh"
+
+                    <ImageView
+                        android:id="@+id/imagePost"
                         android:layout_width="match_parent"
+                        android:layout_height="@dimen/_230pxv"
+                        android:layout_gravity="start"
                         android:scaleType="fitXY"
-                        android:src="@drawable/img_rectangle_249x375"
-                        tools:ignore="ContentDescription"/>
+                        android:src="@drawable/camera"
+                        tools:ignore="ContentDescription" />
                 </FrameLayout>
             </LinearLayout>
             <LinearLayout

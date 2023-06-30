@@ -122,7 +122,9 @@ class SpeciesFragment : Fragment() {
                     data3.add(sp)
                 }
             }
-            data2.add(SpeciesAlphabet(c.toString(), data3))
+            if(!data3.isEmpty()){
+                data2.add(SpeciesAlphabet(c.toString(), data3))
+            }
             ++c
         }
         val adapter1 = SpeciesAdapter(data2)

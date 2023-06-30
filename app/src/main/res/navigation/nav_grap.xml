@@ -168,7 +168,11 @@
             android:id="@+id/fab"
             android:name="com.phngsapplication.app.ui.AddingNewPlant1Fragment"
             android:label="AddingNewPlant1Fragment"
-            tools:layout="@layout/fragment_adding_new_plant_1" />
+            tools:layout="@layout/fragment_adding_new_plant_1" >
+            <action
+                android:id="@+id/action_fab_to_homeFragment"
+                app:destination="@id/homeFragment" />
+        </fragment>
     </navigation>
     <fragment
         android:id="@+id/editProfileFragment2"

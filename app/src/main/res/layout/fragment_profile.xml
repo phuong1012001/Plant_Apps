@@ -91,13 +91,12 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:gravity="center_horizontal|top"
-                        android:singleLine="true"
-                        android:text="@string/lbl_taylor_swift" />
+                        android:singleLine="true"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
+                        android:gravity="center_horizontal"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -106,8 +105,7 @@
                             android:layout_height="@dimen/_17pxh"
                             android:scaleType="fitXY"
                             android:src="@drawable/img_location"
-                            tools:ignore="ContentDescription"
-                            tools:src="@drawable/img_location" />
+                            tools:ignore="ContentDescription"/>
 
                         <TextView
                             android:id="@+id/txtLosAngelesCa"
@@ -116,9 +114,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_5pxh"
                             android:ellipsize="end"
-                            android:gravity="center_horizontal"
                             android:singleLine="true"
-                            android:text="@string/msg_los_angeles_ca"
                             tools:ignore="TextSizeCheck" />
                     </LinearLayout>
 

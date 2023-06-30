@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/oneSpecie"
         android:layout_width="@dimen/_331pxh"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_139pxh"
         android:layout_margin="10dp"
         tools:elevation="3dp"
         android:background="@drawable/background_item">

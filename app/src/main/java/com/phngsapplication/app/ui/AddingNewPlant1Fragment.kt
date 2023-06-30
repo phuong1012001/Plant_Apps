@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.ktx.firestore
@@ -42,6 +43,11 @@ class AddingNewPlant1Fragment : Fragment() {
             }else{
                 Toast.makeText(mainActivity, "Species not Valid !!", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        binding.toolbar.setNavigationOnClickListener{
+            val controller = findNavController()
+            controller.navigate(R.id.action_fab_to_homeFragment)
         }
         return binding.root
     }
