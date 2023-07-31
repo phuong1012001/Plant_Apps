@@ -181,6 +181,8 @@
         tools:layout="@layout/fragment_edit_profile" >
         <action
             android:id="@+id/action_editProfileFragment_to_profile"
-            app:destination="@id/profile" />
+            app:destination="@id/profile"
+            app:popUpTo="@id/profile"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

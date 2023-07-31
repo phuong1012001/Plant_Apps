@@ -92,8 +92,8 @@ class HomeFragment : Fragment() {
 
         val data1 = ArrayList<Photo>()
         data1.add(Photo("Big", "img_rectangle_1"))
-        data1.add(Photo("HCMUS", "img_rectangle_1"))
-        data1.add(Photo("Small", "img_rectangle_1"))
+Change         data1.add(Photo("HCMUS", "img_rectangle_3"))
+        data1.add(Photo("Small", "img_rectangle_4"))
 
         val phptoGraphy = PhotoAdapter(data1)
 
